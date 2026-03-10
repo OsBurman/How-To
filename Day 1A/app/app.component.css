@@ -1,0 +1,28 @@
+/* app.component.css — Root Component Styles */
+
+/* These styles are scoped to AppComponent thanks to ViewEncapsulation.Emulated (the default). */
+/* They will NOT affect HeaderComponent or FooterComponent styles. */
+
+:host {
+  display: flex;
+  flex-direction: column; /* Stack header, content, and footer vertically */
+  min-height: 100vh; /* Fill the full viewport height */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.content {
+  flex: 1; /* Content area expands to fill available space */
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto; /* Center the content horizontally */
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: #555;
+  line-height: 1.6;
+}

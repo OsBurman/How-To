@@ -1,4 +1,68 @@
+# Complete Filled Copilot Prompt Library
+## All Days & Parts — Ready to Paste
 
+---
+
+## HOW TO USE
+
+**Master Context is auto-loaded.** The file `.github/copilot-instructions.md` is automatically included in every Copilot chat session. You do NOT need to paste it manually.
+
+**To run a prompt:** Copy the specific day/part prompt from this file and paste it directly into Copilot chat. That's it.
+
+**Placeholders marked `>>> PASTE YOUR GENERATED [X] HERE <<<`** are outputs you produce during the process. Paste them inline where indicated.
+
+**Session order for every Part:**
+1. Sample Code → 2. Slides → 3. Speaker Script → 4. Exercises → 5. Sample Project → 6. Gap Check
+
+**Every prompt ends with a NOW WRITE / NOW GENERATE command in bold.** This is what tells Copilot to produce output rather than describe what it would do. Do not remove it.
+
+---
+
+---
+
+> **Note:** Master Context lives in `.github/copilot-instructions.md` and is auto-loaded by Copilot.
+> You do not need to copy or paste it. Just paste the day-specific prompt below.
+
+---
+
+---
+
+# DAY 1 PART A — What is Angular & Getting Started
+
+---
+
+## D1A — SAMPLE CODE
+
+```
+
+You are generating sample code for Day 1 Part A of a 5-day Angular course.
+
+LESSON CONCEPTS TO DEMONSTRATE:
+- What Angular is and how it differs from vanilla JS (shown through project structure and comments)
+- bootstrapApplication() in main.ts and app.config.ts structure
+- A standalone AppComponent with imports array
+- A HeaderComponent with a title @Input() and selector app-header
+- A FooterComponent with a currentYear property and selector app-footer
+- AppComponent rendering both HeaderComponent and FooterComponent
+- ViewEncapsulation.Emulated — scoped styles on HeaderComponent that do not leak
+- The "not a known element" error — a comment block showing what it looks like and what causes it
+- Angular CLI — comments showing which CLI command generated each file
+
+DELIVERABLES:
+1. main.ts
+2. app.config.ts
+3. app.component.ts / app.component.html / app.component.css
+4. header.component.ts / header.component.html / header.component.css
+5. footer.component.ts / footer.component.html / footer.component.css
+
+Each file must have a comment block at the top explaining its role. Every significant line
+must have an inline comment explaining what it demonstrates. No NgModule, no legacy patterns.
+
+**NOW WRITE ALL OF THE FILES LISTED ABOVE. Output each file as a separate labeled code
+block with the full filename as the label (e.g., ### app.component.ts).**
+```
+
+---
 
 ## D1A — SLIDES
 

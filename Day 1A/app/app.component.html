@@ -1,0 +1,15 @@
+<!-- app.component.html — Root Component Template -->
+
+<!-- Render the HeaderComponent and pass the appTitle property as an @Input() -->
+<!-- The [title] syntax is property binding — it binds the parent's appTitle to the child's title input -->
+<app-header [title]="appTitle"></app-header>
+
+<!-- Main content area — this is where the app's body content lives -->
+<main class="content">
+  <h2>Welcome to Angular!</h2>
+  <p>This is the root component. It renders HeaderComponent and FooterComponent as children.</p>
+  <p>Every component you see on this page is a standalone component registered in the imports array.</p>
+</main>
+
+<!-- Render the FooterComponent — no inputs needed, it manages its own data -->
+<app-footer></app-footer>
