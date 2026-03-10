@@ -1,10 +1,48 @@
 
+```
+
+You are generating sample code for Day 1 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
+
+LESSON CONCEPTS TO DEMONSTRATE:
+- What Angular is and how it differs from vanilla JS (shown through project structure and comments)
+- bootstrapApplication() in main.ts and app.config.ts structure
+- A standalone AppComponent with imports array
+- A HeaderComponent with a title @Input() and selector app-header
+- A FooterComponent with a currentYear property and selector app-footer
+- AppComponent rendering both HeaderComponent and FooterComponent
+- ViewEncapsulation.Emulated — scoped styles on HeaderComponent that do not leak
+- The "not a known element" error — a comment block showing what it looks like and what causes it
+- Angular CLI — comments showing which CLI command generated each file
+
+DELIVERABLES:
+1. main.ts
+2. app.config.ts
+3. app.component.ts / app.component.html / app.component.css
+4. header.component.ts / header.component.html / header.component.css
+5. footer.component.ts / footer.component.html / footer.component.css
+6. LEGACY-ngmodule-bootstrap.ts — labeled legacy; shows bootstrapModule(AppModule),
+   AppModule with declarations and imports arrays, NgModule-based component registration;
+   comments explaining what standalone components replaced
+
+Each file must have a comment block at the top explaining its role. Every significant line
+must have an inline comment explaining what it demonstrates. No NgModule in modern files
+(deliverables 1–5). The LEGACY file (deliverable 6) is a separate read-only reference.
+
+**NOW WRITE ALL OF THE FILES LISTED ABOVE. Output each file as a separate labeled code
+block with the full filename as the label (e.g., ### app.component.ts).**
+```
+
+---
 
 ## D1A — SLIDES
 
 ```
 
 You are generating slides for Day 1 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
 
 CONCEPTS TO COVER (one slide per concept):
 - What Angular is, why it exists, how it compares to vanilla JS
@@ -17,18 +55,17 @@ CONCEPTS TO COVER (one slide per concept):
 - Angular CLI commands — ng serve, ng generate, ng build, ng test
 - Angular DevTools — install on Day 1
 - ViewEncapsulation — why styles are scoped by default
-- Legacy vs. Modern comparison table (final slide):
-  | Concept | Modern | Legacy |
-  | App entry point | bootstrapApplication() | bootstrapModule(AppModule) |
-  | Component registration | imports: [] on component | declarations: [] in NgModule |
-  | App config | app.config.ts providers | AppModule providers array |
-  | Feature grouping | Standalone components by folder | NgModule per feature |
+LEGACY CONTRAST SLIDES (after all modern concept slides):
+- App entry point — show bootstrapModule(AppModule) code; contrast with modern bootstrapApplication()
+- Component registration — show declarations: [] in NgModule; contrast with modern imports: [] on component
+- App config — show AppModule providers array; contrast with modern app.config.ts providers
+- Feature grouping — show NgModule per feature pattern; contrast with modern standalone components by folder
+Each legacy slide shows actual legacy code, explains what pain it caused, and shows the modern equivalent side by side.
 
->>> PASTE YOUR GENERATED D1A SAMPLE CODE FILES HERE <<<
-
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 1 Part A. Use the code files above for all
-code slides. Format each slide as: ## [Slide Title] followed by its content, separated
-by ---. Include every concept listed. Final slide is the Legacy vs. Modern table.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 1 Part A. Generate your own focused code
+examples for each code slide — do not reference external files. Format each slide as:
+## [Slide Title] followed by its content, separated by ---. Include every concept
+listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -38,6 +75,8 @@ by ---. Include every concept listed. Final slide is the Legacy vs. Modern table
 ```
 
 You are writing the speaker script for Day 1 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 >>> PASTE YOUR GENERATED D1A SLIDES HERE <<<
@@ -49,7 +88,8 @@ SCRIPT RULES:
 - For CODE slides: walk through line by line; explain what AND why
 - For the ⚠️ WARNING slide: explain what the error message looks like, why beginners
   hit it, and the exact fix
-- For the Legacy vs. Modern table: explain what pain each modern approach solves
+- For the legacy contrast slides: walk through each legacy code example,
+  explain what pain it caused, and show why the modern approach is better
 - Transitions are natural spoken sentences — never "next slide please"
 - This is the very first session — assume zero Angular knowledge
 
@@ -64,6 +104,8 @@ section for every slide. Format as: ## [Slide Title] followed by the full spoken
 ```
 
 You are writing student exercises for Day 1 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - Generating a project with the CLI
@@ -113,6 +155,8 @@ labeled code block.
 
 You are generating the Day 1 Part A sample project for a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
+
 PROJECT: Personal Bio Card
 A static personal bio card app. Contains a HeaderComponent, a BioCardComponent that
 accepts name, role, bio, and avatarUrl via @Input(), a list of SkillBadgeComponents,
@@ -142,6 +186,8 @@ no services, no routing.
 ```
 
 You are reviewing the generated materials for Day 1 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - What Angular is, why it exists, how it compares to vanilla JS
@@ -185,6 +231,8 @@ List any concept appearing in the materials that is NOT in the curriculum requir
 
 You are generating sample code for Day 1 Part B of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
+
 LESSON CONCEPTS TO DEMONSTRATE:
 - Interpolation {{ }}
 - Property binding [property]
@@ -206,6 +254,9 @@ DELIVERABLES:
 2. character-counter.component.ts/.html/.css — all four binding types; ngOnDestroy cancels interval
 3. signal-counter.component.ts/.html/.css — signal() and computed() preview; labeled as preview
 4. app.component.ts/.html/.css — parent using all three; safe navigation + nullish coalescing
+5. LEGACY-ngmodule-component.ts — labeled legacy; shows NgModule with FormsModule import,
+   component registered in declarations array, constructor injection pattern;
+   comments explaining what the modern standalone approach replaced
 
 **NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.**
 ```
@@ -217,6 +268,8 @@ DELIVERABLES:
 ```
 
 You are generating slides for Day 1 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
 
 CONCEPTS TO COVER (one slide per concept):
 - Interpolation {{ }}
@@ -230,18 +283,17 @@ CONCEPTS TO COVER (one slide per concept):
 - ngOnInit — right place for initialization; why not the constructor
 - ngOnDestroy — cleanup from day one
 - Signals first look — signal(), computed(); labeled as Day 2 preview
-- Legacy vs. Modern comparison table (final slide):
-  | Concept | Modern | Legacy |
-  | ngModel setup | FormsModule in component imports | FormsModule in NgModule |
-  | Passing data down | @Input() (same) | @Input() (same) |
-  | Passing events up | @Output() + EventEmitter (same) | @Output() + EventEmitter (same) |
-  | Lifecycle hooks | implements OnInit/OnDestroy (same) | implements OnInit/OnDestroy (same) |
+LEGACY CONTRAST SLIDES (after all modern concept slides):
+- ngModel setup — show FormsModule in NgModule; contrast with modern FormsModule in component imports
+- Passing data down — @Input() is the same in both; show the NgModule context around it
+- Passing events up — @Output() + EventEmitter is the same; show the NgModule context around it
+- Lifecycle hooks — OnInit/OnDestroy are the same; show a full NgModule-based component for comparison
+Each legacy slide shows actual legacy code, explains the NgModule-based setup, and highlights the difference in how modules are organized.
 
->>> PASTE YOUR GENERATED D1B SAMPLE CODE FILES HERE <<<
-
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 1 Part B. Use the code files above for all
-code slides. Final slide is the Legacy vs. Modern table. The signals preview slide must
-clearly state exercises do not require signals yet.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 1 Part B. Generate your own focused code
+examples for each code slide — do not reference external files. After all modern
+slides, include the legacy contrast slides showing actual legacy code examples. The
+signals preview slide must clearly state exercises do not require signals yet.**
 ```
 
 ---
@@ -251,6 +303,8 @@ clearly state exercises do not require signals yet.**
 ```
 
 You are writing the speaker script for Day 1 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 >>> PASTE YOUR GENERATED D1B SLIDES HERE <<<
@@ -276,6 +330,8 @@ SPECIFIC GUIDANCE:
 ```
 
 You are writing student exercises for Day 1 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - Interpolation
@@ -319,6 +375,8 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 1 Part B sample project for a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
+
 PROJECT: Tip Calculator
 A reusable TipInputComponent accepts bill amount and tip percentage via @Input() and
 emits a calculated result to the parent AppComponent via @Output(). AppComponent displays
@@ -349,6 +407,8 @@ as a clearly labeled optional bonus section.
 ```
 
 You are reviewing the generated materials for Day 1 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Interpolation {{ }}
@@ -381,6 +441,8 @@ SCOPE CREEP: List anything in the materials not in the requirements.
 ```
 
 You are checking whether Day 1 materials adequately prepare students for Day 2.
+
+OUTPUT FOLDER: Create or use the folder `Cross-Day-Checks/` in the workspace. Save output as `Day1-to-Day2-continuity.md`.
 
 DAY 1 TAUGHT:
 Part A: CLI, project structure, bootstrapApplication, standalone components, imports
@@ -421,6 +483,8 @@ model(), fine-grained change detection, ngOnChanges as legacy contrast
 
 You are generating sample code for Day 2 Part A of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
+
 LESSON CONCEPTS TO DEMONSTRATE:
 - ng-content single-slot projection — CardComponent wrapping projected content
 - Named ng-content slots with select — LayoutCardComponent with header/body/footer slots
@@ -447,6 +511,8 @@ DELIVERABLES:
 4. movie-list.component.ts/.html/.css — @switch, [ngStyle], built-in pipes, FilterPipe
 5. truncate.pipe.ts — custom pure pipe with configurable limit
 6. filter.pipe.ts — pure pipe; comments explaining pure re-evaluation behavior
+7. LEGACY-structural-directives.component.ts/.html/.css — labeled legacy; shows *ngIf, *ngFor
+   with trackBy, *ngSwitch, *ngIf="expr as name"; comments explaining what @if/@for/@switch replaced
 
 **NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.**
 ```
@@ -458,6 +524,8 @@ DELIVERABLES:
 ```
 
 You are generating slides for Day 2 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
 
 CONCEPTS TO COVER (one slide per concept):
 - ng-content — single-slot projection
@@ -476,17 +544,18 @@ CONCEPTS TO COVER (one slide per concept):
 - Pure vs impure pipes
 - ⚠️ WARNING: pure pipe mutation gotcha — pipe won't update if array is mutated in place
 - Custom pure pipe with @Pipe and transform()
-- Legacy vs. Modern comparison table (final slide):
-  | Concept | Modern | Legacy |
-  | Conditional | @if / @else | *ngIf + <ng-template #else> |
-  | List | @for (track item.id) | *ngFor with trackBy method |
-  | Switch | @switch / @case | [ngSwitch] / *ngSwitchCase |
-  | track | Required in @for | Optional trackBy in *ngFor |
-  | Template local var | @let name = expr | *ngIf="expr as name" |
+LEGACY CONTRAST SLIDES (after all modern concept slides):
+- Conditional rendering — show *ngIf + <ng-template #else> code; contrast with modern @if / @else
+- List rendering — show *ngFor with trackBy method; contrast with modern @for (track item.id)
+- Switch rendering — show [ngSwitch] / *ngSwitchCase; contrast with modern @switch / @case
+- Track — show optional trackBy in *ngFor; contrast with required track in @for
+- Template local variable — show *ngIf="expr as name" pattern; contrast with modern @let name = expr
+Each legacy slide shows actual legacy code, explains the structural directive syntax, and shows the cleaner modern equivalent side by side.
 
->>> PASTE YOUR GENERATED D2A SAMPLE CODE FILES HERE <<<
-
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 2 Part A.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 2 Part A. Generate your own focused code
+examples for each code slide — do not reference external files. Format each slide as:
+## [Slide Title] followed by its content, separated by ---. Include every concept
+listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -496,6 +565,8 @@ CONCEPTS TO COVER (one slide per concept):
 ```
 
 You are writing the speaker script for Day 2 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 >>> PASTE YOUR GENERATED D2A SLIDES HERE <<<
@@ -523,6 +594,8 @@ SPECIFIC GUIDANCE:
 ```
 
 You are writing student exercises for Day 2 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - ng-content single-slot projection
@@ -568,6 +641,8 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 2 Part A sample project for a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
+
 PROJECT: Movie Listing
 A movie listing app with genre filters, formatted dates and ratings, and a reusable
 MovieCardComponent built with named ng-content slots (poster, title, details).
@@ -599,6 +674,8 @@ Represents Day 1 and Day 2 Part A knowledge only.
 ```
 
 You are reviewing the generated materials for Day 2 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - ng-content single-slot and named slots
@@ -638,6 +715,8 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating sample code for Day 2 Part B of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
+
 LESSON CONCEPTS TO DEMONSTRATE:
 - signal() — .set() and .update()
 - computed() — read-only; recalculates only when dependency changes
@@ -672,6 +751,8 @@ DELIVERABLES:
 
 You are generating slides for Day 2 Part B of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
+
 CONCEPTS TO COVER (one slide per concept):
 - The problem with zone.js — checks entire component tree on every event
 - signal() — .set(), .update()
@@ -684,20 +765,21 @@ CONCEPTS TO COVER (one slide per concept):
 - Fine-grained change detection — only affected DOM nodes update
 - ngOnChanges — legacy contrast: how input changes were handled before signals
 - Angular direction callout slide — zoneless stable in v21+; signals are the reason
-- Legacy vs. Modern comparison table (final slide):
-  | Concept | Modern | Legacy |
-  | Component input | input<T>() — readonly Signal | @Input() — mutable property |
-  | Component output | output<T>() | @Output() + EventEmitter |
-  | Two-way binding | model<T>() | @Input() + @Output() pair |
-  | Reacting to input changes | computed() or effect() | ngOnChanges(SimpleChanges) |
-  | Derived state | computed(() => ...) | Getter or ChangeDetectorRef |
-  | Side effects | effect() with cleanup | ngOnChanges/ngDoCheck/ngOnDestroy |
-  | Change detection | Fine-grained signals | Zone.js full tree check |
-  | Manual optimization | Not needed | OnPush + markForCheck() |
+LEGACY CONTRAST SLIDES (after all modern concept slides):
+- Component input — show @Input() mutable property; contrast with modern input<T>() readonly Signal
+- Component output — show @Output() + EventEmitter; contrast with modern output<T>()
+- Two-way binding — show @Input() + @Output() pair pattern; contrast with modern model<T>()
+- Reacting to input changes — show ngOnChanges(SimpleChanges); contrast with modern computed() or effect()
+- Derived state — show getter or ChangeDetectorRef approach; contrast with modern computed(() => ...)
+- Side effects — show ngOnChanges/ngDoCheck/ngOnDestroy; contrast with modern effect() with cleanup
+- Change detection — show Zone.js full tree check; contrast with modern fine-grained signals
+- Manual optimization — show OnPush + markForCheck(); contrast with modern signals (not needed)
+Each legacy slide shows actual legacy code, explains the boilerplate overhead, and shows the modern equivalent side by side.
 
->>> PASTE YOUR GENERATED D2B SAMPLE CODE FILES HERE <<<
-
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 2 Part B.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 2 Part B. Generate your own focused code
+examples for each code slide — do not reference external files. Format each slide as:
+## [Slide Title] followed by its content, separated by ---. Include every concept
+listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -707,6 +789,8 @@ CONCEPTS TO COVER (one slide per concept):
 ```
 
 You are writing the speaker script for Day 2 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 >>> PASTE YOUR GENERATED D2B SLIDES HERE <<<
@@ -736,6 +820,8 @@ SPECIFIC GUIDANCE:
 ```
 
 You are writing student exercises for Day 2 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - signal() with .set() and .update()
@@ -775,6 +861,8 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 2 Part B sample project for a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
+
 PROJECT: Budget Tracker
 Total, spent, and remaining balance are all computed() signals derived from a writable
 expense list signal. Users add and remove expenses. An effect() with cleanup logs each
@@ -803,6 +891,8 @@ CONCEPTS TO DEMONSTRATE:
 ```
 
 You are reviewing the generated materials for Day 2 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - signal() — .set(), .update()
@@ -836,6 +926,8 @@ SCOPE CREEP: List anything in materials not in requirements.
 ```
 
 You are checking whether Day 2 materials adequately prepare students for Day 3.
+
+OUTPUT FOLDER: Create or use the folder `Cross-Day-Checks/` in the workspace. Save output as `Day2-to-Day3-continuity.md`.
 
 DAY 2 TAUGHT:
 Part A: ng-content, ngAfterContentInit, ng-container, ng-template, @if/@for/@switch/@let,
@@ -871,6 +963,8 @@ switchMap/catchError/forkJoin, HttpErrorResponse, loading states, HttpIntercepto
 ```
 
 You are generating sample code for Day 3 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - @Injectable({ providedIn: 'root' }) — singleton, tree-shakable
@@ -909,6 +1003,8 @@ DELIVERABLES:
 
 You are generating slides for Day 3 Part A of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
+
 CONCEPTS TO COVER (one slide per concept):
 - What a service is — separating logic and shared state from components
 - @Injectable({ providedIn: 'root' }) — singleton, tree-shakable
@@ -923,16 +1019,17 @@ CONCEPTS TO COVER (one slide per concept):
 - takeUntilDestroyed() with DestroyRef
 - toSignal() — the RxJS-to-signals bridge
 - ⚠️ WARNING: async pipe emits null before first value; toSignal() takes initialValue instead
-- Legacy vs. Modern comparison table (final slide):
-  | Concept | Modern | Legacy |
-  | Service injection | inject(MyService) | constructor(private svc: MyService) |
-  | Service scope | providedIn: 'root' | NgModule.providers |
-  | RxJS cleanup | takeUntilDestroyed() | takeUntil(destroy$) + ngOnDestroy |
-  | Observable in template | toSignal(obs$, {initialValue}) | async pipe + @if null guard |
+LEGACY CONTRAST SLIDES (after all modern concept slides):
+- Service injection — show constructor(private svc: MyService) code; contrast with modern inject(MyService)
+- Service scope — show NgModule.providers registration; contrast with modern providedIn: 'root'
+- RxJS cleanup — show takeUntil(destroy$) + ngOnDestroy Subject pattern; contrast with modern takeUntilDestroyed()
+- Observable in template — show async pipe + @if null guard; contrast with modern toSignal(obs$, {initialValue})
+Each legacy slide shows actual legacy code, explains the boilerplate involved, and shows the modern equivalent side by side.
 
->>> PASTE YOUR GENERATED D3A SAMPLE CODE FILES HERE <<<
-
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 3 Part A.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 3 Part A. Generate your own focused code
+examples for each code slide — do not reference external files. Format each slide as:
+## [Slide Title] followed by its content, separated by ---. Include every concept
+listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -942,6 +1039,8 @@ CONCEPTS TO COVER (one slide per concept):
 ```
 
 You are writing the speaker script for Day 3 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 >>> PASTE YOUR GENERATED D3A SLIDES HERE <<<
@@ -968,6 +1067,8 @@ SPECIFIC GUIDANCE:
 ```
 
 You are writing student exercises for Day 3 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - @Injectable providedIn root
@@ -1010,6 +1111,8 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 3 Part A sample project for a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
+
 PROJECT: Shopping Cart
 A shopping cart app where the header displays cart count and the cart page shows the
 full list — both synced through CartService using BehaviorSubject. CartService has
@@ -1036,6 +1139,8 @@ CONCEPTS TO DEMONSTRATE:
 ```
 
 You are reviewing the generated materials for Day 3 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - @Injectable providedIn root
@@ -1076,6 +1181,8 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating sample code for Day 3 Part B of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
+
 LESSON CONCEPTS TO DEMONSTRATE:
 - provideHttpClient() in app.config.ts
 - TypeScript interface for HTTP response — User interface for JSONPlaceholder /users
@@ -1112,6 +1219,8 @@ DELIVERABLES:
 
 You are generating slides for Day 3 Part B of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
+
 CONCEPTS TO COVER (one slide per concept):
 - provideHttpClient() in app.config.ts
 - TypeScript interfaces for HTTP responses — why typing matters
@@ -1123,18 +1232,20 @@ CONCEPTS TO COVER (one slide per concept):
 - forkJoin — parallel requests; both must complete; RxJS equivalent of Promise.all
 - Loading state — isLoading signal + finalize()
 - Functional HttpInterceptorFn — auth headers and logging
+- toSignal() — connecting HTTP Observable to template via signals
 - environment.ts — API base URL; ng build swaps at build time
-- Legacy vs. Modern comparison table (final slide):
-  | Concept | Modern | Legacy |
-  | HTTP setup | provideHttpClient() in app.config.ts | HttpClientModule in AppModule |
-  | Interceptors | HttpInterceptorFn — plain function | Class implementing HttpInterceptor |
-  | Registration | withInterceptors([fn]) | HTTP_INTERCEPTORS multi-token |
-  | Response typing | http.get<MyType>(url) (same) | http.get<MyType>(url) (same) |
-  | Environment config | environment.ts swap (same) | environment.ts swap (same) |
+LEGACY CONTRAST SLIDES (after all modern concept slides):
+- HTTP setup — show HttpClientModule in AppModule; contrast with modern provideHttpClient() in app.config.ts
+- Interceptors — show class implementing HttpInterceptor; contrast with modern HttpInterceptorFn plain function
+- Registration — show HTTP_INTERCEPTORS multi-token provider; contrast with modern withInterceptors([fn])
+- Response typing — http.get<MyType>(url) is the same in both; note this did not change
+- Environment config — environment.ts swap is the same in both; note this did not change
+Each legacy slide shows actual legacy code, explains the class-based and module-based patterns, and shows the modern equivalent side by side.
 
->>> PASTE YOUR GENERATED D3B SAMPLE CODE FILES HERE <<<
-
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 3 Part B.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 3 Part B. Generate your own focused code
+examples for each code slide — do not reference external files. Format each slide as:
+## [Slide Title] followed by its content, separated by ---. Include every concept
+listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -1144,6 +1255,8 @@ CONCEPTS TO COVER (one slide per concept):
 ```
 
 You are writing the speaker script for Day 3 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 >>> PASTE YOUR GENERATED D3B SLIDES HERE <<<
@@ -1170,6 +1283,8 @@ SPECIFIC GUIDANCE:
 ```
 
 You are writing student exercises for Day 3 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - provideHttpClient() setup
@@ -1214,6 +1329,8 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 3 Part B sample project for a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
+
 PROJECT: Weather Dashboard
 Fetches current weather and 5-day forecast from Open-Meteo (no API key required).
 API base URL in environment.ts. Uses forkJoin to load both in parallel. Shows isLoading
@@ -1243,6 +1360,8 @@ CONCEPTS TO DEMONSTRATE:
 ```
 
 You are reviewing the generated materials for Day 3 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - provideHttpClient() in app.config.ts
@@ -1278,6 +1397,8 @@ SCOPE CREEP: List anything in materials not in requirements.
 ```
 
 You are checking whether Day 3 materials adequately prepare students for Day 4.
+
+OUTPUT FOLDER: Create or use the folder `Cross-Day-Checks/` in the workspace. Save output as `Day3-to-Day4-continuity.md`.
 
 DAY 3 TAUGHT:
 Part A: Services, @Injectable, inject(), error handling patterns, RxJS fundamentals,
@@ -1315,6 +1436,8 @@ ngModel + reactive form mistake warning
 
 You are generating sample code for Day 4 Part A of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
+
 LESSON CONCEPTS TO DEMONSTRATE:
 - provideRouter(routes) in app.config.ts with withComponentInputBinding()
 - router-outlet, routerLink, routerLinkActive with active class
@@ -1351,6 +1474,8 @@ DELIVERABLES:
 
 You are generating slides for Day 4 Part A of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
+
 CONCEPTS TO COVER (one slide per concept):
 - provideRouter(routes) in app.config.ts
 - router-outlet, routerLink, routerLinkActive
@@ -1363,19 +1488,20 @@ CONCEPTS TO COVER (one slide per concept):
 - canActivate functional guard — boolean | UrlTree
 - canDeactivate functional guard — dirty check pattern
 - AppRoutingModule callout slide — "this is what you'll see in most existing codebases"
-- Legacy vs. Modern comparison table (final slide):
-  | Concept | Modern | Legacy |
-  | Router setup | provideRouter(routes) | RouterModule.forRoot(routes) |
-  | Feature routes | Child route arrays | RouterModule.forChild() |
-  | Lazy loading | loadComponent: () => import() | loadChildren: () => import().then() |
-  | Route params as inputs | withComponentInputBinding() | Inject ActivatedRoute manually |
-  | Programmatic nav | inject(Router).navigate() | Constructor-injected Router |
-  | canActivate | Plain function | Class implementing CanActivate |
-  | canDeactivate | Plain function | Class implementing CanDeactivate<T> |
+LEGACY CONTRAST SLIDES (after all modern concept slides):
+- Router setup — show RouterModule.forRoot(routes) in AppModule; contrast with modern provideRouter(routes)
+- Feature routes — show RouterModule.forChild() pattern; contrast with modern child route arrays
+- Lazy loading — show loadChildren: () => import().then() module loading; contrast with modern loadComponent: () => import()
+- Route params as inputs — show manual ActivatedRoute injection and subscription; contrast with modern withComponentInputBinding()
+- Programmatic nav — show constructor-injected Router; contrast with modern inject(Router).navigate()
+- canActivate — show class implementing CanActivate; contrast with modern plain function guard
+- canDeactivate — show class implementing CanDeactivate<T>; contrast with modern plain function guard
+Each legacy slide shows actual legacy code, explains the class-based and module-based router patterns, and shows the modern equivalent side by side.
 
->>> PASTE YOUR GENERATED D4A SAMPLE CODE FILES HERE <<<
-
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 4 Part A.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 4 Part A. Generate your own focused code
+examples for each code slide — do not reference external files. Format each slide as:
+## [Slide Title] followed by its content, separated by ---. Include every concept
+listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -1385,6 +1511,8 @@ CONCEPTS TO COVER (one slide per concept):
 ```
 
 You are writing the speaker script for Day 4 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 >>> PASTE YOUR GENERATED D4A SLIDES HERE <<<
@@ -1413,6 +1541,8 @@ SPECIFIC GUIDANCE:
 ```
 
 You are writing student exercises for Day 4 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - provideRouter() setup
@@ -1455,6 +1585,8 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 4 Part A sample project for a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
+
 PROJECT: Recipe Browser
 A recipe browser with a home page, a recipe list page (filterable by category via
 query params), a recipe detail page (route param as input() signal via
@@ -1485,6 +1617,8 @@ CONCEPTS TO DEMONSTRATE:
 ```
 
 You are reviewing the generated materials for Day 4 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - provideRouter() in app.config.ts
@@ -1524,6 +1658,8 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating sample code for Day 4 Part B of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
+
 LESSON CONCEPTS TO DEMONSTRATE:
 - Template-driven form — ngModel, #field template ref, ngForm, HTML5 validators,
   error display with #field.invalid && #field.touched
@@ -1561,6 +1697,8 @@ DELIVERABLES:
 
 You are generating slides for Day 4 Part B of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
+
 CONCEPTS TO COVER (one slide per concept):
 - Template-driven forms — ngModel, #field, ngForm, validators, error display
 - Reactive forms — FormGroup, FormControl, FormBuilder, Validators, valueChanges
@@ -1570,17 +1708,19 @@ CONCEPTS TO COVER (one slide per concept):
 - Disabling submit until form.valid
 - Form submission — (ngSubmit); read .value; call service; navigate; reset()
 - toSignal(form.valueChanges) — live reactive form state as a signal
+- computed() derived from form signals — e.g. password strength indicator, completion percentage
 - ⚠️ WARNING: ngModel inside reactive form causes runtime error — exact error message shown
-- Legacy vs. Modern comparison table (final slide):
-  | Concept | Modern | Legacy |
-  | FormsModule | Imported in standalone component | Imported in NgModule |
-  | ReactiveFormsModule | Imported in standalone component | Imported in NgModule |
-  | Form value as signal | toSignal(form.valueChanges) | Manual ngOnInit sub + ngOnDestroy |
-  | FormArray | Identical API | Identical API |
+LEGACY CONTRAST SLIDES (after all modern concept slides):
+- FormsModule — show FormsModule imported in NgModule; contrast with modern import in standalone component
+- ReactiveFormsModule — show ReactiveFormsModule imported in NgModule; contrast with modern import in standalone component
+- Form value as signal — show manual ngOnInit subscription + ngOnDestroy cleanup; contrast with modern toSignal(form.valueChanges)
+- FormArray — identical API in both; note this did not change
+Each legacy slide shows actual legacy code, explains the NgModule-based form setup, and shows the modern equivalent side by side.
 
->>> PASTE YOUR GENERATED D4B SAMPLE CODE FILES HERE <<<
-
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 4 Part B.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 4 Part B. Generate your own focused code
+examples for each code slide — do not reference external files. Format each slide as:
+## [Slide Title] followed by its content, separated by ---. Include every concept
+listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -1590,6 +1730,8 @@ CONCEPTS TO COVER (one slide per concept):
 ```
 
 You are writing the speaker script for Day 4 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 >>> PASTE YOUR GENERATED D4B SLIDES HERE <<<
@@ -1619,6 +1761,8 @@ SPECIFIC GUIDANCE:
 ```
 
 You are writing student exercises for Day 4 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - Template-driven form with ngModel, ngForm, HTML5 validators
@@ -1662,6 +1806,8 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 4 Part B sample project for a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
+
 PROJECT: Multi-Step Checkout Form
 Three steps (shipping, payment, review). Each step is a separate FormGroup.
 computed() tracks overall completion percentage. Step 2 has a FormArray for promo codes.
@@ -1689,6 +1835,8 @@ CONCEPTS TO DEMONSTRATE:
 ```
 
 You are reviewing the generated materials for Day 4 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Template-driven forms — ngModel, ngForm, HTML5 validators, error display
@@ -1723,6 +1871,8 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are checking whether Day 4 materials adequately prepare students for Day 5.
 
+OUTPUT FOLDER: Create or use the folder `Cross-Day-Checks/` in the workspace. Save output as `Day4-to-Day5-continuity.md`.
+
 DAY 4 TAUGHT:
 Part A: provideRouter, routing fundamentals, programmatic navigation, route/query params,
 withComponentInputBinding, lazy loading, canActivate/canDeactivate guards
@@ -1756,6 +1906,8 @@ Part B: Capstone — Task Management App
 ```
 
 You are generating sample code for Day 5 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - TestBed.configureTestingModule with imports: [StandaloneComponent] — modern test setup
@@ -1796,6 +1948,8 @@ DELIVERABLES:
 
 You are generating slides for Day 5 Part A of a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
+
 CONCEPTS TO COVER (one slide per concept):
 - Angular testing setup — Jasmine + Karma; Jest alternative
 - TestBed — Angular test environment; ComponentFixture, debugElement, detectChanges()
@@ -1809,16 +1963,17 @@ CONCEPTS TO COVER (one slide per concept):
 - Testing a pipe — simplest test; transform(); assert
 - Testing lifecycle — ngOnInit via detectChanges(); ngOnDestroy cleanup
 - Unit vs integration tradeoffs — NO_ERRORS_SCHEMA vs real child imports (pros/cons)
-- Legacy vs. Modern comparison table (final slide):
-  | Concept | Modern | Legacy |
-  | Component test setup | imports: [StandaloneComponent] | declarations + module deps |
-  | HTTP testing | provideHttpClientTesting() | HttpClientTestingModule |
-  | Signal input testing | fixture.componentRef.setInput() | component.prop = value |
-  | Change detection | detectChanges() (same) | detectChanges() (same) |
+LEGACY CONTRAST SLIDES (after all modern concept slides):
+- Component test setup — show declarations + module deps in TestBed; contrast with modern imports: [StandaloneComponent]
+- HTTP testing — show HttpClientTestingModule in imports; contrast with modern provideHttpClientTesting()
+- Signal input testing — show component.prop = value approach; contrast with modern fixture.componentRef.setInput()
+- Change detection — detectChanges() is the same in both; note this did not change
+Each legacy slide shows actual legacy test code, explains the module-based test setup, and shows the modern equivalent side by side.
 
->>> PASTE YOUR GENERATED D5A SAMPLE CODE FILES HERE <<<
-
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 5 Part A.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 5 Part A. Generate your own focused code
+examples for each code slide — do not reference external files. Format each slide as:
+## [Slide Title] followed by its content, separated by ---. Include every concept
+listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -1828,6 +1983,8 @@ CONCEPTS TO COVER (one slide per concept):
 ```
 
 You are writing the speaker script for Day 5 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 >>> PASTE YOUR GENERATED D5A SLIDES HERE <<<
@@ -1857,6 +2014,8 @@ SPECIFIC GUIDANCE:
 ```
 
 You are writing student exercises for Day 5 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - TestBed.configureTestingModule with imports: [StandaloneComponent]
@@ -1904,6 +2063,8 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 5 Part A sample project for a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
+
 PROJECT: Recipe Browser Test Suite
 A complete test suite for the Day 4 Part A Recipe Browser app.
 
@@ -1937,6 +2098,8 @@ CONCEPTS TO DEMONSTRATE:
 ```
 
 You are reviewing the generated materials for Day 5 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Jasmine + Karma setup; Jest alternative
@@ -1976,6 +2139,8 @@ SCOPE CREEP: List anything in materials not in requirements.
 ```
 
 You are generating the complete capstone project for a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `D5B/` in the workspace. Save all generated files there.
 
 PROJECT: Task Management App
 
@@ -2057,6 +2222,8 @@ Every file must have a comment block at the top: which day, which Part, which co
 
 You are reviewing the generated capstone project for a 5-day Angular course.
 
+OUTPUT FOLDER: Create or use the folder `D5B/` in the workspace. Save output there.
+
 CAPSTONE REQUIREMENTS BY DAY:
 Day 1: standalone components, @Input/@Output on TaskCardComponent, ngOnInit, ngOnDestroy
 Day 2: @for/track, @if/@else, @let, StatusLabelPipe, ng-content, computed() signals
@@ -2087,6 +2254,8 @@ Day 5: task.service.spec.ts, task-list.component.spec.ts, status-label.pipe.spec
 ```
 
 You are performing the final curriculum audit for a 5-day Angular course.
+
+OUTPUT FOLDER: Create or use the folder `Final-Review/` in the workspace. Save output there.
 
 COMPLETE CURRICULUM:
 Day 1A: CLI, project structure, bootstrapApplication, standalone components, imports array,
@@ -2122,7 +2291,7 @@ computed testing, service testing, HTTP testing, pipe testing, lifecycle testing
 2. CONSISTENCY: Any concept taught one way early and conflicting way later?
 3. PREREQUISITES: Any Day 3–5 concept assuming knowledge not taught in Days 1–2?
 4. CAPSTONE ALIGNMENT: Every capstone feature traceable to a specific lesson?
-5. LEGACY CONTRAST: Every section has a legacy comparison table?
+5. LEGACY CONTRAST: Every section has legacy contrast slides with actual legacy code?
 6. MULTI-FILE RULE: Any component using inline template or styles?
 7. MODERN RULES: Any constructor injection, NgModule, or *ngIf/*ngFor in modern files?
 8. EXERCISE ALIGNMENT: Any concept taught but not practiced in any exercise?
@@ -2207,13 +2376,15 @@ Output format:
 HOW A SESSION WORKS:
 Master Context is auto-loaded from .github/copilot-instructions.md.
 Just paste the specific prompt into Copilot chat — no need to paste Master Context.
+All output goes in day-specific folders: D1A/, D1B/, D2A/, D2B/, D3A/, D3B/, D4A/, D4B/, D5A/, D5B/.
+Cross-Day Checks go in Cross-Day-Checks/. Final review goes in Final-Review/.
 
 FOR EACH PART (in this order):
 1. Sample Code → run both code review prompts → fix violations
-2. Slides (paste: specific prompt + reviewed code)
-3. Speaker Script (paste: specific prompt + slides + code)
-4. Exercises (paste: specific prompt + code + slides)
-5. Sample Project (paste: specific prompt + code)
+2. Slides (self-contained — just paste the slides prompt)
+3. Speaker Script (paste: specific prompt + slides)
+4. Exercises (paste: specific prompt + slides)
+5. Sample Project (paste: specific prompt)
 6. Gap Check (paste: specific prompt + all materials)
 
 AFTER EACH FULL DAY:

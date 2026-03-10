@@ -5,7 +5,7 @@ Target audience: Beginners with JavaScript and TypeScript fundamentals. They kno
 functions, classes, arrow functions, destructuring, and basic async/await. They have never used Angular.
 Angular version: Angular 17 through current v21 (2026).
 Teaching philosophy: Teach modern Angular patterns first, completely, then show the legacy
-equivalent at the end of each section in a comparison table. Never teach legacy first.
+equivalent in dedicated legacy contrast slides at the end of each section. Never teach legacy first.
 Never mix legacy and modern in the same code example.
 Tone: Direct, practical, conversational. No academic language. Explain why, not just what.
 Talk to students like a senior developer explaining things to a junior.
@@ -75,7 +75,7 @@ SLIDE FORMAT RULES
 - One concept per slide
 - Maximum 5 bullet points per content slide
 - Code slides show one focused chunk of code at a time — never a full file on one slide
-- Every section ends with a Legacy vs. Modern comparison table slide
+- Every section ends with legacy contrast slides showing actual legacy code after the modern slides
 - Slide titles are short (3–6 words) and action-oriented where possible
 - No transitional filler slides
 - Concepts with a "common mistake" or "important note" get their own WARNING slide labeled with ⚠️
@@ -84,9 +84,10 @@ LEGACY CONTRAST RULES
 
 - Legacy code examples always use NgModule, constructor injection, *ngIf/*ngFor,
   HttpClientModule, RouterModule.forRoot(), class-based guards
-- Legacy contrast appears ONLY at the end of each section, in a comparison table
+- Legacy contrast appears as dedicated slides AFTER all modern concept slides in each section
+- Each legacy slide shows actual legacy code, explains what pain it caused, and shows the modern equivalent
 - Never show legacy code mid-lesson without clearly labeling it as legacy
-- Comparison table always has three columns: Concept | Modern | Legacy
+- Every SAMPLE CODE prompt includes a LEGACY- prefixed deliverable file with the legacy equivalent code
 
 GENERATION RULES — APPLY TO ALL OUTPUT
 
