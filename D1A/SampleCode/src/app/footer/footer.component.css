@@ -1,0 +1,33 @@
+/**
+ * footer.component.css — Footer Component Styles
+ *
+ * These styles are scoped to FooterComponent only, just like
+ * HeaderComponent's styles are scoped to the header. Angular's
+ * default ViewEncapsulation.Emulated ensures isolation.
+ *
+ * Notice that both HeaderComponent and FooterComponent use
+ * different background colors and text styles. They don't
+ * interfere with each other because each component's CSS
+ * is encapsulated.
+ */
+
+/* Footer bar — sits at the bottom of the page */
+.app-footer {
+  padding: 1rem 2rem;
+  background-color: #16213e; /* Dark blue — different from header to show independence */
+  color: #a0a0a0; /* Muted gray text */
+  text-align: center;
+}
+
+/* Copyright text */
+.footer-text {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* Tagline below the copyright */
+.footer-tagline {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: #666; /* Even more muted — secondary information */
+}

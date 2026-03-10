@@ -1,0 +1,36 @@
+/**
+ * legacy/app.component.css — Root Component Styles (Legacy Pattern)
+ *
+ * THIS IS THE LEGACY PATTERN — shown for comparison only.
+ *
+ * Styles work the same in legacy and modern Angular — ViewEncapsulation.Emulated
+ * is the default in both. The scoping behavior is identical.
+ *
+ * The only style-related difference in legacy:
+ * - styleUrls: ['./app.component.css']   ← legacy (plural, array)
+ * - styleUrl: './app.component.css'       ← modern (singular, string)
+ */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.main-content h2 {
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.main-content p {
+  color: #444;
+  line-height: 1.6;
+}

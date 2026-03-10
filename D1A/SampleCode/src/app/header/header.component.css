@@ -1,0 +1,56 @@
+/**
+ * header.component.css — Header Component Styles
+ *
+ * KEY CONCEPT: ViewEncapsulation.Emulated in action
+ *
+ * These styles ONLY apply to HeaderComponent's template.
+ * Even though we use generic class names like h1 and .nav-link,
+ * Angular rewrites these selectors behind the scenes to include
+ * a unique attribute (e.g., h1[_ngcontent-abc-1]).
+ *
+ * PROOF: The .header-title color (#ffffff) defined here will NOT
+ * affect any <h1> in AppComponent, FooterComponent, or any other
+ * component. Each component's styles are isolated.
+ *
+ * If you want to see the difference, try changing encapsulation
+ * to ViewEncapsulation.None in header.component.ts — suddenly
+ * these styles will leak into the entire app.
+ */
+
+/* Header bar — dark background with white text */
+.app-header {
+  display: flex;
+  justify-content: space-between; /* Title on the left, nav on the right */
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1a1a2e; /* Dark navy background */
+  color: #ffffff; /* White text */
+}
+
+/* Title text — these styles are SCOPED to this component only */
+/* An h1 in AppComponent will NOT be affected by this rule */
+.header-title {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+  color: #ffffff; /* This color will NOT leak to h1 tags in other components */
+}
+
+/* Navigation links container */
+.header-nav {
+  display: flex;
+  gap: 1.5rem; /* Space between nav links */
+}
+
+/* Individual nav link styling */
+.nav-link {
+  color: #e0e0e0; /* Light gray for contrast */
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: color 0.2s ease; /* Smooth hover effect */
+}
+
+/* Hover state — only affects .nav-link inside THIS component */
+.nav-link:hover {
+  color: #64ffda; /* Teal highlight on hover */
+}

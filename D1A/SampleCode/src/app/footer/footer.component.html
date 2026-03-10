@@ -1,0 +1,19 @@
+<!--
+  footer.component.html — Footer Component Template
+
+  Renders a simple footer with a copyright notice.
+  Uses interpolation {{ currentYear }} to display the year
+  from the component's own property — no @Input() needed.
+-->
+
+<footer class="app-footer">
+
+  <!-- {{ currentYear }} renders the value of FooterComponent.currentYear -->
+  <!-- This is interpolation — Angular evaluates the expression and inserts the result as text -->
+  <p class="footer-text">&copy; {{ currentYear }} My Angular App. All rights reserved.</p>
+
+  <!-- Demonstrates that this component is self-contained -->
+  <!-- It doesn't receive any data from a parent — it generates its own -->
+  <p class="footer-tagline">Built with Angular — Day 1 Part A</p>
+
+</footer>

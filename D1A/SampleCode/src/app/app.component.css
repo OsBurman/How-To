@@ -1,0 +1,40 @@
+/**
+ * app.component.css — Root Component Styles
+ *
+ * These styles are scoped to AppComponent by default thanks to
+ * ViewEncapsulation.Emulated (Angular's default). They will NOT
+ * leak into HeaderComponent or FooterComponent.
+ *
+ * In vanilla CSS, every style is global and can accidentally
+ * affect other parts of the page. Angular solves this by adding
+ * unique attributes to each component's HTML elements, making
+ * styles component-scoped without using Shadow DOM.
+ */
+
+/* Container for the entire app layout — flexbox column to push footer down */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height so footer stays at the bottom */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main content area — grows to fill available space between header and footer */
+.main-content {
+  flex: 1; /* Takes up all remaining space, pushing footer to the bottom */
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto; /* Center the content horizontally */
+}
+
+/* Heading styles scoped to this component only */
+.main-content h2 {
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraph styles — these will NOT affect text in HeaderComponent or FooterComponent */
+.main-content p {
+  color: #444;
+  line-height: 1.6;
+}

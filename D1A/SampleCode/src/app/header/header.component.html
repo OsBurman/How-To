@@ -1,0 +1,26 @@
+<!--
+  header.component.html — Header Component Template
+
+  Renders a navigation-style header bar with the title received
+  via @Input() from the parent component.
+
+  KEY CONCEPT: Interpolation {{ }}
+  Double curly braces display the value of a component property
+  in the template. {{ title }} reads HeaderComponent.title and
+  renders its current value as text.
+-->
+
+<!-- The <header> element wraps the entire header section -->
+<header class="app-header">
+
+  <!-- {{ title }} displays the value passed in via @Input() from the parent -->
+  <!-- If the parent binds [title]="'My Angular App'", this renders: My Angular App -->
+  <h1 class="header-title">{{ title }}</h1>
+
+  <!-- Simple navigation placeholder — demonstrates that styles are scoped -->
+  <nav class="header-nav">
+    <span class="nav-link">Home</span> <!-- Static link placeholder -->
+    <span class="nav-link">About</span> <!-- Static link placeholder -->
+  </nav>
+
+</header>

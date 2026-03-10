@@ -87,7 +87,47 @@ LEGACY CONTRAST RULES
 - Legacy contrast appears as dedicated slides AFTER all modern concept slides in each section
 - Each legacy slide shows actual legacy code, explains what pain it caused, and shows the modern equivalent
 - Never show legacy code mid-lesson without clearly labeling it as legacy
-- Every SAMPLE CODE prompt includes a LEGACY- prefixed deliverable file with the legacy equivalent code
+- Every SAMPLE CODE prompt includes a complete legacy app in a `LegacySampleCode/` subfolder inside the
+  day/part output folder (e.g., `D1A/LegacySampleCode/`). Modern sample code goes in a `SampleCode/`
+  subfolder (e.g., `D1A/SampleCode/`). Both are fully runnable Angular projects — not loose files.
+  The legacy app demonstrates the same concepts as the modern deliverables but built entirely with
+  legacy patterns so students can run both side by side, compare the developer experience, and
+  understand what modern Angular replaced.
+
+SAMPLE CODE PROJECT STRUCTURE RULES
+
+Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects.
+Every generated sample code project MUST include:
+
+1. **Project config files (project root):**
+   - package.json — Angular dependencies, scripts (start, build, test)
+   - tsconfig.json — base TypeScript config
+   - tsconfig.app.json — extends base; includes src/\*\*
+   - angular.json — Angular CLI workspace config
+
+2. **src/ folder:**
+   - src/index.html — contains <app-root></app-root>
+   - src/styles.css — global stylesheet
+   - src/main.ts — bootstrapApplication() (modern) or bootstrapModule() (legacy)
+
+3. **src/app/ folder with proper component subdirectories:**
+   - src/app/app.config.ts (modern only) or src/app/app.module.ts (legacy only)
+   - src/app/app.component.ts, .html, .css
+   - Each child component in its own subfolder:
+     src/app/header/header.component.ts, .html, .css
+     src/app/footer/footer.component.ts, .html, .css
+   - Services at src/app/ or in a subfolder (e.g., src/app/services/)
+   - Pipes at src/app/ or in a subfolder (e.g., src/app/pipes/)
+   - Guards at src/app/ or in a subfolder (e.g., src/app/guards/)
+   - Models/interfaces at src/app/ or in a subfolder (e.g., src/app/models/)
+   - Environment files at src/environments/environment.ts and environment.development.ts
+
+4. **File labels in output:** Use the full path from the project root as the label:
+   - Modern: ### SampleCode/src/app/header/header.component.ts
+   - Legacy: ### LegacySampleCode/src/app/header/header.component.ts
+   - Config: ### SampleCode/package.json
+
+This structure mirrors what `ng new` generates so students see a real Angular project.
 
 GENERATION RULES — APPLY TO ALL OUTPUT
 

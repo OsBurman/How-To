@@ -1,0 +1,38 @@
+<!--
+  app.component.html — Root Component Template
+
+  This template renders the overall page layout:
+  a header at the top, main content in the middle, and a footer at the bottom.
+
+  KEY CONCEPT: Using child components in a template
+  <app-header> and <app-footer> work because their component classes
+  are listed in AppComponent's imports array. Without that import,
+  Angular would not recognize these custom HTML tags.
+
+  KEY CONCEPT: Property binding [title]
+  The square brackets mean "bind this property to an expression."
+  [title]="appTitle" passes the value of AppComponent.appTitle
+  into HeaderComponent's @Input() title property.
+-->
+
+<div class="app-container">
+
+  <!-- Render HeaderComponent and pass the appTitle value into its @Input() title property -->
+  <!-- [title] is property binding — it evaluates the expression on the right side -->
+  <app-header [title]="appTitle"></app-header>
+
+  <!-- Main content area — placeholder for Day 1 -->
+  <main class="main-content">
+    <h2>Welcome to Angular!</h2> <!-- Simple static content for now -->
+    <p>This is Day 1 Part A — your first standalone Angular app.</p>
+    <p>
+      In vanilla JavaScript, you would manually create DOM elements,
+      attach event listeners, and manage state yourself. Angular handles
+      all of that through components, templates, and data binding.
+    </p>
+  </main>
+
+  <!-- Render FooterComponent — no inputs needed, it manages its own data -->
+  <app-footer></app-footer>
+
+</div>

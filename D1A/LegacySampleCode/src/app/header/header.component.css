@@ -1,0 +1,41 @@
+/**
+ * legacy/header.component.css — Header Styles (Legacy Pattern)
+ *
+ * THIS IS THE LEGACY PATTERN — shown for comparison only.
+ *
+ * Styles are identical to the modern version. ViewEncapsulation
+ * works the same way in both legacy and modern Angular. The scoping
+ * mechanism (attribute selectors) has not changed.
+ */
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1a1a2e;
+  color: #ffffff;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.header-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #e0e0e0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #64ffda;
+}

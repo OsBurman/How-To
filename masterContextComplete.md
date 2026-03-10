@@ -11,7 +11,7 @@
 
 **File references marked `CONTEXT FILES:`** tell Copilot which previously generated files to read for context. Each reference points to a folder in the workspace (e.g., `D1A/`). When you paste a prompt into Copilot chat, attach the referenced files using `#file:D1A/filename.md` syntax, or simply open the files as editor tabs so Copilot can see them. You do NOT need to paste file contents inline — Copilot reads the files directly.
 
-**Folder organization:** All generated output for a day/part goes in a folder named for that section: `D1A/`, `D1B/`, `D2A/`, `D2B/`, `D3A/`, `D3B/`, `D4A/`, `D4B/`, `D5A/`, `D5B/`. Cross-Day Continuity Checks go in a folder named `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that folder if it doesn't exist and save all generated files there.
+**Folder organization:** All generated output for a day/part goes in a folder named for that section: `D1A/`, `D1B/`, `D2A/`, `D2B/`, `D3A/`, `D3B/`, `D4A/`, `D4B/`, `D5A/`, `D5B/`. Within each day/part folder, sample code goes in a `SampleCode/` subfolder and legacy sample code goes in a `LegacySampleCode/` subfolder. Cross-Day Continuity Checks go in a folder named `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that folder if it doesn't exist and save all generated files there.
 
 **Session order for every Part:**
 1. Sample Code → 2. Slides → 3. Speaker Script → 4. Exercises → 5. Sample Project → 6. Gap Check
@@ -39,7 +39,12 @@
 
 You are generating sample code for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save modern sample code files in `D1A/SampleCode/`. Save legacy sample code files in `D1A/LegacySampleCode/`.
+
+Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
+tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
+src/app/ folder structure with each component in its own subfolder.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - What Angular is and how it differs from vanilla JS (shown through project structure and comments)
@@ -52,22 +57,31 @@ LESSON CONCEPTS TO DEMONSTRATE:
 - The "not a known element" error — a comment block showing what it looks like and what causes it
 - Angular CLI — comments showing which CLI command generated each file
 
-DELIVERABLES:
-1. main.ts
-2. app.config.ts
-3. app.component.ts / app.component.html / app.component.css
-4. header.component.ts / header.component.html / header.component.css
-5. footer.component.ts / footer.component.html / footer.component.css
-6. LEGACY-ngmodule-bootstrap.ts — labeled legacy; shows bootstrapModule(AppModule),
-   AppModule with declarations and imports arrays, NgModule-based component registration;
-   comments explaining what standalone components replaced
+DELIVERABLES (modern — `SampleCode/`):
+1. package.json, tsconfig.json, tsconfig.app.json, angular.json
+2. src/index.html, src/styles.css
+3. src/main.ts
+4. src/app/app.config.ts
+5. src/app/app.component.ts / .html / .css
+6. src/app/header/header.component.ts / .html / .css
+7. src/app/footer/footer.component.ts / .html / .css
+
+DELIVERABLES (legacy — `LegacySampleCode/`):
+A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
+entirely with legacy patterns: bootstrapModule(AppModule), AppModule with declarations and
+imports arrays, NgModule-based component registration, constructor injection.
+Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json, src/index.html,
+src/styles.css, src/main.ts, src/app/app.module.ts, src/app/app.component.ts/.html/.css,
+src/app/header/header.component.ts/.html/.css, src/app/footer/footer.component.ts/.html/.css.
+Every file has comments explaining what standalone components replaced.
 
 Each file must have a comment block at the top explaining its role. Every significant line
-must have an inline comment explaining what it demonstrates. No NgModule in modern files
-(deliverables 1–5). The LEGACY file (deliverable 6) is a separate read-only reference.
+must have an inline comment explaining what it demonstrates. No NgModule in modern files.
 
 **NOW WRITE ALL OF THE FILES LISTED ABOVE. Output each file as a separate labeled code
-block with the full filename as the label (e.g., ### app.component.ts).**
+block. Use the full path from the project root as the label
+(e.g., ### SampleCode/src/app/header/header.component.ts or
+### LegacySampleCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -265,7 +279,12 @@ List any concept appearing in the materials that is NOT in the curriculum requir
 
 You are generating sample code for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save modern sample code files in `D1B/SampleCode/`. Save legacy sample code files in `D1B/LegacySampleCode/`.
+
+Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
+tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
+src/app/ folder structure with each component in its own subfolder.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - Interpolation {{ }}
@@ -282,17 +301,29 @@ LESSON CONCEPTS TO DEMONSTRATE:
 - Signals first look — signal() and computed() in a simple counter;
   clearly commented: "Day 2 preview — not required for today's exercise"
 
-DELIVERABLES:
-1. product-card.component.ts/.html/.css — @Input() name+price; @Output() addToCart;
+DELIVERABLES (modern — `SampleCode/`):
+1. Project config: package.json, tsconfig.json, tsconfig.app.json, angular.json
+2. src/index.html, src/styles.css, src/main.ts, src/app/app.config.ts
+3. src/app/app.component.ts / .html / .css — parent using all three; safe navigation + nullish coalescing
+4. src/app/product-card/product-card.component.ts / .html / .css — @Input() name+price; @Output() addToCart;
    ngOnInit builds display label; template ref on quantity input
-2. character-counter.component.ts/.html/.css — all four binding types; ngOnDestroy cancels interval
-3. signal-counter.component.ts/.html/.css — signal() and computed() preview; labeled as preview
-4. app.component.ts/.html/.css — parent using all three; safe navigation + nullish coalescing
-5. LEGACY-ngmodule-component.ts — labeled legacy; shows NgModule with FormsModule import,
-   component registered in declarations array, constructor injection pattern;
-   comments explaining what the modern standalone approach replaced
+5. src/app/character-counter/character-counter.component.ts / .html / .css — all four binding types; ngOnDestroy cancels interval
+6. src/app/signal-counter/signal-counter.component.ts / .html / .css — signal() and computed() preview; labeled as preview
 
-**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.**
+DELIVERABLES (legacy — `LegacySampleCode/`):
+A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
+entirely with legacy patterns: NgModule with FormsModule in imports, components registered
+in declarations array, constructor injection pattern.
+Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json, src/index.html,
+src/styles.css, src/main.ts, src/app/app.module.ts, src/app/app.component.ts/.html/.css,
+src/app/product-card/product-card.component.ts/.html/.css,
+src/app/character-counter/character-counter.component.ts/.html/.css.
+Every file has comments explaining what the modern standalone approach replaced.
+
+**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
+Use the full path from the project root as the label
+(e.g., ### SampleCode/src/app/product-card/product-card.component.ts or
+### LegacySampleCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -515,7 +546,12 @@ CONTEXT FILES: Read all files from the `D1A/` and `D1B/` folders in the workspac
 
 You are generating sample code for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save modern sample code files in `D2A/SampleCode/`. Save legacy sample code files in `D2A/LegacySampleCode/`.
+
+Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
+tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
+src/app/ folder structure with each component in its own subfolder.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - ng-content single-slot projection — CardComponent wrapping projected content
@@ -536,17 +572,31 @@ LESSON CONCEPTS TO DEMONSTRATE:
 - Pure pipe behavior — FilterPipe that won't update on array mutation; comment explains why
 - Custom pure pipe: TruncatePipe — truncates string to configurable character limit
 
-DELIVERABLES:
-1. card.component.ts/.html/.css — single-slot ng-content
-2. layout-card.component.ts/.html/.css — named slots; ngAfterContentInit logs message only
-3. task-list.component.ts/.html/.css — @for, @if/@else, ng-template, ng-container, @let, [ngClass]
-4. movie-list.component.ts/.html/.css — @switch, [ngStyle], built-in pipes, FilterPipe
-5. truncate.pipe.ts — custom pure pipe with configurable limit
-6. filter.pipe.ts — pure pipe; comments explaining pure re-evaluation behavior
-7. LEGACY-structural-directives.component.ts/.html/.css — labeled legacy; shows *ngIf, *ngFor
-   with trackBy, *ngSwitch, *ngIf="expr as name"; comments explaining what @if/@for/@switch replaced
+DELIVERABLES (modern — `SampleCode/`):
+1. Project config: package.json, tsconfig.json, tsconfig.app.json, angular.json
+2. src/index.html, src/styles.css, src/main.ts, src/app/app.config.ts
+3. src/app/app.component.ts / .html / .css
+4. src/app/card/card.component.ts / .html / .css — single-slot ng-content
+5. src/app/layout-card/layout-card.component.ts / .html / .css — named slots; ngAfterContentInit logs message only
+6. src/app/task-list/task-list.component.ts / .html / .css — @for, @if/@else, ng-template, ng-container, @let, [ngClass]
+7. src/app/movie-list/movie-list.component.ts / .html / .css — @switch, [ngStyle], built-in pipes, FilterPipe
+8. src/app/pipes/truncate.pipe.ts — custom pure pipe with configurable limit
+9. src/app/pipes/filter.pipe.ts — pure pipe; comments explaining pure re-evaluation behavior
 
-**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.**
+DELIVERABLES (legacy — `LegacySampleCode/`):
+A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
+entirely with legacy patterns: *ngIf, *ngFor with trackBy, *ngSwitch, *ngIf="expr as name",
+NgModule with declarations and imports.
+Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json, src/index.html,
+src/styles.css, src/main.ts, src/app/app.module.ts, src/app/app.component.ts/.html/.css,
+src/app/task-list/task-list.component.ts/.html/.css, src/app/movie-list/movie-list.component.ts/.html/.css,
+src/app/pipes/truncate.pipe.ts, src/app/pipes/filter.pipe.ts.
+Every file has comments explaining what @if/@for/@switch replaced.
+
+**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
+Use the full path from the project root as the label
+(e.g., ### SampleCode/src/app/card/card.component.ts or
+### LegacySampleCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -745,7 +795,12 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating sample code for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save modern sample code files in `D2B/SampleCode/`. Save legacy sample code files in `D2B/LegacySampleCode/`.
+
+Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
+tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
+src/app/ folder structure with each component in its own subfolder.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - signal() — .set() and .update()
@@ -755,22 +810,36 @@ LESSON CONCEPTS TO DEMONSTRATE:
 - Signal-based output() — .emit()
 - model() — two-way signal binding between parent and child
 - Fine-grained change detection — comment explaining only affected DOM nodes re-render
-- ngOnChanges as legacy contrast — in a SEPARATE .ts-only legacy file; SimpleChanges;
-  students read this pattern, they do not run it
+- ngOnChanges as legacy contrast — demonstrated in the `LegacySampleCode/` subfolder; SimpleChanges;
+  students can run the legacy app to compare the experience
 - Angular direction callout — after signals are fully shown, a comment block:
   "Zoneless (stable in v21+) is the payoff — signals tell Angular exactly what changed,
   so zone.js is no longer needed"
 
-DELIVERABLES:
-1. shopping-cart.component.ts/.html/.css — plain property version with problem comments
-2. shopping-cart-signals.component.ts/.html/.css — signal version; comments on what changed
-3. search-box.component.ts/.html/.css — signal() input, computed() results, effect() with cleanup
-4. budget-tracker.component.ts/.html/.css — computed() total/spent/remaining from signal list
-5. rating-input.component.ts/.html/.css — model() two-way; input() for config; output() for event
-6. LEGACY-on-changes.component.ts — .ts ONLY, no .html or .css; labeled legacy contrast;
-   ngOnChanges with SimpleChanges; comments explaining what computed() and effect() replace
+DELIVERABLES (modern — `SampleCode/`):
+1. Project config: package.json, tsconfig.json, tsconfig.app.json, angular.json
+2. src/index.html, src/styles.css, src/main.ts, src/app/app.config.ts
+3. src/app/app.component.ts / .html / .css
+4. src/app/shopping-cart/shopping-cart.component.ts / .html / .css — plain property version with problem comments
+5. src/app/shopping-cart-signals/shopping-cart-signals.component.ts / .html / .css — signal version; comments on what changed
+6. src/app/search-box/search-box.component.ts / .html / .css — signal() input, computed() results, effect() with cleanup
+7. src/app/budget-tracker/budget-tracker.component.ts / .html / .css — computed() total/spent/remaining from signal list
+8. src/app/rating-input/rating-input.component.ts / .html / .css — model() two-way; input() for config; output() for event
 
-**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.**
+DELIVERABLES (legacy — `LegacySampleCode/`):
+A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
+entirely with legacy patterns: @Input() mutable properties, ngOnChanges with SimpleChanges,
+constructor injection, NgModule with declarations.
+Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json, src/index.html,
+src/styles.css, src/main.ts, src/app/app.module.ts, src/app/app.component.ts/.html/.css,
+src/app/shopping-cart/shopping-cart.component.ts/.html/.css,
+src/app/on-changes-demo/on-changes-demo.component.ts/.html/.css.
+Every file has comments explaining what computed() and effect() replaced.
+
+**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
+Use the full path from the project root as the label
+(e.g., ### SampleCode/src/app/shopping-cart/shopping-cart.component.ts or
+### LegacySampleCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -992,7 +1061,12 @@ CONTEXT FILES: Read all files from the `D2A/` and `D2B/` folders in the workspac
 
 You are generating sample code for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save modern sample code files in `D3A/SampleCode/`. Save legacy sample code files in `D3A/LegacySampleCode/`.
+
+Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
+tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
+src/app/ folder structure with each component in its own subfolder.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - @Injectable({ providedIn: 'root' }) — singleton, tree-shakable
@@ -1009,18 +1083,32 @@ LESSON CONCEPTS TO DEMONSTRATE:
 - takeUntilDestroyed() with DestroyRef
 - toSignal() — convert BehaviorSubject to signal; include initialValue
 - async pipe vs toSignal() guidance — comment: "use toSignal() in new code;
-  async pipe shown in legacy file"
+  async pipe demonstrated in the legacy app"
 
-DELIVERABLES:
-1. cart.service.ts — BehaviorSubject state, mapped total, error$ stream, safe update methods
-2. cart-header.component.ts/.html/.css — inject(), toSignal() for cart count
-3. cart-page.component.ts/.html/.css — inject(), toSignal() for item list and error
-4. notification.service.ts — Subject; push(); auto-dismiss via timer(); takeUntilDestroyed()
-5. rxjs-operators.component.ts/.html/.css — all operators with comments; hot/cold comment block
-6. LEGACY-async-pipe.component.ts/.html/.css — labeled legacy; async pipe with @if null guard;
-   constructor injection shown
+DELIVERABLES (modern — `SampleCode/`):
+1. Project config: package.json, tsconfig.json, tsconfig.app.json, angular.json
+2. src/index.html, src/styles.css, src/main.ts, src/app/app.config.ts
+3. src/app/app.component.ts / .html / .css
+4. src/app/services/cart.service.ts — BehaviorSubject state, mapped total, error$ stream, safe update methods
+5. src/app/cart-header/cart-header.component.ts / .html / .css — inject(), toSignal() for cart count
+6. src/app/cart-page/cart-page.component.ts / .html / .css — inject(), toSignal() for item list and error
+7. src/app/services/notification.service.ts — Subject; push(); auto-dismiss via timer(); takeUntilDestroyed()
+8. src/app/rxjs-operators/rxjs-operators.component.ts / .html / .css — all operators with comments; hot/cold comment block
 
-**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.**
+DELIVERABLES (legacy — `LegacySampleCode/`):
+A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
+entirely with legacy patterns: constructor injection, async pipe with @if null guard,
+NgModule with declarations, takeUntil + ngOnDestroy Subject pattern.
+Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json, src/index.html,
+src/styles.css, src/main.ts, src/app/app.module.ts, src/app/app.component.ts/.html/.css,
+src/app/services/cart.service.ts, src/app/cart-header/cart-header.component.ts/.html/.css,
+src/app/cart-page/cart-page.component.ts/.html/.css.
+Every file has comments explaining what inject() and toSignal() replaced.
+
+**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
+Use the full path from the project root as the label
+(e.g., ### SampleCode/src/app/services/cart.service.ts or
+### LegacySampleCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -1207,7 +1295,12 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating sample code for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save modern sample code files in `D3B/SampleCode/`. Save legacy sample code files in `D3B/LegacySampleCode/`.
+
+Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
+tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
+src/app/ folder structure with each component in its own subfolder.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - provideHttpClient() in app.config.ts
@@ -1223,18 +1316,34 @@ LESSON CONCEPTS TO DEMONSTRATE:
 - environment.ts and environment.development.ts — apiUrl; both interceptor and service read from it
 - toSignal() connecting HTTP Observable to template
 
-DELIVERABLES:
-1. environment.ts and environment.development.ts
-2. user.model.ts — User interface
-3. user.service.ts — get/post/delete; HttpParams; error$ stream; environment URL
-4. user-list.component.ts/.html/.css — toSignal(); isLoading; status-aware error display
-5. auth.interceptor.ts — HttpInterceptorFn; adds Authorization header; logs URL+method
-6. auth.service.ts — stub with getToken() method
-7. parallel-data.component.ts/.html/.css — forkJoin loading users and posts simultaneously
-8. app.config.ts — provideHttpClient() with withInterceptors()
-9. LEGACY-http-module.component.ts/.html/.css — labeled legacy; HttpClientModule; class-based interceptor
+DELIVERABLES (modern — `SampleCode/`):
+1. Project config: package.json, tsconfig.json, tsconfig.app.json, angular.json
+2. src/index.html, src/styles.css, src/main.ts
+3. src/environments/environment.ts and src/environments/environment.development.ts
+4. src/app/app.config.ts — provideHttpClient() with withInterceptors()
+5. src/app/app.component.ts / .html / .css
+6. src/app/models/user.model.ts — User interface
+7. src/app/services/user.service.ts — get/post/delete; HttpParams; error$ stream; environment URL
+8. src/app/services/auth.service.ts — stub with getToken() method
+9. src/app/user-list/user-list.component.ts / .html / .css — toSignal(); isLoading; status-aware error display
+10. src/app/parallel-data/parallel-data.component.ts / .html / .css — forkJoin loading users and posts simultaneously
+11. src/app/interceptors/auth.interceptor.ts — HttpInterceptorFn; adds Authorization header; logs URL+method
 
-**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.**
+DELIVERABLES (legacy — `LegacySampleCode/`):
+A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
+entirely with legacy patterns: HttpClientModule in AppModule, class-based HttpInterceptor,
+HTTP_INTERCEPTORS multi-token provider, constructor injection.
+Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json, src/index.html,
+src/styles.css, src/main.ts, src/app/app.module.ts, src/app/app.component.ts/.html/.css,
+src/app/models/user.model.ts, src/app/services/user.service.ts, src/app/services/auth.service.ts,
+src/app/user-list/user-list.component.ts/.html/.css,
+src/app/interceptors/auth.interceptor.ts (class-based).
+Every file has comments explaining what provideHttpClient() and HttpInterceptorFn replaced.
+
+**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
+Use the full path from the project root as the label
+(e.g., ### SampleCode/src/app/services/user.service.ts or
+### LegacySampleCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -1460,7 +1569,12 @@ CONTEXT FILES: Read all files from the `D3A/` and `D3B/` folders in the workspac
 
 You are generating sample code for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save modern sample code files in `D4A/SampleCode/`. Save legacy sample code files in `D4A/LegacySampleCode/`.
+
+Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
+tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
+src/app/ folder structure with each component in its own subfolder.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - provideRouter(routes) in app.config.ts with withComponentInputBinding()
@@ -1476,18 +1590,36 @@ LESSON CONCEPTS TO DEMONSTRATE:
 - canDeactivate functional guard — checks generic hasUnsavedChanges: boolean property;
   comment: "In Day 4 Part B you will wire this to your reactive form's .dirty property"
 
-DELIVERABLES:
-1. app.routes.ts — full route config
-2. app.config.ts — provideRouter with options
-3. auth.service.ts — isLoggedIn signal, login(), logout()
-4. auth.guard.ts — functional canActivate with UrlTree redirect
-5. unsaved-changes.guard.ts — functional canDeactivate; generic hasUnsavedChanges property
-6. nav.component.ts/.html/.css — routerLink, routerLinkActive
-7. recipe-list.component.ts/.html/.css — query params; Router.navigate() on row click
-8. recipe-detail.component.ts/.html/.css — route param as input() signal
-9. LEGACY-routing-module.ts — labeled legacy; AppRoutingModule; class-based CanActivate
+DELIVERABLES (modern — `SampleCode/`):
+1. Project config: package.json, tsconfig.json, tsconfig.app.json, angular.json
+2. src/index.html, src/styles.css, src/main.ts
+3. src/app/app.config.ts — provideRouter with options
+4. src/app/app.routes.ts — full route config
+5. src/app/app.component.ts / .html / .css
+6. src/app/services/auth.service.ts — isLoggedIn signal, login(), logout()
+7. src/app/guards/auth.guard.ts — functional canActivate with UrlTree redirect
+8. src/app/guards/unsaved-changes.guard.ts — functional canDeactivate; generic hasUnsavedChanges property
+9. src/app/nav/nav.component.ts / .html / .css — routerLink, routerLinkActive
+10. src/app/recipe-list/recipe-list.component.ts / .html / .css — query params; Router.navigate() on row click
+11. src/app/recipe-detail/recipe-detail.component.ts / .html / .css — route param as input() signal
 
-**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.**
+DELIVERABLES (legacy — `LegacySampleCode/`):
+A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
+entirely with legacy patterns: RouterModule.forRoot(), AppRoutingModule, class-based CanActivate
+guard, constructor-injected ActivatedRoute with manual param subscription, loadChildren with
+module loading.
+Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json, src/index.html,
+src/styles.css, src/main.ts, src/app/app.module.ts, src/app/app-routing.module.ts,
+src/app/app.component.ts/.html/.css, src/app/services/auth.service.ts,
+src/app/guards/auth.guard.ts (class-based), src/app/nav/nav.component.ts/.html/.css,
+src/app/recipe-list/recipe-list.component.ts/.html/.css,
+src/app/recipe-detail/recipe-detail.component.ts/.html/.css.
+Every file has comments explaining what provideRouter() and functional guards replaced.
+
+**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
+Use the full path from the project root as the label
+(e.g., ### SampleCode/src/app/guards/auth.guard.ts or
+### LegacySampleCode/src/app/app-routing.module.ts).**
 ```
 
 ---
@@ -1680,7 +1812,12 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating sample code for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save modern sample code files in `D4B/SampleCode/`. Save legacy sample code files in `D4B/LegacySampleCode/`.
+
+Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
+tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
+src/app/ folder structure with each component in its own subfolder.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - Template-driven form — ngModel, #field template ref, ngForm, HTML5 validators,
@@ -1697,18 +1834,33 @@ LESSON CONCEPTS TO DEMONSTRATE:
   computed() strength indicator derived from password field
 - ⚠️ WARNING: ngModel inside reactive FormGroup causes runtime error — do not mix systems
 
-DELIVERABLES:
-1. registration-form.component.ts/.html/.css — full reactive form; all validators;
+DELIVERABLES (modern — `SampleCode/`):
+1. Project config: package.json, tsconfig.json, tsconfig.app.json, angular.json
+2. src/index.html, src/styles.css, src/main.ts, src/app/app.config.ts
+3. src/app/app.component.ts / .html / .css
+4. src/app/registration-form/registration-form.component.ts / .html / .css — full reactive form; all validators;
    FormArray phones; strength computed() signal; full submit handler
-2. password-match.validator.ts — custom ValidatorFn with comment on return contract
-3. username-taken.validator.ts — AsyncValidatorFn with mock delay
-4. contact-form.component.ts/.html/.css — template-driven; character count signal; FormArray tags
-5. checkout-form.component.ts/.html/.css — multi-step; computed() completion %;
+5. src/app/validators/password-match.validator.ts — custom ValidatorFn with comment on return contract
+6. src/app/validators/username-taken.validator.ts — AsyncValidatorFn with mock delay
+7. src/app/contact-form/contact-form.component.ts / .html / .css — template-driven; character count signal; FormArray tags
+8. src/app/checkout-form/checkout-form.component.ts / .html / .css — multi-step; computed() completion %;
    FormArray line items; navigate to /confirmation
-6. LEGACY-forms-module.component.ts/.html/.css — labeled legacy; FormsModule/ReactiveFormsModule
-   in NgModule; manual valueChanges subscription in ngOnInit/ngOnDestroy
 
-**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.**
+DELIVERABLES (legacy — `LegacySampleCode/`):
+A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
+entirely with legacy patterns: FormsModule and ReactiveFormsModule imported in NgModule,
+manual valueChanges subscription in ngOnInit/ngOnDestroy, constructor injection.
+Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json, src/index.html,
+src/styles.css, src/main.ts, src/app/app.module.ts, src/app/app.component.ts/.html/.css,
+src/app/registration-form/registration-form.component.ts/.html/.css,
+src/app/contact-form/contact-form.component.ts/.html/.css,
+src/app/validators/password-match.validator.ts, src/app/validators/username-taken.validator.ts.
+Every file has comments explaining what toSignal(form.valueChanges) and modern patterns replaced.
+
+**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
+Use the full path from the project root as the label
+(e.g., ### SampleCode/src/app/registration-form/registration-form.component.ts or
+### LegacySampleCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -1927,7 +2079,13 @@ CONTEXT FILES: Read all files from the `D4A/` and `D4B/` folders in the workspac
 
 You are generating sample code for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save modern sample code files in `D5A/SampleCode/`. Save legacy sample code files in `D5A/LegacySampleCode/`.
+
+Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
+tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
+src/app/ folder structure. Since these are test files, also include the source component/service/pipe
+files they test (from the Day 4 Part A Recipe Browser) so each project is self-contained.
 
 LESSON CONCEPTS TO DEMONSTRATE:
 - TestBed.configureTestingModule with imports: [StandaloneComponent] — modern test setup
@@ -1950,14 +2108,29 @@ LESSON CONCEPTS TO DEMONSTRATE:
 All spec files test the Recipe Browser from the Day 4 Part A sample project.
 Do not invent new Task-themed components — use what students just built.
 
-DELIVERABLES:
-1. recipe.service.spec.ts — BehaviorSubject state, error$, HTTP, HttpErrorResponse
-2. recipe-list.component.spec.ts — signal input, computed, @Output, NO_ERRORS_SCHEMA
-3. recipe-list-integration.spec.ts — real child imports; comment on unit vs integration tradeoff
-4. truncate.pipe.spec.ts — multiple transform() assertions; edge cases; configurable limit
-5. LEGACY-module-test.component.spec.ts — labeled legacy; declarations, HttpClientTestingModule
+DELIVERABLES (modern — `SampleCode/`):
+1. Project config: package.json, tsconfig.json, tsconfig.app.json, angular.json
+2. src/index.html, src/styles.css, src/main.ts, src/app/app.config.ts
+3. Source files under test (from D4A Recipe Browser — include in src/app/ with proper subfolders)
+4. src/app/services/recipe.service.spec.ts — BehaviorSubject state, error$, HTTP, HttpErrorResponse
+5. src/app/recipe-list/recipe-list.component.spec.ts — signal input, computed, @Output, NO_ERRORS_SCHEMA
+6. src/app/recipe-list/recipe-list-integration.spec.ts — real child imports; comment on unit vs integration tradeoff
+7. src/app/pipes/truncate.pipe.spec.ts — multiple transform() assertions; edge cases; configurable limit
 
-**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.**
+DELIVERABLES (legacy — `LegacySampleCode/`):
+A complete, runnable NgModule-based test setup demonstrating the same test scenarios but built
+entirely with legacy patterns: declarations array in TestBed, HttpClientTestingModule import,
+constructor injection in tests.
+Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json, src/index.html,
+src/styles.css, src/main.ts, src/app/app.module.ts, source files under test (with proper subfolders),
+src/app/services/recipe.service.spec.ts, src/app/recipe-list/recipe-list.component.spec.ts,
+src/app/pipes/truncate.pipe.spec.ts.
+Every file has comments explaining what standalone test setup and provideHttpClientTesting() replaced.
+
+**NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
+Use the full path from the project root as the label
+(e.g., ### SampleCode/src/app/services/recipe.service.spec.ts or
+### LegacySampleCode/src/app/services/recipe.service.spec.ts).**
 ```
 
 ---

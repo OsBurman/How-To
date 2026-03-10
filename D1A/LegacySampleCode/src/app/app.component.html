@@ -1,0 +1,35 @@
+<!--
+  legacy/app.component.html — Root Component Template (Legacy Pattern)
+
+  THIS IS THE LEGACY PATTERN — shown for comparison only.
+
+  The template is nearly identical to the modern version.
+  The difference is HOW Angular knows about <app-header> and <app-footer>:
+  - Modern: HeaderComponent is in AppComponent's imports array
+  - Legacy: HeaderComponent is in AppModule's declarations array
+
+  If you forget to declare HeaderComponent in AppModule, you get:
+    "app-header is not a known element"
+  The error message is the same, but the fix is different:
+  - Modern fix: Add to component's imports array
+  - Legacy fix: Add to module's declarations array (and maybe exports too)
+-->
+
+<div class="app-container">
+
+  <!-- Same usage as modern — the template syntax for child components is identical -->
+  <app-header [title]="appTitle"></app-header>
+
+  <main class="main-content">
+    <h2>Welcome to Angular! (Legacy Version)</h2>
+    <p>This is the legacy NgModule version of the Day 1 Part A app.</p>
+    <p>
+      Compare this project's structure with the modern standalone version.
+      Notice that the templates and component classes look almost identical —
+      the big difference is in how components are registered and organized.
+    </p>
+  </main>
+
+  <app-footer></app-footer>
+
+</div>

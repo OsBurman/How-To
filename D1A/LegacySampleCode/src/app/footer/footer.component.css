@@ -1,0 +1,26 @@
+/**
+ * legacy/footer.component.css — Footer Styles (Legacy Pattern)
+ *
+ * THIS IS THE LEGACY PATTERN — shown for comparison only.
+ *
+ * Styles are identical to the modern version. ViewEncapsulation
+ * and CSS scoping work the same in both legacy and modern Angular.
+ */
+
+.app-footer {
+  padding: 1rem 2rem;
+  background-color: #16213e;
+  color: #a0a0a0;
+  text-align: center;
+}
+
+.footer-text {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.footer-tagline {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: #666;
+}
