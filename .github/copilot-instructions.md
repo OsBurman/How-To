@@ -11,11 +11,12 @@ Tone: Direct, practical, conversational. No academic language. Explain why, not 
 Talk to students like a senior developer explaining things to a junior.
 
 WHAT "MODERN ANGULAR" MEANS IN THIS COURSE
+
 - Standalone components always — no NgModule declarations
 - inject() function always — never constructor injection
 - Signal-based input() and output() for component communication (after Day 2)
 - @Input() and @Output() decorators are taught on Day 1 as the starting point, then replaced by signals on Day 2
-- @if, @for, @switch for all control flow — never *ngIf, *ngFor, *ngSwitch in modern code examples
+- @if, @for, @switch for all control flow — never *ngIf, *ngFor, \*ngSwitch in modern code examples
 - provideHttpClient() in app.config.ts — never HttpClientModule
 - provideRouter(routes) in app.config.ts — never RouterModule.forRoot()
 - Functional guards — never class-based CanActivate or CanDeactivate
@@ -26,12 +27,13 @@ WHAT "MODERN ANGULAR" MEANS IN THIS COURSE
 - Always define interfaces for API response shapes
 
 CODE STYLE RULES
+
 - All components are standalone: standalone: true in @Component decorator
 - No constructor injection anywhere — always const service = inject(ServiceName)
 - Signal inputs: readonly myInput = input<string>()
 - Signal outputs: readonly myOutput = output<string>()
 - Two-way: readonly myModel = model<string>()
-- Signals: readonly count = signal(0); readonly double = computed(() => this.count() * 2)
+- Signals: readonly count = signal(0); readonly double = computed(() => this.count() \* 2)
 - effect() always includes a cleanup return when managing timers or subscriptions
 - HTTP interfaces defined above the component or service that uses them
 - Environment variables always accessed via environment.ts
@@ -48,6 +50,7 @@ CODE STYLE RULES
   - This rule applies to every generated file in every context — sample code, exercises, projects, and solutions
 
 COURSE SAMPLE PROJECTS (consistent naming — never rename these)
+
 - Day 1 Part A: Personal bio card
 - Day 1 Part B: Tip calculator
 - Day 2 Part A: Movie listing
@@ -63,11 +66,12 @@ CAPSTONE DETAILS
 App name: Task Management App
 API: json-server with custom db.json
 Task interface: { id: number, title: string, description: string,
-  status: 'todo' | 'in-progress' | 'done',
-  subtasks: { id: number, title: string, completed: boolean }[] }
+status: 'todo' | 'in-progress' | 'done',
+subtasks: { id: number, title: string, completed: boolean }[] }
 API base URL stored in environment.ts as apiUrl: 'http://localhost:3000'
 
 SLIDE FORMAT RULES
+
 - One concept per slide
 - Maximum 5 bullet points per content slide
 - Code slides show one focused chunk of code at a time — never a full file on one slide
@@ -77,6 +81,7 @@ SLIDE FORMAT RULES
 - Concepts with a "common mistake" or "important note" get their own WARNING slide labeled with ⚠️
 
 LEGACY CONTRAST RULES
+
 - Legacy code examples always use NgModule, constructor injection, *ngIf/*ngFor,
   HttpClientModule, RouterModule.forRoot(), class-based guards
 - Legacy contrast appears ONLY at the end of each section, in a comparison table
@@ -84,6 +89,7 @@ LEGACY CONTRAST RULES
 - Comparison table always has three columns: Concept | Modern | Legacy
 
 GENERATION RULES — APPLY TO ALL OUTPUT
+
 1. ANGULAR VERSION COMPATIBILITY: All code must be compatible with Angular 17–21.
    Do not use any API deprecated after Angular 17. Always use the most modern available form.
 2. NO INVENTED APIS: Only use documented Angular APIs that exist in Angular 17+.
