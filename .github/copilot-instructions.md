@@ -105,6 +105,23 @@ LEGACY CONTRAST RULES
   legacy patterns so students can run both side by side, compare the developer experience, and
   understand what modern Angular replaced.
 
+OUTPUT FOLDER RULES
+
+Every deliverable type within a day/part goes in its own subfolder:
+- Sample Code → `DXX/SampleCode/`
+- Legacy Sample Code → `DXX/LegacySampleCode/`
+- Slides → `DXX/Slides/`
+- Speaker Script → `DXX/SpeakerScript/`
+- Exercises → `DXX/Exercises/`
+- Sample Project → `DXX/SampleProject/`
+- Gap Check → `DXX/GapCheck/`
+- Capstone → `D5B/Capstone/`
+- Capstone Gap Check → `D5B/GapCheck/`
+- Cross-Day Checks → `Cross-Day-Checks/`
+- Final Review → `Final-Review/`
+Never save deliverables directly in the day/part root folder. Each prompt's OUTPUT FOLDER
+line specifies the exact subfolder — always follow it.
+
 SAMPLE CODE PROJECT STRUCTURE RULES
 
 Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects.

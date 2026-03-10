@@ -11,7 +11,7 @@
 
 **File references marked `CONTEXT FILES:`** tell Copilot which previously generated files to read for context. Each reference points to a folder in the workspace (e.g., `D1A/`). When you paste a prompt into Copilot chat, attach the referenced files using `#file:D1A/filename.md` syntax, or simply open the files as editor tabs so Copilot can see them. You do NOT need to paste file contents inline — Copilot reads the files directly.
 
-**Folder organization:** All generated output for a day/part goes in a folder named for that section: `D1A/`, `D1B/`, `D2A/`, `D2B/`, `D3A/`, `D3B/`, `D4A/`, `D4B/`, `D5A/`, `D5B/`. Within each day/part folder, sample code goes in a `SampleCode/` subfolder and legacy sample code goes in a `LegacySampleCode/` subfolder. Cross-Day Continuity Checks go in a folder named `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that folder if it doesn't exist and save all generated files there.
+**Folder organization:** All generated output for a day/part goes in a folder named for that section: `D1A/`, `D1B/`, `D2A/`, `D2B/`, `D3A/`, `D3B/`, `D4A/`, `D4B/`, `D5A/`, `D5B/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `LegacySampleCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker script, `Exercises/` for exercises and solutions, `SampleProject/` for the sample project, and `GapCheck/` for the gap check report. The capstone project goes in `D5B/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
 
 **Session order for every Part:**
 1. Sample Code → 2. Slides → 3. Speaker Script → 4. Exercises → 5. Sample Project → 6. Gap Check
@@ -92,7 +92,7 @@ block. Use the full path from the project root as the label
 
 You are generating slides for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D1A/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -175,7 +175,7 @@ legacy contrast slides showing actual legacy code examples.**
 
 You are writing the speaker script for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D1A/SpeakerScript/`.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 CONTEXT FILES: Read all files from the `D1A/` folder in the workspace — the slides and sample code files are already generated there.
@@ -203,7 +203,7 @@ section for every slide. Format as: ## [Slide Title] followed by the full spoken
 
 You are writing student exercises for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D1A/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - Generating a project with the CLI
@@ -252,7 +252,7 @@ labeled code block.
 
 You are generating the Day 1 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D1A/SampleProject/`.
 
 PROJECT: Personal Bio Card
 A static personal bio card app. Contains a HeaderComponent, a BioCardComponent that
@@ -284,7 +284,7 @@ no services, no routing.
 
 You are reviewing the generated materials for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D1A/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - What Angular is, why it exists, how it compares to vanilla JS
@@ -383,7 +383,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D1B/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -475,7 +475,7 @@ must clearly state exercises do not require signals yet.**
 
 You are writing the speaker script for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D1B/SpeakerScript/`.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 CONTEXT FILES: Read all files from the `D1B/` folder in the workspace — the slides and sample code files are already generated there.
@@ -501,7 +501,7 @@ SPECIFIC GUIDANCE:
 
 You are writing student exercises for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D1B/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - Interpolation
@@ -544,7 +544,7 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 1 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D1B/SampleProject/`.
 
 PROJECT: Tip Calculator
 A reusable TipInputComponent accepts bill amount and tip percentage via @Input() and
@@ -577,7 +577,7 @@ as a clearly labeled optional bonus section.
 
 You are reviewing the generated materials for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D1B/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Interpolation {{ }}
@@ -713,7 +713,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D2A/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -800,7 +800,7 @@ legacy contrast slides showing actual legacy code examples.**
 
 You are writing the speaker script for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D2A/SpeakerScript/`.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 CONTEXT FILES: Read all files from the `D2A/` folder in the workspace — the slides and sample code files are already generated there.
@@ -828,7 +828,7 @@ SPECIFIC GUIDANCE:
 
 You are writing student exercises for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D2A/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - ng-content single-slot projection
@@ -873,7 +873,7 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 2 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D2A/SampleProject/`.
 
 PROJECT: Movie Listing
 A movie listing app with genre filters, formatted dates and ratings, and a reusable
@@ -907,7 +907,7 @@ Represents Day 1 and Day 2 Part A knowledge only.
 
 You are reviewing the generated materials for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D2A/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - ng-content single-slot and named slots
@@ -1002,7 +1002,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D2B/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -1088,7 +1088,7 @@ legacy contrast slides showing actual legacy code examples.**
 
 You are writing the speaker script for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D2B/SpeakerScript/`.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 CONTEXT FILES: Read all files from the `D2B/` folder in the workspace — the slides and sample code files are already generated there.
@@ -1118,7 +1118,7 @@ SPECIFIC GUIDANCE:
 
 You are writing student exercises for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D2B/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - signal() with .set() and .update()
@@ -1157,7 +1157,7 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 2 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D2B/SampleProject/`.
 
 PROJECT: Budget Tracker
 Total, spent, and remaining balance are all computed() signals derived from a writable
@@ -1188,7 +1188,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D2B/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - signal() — .set(), .update()
@@ -1318,7 +1318,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D3A/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -1414,7 +1414,7 @@ legacy contrast slides showing actual legacy code examples.**
 
 You are writing the speaker script for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D3A/SpeakerScript/`.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 CONTEXT FILES: Read all files from the `D3A/` folder in the workspace — the slides and sample code files are already generated there.
@@ -1441,7 +1441,7 @@ SPECIFIC GUIDANCE:
 
 You are writing student exercises for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D3A/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - @Injectable providedIn root
@@ -1483,7 +1483,7 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 3 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D3A/SampleProject/`.
 
 PROJECT: Shopping Cart
 A shopping cart app where the header displays cart count and the cart page shows the
@@ -1512,7 +1512,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D3A/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - @Injectable providedIn root
@@ -1612,7 +1612,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D3B/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -1706,7 +1706,7 @@ legacy contrast slides showing actual legacy code examples.**
 
 You are writing the speaker script for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D3B/SpeakerScript/`.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 CONTEXT FILES: Read all files from the `D3B/` folder in the workspace — the slides and sample code files are already generated there.
@@ -1733,7 +1733,7 @@ SPECIFIC GUIDANCE:
 
 You are writing student exercises for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D3B/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - provideHttpClient() setup
@@ -1777,7 +1777,7 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 3 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D3B/SampleProject/`.
 
 PROJECT: Weather Dashboard
 Fetches current weather and 5-day forecast from Open-Meteo (no API key required).
@@ -1809,7 +1809,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D3B/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - provideHttpClient() in app.config.ts
@@ -1945,7 +1945,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D4A/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -2038,7 +2038,7 @@ legacy contrast slides showing actual legacy code examples.**
 
 You are writing the speaker script for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D4A/SpeakerScript/`.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 CONTEXT FILES: Read all files from the `D4A/` folder in the workspace — the slides and sample code files are already generated there.
@@ -2067,7 +2067,7 @@ SPECIFIC GUIDANCE:
 
 You are writing student exercises for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D4A/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - provideRouter() setup
@@ -2109,7 +2109,7 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 4 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D4A/SampleProject/`.
 
 PROJECT: Recipe Browser
 A recipe browser with a home page, a recipe list page (filterable by category via
@@ -2142,7 +2142,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D4A/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - provideRouter() in app.config.ts
@@ -2241,7 +2241,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D4B/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -2341,7 +2341,7 @@ legacy contrast slides showing actual legacy code examples.**
 
 You are writing the speaker script for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D4B/SpeakerScript/`.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 CONTEXT FILES: Read all files from the `D4B/` folder in the workspace — the slides and sample code files are already generated there.
@@ -2371,7 +2371,7 @@ SPECIFIC GUIDANCE:
 
 You are writing student exercises for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D4B/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - Template-driven form with ngModel, ngForm, HTML5 validators
@@ -2414,7 +2414,7 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 4 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D4B/SampleProject/`.
 
 PROJECT: Multi-Step Checkout Form
 Three steps (shipping, payment, review). Each step is a separate FormGroup.
@@ -2444,7 +2444,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D4B/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Template-driven forms — ngModel, ngForm, HTML5 validators, error display
@@ -2577,7 +2577,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D5A/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -2675,7 +2675,7 @@ legacy contrast slides showing actual legacy code examples.**
 
 You are writing the speaker script for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D5A/SpeakerScript/`.
 Target duration: 45–60 minutes including code walkthrough and Q&A.
 
 CONTEXT FILES: Read all files from the `D5A/` folder in the workspace — the slides and sample code files are already generated there.
@@ -2705,7 +2705,7 @@ SPECIFIC GUIDANCE:
 
 You are writing student exercises for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D5A/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - TestBed.configureTestingModule with imports: [StandaloneComponent]
@@ -2752,7 +2752,7 @@ All solutions under # SOLUTIONS, each file as its own labeled code block.
 
 You are generating the Day 5 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D5A/SampleProject/`.
 
 PROJECT: Recipe Browser Test Suite
 A complete test suite for the Day 4 Part A Recipe Browser app.
@@ -2788,7 +2788,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D5A/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Jasmine + Karma setup; Jest alternative
@@ -2829,7 +2829,7 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating the complete capstone project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D5B/` in the workspace. Save all generated files there.
+OUTPUT FOLDER: Save all generated files in `D5B/Capstone/`.
 
 PROJECT: Task Management App
 
@@ -2911,7 +2911,7 @@ Every file must have a comment block at the top: which day, which Part, which co
 
 You are reviewing the generated capstone project for a 5-day Angular course.
 
-OUTPUT FOLDER: Create or use the folder `D5B/` in the workspace. Save output there.
+OUTPUT FOLDER: Save all generated files in `D5B/GapCheck/`.
 
 CAPSTONE REQUIREMENTS BY DAY:
 Day 1: standalone components, @Input/@Output on TaskCardComponent, ngOnInit, ngOnDestroy
@@ -3065,7 +3065,9 @@ Output format:
 HOW A SESSION WORKS:
 Master Context is auto-loaded from .github/copilot-instructions.md.
 Just paste the specific prompt into Copilot chat — no need to paste Master Context.
-All output goes in day-specific folders: D1A/, D1B/, D2A/, D2B/, D3A/, D3B/, D4A/, D4B/, D5A/, D5B/.
+Each deliverable goes in its own subfolder within the day folder:
+  SampleCode/, LegacySampleCode/, Slides/, SpeakerScript/,
+  Exercises/, SampleProject/, GapCheck/
 Cross-Day Checks go in Cross-Day-Checks/. Final review goes in Final-Review/.
 
 FOR EACH PART (in this order):
