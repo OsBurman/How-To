@@ -94,28 +94,77 @@ You are generating slides for Day 1 Part A of a 5-day Angular course.
 
 OUTPUT FOLDER: Create or use the folder `D1A/` in the workspace. Save all generated files there.
 
-CONCEPTS TO COVER (one slide per concept):
-- What Angular is, why it exists, how it compares to vanilla JS
-- Installing the CLI and generating a project
-- Understanding the generated file structure
-- What main.ts does — bootstrapApplication() and app.config.ts
-- Your first standalone component — decorators, metadata, selector, template, styles
-- The imports array on a standalone component
-- ⚠️ WARNING: The "not a known element" error — what it looks like, why it happens, two-second fix
-- Angular CLI commands — ng serve, ng generate, ng build, ng test
-- Angular DevTools — install on Day 1
-- ViewEncapsulation — why styles are scoped by default
+SLIDE DEPTH RULES:
+These slides are detailed descriptions fed into a visual slide generator. Each slide
+must stand on its own with clear, complete content. Every concept uses as many slides
+as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
+get their own dedicated slides. Procedural steps (CLI commands, setup, configuration)
+show exact commands and walk through each step across multiple slides. Code examples
+appear on their own slides, separate from explanation slides.
+
+CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
+
+What Angular is:
+- What Angular is — a component-based framework for building web applications
+- Why Angular exists — the problems it solves compared to vanilla JS DOM manipulation
+- Framework vs library — what Angular provides out of the box (routing, forms, HTTP, DI, testing)
+
+Installing the CLI and generating a project:
+- Prerequisites — Node.js and npm; verifying installation with node -v and npm -v
+- Installing the Angular CLI — npm install -g @angular/cli; verifying with ng version
+- Creating a new project with ng new — the command, the prompts it asks, what each option means
+- What ng new generates — high-level overview of the folders and files created
+
+Understanding the generated file structure:
+- Root config files — package.json, tsconfig.json, angular.json and what each controls
+- The src/ folder — index.html (the single page), main.ts (the entry point), styles.css (global styles)
+- The src/app/ folder — app.component.ts, app.config.ts, and component organization
+
+What main.ts does:
+- bootstrapApplication() — what it does, its two arguments (root component and config), when it runs
+- app.config.ts — the providers array; empty now, filled later with router and HTTP on Days 3–4
+
+Your first standalone component:
+- The @Component decorator — what it is and why every component needs one
+- Component metadata — selector, standalone, imports, templateUrl, styleUrl; each property explained
+- What standalone: true means — the component manages its own dependencies without NgModule
+- The component class — properties, methods, and how they connect to the template via data binding
+
+The imports array on a standalone component:
+- What the imports array does — registers every component, directive, and pipe this template uses
+- Adding and removing items — what happens when you add a child component vs forget one
+
+⚠️ WARNING: The "not a known element" error:
+- What the error looks like — the exact console message Angular shows
+- Why it happens — the component is missing from the imports array
+- The two-second fix — import the class at the top, add it to imports
+
+Angular CLI commands:
+- ng serve — starting the dev server; live reload; the default localhost URL
+- ng generate component — creating a component; the files it creates; shorthand ng g c
+- ng build and ng test — what each command does and when you use them
+
+Angular DevTools:
+- What Angular DevTools is — a Chrome extension for inspecting components and change detection
+- How to install it — Chrome Web Store; what the Components and Profiler tabs show you
+
+ViewEncapsulation:
+- Why component styles are scoped by default — Emulated encapsulation explained
+- How Angular achieves scoping — unique attributes added to component HTML elements
+- Emulated vs None vs ShadowDom — what each option does and when you might change it
+
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- App entry point — show bootstrapModule(AppModule) code; contrast with modern bootstrapApplication()
-- Component registration — show declarations: [] in NgModule; contrast with modern imports: [] on component
-- App config — show AppModule providers array; contrast with modern app.config.ts providers
-- Feature grouping — show NgModule per feature pattern; contrast with modern standalone components by folder
-Each legacy slide shows actual legacy code, explains what pain it caused, and shows the modern equivalent side by side.
+- App entry point — first explain bootstrapModule(AppModule) legacy code and the boilerplate it required; then show the modern bootstrapApplication() equivalent
+- Component registration — first explain declarations: [] in NgModule and the pain of managing it; then show the modern imports: [] directly on the component
+- App config — first explain the AppModule providers array pattern; then show the modern app.config.ts providers approach
+- Feature grouping — first explain NgModule-per-feature pattern and the boilerplate overhead; then show how modern standalone components organize by folder instead
+Each legacy topic: first explain the legacy code and what pain it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
 
 **NOW WRITE THE COMPLETE SLIDE DECK for Day 1 Part A. Generate your own focused code
 examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept
-listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
+## [Slide Title] followed by its content, separated by ---. Include every concept and
+sub-concept listed — each gets its own slide(s). After all modern slides, include the
+legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -336,29 +385,86 @@ You are generating slides for Day 1 Part B of a 5-day Angular course.
 
 OUTPUT FOLDER: Create or use the folder `D1B/` in the workspace. Save all generated files there.
 
-CONCEPTS TO COVER (one slide per concept):
-- Interpolation {{ }}
-- Property binding [property]
-- Event binding (event)
-- Two-way binding [(ngModel)] and why FormsModule is needed
-- Template reference variables — #myRef
-- Safe navigation ?. and nullish coalescing ??
-- @Input() — data flows down
-- @Output() and EventEmitter — events flow up
-- ngOnInit — right place for initialization; why not the constructor
-- ngOnDestroy — cleanup from day one
-- Signals first look — signal(), computed(); labeled as Day 2 preview
+SLIDE DEPTH RULES:
+These slides are detailed descriptions fed into a visual slide generator. Each slide
+must stand on its own with clear, complete content. Every concept uses as many slides
+as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
+get their own dedicated slides. Code examples appear on their own slides, separate from
+explanation slides.
+
+CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
+
+Interpolation:
+- What interpolation {{ }} is — displaying component data in the template
+- Interpolation examples — strings, numbers, expressions, method calls inside {{ }}
+
+Property binding:
+- Property binding [property] — binding a component value to an element property
+- Property binding vs string interpolation — when to use [src]="imageUrl" vs src="{{imageUrl}}"
+- Property binding examples — [disabled], [src], [hidden], [class]
+
+Event binding:
+- Event binding (event) — responding to user actions in the template
+- Event binding examples — (click), (input), (keyup); accessing the $event object
+
+Two-way binding:
+- Two-way binding [(ngModel)] — keeping a component property and an input field in sync
+- Why FormsModule is needed — importing it in the standalone component's imports array
+- Two-way binding in action — a live text input bound to a property; typing updates both
+
+Template reference variables:
+- What template reference variables #myRef are — direct access to a DOM element or component
+- Using a ref to read input values — passing #myRef.value to an event handler
+- Refs vs two-way binding — when to use each approach
+
+Safe navigation:
+- Safe navigation ?. — accessing nested properties that might be null or undefined
+- Why it matters — data from APIs often arrives as null before loading completes
+- Example: user?.address?.city vs the crash without ?.
+
+Nullish coalescing:
+- Nullish coalescing ?? — providing fallback values when data is null or undefined
+- Combining ?. and ?? — user?.name ?? 'Guest' as a complete pattern
+
+@Input():
+- What @Input() does — marks a property as receivable from a parent component
+- How property binding drives @Input — parent uses [title]="value" in its template
+- Data flows one direction only — parent → child; the child cannot send data back through @Input
+
+@Output() and EventEmitter:
+- What @Output() does — sends events from child to parent
+- EventEmitter — creating one, calling .emit(), and what the parent receives
+- The complete parent-child pattern — @Input for data down, @Output for events up
+
+ngOnInit:
+- What ngOnInit is — the lifecycle hook for initialization logic
+- Why not the constructor — constructor runs before inputs are set; ngOnInit runs after
+- ⚠️ WARNING: Using the constructor for initialization — the most common beginner mistake
+- ngOnInit example — processing @Input data to build a display label
+
+ngOnDestroy:
+- What ngOnDestroy is — cleanup when Angular removes a component from the DOM
+- Why cleanup matters — preventing memory leaks from timers, intervals, and subscriptions
+- ngOnDestroy example — clearing an interval timer set up in ngOnInit
+
+Signals first look (Day 2 preview):
+- signal() — creating a piece of reactive state; reading with signal(); updating with .set() and .update()
+- computed() — creating a derived value that recalculates automatically when its source changes
+- This is a preview only — exercises do not require signals yet; full coverage on Day 2
+
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- ngModel setup — show FormsModule in NgModule; contrast with modern FormsModule in component imports
-- Passing data down — @Input() is the same in both; show the NgModule context around it
-- Passing events up — @Output() + EventEmitter is the same; show the NgModule context around it
-- Lifecycle hooks — OnInit/OnDestroy are the same; show a full NgModule-based component for comparison
-Each legacy slide shows actual legacy code, explains the NgModule-based setup, and highlights the difference in how modules are organized.
+- ngModel setup — first explain FormsModule imported in NgModule and the indirection involved; then show the modern FormsModule in the standalone component's imports array
+- Passing data down — @Input() works the same in both; first show the NgModule declarations context around it, then show the modern standalone approach
+- Passing events up — @Output() + EventEmitter works the same; first show the NgModule context, then show the standalone version
+- Lifecycle hooks — ngOnInit/ngOnDestroy work the same in both; first show a full NgModule-based component, then contrast with the standalone version
+Each legacy topic: first explain the legacy code and what overhead it involved, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
 
 **NOW WRITE THE COMPLETE SLIDE DECK for Day 1 Part B. Generate your own focused code
-examples for each code slide — do not reference external files. After all modern
-slides, include the legacy contrast slides showing actual legacy code examples. The
-signals preview slide must clearly state exercises do not require signals yet.**
+examples for each code slide — do not reference external files. Format each slide as:
+## [Slide Title] followed by its content, separated by ---. Include every concept and
+sub-concept listed — each gets its own slide(s). After all modern slides, include the
+legacy contrast slides showing actual legacy code examples. The signals preview slides
+must clearly state exercises do not require signals yet.**
 ```
 
 ---
@@ -609,35 +715,81 @@ You are generating slides for Day 2 Part A of a 5-day Angular course.
 
 OUTPUT FOLDER: Create or use the folder `D2A/` in the workspace. Save all generated files there.
 
-CONCEPTS TO COVER (one slide per concept):
-- ng-content — single-slot projection
-- Named ng-content slots with select
-- ngAfterContentInit — fires when projected content is ready
-- Note on @ViewChild — exists for accessing child DOM/components; covered in Extended Topics
-- ng-container — no real DOM node
-- ng-template — renders nothing; used for @else and reusable snippets
-- @if / @else blocks
-- @for with required track — what track does for DOM reconciliation
-- @switch / @case
-- @let local variable — re-evaluates on change detection, NOT a signal
-- ⚠️ WARNING: @let vs computed() — students confuse these; @let is not reactive
-- [ngClass] and [ngStyle]
-- Built-in pipes: date, currency, uppercase, lowercase, json, async
-- Pure vs impure pipes
-- ⚠️ WARNING: pure pipe mutation gotcha — pipe won't update if array is mutated in place
-- Custom pure pipe with @Pipe and transform()
+SLIDE DEPTH RULES:
+These slides are detailed descriptions fed into a visual slide generator. Each slide
+must stand on its own with clear, complete content. Every concept uses as many slides
+as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
+get their own dedicated slides. Code examples appear on their own slides, separate from
+explanation slides.
+
+CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
+
+Content projection with ng-content:
+- What content projection is — a parent passes HTML into a child component's template
+- ng-content single-slot — the child places <ng-content> where projected content should appear
+- Named ng-content slots with select — header, body, footer slots; select="[slot-name]" syntax
+- Example: building a reusable card component with named slots
+
+ngAfterContentInit:
+- What ngAfterContentInit is — fires once after Angular projects content into the component
+- When it fires vs ngOnInit — ngOnInit fires first, ngAfterContentInit fires after content projection
+- Note: @ContentChild exists but is not covered here — it's in Extended Topics
+
+ng-container and ng-template:
+- ng-container — a grouping element that adds no real DOM node; use it to apply @if without extra markup
+- ng-template — defines a template block that renders nothing by default; used as @else blocks and reusable snippets
+- When to use each — ng-container for invisible grouping, ng-template for deferred rendering
+
+@ViewChild note:
+- @ViewChild exists for accessing child DOM elements and components from the class — covered in Extended Topics; mentioned so students know the name
+
+Built-in control flow:
+- @if / @else — conditional rendering with the new block syntax; ng-template for the else block
+- @if example — showing and hiding content based on a boolean condition
+- @for with required track — rendering a list; what track does for DOM reconciliation and performance
+- @for example — iterating over an array with track item.id
+- @switch / @case — rendering one of several templates based on a value
+- @switch example — displaying different badges based on a status string
+
+@let local variable:
+- What @let does — defines a local variable in the template that re-evaluates on change detection
+- @let example — define a filtered count once and use it in both @if and interpolation
+- ⚠️ WARNING: @let vs computed() — students confuse these; @let is NOT a signal and is NOT reactive
+
+[ngClass] and [ngStyle]:
+- [ngClass] — adding or removing CSS classes conditionally based on component data
+- [ngClass] examples — string, array, and object syntax
+- [ngStyle] — setting inline styles dynamically based on component data
+
+Built-in pipes:
+- What pipes are — transform displayed values in the template without changing the source data
+- Built-in pipes: date — formatting dates with format strings
+- Built-in pipes: currency, uppercase, lowercase — common transformations
+- Built-in pipes: json and async — debugging and Observable subscription
+
+Pure vs impure pipes:
+- What a pure pipe is — only re-evaluates when its input reference changes
+- ⚠️ WARNING: pure pipe mutation gotcha — mutating an array in place does NOT trigger the pipe; must create a new array reference
+- What an impure pipe is — re-evaluates on every change detection cycle; performance cost
+
+Custom pure pipe:
+- Creating a custom pipe — @Pipe decorator and transform() method
+- Custom pipe example — TruncatePipe that truncates a string to a configurable character limit
+- Using a custom pipe in a template — {{ text | truncate:100 }}
+
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- Conditional rendering — show *ngIf + <ng-template #else> code; contrast with modern @if / @else
-- List rendering — show *ngFor with trackBy method; contrast with modern @for (track item.id)
-- Switch rendering — show [ngSwitch] / *ngSwitchCase; contrast with modern @switch / @case
-- Track — show optional trackBy in *ngFor; contrast with required track in @for
-- Template local variable — show *ngIf="expr as name" pattern; contrast with modern @let name = expr
-Each legacy slide shows actual legacy code, explains the structural directive syntax, and shows the cleaner modern equivalent side by side.
+- Conditional rendering — first explain *ngIf + <ng-template #else> syntax and its indirection; then show the modern @if / @else block syntax
+- List rendering — first explain *ngFor with trackBy method and why trackBy was optional; then show modern @for with required track
+- Switch rendering — first explain [ngSwitch] / *ngSwitchCase / *ngSwitchDefault syntax; then show the modern @switch / @case syntax
+- Track — first explain how optional trackBy in *ngFor led to performance bugs when forgotten; then show required track in @for
+- Template local variable — first explain *ngIf="expr as name" pattern and its limitations; then show the modern @let name = expr syntax
+Each legacy topic: first explain the legacy code and what pain or confusion it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
 
 **NOW WRITE THE COMPLETE SLIDE DECK for Day 2 Part A. Generate your own focused code
 examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept
-listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
+## [Slide Title] followed by its content, separated by ---. Include every concept and
+sub-concept listed — each gets its own slide(s). After all modern slides, include the
+legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -852,33 +1004,80 @@ You are generating slides for Day 2 Part B of a 5-day Angular course.
 
 OUTPUT FOLDER: Create or use the folder `D2B/` in the workspace. Save all generated files there.
 
-CONCEPTS TO COVER (one slide per concept):
-- The problem with zone.js — checks entire component tree on every event
-- signal() — .set(), .update()
-- computed() — read-only; recalculates only when dependency changes
-- effect() — side effects; cleanup function
-- Signal-based input() — modern @Input() replacement
-- ⚠️ WARNING: input() is always readonly — cannot call .set() from inside the component
-- Signal-based output() — modern @Output() replacement
-- model() — two-way signal binding; replaces @Input()/@Output() pair
-- Fine-grained change detection — only affected DOM nodes update
-- ngOnChanges — legacy contrast: how input changes were handled before signals
-- Angular direction callout slide — zoneless stable in v21+; signals are the reason
+SLIDE DEPTH RULES:
+These slides are detailed descriptions fed into a visual slide generator. Each slide
+must stand on its own with clear, complete content. Every concept uses as many slides
+as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
+get their own dedicated slides. Code examples appear on their own slides, separate from
+explanation slides.
+
+CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
+
+The problem signals solve:
+- How zone.js works — patches browser events and checks the entire component tree on every click, keystroke, or timer
+- Why this is a problem — unnecessary re-renders; performance degrades as the app grows
+- What signals change — they tell Angular exactly what changed, so only affected DOM nodes update
+
+signal():
+- What a signal is — a reactive container for a value that notifies Angular when it changes
+- Creating a signal — signal(initialValue); reading it by calling the signal as a function: count()
+- Updating with .set() — replacing the value entirely; count.set(5)
+- Updating with .update() — deriving from the current value; count.update(c => c + 1)
+
+computed():
+- What computed() does — creates a read-only signal derived from other signals
+- How it works — recalculates only when its dependency signals change; cached otherwise
+- computed() example — total signal derived from price and quantity signals
+- ⚠️ WARNING: computed() is read-only — you cannot call .set() or .update() on a computed signal
+
+effect():
+- What effect() does — runs a side effect whenever its dependency signals change
+- When to use it — logging, local storage, DOM updates outside Angular
+- The cleanup function — returning a function from effect() that runs before the next execution
+- ⚠️ WARNING: forgetting cleanup — if you set up a timer or subscription inside effect(), you must return a cleanup function to avoid memory leaks
+
+Signal-based input():
+- What input() does — replaces @Input() with a signal-based readonly input
+- Declaring an input — readonly name = input<string>(); reading it: this.name()
+- ⚠️ WARNING: input() is always readonly — cannot call .set() from inside the component; the parent owns the value
+- Required vs optional inputs — input.required<string>() vs input<string>()
+
+Signal-based output():
+- What output() does — replaces @Output() + EventEmitter with a cleaner API
+- Declaring an output — readonly selected = output<string>(); emitting: this.selected.emit(value)
+- output() example — child emits an event, parent handles it with (selected)="onSelect($event)"
+
+model():
+- What model() does — two-way signal binding between parent and child
+- model() replaces the @Input()/@Output() pair pattern for two-way data flow
+- model() example — a rating input component where parent and child share the same value
+- How to use model() in a template — [(rating)]="myRating" banana-in-a-box syntax
+
+Fine-grained change detection:
+- How signals enable fine-grained updates — Angular tracks which DOM nodes depend on which signals
+- Only affected nodes re-render — contrast with zone.js checking the entire tree
+- What this means in practice — faster apps with less effort
+
+Angular direction callout:
+- Zoneless Angular — stable in v21+; signals are what made this possible
+- What this means for students — everything you just learned is the foundation of Angular's future
+
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- Component input — show @Input() mutable property; contrast with modern input<T>() readonly Signal
-- Component output — show @Output() + EventEmitter; contrast with modern output<T>()
-- Two-way binding — show @Input() + @Output() pair pattern; contrast with modern model<T>()
-- Reacting to input changes — show ngOnChanges(SimpleChanges); contrast with modern computed() or effect()
-- Derived state — show getter or ChangeDetectorRef approach; contrast with modern computed(() => ...)
-- Side effects — show ngOnChanges/ngDoCheck/ngOnDestroy; contrast with modern effect() with cleanup
-- Change detection — show Zone.js full tree check; contrast with modern fine-grained signals
-- Manual optimization — show OnPush + markForCheck(); contrast with modern signals (not needed)
-Each legacy slide shows actual legacy code, explains the boilerplate overhead, and shows the modern equivalent side by side.
+- Component input — first explain @Input() mutable property and how changes were untracked; then show modern input<T>() readonly signal
+- Component output — first explain @Output() + EventEmitter pattern; then show modern output<T>()
+- Two-way binding — first explain the @Input() + @Output() pair pattern and the boilerplate; then show modern model<T>() one-liner
+- Reacting to input changes — first explain ngOnChanges(SimpleChanges) and the complexity of the SimpleChanges object; then show modern computed() or effect()
+- Derived state — first explain getter or ChangeDetectorRef approaches and their limitations; then show modern computed(() => ...)
+- Side effects — first explain ngOnChanges/ngDoCheck/ngOnDestroy and the scattered cleanup; then show modern effect() with cleanup in one place
+- Change detection — first explain Zone.js full tree check and what it costs; then show modern fine-grained signal-based updates
+- Manual optimization — first explain OnPush + markForCheck() and why it was fragile; then show modern signals where manual optimization is unnecessary
+Each legacy topic: first explain the legacy code and what pain or overhead it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
 
 **NOW WRITE THE COMPLETE SLIDE DECK for Day 2 Part B. Generate your own focused code
 examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept
-listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
+## [Slide Title] followed by its content, separated by ---. Include every concept and
+sub-concept listed — each gets its own slide(s). After all modern slides, include the
+legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -1121,31 +1320,90 @@ You are generating slides for Day 3 Part A of a 5-day Angular course.
 
 OUTPUT FOLDER: Create or use the folder `D3A/` in the workspace. Save all generated files there.
 
-CONCEPTS TO COVER (one slide per concept):
-- What a service is — separating logic and shared state from components
-- @Injectable({ providedIn: 'root' }) — singleton, tree-shakable
-- inject() in component class bodies
-- inject() beyond components — works in guards, interceptors, factories
-- Error handling in services — data$/error$ pattern; wrapping updates safely
-- What an Observable is — stream vs one-time Promise; push vs pull
-- Creating Observables: of(), from(), timer(), Subject, BehaviorSubject
-- Subject vs BehaviorSubject
-- Hot vs cold Observables
-- Core operators: map, filter, tap, switchMap, combineLatest, debounceTime
-- takeUntilDestroyed() with DestroyRef
-- toSignal() — the RxJS-to-signals bridge
-- ⚠️ WARNING: async pipe emits null before first value; toSignal() takes initialValue instead
+SLIDE DEPTH RULES:
+These slides are detailed descriptions fed into a visual slide generator. Each slide
+must stand on its own with clear, complete content. Every concept uses as many slides
+as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
+get their own dedicated slides. Code examples appear on their own slides, separate from
+explanation slides.
+
+CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
+
+What a service is:
+- Why services exist — separating shared logic and state from components; the prop-drilling problem
+- What a service looks like — a plain TypeScript class with the @Injectable decorator
+
+@Injectable and providedIn:
+- @Injectable({ providedIn: 'root' }) — what it means; singleton; tree-shakable
+- How Angular's DI system works at a high level — one instance shared across the entire app
+
+inject():
+- inject() in a component class body — replacing constructor injection with a function call
+- inject() syntax — const service = inject(ServiceName); where it goes in the class
+- inject() beyond components — works in guards, interceptors, pipes, and factory functions
+- inject() example in a functional guard — shows that inject() is not limited to components
+
+Error handling in services:
+- The data$/error$ pattern — a BehaviorSubject for data and a paired BehaviorSubject<string | null> for errors
+- Wrapping updates in try/catch — surfacing errors to components without crashing
+- Displaying errors in a component — reading the error$ stream and showing user-friendly messages
+
+What an Observable is:
+- Observable concept — a stream of values over time; push-based; can emit zero, one, or many values
+- Observable vs Promise — Promise delivers one value; Observable delivers a stream; Observable is lazy
+- The subscribe() method — how you start receiving values from an Observable
+
+Creating Observables:
+- of() — creates an Observable from static values; emits and completes immediately
+- from() — converts an array or Promise into an Observable
+- timer() — emits after a delay or on an interval
+- Subject — a multicast Observable you can push values into; no initial value
+- BehaviorSubject — like Subject but always has a current value; new subscribers get the latest immediately
+
+Subject vs BehaviorSubject:
+- The key difference — BehaviorSubject has a current value; Subject does not
+- When to use each — BehaviorSubject for state management; Subject for event streams
+
+Hot vs cold Observables:
+- Cold Observable — created fresh for each subscriber; of() and from() are cold
+- Hot Observable — shared among all subscribers; BehaviorSubject and Subject are hot
+- Why it matters — understanding when data is shared vs duplicated
+
+Core RxJS operators:
+- map — transform each emitted value
+- filter — only pass values that meet a condition
+- tap — perform side effects without changing the stream (logging, debugging)
+- switchMap — when a new value arrives, cancel the previous inner Observable and switch to a new one
+- combineLatest — combine the latest values from multiple Observables into one
+- debounceTime — wait for a pause in emissions before passing the value through (search input)
+
+takeUntilDestroyed():
+- What takeUntilDestroyed() does — automatically unsubscribes when the component is destroyed
+- How to use it — pipe(takeUntilDestroyed()) with DestroyRef injected
+- Why it matters — prevents memory leaks without manual ngOnDestroy cleanup
+
+toSignal():
+- What toSignal() does — converts an Observable into a signal for use in templates
+- toSignal() with initialValue — providing a default value so the signal is never undefined
+- When to use toSignal() — any time you need an Observable value in a template
+
+⚠️ WARNING: async pipe vs toSignal():
+- The async pipe null problem — async pipe emits null before the first value arrives, breaking templates
+- toSignal() solves this — the initialValue option provides an immediate non-null value
+- Guidance: prefer toSignal() in all new code
+
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- Service injection — show constructor(private svc: MyService) code; contrast with modern inject(MyService)
-- Service scope — show NgModule.providers registration; contrast with modern providedIn: 'root'
-- RxJS cleanup — show takeUntil(destroy$) + ngOnDestroy Subject pattern; contrast with modern takeUntilDestroyed()
-- Observable in template — show async pipe + @if null guard; contrast with modern toSignal(obs$, {initialValue})
-Each legacy slide shows actual legacy code, explains the boilerplate involved, and shows the modern equivalent side by side.
+- Service injection — first explain constructor(private svc: MyService) syntax and the constructor parameter bloat; then show modern inject(MyService)
+- Service scope — first explain NgModule.providers registration and why it was error-prone; then show modern providedIn: 'root'
+- RxJS cleanup — first explain takeUntil(destroy$) + ngOnDestroy Subject pattern and the manual boilerplate; then show modern takeUntilDestroyed() one-liner
+- Observable in template — first explain async pipe + *ngIf null guard and the null timing issue; then show modern toSignal(obs$, {initialValue})
+Each legacy topic: first explain the legacy code and what pain or overhead it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
 
 **NOW WRITE THE COMPLETE SLIDE DECK for Day 3 Part A. Generate your own focused code
 examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept
-listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
+## [Slide Title] followed by its content, separated by ---. Include every concept and
+sub-concept listed — each gets its own slide(s). After all modern slides, include the
+legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -1356,31 +1614,88 @@ You are generating slides for Day 3 Part B of a 5-day Angular course.
 
 OUTPUT FOLDER: Create or use the folder `D3B/` in the workspace. Save all generated files there.
 
-CONCEPTS TO COVER (one slide per concept):
-- provideHttpClient() in app.config.ts
-- TypeScript interfaces for HTTP responses — why typing matters
-- GET, POST, PUT, DELETE — every call returns an Observable
-- HttpParams — building query strings programmatically
-- switchMap — cancels stale in-flight requests
-- catchError — handling HTTP errors
-- ⚠️ WARNING: HttpErrorResponse — .status branches (0 vs 404 vs 500 need different messages)
-- forkJoin — parallel requests; both must complete; RxJS equivalent of Promise.all
-- Loading state — isLoading signal + finalize()
-- Functional HttpInterceptorFn — auth headers and logging
-- toSignal() — connecting HTTP Observable to template via signals
-- environment.ts — API base URL; ng build swaps at build time
+SLIDE DEPTH RULES:
+These slides are detailed descriptions fed into a visual slide generator. Each slide
+must stand on its own with clear, complete content. Every concept uses as many slides
+as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
+get their own dedicated slides. Code examples appear on their own slides, separate from
+explanation slides.
+
+CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
+
+Setting up HTTP in Angular:
+- provideHttpClient() in app.config.ts — enabling the HTTP client for the entire app
+- How this connects to Part A — HTTP calls return Observables; everything from Part A applies
+
+TypeScript interfaces for HTTP responses:
+- Why typing matters — without an interface you get any and have no IDE help or type safety
+- Defining an interface — the User interface for JSONPlaceholder /users data
+- Typing the HTTP call — http.get<User[]>(url) tells TypeScript the exact shape of the response
+
+HTTP methods:
+- GET — fetching data; returns Observable<T>; example: http.get<User[]>(url)
+- POST — creating data; sends a body; returns Observable<T>
+- PUT and DELETE — updating and removing data; same Observable pattern
+- Every HTTP call returns an Observable — you must subscribe or use toSignal() to trigger it
+
+HttpParams:
+- What HttpParams is — building query strings programmatically instead of string concatenation
+- HttpParams syntax — new HttpParams().set('userId', 1).set('page', 2)
+- Passing params to a request — http.get(url, { params })
+
+switchMap for HTTP:
+- The stale request problem — typing fast sends multiple requests; old responses arrive after new ones
+- How switchMap solves it — cancels the previous in-flight request when a new one starts
+- switchMap example — search input piped through debounceTime then switchMap to HTTP call
+
+catchError:
+- What catchError does — intercepts errors in the Observable pipeline and handles them gracefully
+- catchError example — returning a fallback value or rethrowing with a user-friendly message
+
+⚠️ WARNING: HttpErrorResponse:
+- What HttpErrorResponse is — the error object Angular returns on HTTP failure
+- Status branching — .status 0 means network error, 404 means not found, 500 means server error
+- Why each needs a different message — users need specific, helpful feedback
+- HttpErrorResponse example — a switch on .status returning appropriate messages
+
+forkJoin:
+- What forkJoin does — runs multiple Observables in parallel; waits for all to complete
+- forkJoin as Promise.all equivalent — both must succeed before results are available
+- forkJoin example — loading users and posts simultaneously
+
+Loading state:
+- The isLoading pattern — an isLoading signal set to true before a request, false after
+- finalize() operator — runs cleanup logic whether the Observable succeeds or errors
+- Loading state example — showing a spinner while data loads, hiding it when done
+
+Functional HttpInterceptorFn:
+- What an interceptor is — middleware that runs on every HTTP request and/or response
+- HttpInterceptorFn — a plain function that receives the request and a next handler
+- Interceptor example — adding an Authorization header and logging the request URL and method
+- Registering interceptors — withInterceptors([authInterceptor]) in provideHttpClient()
+
+toSignal() with HTTP:
+- Connecting HTTP Observable to template — toSignal() converts the HTTP response into a signal
+- toSignal() with initialValue — providing a default so the template has data immediately
+
+environment.ts:
+- What environment files are — src/environments/environment.ts and environment.development.ts
+- Storing the API base URL — apiUrl: 'http://localhost:3000'
+- How ng build swaps environments — production vs development configuration at build time
+
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- HTTP setup — show HttpClientModule in AppModule; contrast with modern provideHttpClient() in app.config.ts
-- Interceptors — show class implementing HttpInterceptor; contrast with modern HttpInterceptorFn plain function
-- Registration — show HTTP_INTERCEPTORS multi-token provider; contrast with modern withInterceptors([fn])
+- HTTP setup — first explain HttpClientModule imported in AppModule and the module overhead; then show modern provideHttpClient() in app.config.ts
+- Interceptors — first explain a class implementing HttpInterceptor with its intercept() method; then show modern HttpInterceptorFn as a plain function
+- Registration — first explain HTTP_INTERCEPTORS multi-token provider array pattern; then show modern withInterceptors([fn]) one-liner
 - Response typing — http.get<MyType>(url) is the same in both; note this did not change
 - Environment config — environment.ts swap is the same in both; note this did not change
-Each legacy slide shows actual legacy code, explains the class-based and module-based patterns, and shows the modern equivalent side by side.
+Each legacy topic: first explain the legacy code and what pain or overhead it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
 
 **NOW WRITE THE COMPLETE SLIDE DECK for Day 3 Part B. Generate your own focused code
 examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept
-listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
+## [Slide Title] followed by its content, separated by ---. Include every concept and
+sub-concept listed — each gets its own slide(s). After all modern slides, include the
+legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -1632,32 +1947,87 @@ You are generating slides for Day 4 Part A of a 5-day Angular course.
 
 OUTPUT FOLDER: Create or use the folder `D4A/` in the workspace. Save all generated files there.
 
-CONCEPTS TO COVER (one slide per concept):
-- provideRouter(routes) in app.config.ts
-- router-outlet, routerLink, routerLinkActive
-- Programmatic navigation — Router.navigate() vs Router.navigateByUrl()
-- Route parameters vs query parameters — with real URL examples side by side
-- withComponentInputBinding() — bind route params directly to input() signals
-- Child routes and nested router-outlet
-- loadComponent() lazy loading
-- withHashLocation() and withPreloading() — what they do
-- canActivate functional guard — boolean | UrlTree
-- canDeactivate functional guard — dirty check pattern
-- AppRoutingModule callout slide — "this is what you'll see in most existing codebases"
+SLIDE DEPTH RULES:
+These slides are detailed descriptions fed into a visual slide generator. Each slide
+must stand on its own with clear, complete content. Every concept uses as many slides
+as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
+get their own dedicated slides. Code examples appear on their own slides, separate from
+explanation slides.
+
+CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
+
+Setting up routing:
+- Why routing matters — turns a single-page app into a multi-view application with URLs
+- provideRouter(routes) in app.config.ts — enabling routing for the app
+- The route configuration array — path, component, and how routes map URLs to components
+
+Core routing directives:
+- router-outlet — the placeholder where Angular renders the matched component
+- routerLink — navigating between routes in templates; [routerLink]="['/recipes']"
+- routerLinkActive — adding an active CSS class to the current route's link
+
+Programmatic navigation:
+- Router.navigate() — navigating from TypeScript code; passing route segments as an array
+- Router.navigateByUrl() — navigating with a full URL string
+- When to use each — navigate() for relative paths and query params; navigateByUrl() for absolute URLs
+- Example: navigating to a detail page after clicking a row
+
+Route parameters:
+- What route parameters are — /recipe/:id in the route config; identifies a specific resource
+- Route param example — /recipe/42 where 42 is the recipe ID
+
+Query parameters:
+- What query parameters are — /recipes?category=italian; optional filter/sort values
+- Route params vs query params — params identify the thing; query params modify the view
+- Reading query params — inject(ActivatedRoute).queryParamMap
+
+withComponentInputBinding():
+- What it does — binds route parameters directly to input() signals on the component
+- How to enable it — withComponentInputBinding() option in provideRouter()
+- Example: readonly id = input<string>() automatically receives the :id route param
+- Why this is better — no manual ActivatedRoute subscription needed
+
+Child routes:
+- What child routes are — nested routes rendered inside a parent component's router-outlet
+- Nested router-outlet — a second <router-outlet> inside a parent component
+- Child route example — /recipes/:id/reviews as a child of /recipes/:id
+
+Lazy loading:
+- What lazy loading is — loading a component's code only when the user navigates to that route
+- loadComponent() — the modern way to lazy load a standalone component
+- loadComponent() syntax — loadComponent: () => import('./path').then(m => m.Component)
+- Why lazy loading matters — faster initial page load for large apps
+
+Router configuration options:
+- withHashLocation() — uses # in URLs for environments without server-side URL rewriting
+- withPreloading() — preloads lazy-loaded routes in the background after initial load
+
+Functional guards:
+- canActivate guard — a function that returns boolean or UrlTree; runs before entering a route
+- canActivate example — checking an isLoggedIn signal; redirecting to /login via UrlTree
+- canDeactivate guard — a function that checks whether it's safe to leave the current route
+- canDeactivate example — checking a hasUnsavedChanges property; showing a confirmation prompt
+- How guards connect to Day 4 Part B — "you will wire canDeactivate to your reactive form's .dirty property"
+
+AppRoutingModule callout:
+- What AppRoutingModule is — the legacy pattern you will encounter in existing codebases
+- Why students need to recognize it — most Angular projects on the job still use this pattern
+
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- Router setup — show RouterModule.forRoot(routes) in AppModule; contrast with modern provideRouter(routes)
-- Feature routes — show RouterModule.forChild() pattern; contrast with modern child route arrays
-- Lazy loading — show loadChildren: () => import().then() module loading; contrast with modern loadComponent: () => import()
-- Route params as inputs — show manual ActivatedRoute injection and subscription; contrast with modern withComponentInputBinding()
-- Programmatic nav — show constructor-injected Router; contrast with modern inject(Router).navigate()
-- canActivate — show class implementing CanActivate; contrast with modern plain function guard
-- canDeactivate — show class implementing CanDeactivate<T>; contrast with modern plain function guard
-Each legacy slide shows actual legacy code, explains the class-based and module-based router patterns, and shows the modern equivalent side by side.
+- Router setup — first explain RouterModule.forRoot(routes) in AppModule and the import overhead; then show modern provideRouter(routes)
+- Feature routes — first explain RouterModule.forChild() pattern and separate routing modules; then show modern child route arrays
+- Lazy loading — first explain loadChildren: () => import().then() module-based loading; then show modern loadComponent: () => import()
+- Route params as inputs — first explain manual ActivatedRoute injection and param subscription; then show modern withComponentInputBinding()
+- Programmatic nav — first explain constructor-injected Router pattern; then show modern inject(Router).navigate()
+- canActivate — first explain class implementing CanActivate interface; then show modern plain function guard
+- canDeactivate — first explain class implementing CanDeactivate<T> interface; then show modern plain function guard
+Each legacy topic: first explain the legacy code and what pain or overhead it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
 
 **NOW WRITE THE COMPLETE SLIDE DECK for Day 4 Part A. Generate your own focused code
 examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept
-listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
+## [Slide Title] followed by its content, separated by ---. Include every concept and
+sub-concept listed — each gets its own slide(s). After all modern slides, include the
+legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -1873,28 +2243,94 @@ You are generating slides for Day 4 Part B of a 5-day Angular course.
 
 OUTPUT FOLDER: Create or use the folder `D4B/` in the workspace. Save all generated files there.
 
-CONCEPTS TO COVER (one slide per concept):
-- Template-driven forms — ngModel, #field, ngForm, validators, error display
-- Reactive forms — FormGroup, FormControl, FormBuilder, Validators, valueChanges
-- FormArray — dynamic fields; push(), removeAt(); @for over controls
-- Custom synchronous validators — ValidatorFn; null = valid, object = invalid
-- Custom async validators — AsyncValidatorFn; mock delay
-- Disabling submit until form.valid
-- Form submission — (ngSubmit); read .value; call service; navigate; reset()
-- toSignal(form.valueChanges) — live reactive form state as a signal
-- computed() derived from form signals — e.g. password strength indicator, completion percentage
-- ⚠️ WARNING: ngModel inside reactive form causes runtime error — exact error message shown
+SLIDE DEPTH RULES:
+These slides are detailed descriptions fed into a visual slide generator. Each slide
+must stand on its own with clear, complete content. Every concept uses as many slides
+as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
+get their own dedicated slides. Code examples appear on their own slides, separate from
+explanation slides.
+
+CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
+
+Two form systems in Angular:
+- Angular has two separate form systems — template-driven and reactive
+- When to use each — template-driven for simple forms; reactive for complex, dynamic forms
+
+Template-driven forms:
+- What template-driven forms are — form logic lives mostly in the template
+- ngModel — binding an input to a component property; requires FormsModule
+- ngForm — the form directive that tracks overall form validity
+- #field template references — #email="ngModel" gives access to field state
+- HTML5 validators — required, minlength, maxlength, pattern, email
+- Error display — showing messages with #field.invalid && #field.touched
+- Template-driven form example — a complete contact form with validation and error messages
+
+Reactive forms:
+- What reactive forms are — form logic lives in the TypeScript class
+- FormGroup — a group of form controls treated as a single unit
+- FormControl — an individual form field with its value, validators, and state
+- FormBuilder — a shorthand for creating FormGroups and FormControls
+- Validators — Validators.required, Validators.minLength(), Validators.email
+- valueChanges — an Observable that emits whenever any form value changes
+- Reactive form example — a complete registration form built with FormBuilder
+
+FormArray:
+- What FormArray is — a dynamic list of form controls that can grow or shrink at runtime
+- FormArray.push() — adding a new control dynamically
+- FormArray.removeAt() — removing a control by index
+- Iterating over FormArray — using @for to render each control
+- FormArray example — "add another phone number" or "add another promo code"
+
+Custom synchronous validators:
+- What a ValidatorFn is — a function that returns null (valid) or an error object (invalid)
+- The validator contract — return null = valid, return { errorKey: true } = invalid
+- Custom validator example — password match validator comparing two fields
+- Using a custom validator — attaching it to a FormGroup or FormControl
+
+Custom async validators:
+- What an AsyncValidatorFn is — a validator that returns a Promise or Observable
+- When to use async validators — checking if a username is taken, validating against an API
+- Async validator example — username availability check with a mock HTTP delay
+- Pending state — how to show a loading indicator while the async validator runs
+
+Disabling submit:
+- Disabling the submit button until form.valid — [disabled]="!form.valid"
+- Why this matters — prevents invalid form submissions
+
+Form submission:
+- (ngSubmit) handler — the event that fires when the form is submitted
+- Reading form values — form.value gives you the complete form data as an object
+- The submission flow — read .value → call service → Router.navigate() on success → form.reset() on failure
+- Form submission example — complete submit handler with error handling
+
+toSignal(form.valueChanges):
+- What this does — converts the form's live valueChanges Observable into a signal
+- Why it's useful — you already used toSignal() with HTTP; form.valueChanges is just another Observable
+- toSignal() with form example — a live preview of form data as the user types
+
+computed() derived from form signals:
+- Deriving state from form values — computed() that reacts to toSignal(form.valueChanges)
+- Password strength indicator — a computed signal that calculates strength from the password field
+- Completion percentage — a computed signal showing how much of a multi-step form is filled out
+
+⚠️ WARNING: ngModel inside reactive form:
+- The exact error — ngModel cannot be used inside a reactive FormGroup
+- Why it happens — mixing template-driven and reactive systems in the same form
+- The fix — use formControlName instead of ngModel inside reactive forms
+- Show the exact error message so students recognize it immediately
+
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- FormsModule — show FormsModule imported in NgModule; contrast with modern import in standalone component
-- ReactiveFormsModule — show ReactiveFormsModule imported in NgModule; contrast with modern import in standalone component
-- Form value as signal — show manual ngOnInit subscription + ngOnDestroy cleanup; contrast with modern toSignal(form.valueChanges)
-- FormArray — identical API in both; note this did not change
-Each legacy slide shows actual legacy code, explains the NgModule-based form setup, and shows the modern equivalent side by side.
+- FormsModule — first explain FormsModule imported in NgModule and the global registration; then show the modern import in a standalone component's imports array
+- ReactiveFormsModule — first explain ReactiveFormsModule imported in NgModule; then show the modern import in a standalone component
+- Form value as signal — first explain manual valueChanges subscription in ngOnInit + cleanup in ngOnDestroy; then show modern toSignal(form.valueChanges) one-liner
+- FormArray — identical API in both legacy and modern; note this did not change
+Each legacy topic: first explain the legacy code and what pain or overhead it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
 
 **NOW WRITE THE COMPLETE SLIDE DECK for Day 4 Part B. Generate your own focused code
 examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept
-listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
+## [Slide Title] followed by its content, separated by ---. Include every concept and
+sub-concept listed — each gets its own slide(s). After all modern slides, include the
+legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---
@@ -2143,30 +2579,92 @@ You are generating slides for Day 5 Part A of a 5-day Angular course.
 
 OUTPUT FOLDER: Create or use the folder `D5A/` in the workspace. Save all generated files there.
 
-CONCEPTS TO COVER (one slide per concept):
-- Angular testing setup — Jasmine + Karma; Jest alternative
-- TestBed — Angular test environment; ComponentFixture, debugElement, detectChanges()
-- ⚠️ WARNING: forgetting detectChanges() — most common cause of tests that always pass
-- Testing standalone components — imports: [MyComponent]
-- Testing @Input and @Output
-- Testing signal inputs — fixture.componentRef.setInput()
-- Testing computed() signals
-- Unit testing a service — createSpyObj; BehaviorSubject; error$ stream
-- Testing HTTP — provideHttpClientTesting(); HttpTestingController; flush; HttpErrorResponse
-- Testing a pipe — simplest test; transform(); assert
-- Testing lifecycle — ngOnInit via detectChanges(); ngOnDestroy cleanup
-- Unit vs integration tradeoffs — NO_ERRORS_SCHEMA vs real child imports (pros/cons)
+SLIDE DEPTH RULES:
+These slides are detailed descriptions fed into a visual slide generator. Each slide
+must stand on its own with clear, complete content. Every concept uses as many slides
+as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
+get their own dedicated slides. Code examples appear on their own slides, separate from
+explanation slides.
+
+CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
+
+Angular testing setup:
+- What Angular uses for testing — Jasmine (test framework) + Karma (test runner)
+- Jest as an alternative — mention it exists; this course uses Jasmine/Karma
+- Running tests — ng test command; what the output looks like
+
+TestBed:
+- What TestBed is — a mini Angular environment that exists only inside your test
+- TestBed.configureTestingModule — setting up the test module with imports, providers
+- ComponentFixture — the wrapper that gives you access to the component instance and its DOM
+- debugElement — accessing the component's rendered DOM for assertions
+- detectChanges() — triggering change detection manually in tests
+- ⚠️ WARNING: forgetting detectChanges() — the #1 cause of tests that always pass even when they shouldn't
+
+Testing standalone components:
+- imports: [MyComponent] — how standalone components simplify test setup
+- Creating the fixture — TestBed.createComponent(MyComponent)
+- Accessing the component instance — fixture.componentInstance
+
+Testing @Input:
+- Setting an @Input value — component.title = 'Test'; fixture.detectChanges()
+- Asserting the template updated — checking the rendered DOM for the expected text
+
+Testing @Output:
+- Subscribing to the EventEmitter — component.myOutput.subscribe(val => ...)
+- Triggering the event — clicking a button or calling a method
+- Asserting the emitted value
+
+Testing signal inputs:
+- Why you can't set input() directly — it's readonly from outside the component
+- fixture.componentRef.setInput() — the official way to set signal inputs in tests
+- setInput() example — fixture.componentRef.setInput('name', 'Test'); fixture.detectChanges()
+
+Testing computed() signals:
+- Changing the source signal — using .set() or setInput() to update the dependency
+- Asserting the computed value — reading the computed signal and checking its value
+- Verifying reactivity — changing the source and confirming the derived value updates
+
+Unit testing a service:
+- jasmine.createSpyObj — creating a mock service with fake methods
+- Providing the mock — TestBed.configureTestingModule({ providers: [{ provide: RealService, useValue: mockService }] })
+- Testing BehaviorSubject state — changing state, subscribing, asserting values
+- Testing the error$ stream — triggering an error condition, asserting the error message
+
+Testing HTTP:
+- provideHttpClientTesting() — replacing real HTTP with a testing controller
+- HttpTestingController — intercepting outgoing requests and providing fake responses
+- expectOne() — asserting that a specific URL was called with the right method
+- flush() — sending a fake response to the pending request
+- Simulating HttpErrorResponse — testing error handling with flush({ ... }, { status: 404 })
+
+Testing a pipe:
+- Why pipe tests are the simplest — instantiate, call transform(), assert the return value
+- Pipe test example — new TruncatePipe().transform('long text', 5) should return 'long ...'
+- Testing edge cases — empty strings, strings shorter than the limit, boundary values
+
+Testing lifecycle:
+- Testing ngOnInit — detectChanges() triggers ngOnInit; assert initialization happened
+- Testing ngOnDestroy — call fixture.destroy(); assert timers cleared or subscriptions cancelled
+
+Unit vs integration test tradeoffs:
+- NO_ERRORS_SCHEMA — tells Angular to ignore unknown elements; simplifies unit tests but hides errors
+- Real child imports — importing actual child components catches integration issues but adds complexity
+- When to use each — NO_ERRORS_SCHEMA for focused unit tests; real imports for integration tests
+- Running both — keeping separate .spec.ts and .integration.spec.ts files
+
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- Component test setup — show declarations + module deps in TestBed; contrast with modern imports: [StandaloneComponent]
-- HTTP testing — show HttpClientTestingModule in imports; contrast with modern provideHttpClientTesting()
-- Signal input testing — show component.prop = value approach; contrast with modern fixture.componentRef.setInput()
-- Change detection — detectChanges() is the same in both; note this did not change
-Each legacy slide shows actual legacy test code, explains the module-based test setup, and shows the modern equivalent side by side.
+- Component test setup — first explain declarations array + module deps in TestBed.configureTestingModule; then show modern imports: [StandaloneComponent]
+- HTTP testing — first explain HttpClientTestingModule import in the test module; then show modern provideHttpClientTesting()
+- Signal input testing — first explain component.prop = value direct assignment approach; then show modern fixture.componentRef.setInput()
+- Change detection — detectChanges() works the same in both; note this did not change
+Each legacy topic: first explain the legacy test code and what overhead it involved, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
 
 **NOW WRITE THE COMPLETE SLIDE DECK for Day 5 Part A. Generate your own focused code
 examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept
-listed. After all modern slides, include the legacy contrast slides showing actual legacy code examples.**
+## [Slide Title] followed by its content, separated by ---. Include every concept and
+sub-concept listed — each gets its own slide(s). After all modern slides, include the
+legacy contrast slides showing actual legacy code examples.**
 ```
 
 ---

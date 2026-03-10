@@ -72,10 +72,19 @@ API base URL stored in environment.ts as apiUrl: 'http://localhost:3000'
 
 SLIDE FORMAT RULES
 
-- One concept per slide
-- Maximum 5 bullet points per content slide
+- Slides are detailed descriptions that will be fed to a visual slide generator — write clear,
+  complete content that stands on its own without verbal explanation
+- Every concept uses AS MANY SLIDES as needed for full comprehension — never cram multiple ideas
+  onto one slide. A single concept may require separate slides for: what it is, why it matters,
+  syntax/code example, step-by-step walkthrough, common mistakes, and a summary
+- Sub-concepts always get their own dedicated slides — for example, "Installing the CLI and
+  generating a project" requires separate slides for prerequisites, the install command, the
+  ng new command with its options, and walking through the generated output
+- Procedural concepts (CLI commands, setup steps, configuration) must show the exact commands
+  and walk through each step across multiple slides
+- Maximum 5 bullet points per content slide — if more are needed, split into additional slides
 - Code slides show one focused chunk of code at a time — never a full file on one slide
-- Every section ends with legacy contrast slides showing actual legacy code after the modern slides
+- Every section ends with legacy contrast slides after all modern concept slides
 - Slide titles are short (3–6 words) and action-oriented where possible
 - No transitional filler slides
 - Concepts with a "common mistake" or "important note" get their own WARNING slide labeled with ⚠️
@@ -85,7 +94,9 @@ LEGACY CONTRAST RULES
 - Legacy code examples always use NgModule, constructor injection, *ngIf/*ngFor,
   HttpClientModule, RouterModule.forRoot(), class-based guards
 - Legacy contrast appears as dedicated slides AFTER all modern concept slides in each section
-- Each legacy slide shows actual legacy code, explains what pain it caused, and shows the modern equivalent
+- Each legacy contrast topic: first a slide explaining the legacy code and what pain it caused,
+  then a separate slide showing the modern equivalent — combine onto one slide only if the
+  comparison is brief enough to avoid overcrowding
 - Never show legacy code mid-lesson without clearly labeling it as legacy
 - Every SAMPLE CODE prompt includes a complete legacy app in a `LegacySampleCode/` subfolder inside the
   day/part output folder (e.g., `D1A/LegacySampleCode/`). Modern sample code goes in a `SampleCode/`
