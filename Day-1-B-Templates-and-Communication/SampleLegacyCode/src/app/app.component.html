@@ -1,0 +1,106 @@
+<!--
+  legacy/app.component.html — Root Template (Legacy Pattern)
+
+  THIS IS THE LEGACY PATTERN — shown for comparison only.
+
+  The template is nearly IDENTICAL to the modern version because template
+  syntax (interpolation, property binding, event binding, safe navigation,
+  template refs) is the same in legacy and modern Angular.
+
+  The difference is structural: this template can use <app-product-card> and
+  <app-character-counter> because AppModule declares them — NOT because this
+  component imports them directly. That's the hidden coupling legacy introduces.
+
+  NOTE: No signal-counter component in this version. Signals are a modern-only
+  feature with no legacy equivalent.
+-->
+
+<div class="app-container">
+  <!-- Interpolation: displaying component data in the template -->
+  <header class="app-header">
+    <h1>{{ pageTitle }}</h1>
+    <span class="legacy-badge">LEGACY NgModule Pattern</span>
+  </header>
+
+  <main>
+    <!-- SECTION 1: Safe Navigation & Nullish Coalescing -->
+    <!-- These template features work identically in legacy and modern Angular -->
+    <section class="demo-section">
+      <h2>Safe Navigation (?.) &amp; Nullish Coalescing (??)</h2>
+
+      <!-- currentUser exists — safe navigation passes through -->
+      <div class="user-card">
+        <p><strong>Logged-in user:</strong> {{ currentUser?.name }}</p>
+        <p><strong>City:</strong> {{ currentUser?.address?.city }}, {{ currentUser?.address?.state }}</p>
+        <p><strong>Street:</strong> {{ currentUser?.address?.street ?? 'No street on file' }}</p>
+      </div>
+
+      <!-- guestUser is null — safe navigation returns undefined, ?? provides fallback -->
+      <div class="user-card guest">
+        <p><strong>Guest display:</strong> {{ guestUser?.name ?? 'Anonymous Guest' }}</p>
+        <p><strong>Guest city:</strong> {{ guestUser?.address?.city ?? 'Unknown location' }}</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Template Reference Variables (#ref) -->
+    <!-- Template refs work identically in legacy and modern Angular -->
+    <section class="demo-section">
+      <h2>Template Reference Variables (#ref)</h2>
+
+      <div class="ref-demo">
+        <!-- #searchInput creates a reference to this input element -->
+        <input #searchInput type="text" placeholder="Type here to search...">
+
+        <!-- Passing a ref's value to an event handler -->
+        <button (click)="onSearch(searchInput.value)">Search</button>
+
+        <!-- Wiring siblings: this paragraph reads the same ref -->
+        <!-- Updates when change detection runs (after clicking the button) -->
+        <p class="ref-display">Current value: "{{ searchInput.value }}"</p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Product Cards (@Input + @Output) -->
+    <!--
+      These child components work here because AppModule declares them.
+      In the modern version, AppComponent imports them directly:
+        imports: [ProductCardComponent, CharacterCounterComponent]
+    -->
+    <section class="demo-section">
+      <h2>Product Cards — @Input() &amp; @Output()</h2>
+
+      <div class="product-grid">
+        <!-- Static string: name="..." passes a literal string -->
+        <app-product-card
+          name="Angular in Action"
+          [price]="29.99"
+          (addToCart)="onAddToCart($event)"
+        ></app-product-card>
+
+        <!-- Property binding: [name]="expression" evaluates the expression -->
+        <app-product-card
+          [name]="'TypeScript Handbook'"
+          [price]="19.99"
+          (addToCart)="onAddToCart($event)"
+        ></app-product-card>
+      </div>
+
+      <div class="cart-summary">
+        <h3>🛒 Cart ({{ cartItems.length }} items)</h3>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Character Counter (All Binding Types) -->
+    <!--
+      [(ngModel)] works here because FormsModule is in AppModule imports.
+      In modern Angular, CharacterCounterComponent imports FormsModule directly.
+      With legacy, if you forget FormsModule in app.module.ts, ngModel silently fails.
+    -->
+    <section class="demo-section">
+      <h2>Character Counter — All Four Binding Types</h2>
+      <app-character-counter></app-character-counter>
+    </section>
+
+    <!-- NO Signal Counter section — signals don't exist in legacy Angular -->
+  </main>
+</div>

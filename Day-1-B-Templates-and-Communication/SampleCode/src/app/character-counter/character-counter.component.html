@@ -1,0 +1,83 @@
+<!--
+  character-counter.component.html — Character Counter Template
+
+  Demonstrates all FOUR binding types in one template:
+    1. INTERPOLATION {{ }}     — displaying values as text
+    2. PROPERTY BINDING []     — setting element properties from component state
+    3. EVENT BINDING ()        — responding to user actions
+    4. TWO-WAY BINDING [()]    — keeping component property and input in sync
+-->
+
+<div class="counter-container">
+
+  <h3>Character Counter</h3>
+  <p class="subtitle">All four binding types in action:</p>
+
+  <!--
+    ╔═══════════════════════════════════════════════════════════╗
+    ║  TWO-WAY BINDING: [(ngModel)]="message"                  ║
+    ║  - When the user types → message updates automatically    ║
+    ║  - When code sets message → textarea updates automatically║
+    ║  - Requires FormsModule in the component's imports array  ║
+    ╚═══════════════════════════════════════════════════════════╝
+
+    ╔═══════════════════════════════════════════════════════════╗
+    ║  EVENT BINDING: (input)="onInput($event)"                ║
+    ║  - Fires on every keystroke                               ║
+    ║  - $event is the native DOM InputEvent object             ║
+    ╚═══════════════════════════════════════════════════════════╝
+  -->
+  <textarea
+    [(ngModel)]="message"
+    (input)="onInput($event)"
+    placeholder="Type your message here..."
+    rows="4"
+    class="message-input"
+  ></textarea>
+
+  <!--
+    ╔═══════════════════════════════════════════════════════════╗
+    ║  INTERPOLATION: {{ remainingChars }}                      ║
+    ║  Displays the computed remaining character count as text.  ║
+    ╚═══════════════════════════════════════════════════════════╝
+
+    ╔═══════════════════════════════════════════════════════════╗
+    ║  PROPERTY BINDING: [class.over-limit]="isOverLimit"       ║
+    ║  Adds the CSS class "over-limit" when isOverLimit is true.║
+    ╚═══════════════════════════════════════════════════════════╝
+  -->
+  <p class="char-count" [class.over-limit]="isOverLimit">
+    {{ remainingChars }} characters remaining
+  </p>
+
+  <div class="actions">
+    <!--
+      PROPERTY BINDING: [disabled]="isOverLimit || message.length === 0"
+      The button's disabled property is bound to a component expression.
+      When the expression is true, the button is grayed out and unclickable.
+    -->
+    <button
+      [disabled]="isOverLimit || message.length === 0"
+      class="submit-button"
+    >
+      Submit
+    </button>
+
+    <!--
+      EVENT BINDING: (click)="clearMessage()"
+      Calls the clearMessage() method when clicked.
+      Because of two-way binding, setting message = '' also clears the textarea.
+    -->
+    <button (click)="clearMessage()" class="clear-button">
+      Clear
+    </button>
+  </div>
+
+  <!-- INTERPOLATION: displaying various component state values -->
+  <div class="stats">
+    <p>Current length: {{ message.length }} / {{ maxLength }}</p>
+    <p>Total keystrokes: {{ charCount }}</p>
+    <p>Auto-saves: {{ autoSaveCount }} (every 5s when text exists)</p>
+  </div>
+
+</div>

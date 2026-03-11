@@ -1,0 +1,49 @@
+<!--
+  product-card.component.html — Product Card Template
+
+  Demonstrates:
+  - Interpolation {{ }} — displaying @Input() values and computed displayLabel
+  - Template reference variable #quantityInput — reading the input's value on click
+  - Event binding (click) — calling a method that emits an @Output() event
+-->
+
+<div class="product-card">
+
+  <!-- Interpolation: displayLabel is built in ngOnInit from @Input() name + price -->
+  <h3 class="product-title">{{ displayLabel }}</h3>
+
+  <!-- Interpolation: directly displaying the @Input() price with a $ prefix -->
+  <p class="product-price">${{ price.toFixed(2) }}</p>
+
+  <div class="product-actions">
+    <label for="qty-{{ name }}">Qty:</label>
+
+    <!--
+      TEMPLATE REFERENCE VARIABLE: #quantityInput
+      This creates a variable named quantityInput that points to this <input> DOM element.
+      We can read quantityInput.value anywhere in THIS template (not in the .ts file).
+      Unlike two-way binding [(ngModel)], this doesn't sync a component property —
+      it gives you direct access to the DOM element when you need it.
+    -->
+    <input
+      #quantityInput
+      type="number"
+      id="qty-{{ name }}"
+      value="1"
+      min="1"
+      max="10"
+      class="quantity-input"
+    >
+
+    <!--
+      EVENT BINDING: (click)
+      When clicked, calls onAddToCart() and PASSES the ref's value as an argument.
+      quantityInput.value reads the current text from the input element.
+      This is a key pattern: #ref + (event)="handler(ref.value)"
+    -->
+    <button (click)="onAddToCart(quantityInput.value)" class="add-button">
+      Add to Cart
+    </button>
+  </div>
+
+</div>

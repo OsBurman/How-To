@@ -1,0 +1,51 @@
+<!--
+  legacy/character-counter.component.html — Character Counter Template (Legacy Pattern)
+
+  Template syntax is IDENTICAL to the modern version.
+  All four binding types work the same way in legacy and modern Angular:
+    1. Interpolation: {{ remainingChars }}, {{ autoSaveCount }}
+    2. Property binding: [disabled]="...", [class.over-limit]="..."
+    3. Event binding: (input)="onInput($event)", (click)="clearMessage()"
+    4. Two-way binding: [(ngModel)]="message"
+
+  The key legacy difference is invisible here — FormsModule (required for ngModel)
+  is imported in app.module.ts, not in this component.
+-->
+
+<div class="counter-container">
+  <h3>Character Counter</h3>
+
+  <!-- TWO-WAY BINDING: [(ngModel)] keeps 'message' and the textarea in sync -->
+  <!-- In legacy Angular, this requires FormsModule in app.module.ts imports -->
+  <!-- In modern Angular, FormsModule is in the component's own imports array -->
+  <textarea
+    [(ngModel)]="message"
+    (input)="onInput($event)"
+    placeholder="Type your message here..."
+    rows="4"
+  ></textarea>
+
+  <!-- INTERPOLATION + PROPERTY BINDING combined -->
+  <!-- {{ remainingChars }} displays computed data -->
+  <!-- [class.over-limit] toggles a CSS class based on component state -->
+  <p class="char-count" [class.over-limit]="isOverLimit">
+    {{ remainingChars }} characters remaining
+  </p>
+
+  <div class="button-row">
+    <!-- PROPERTY BINDING: [disabled] prevents clicking when over limit or empty -->
+    <!-- EVENT BINDING: (click) calls the clearMessage() handler -->
+    <button
+      class="clear-btn"
+      [disabled]="message.length === 0"
+      (click)="clearMessage()"
+    >
+      Clear
+    </button>
+  </div>
+
+  <!-- INTERPOLATION: display auto-save count from the interval timer -->
+  <p class="auto-save-status">
+    Auto-saves: {{ autoSaveCount }}
+  </p>
+</div>

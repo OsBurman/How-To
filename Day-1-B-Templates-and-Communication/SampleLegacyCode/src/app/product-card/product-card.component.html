@@ -1,0 +1,37 @@
+<!--
+  legacy/product-card.component.html — Product Card Template (Legacy Pattern)
+
+  Template syntax is IDENTICAL to the modern version.
+  Interpolation, property binding, event binding, and template refs
+  work the same way regardless of NgModule vs standalone.
+-->
+
+<div class="product-card">
+  <!-- Interpolation: display the processed label built in ngOnInit -->
+  <h3 class="product-title">{{ displayLabel }}</h3>
+
+  <p class="product-price">
+    Price: <strong>${{ price }}</strong>
+  </p>
+
+  <div class="quantity-row">
+    <label for="qty">Qty:</label>
+    <!-- #quantityInput is a template reference variable -->
+    <!-- It gives us a direct handle to this input element -->
+    <input
+      #quantityInput
+      type="number"
+      id="qty"
+      value="1"
+      min="1"
+      max="10"
+      class="quantity-input"
+    >
+  </div>
+
+  <!-- Event binding: (click) calls onAddToCart with the ref's value -->
+  <!-- quantityInput.value reads the DOM element directly — no ngModel needed -->
+  <button class="add-btn" (click)="onAddToCart(quantityInput.value)">
+    Add {{ name }} to Cart
+  </button>
+</div>

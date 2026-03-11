@@ -1,0 +1,30 @@
+/**
+ * styles.css — Global Styles (Legacy Version)
+ *
+ * Identical to the modern version — global styles don't change
+ * between legacy and modern Angular. The difference is in how
+ * components are registered and organized, not in CSS.
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}

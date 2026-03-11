@@ -1,0 +1,47 @@
+<!--
+  signal-counter.component.html — Signal Counter Template (Day 2 Preview)
+
+  ═══════════════════════════════════════════════════════════════
+   🔮 DAY 2 PREVIEW — Not required for today's exercises.
+  ═══════════════════════════════════════════════════════════════
+
+  KEY DIFFERENCE FROM REGULAR PROPERTIES:
+  - Regular property:  {{ count }}    — no parentheses
+  - Signal value:      {{ count() }} — WITH parentheses (it's a function call)
+
+  Angular uses the parentheses to track which signals are read during template
+  rendering, enabling fine-grained updates on Day 2.
+-->
+
+<div class="signal-counter">
+
+  <p class="preview-badge">🔮 Day 2 Preview — Signals</p>
+
+  <h3>Signal Counter</h3>
+
+  <!-- Reading a computed signal: message() returns a string based on count() -->
+  <p class="signal-message">{{ message() }}</p>
+
+  <!-- Reading signals in interpolation — note the () after each signal name -->
+  <div class="signal-values">
+    <span class="value-label">Count:</span>
+    <span class="value-number">{{ count() }}</span>
+    <span class="value-separator">|</span>
+    <span class="value-label">Doubled:</span>
+    <span class="value-number">{{ doubled() }}</span>
+  </div>
+
+  <!-- Event binding works the same way with signals as with regular properties -->
+  <div class="button-group">
+    <button (click)="decrement()" class="signal-button">−</button>
+    <button (click)="reset()" class="signal-button reset">Reset</button>
+    <button (click)="increment()" class="signal-button">+</button>
+  </div>
+
+  <p class="signal-note">
+    Signals are Angular's reactive primitive — they track dependencies automatically.
+    Full coverage on Day 2. For now, just notice: {{ 'count()' }} reads the value,
+    and computed() recalculates when count changes.
+  </p>
+
+</div>

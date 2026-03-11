@@ -1,0 +1,156 @@
+<!--
+  app.component.html — Root Component Template
+
+  Demonstrates:
+  - Interpolation {{ }} for displaying component properties
+  - Safe navigation ?. for accessing nested properties that might be null
+  - Nullish coalescing ?? for providing fallback values
+  - Property binding [name]="value" passing data into child components
+  - Event binding (addToCart)="handler($event)" receiving events from children
+  - Template reference variables #ref for direct DOM element access
+-->
+
+<div class="app-container">
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       INTERPOLATION {{ }}
+       Double curly braces evaluate the expression inside and render
+       the result as text. pageTitle is a string property on AppComponent.
+       ═══════════════════════════════════════════════════════════════ -->
+  <header class="app-header">
+    <h1>{{ pageTitle }}</h1>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 1: SAFE NAVIGATION ?. & NULLISH COALESCING ??
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="demo-section">
+      <h2>Safe Navigation (?.) &amp; Nullish Coalescing (??)</h2>
+
+      <!-- currentUser EXISTS — safe navigation traverses the chain normally -->
+      <div class="user-card">
+        <h3>Logged-in User</h3>
+        <!-- ?. safely accesses each level — if currentUser were null, this returns undefined -->
+        <p><strong>Name:</strong> {{ currentUser?.name }}</p>
+        <p><strong>Email:</strong> {{ currentUser?.email }}</p>
+        <!-- Chained safe navigation: currentUser?.address?.city -->
+        <p><strong>City:</strong> {{ currentUser?.address?.city }}, {{ currentUser?.address?.state }}</p>
+        <!-- street is undefined — ?. returns undefined, ?? provides fallback -->
+        <p><strong>Street:</strong> {{ currentUser?.address?.street ?? 'No street on file' }}</p>
+      </div>
+
+      <!-- guestUser is NULL — safe navigation prevents the crash -->
+      <div class="user-card guest">
+        <h3>Guest User</h3>
+        <!-- Without ?., accessing guestUser.name would throw a TypeError -->
+        <!-- With ?., it returns undefined; ?? provides the fallback string -->
+        <p><strong>Name:</strong> {{ guestUser?.name ?? 'Anonymous Guest' }}</p>
+        <p><strong>City:</strong> {{ guestUser?.address?.city ?? 'Unknown location' }}</p>
+        <p><strong>Email:</strong> {{ guestUser?.email ?? 'not-provided@example.com' }}</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 2: TEMPLATE REFERENCE VARIABLES (#ref)
+         A template ref gives you a direct handle to a DOM element.
+         You can read its properties (like .value) and pass them
+         to event handlers or display them in sibling elements.
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="demo-section">
+      <h2>Template Reference Variables (#ref)</h2>
+
+      <div class="ref-demo">
+        <!-- #searchInput creates a variable pointing to this <input> DOM element -->
+        <!-- You can use searchInput.value anywhere in this template -->
+        <input
+          #searchInput
+          type="text"
+          placeholder="Type something to search..."
+          class="search-input"
+        >
+
+        <!-- PASSING TO HANDLER: searchInput.value reads the input's current text -->
+        <!-- and passes it as an argument to the onSearch() method -->
+        <button (click)="onSearch(searchInput.value)" class="search-button">
+          Search
+        </button>
+
+        <!-- WIRING SIBLINGS: this paragraph reads the same ref's value -->
+        <!-- It updates whenever change detection runs (e.g., after clicking the button) -->
+        <p class="ref-output">
+          Input contains: "{{ searchInput.value }}"
+          ({{ searchInput.value.length }} characters)
+        </p>
+
+        <!-- The stored search term updates when the button is clicked -->
+        <p class="search-result">
+          Last search: "{{ lastSearchTerm }}"
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 3: PRODUCT CARDS — @Input() & @Output()
+         [name] and [price] send data DOWN into the child via @Input().
+         (addToCart) receives events UP from the child via @Output().
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="demo-section">
+      <h2>Product Cards — @Input() &amp; @Output()</h2>
+
+      <div class="product-grid">
+        <!-- Static string: name="Angular in Action" (no brackets = static HTML attribute) -->
+        <!-- Property binding: [price]="29.99" evaluates the expression 29.99 -->
+        <!-- Event binding: (addToCart)="onAddToCart($event)" receives the emitted object -->
+        <app-product-card
+          name="Angular in Action"
+          [price]="29.99"
+          (addToCart)="onAddToCart($event)"
+        ></app-product-card>
+
+        <!-- Property binding with string expression: [name]="'TypeScript Handbook'" -->
+        <!-- The outer [] mean "evaluate this expression"; the inner '' make it a string literal -->
+        <app-product-card
+          [name]="'TypeScript Handbook'"
+          [price]="19.99"
+          (addToCart)="onAddToCart($event)"
+        ></app-product-card>
+
+        <app-product-card
+          name="RxJS Patterns"
+          [price]="24.99"
+          (addToCart)="onAddToCart($event)"
+        ></app-product-card>
+      </div>
+
+      <!-- Cart summary — shows count via interpolation -->
+      <div class="cart-summary">
+        <h3>🛒 Cart ({{ cartItems.length }} items)</h3>
+        <!-- Note: We'll learn @for to loop through cartItems on Day 2 Part A -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 4: CHARACTER COUNTER — ALL FOUR BINDING TYPES
+         Interpolation {{ }}, property binding [], event binding (),
+         and two-way binding [(ngModel)] — all in one component.
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="demo-section">
+      <h2>Character Counter — All Four Binding Types</h2>
+      <app-character-counter></app-character-counter>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 5: SIGNAL COUNTER — DAY 2 PREVIEW
+         signal() and computed() are the future of Angular reactivity.
+         This is a first look — exercises do NOT require signals yet.
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="demo-section">
+      <h2>🔮 Signals Preview (Day 2)</h2>
+      <app-signal-counter></app-signal-counter>
+    </section>
+
+  </main>
+
+</div>

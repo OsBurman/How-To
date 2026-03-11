@@ -1,0 +1,30 @@
+/**
+ * styles.css — Global Styles
+ *
+ * These apply to every component in the app.
+ * Component-specific styles go in each component's own .css file
+ * and are scoped by Angular's ViewEncapsulation.Emulated (default).
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
