@@ -14,7 +14,9 @@
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 /* Hover effect — visual feedback that this is a distinct element */

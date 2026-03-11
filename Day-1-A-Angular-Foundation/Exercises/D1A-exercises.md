@@ -5,7 +5,7 @@
 All exercises in this folder share a single npm workspace. Before starting any exercise:
 
 ```
-cd D1A/Exercises
+cd Day-1-A-Angular-Foundation/Exercises
 npm install
 ```
 
@@ -561,4 +561,4 @@ You start with a working modern standalone Angular app (a banner and three info 
 
 ---
 
-> **Solutions:** Each exercise has a matching solution folder in `D1A/Exercise-Solutions/`. For example, Exercise 1's solution is in `Exercise-Solutions/Exercise-1-Solution/`. Open the files inside `Exercise-N-Solution/src/` to compare with your work.
+> **Solutions:** Each exercise has a matching solution folder in `Day-1-A-Angular-Foundation/Exercises-Solutions/`. For example, Exercise 1's solution is in `Exercises-Solutions/Exercise-1-Solution/`. Open the files inside `Exercise-N-Solution/src/` to compare with your work.

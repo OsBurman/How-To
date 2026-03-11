@@ -9,9 +9,9 @@
 
 **To run a prompt:** Copy the specific day/part prompt from this file and paste it directly into Copilot chat. That's it.
 
-**File references marked `CONTEXT FILES:`** tell Copilot which previously generated files to read for context. Each reference points to a folder in the workspace (e.g., `D1A/`). When you paste a prompt into Copilot chat, attach the referenced files using `#file:D1A/filename.md` syntax, or simply open the files as editor tabs so Copilot can see them. You do NOT need to paste file contents inline — Copilot reads the files directly.
+**File references marked `CONTEXT FILES:`** tell Copilot which previously generated files to read for context. Each reference points to a folder in the workspace (e.g., `Day-1-A-Angular-Foundation/`). When you paste a prompt into Copilot chat, attach the referenced files using `#file:Day-1-A-Angular-Foundation/filename.md` syntax, or simply open the files as editor tabs so Copilot can see them. You do NOT need to paste file contents inline — Copilot reads the files directly.
 
-**Folder organization:** All generated output for a day/part goes in a folder named for that section: `D1A/`, `D1B/`, `D2A/`, `D2B/`, `D3A/`, `D3B/`, `D4A/`, `D4B/`, `D5A/`, `D5B/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `LegacySampleCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercise starter code, `Exercise-Solutions/` for exercise solution files, `SampleProject/` for the sample project, and `GapCheck/` for the gap check report. The capstone project goes in `D5B/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
+**Folder organization:** All generated output for a day/part goes in a folder named for that section: `Day-1-A-Angular-Foundation/`, `Day-1-B-Templates-and-Communication/`, `Day-2-A-Content-Directives-Pipes/`, `Day-2-B-Signals/`, `Day-3-A-Services-DI-RxJS/`, `Day-3-B-HTTP-Async-Data/`, `Day-4-A-Routing/`, `Day-4-B-Forms/`, `Day-5-A-Testing/`, `Day-5-B-Capstone/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `SampleLegacyCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercise starter code, `Exercises-Solutions/` for exercise solution files, `Projects/` for the sample project, and `GapCheck/` for the gap check report. The capstone project goes in `Day-5-B-Capstone/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
 
 **Session order for every Part:**
 1. Sample Code → 2. Slides → 3. Speaker Scripts (Slides + Code Walkthrough) → 4. Exercises → 5. Sample Project → 6. Gap Check
@@ -39,9 +39,9 @@
 
 You are generating sample code for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save modern sample code files in `D1A/SampleCode/`. Save legacy sample code files in `D1A/LegacySampleCode/`.
+OUTPUT FOLDER: Save modern sample code files in `Day-1-A-Angular-Foundation/SampleCode/`. Save legacy sample code files in `Day-1-A-Angular-Foundation/SampleLegacyCode/`.
 
-Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+Both `SampleCode/` and `SampleLegacyCode/` must be complete, runnable Angular CLI projects
 following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
 tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
 src/app/ folder structure with each component in its own subfolder.
@@ -66,7 +66,7 @@ DELIVERABLES (modern — `SampleCode/`):
 6. src/app/header/header.component.ts / .html / .css
 7. src/app/footer/footer.component.ts / .html / .css
 
-DELIVERABLES (legacy — `LegacySampleCode/`):
+DELIVERABLES (legacy — `SampleLegacyCode/`):
 A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
 entirely with legacy patterns: bootstrapModule(AppModule), feature modules per component area
 (HeaderModule, FooterModule), AppModule importing feature modules, NgModule declarations/
@@ -87,7 +87,7 @@ must have an inline comment explaining what it demonstrates. No NgModule in mode
 **NOW WRITE ALL OF THE FILES LISTED ABOVE. Output each file as a separate labeled code
 block. Use the full path from the project root as the label
 (e.g., ### SampleCode/src/app/header/header.component.ts or
-### LegacySampleCode/src/app/app.module.ts).**
+### SampleLegacyCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -98,7 +98,7 @@ block. Use the full path from the project root as the label
 
 You are generating slides for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D1A/Slides/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -194,10 +194,10 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 You are writing the slides speaker script for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D1A/SpeakerScript/D1A-slides-script.md`.
+OUTPUT FOLDER: Save as `Day-1-A-Angular-Foundation/SpeakerScript/D1A-slides-script.md`.
 Target duration: 30–40 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D1A/` folder in the workspace — the slides and sample code files are already generated there.
+CONTEXT FILES: Read all files from the `Day-1-A-Angular-Foundation/` folder in the workspace — the slides and sample code files are already generated there.
 
 SCRIPT RULES:
 - Write exactly what the instructor says out loud — full sentences, not bullets
@@ -223,10 +223,10 @@ script section for every slide. Format as: ## [Slide Title] followed by the full
 
 You are writing the code walkthrough speaker script for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D1A/SpeakerScript/D1A-code-walkthrough-script.md`.
+OUTPUT FOLDER: Save as `Day-1-A-Angular-Foundation/SpeakerScript/D1A-code-walkthrough-script.md`.
 Target duration: 15–20 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D1A/` folder in the workspace — the slides, modern sample code (`D1A/SampleCode/`), and legacy sample code (`D1A/LegacySampleCode/`) are already generated there.
+CONTEXT FILES: Read all files from the `Day-1-A-Angular-Foundation/` folder in the workspace — the slides, modern sample code (`Day-1-A-Angular-Foundation/SampleCode/`), and legacy sample code (`Day-1-A-Angular-Foundation/SampleLegacyCode/`) are already generated there.
 
 SCRIPT RULES:
 - Write exactly what the instructor says out loud — full sentences, not bullets
@@ -253,7 +253,7 @@ in both the modern and legacy sample code projects.**
 
 You are writing student exercises for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D1A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - Generating a project with the CLI
@@ -266,7 +266,7 @@ CONCEPTS THAT MUST BE PRACTICED:
 - Rendering multiple components in AppComponent
 - Triggering and fixing the "not a known element" error
 
-CONTEXT FILES: Read all files from the `D1A/` folder in the workspace — the sample code and slides are already generated there.
+CONTEXT FILES: Read all files from the `Day-1-A-Angular-Foundation/` folder in the workspace — the sample code and slides are already generated there.
 
 EXERCISE RULES:
 - Generate 6–10 exercises progressing from BEGINNER drills to CHALLENGE combinations
@@ -294,7 +294,7 @@ FORMAT FOR EACH EXERCISE:
 **Hint 1 — [Topic]:** ...
 
 End the document after the last exercise with a note pointing students to the
-`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
+`DXX/Exercises-Solutions/` folder. Do NOT include solution code in this document.
 
 **NOW WRITE THE D1A-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 1 Part A.**
 ```
@@ -309,7 +309,7 @@ You are generating starter code projects for the first batch of Day 1 Part A exe
 
 Read the exercises document generated in the previous prompt (D1A — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D1A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/Exercises/`.
 
 For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
 named subfolder. Each project must include:
@@ -340,7 +340,7 @@ You are generating starter code projects for the remaining Day 1 Part A exercise
 
 Read the exercises document generated earlier (D1A — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D1A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/Exercises/`.
 
 For each remaining exercise, generate a complete, runnable Angular CLI project in its named
 subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
@@ -366,7 +366,7 @@ You are generating solution files for ALL Day 1 Part A exercises.
 
 Read the exercises and starter code generated in the previous prompts.
 
-OUTPUT FOLDER: Save all generated files in `D1A/Exercise-Solutions/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/Exercises-Solutions/`.
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
@@ -386,7 +386,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 1 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D1A/SampleProject/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/Projects/`.
 
 PROJECT: Personal Bio Card
 A static personal bio card app. Contains a HeaderComponent, a BioCardComponent that
@@ -418,7 +418,7 @@ no services, no routing.
 
 You are reviewing the generated materials for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D1A/GapCheck/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - What Angular is, why it exists, how it compares to vanilla JS
@@ -431,7 +431,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Angular DevTools
 - ViewEncapsulation basics
 
-CONTEXT FILES: Read all files from the `D1A/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `Day-1-A-Angular-Foundation/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -462,9 +462,9 @@ List any concept appearing in the materials that is NOT in the curriculum requir
 
 You are generating sample code for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save modern sample code files in `D1B/SampleCode/`. Save legacy sample code files in `D1B/LegacySampleCode/`.
+OUTPUT FOLDER: Save modern sample code files in `Day-1-B-Templates-and-Communication/SampleCode/`. Save legacy sample code files in `Day-1-B-Templates-and-Communication/SampleLegacyCode/`.
 
-Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+Both `SampleCode/` and `SampleLegacyCode/` must be complete, runnable Angular CLI projects
 following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
 tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
 src/app/ folder structure with each component in its own subfolder.
@@ -493,7 +493,7 @@ DELIVERABLES (modern — `SampleCode/`):
 5. src/app/character-counter/character-counter.component.ts / .html / .css — all four binding types; ngOnDestroy cancels interval
 6. src/app/signal-counter/signal-counter.component.ts / .html / .css — signal() and computed() preview; labeled as preview
 
-DELIVERABLES (legacy — `LegacySampleCode/`):
+DELIVERABLES (legacy — `SampleLegacyCode/`):
 A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
 entirely with legacy patterns: NgModule with FormsModule in imports, components registered
 in declarations array, constructor injection pattern.
@@ -506,7 +506,7 @@ Every file has comments explaining what the modern standalone approach replaced.
 **NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
 Use the full path from the project root as the label
 (e.g., ### SampleCode/src/app/product-card/product-card.component.ts or
-### LegacySampleCode/src/app/app.module.ts).**
+### SampleLegacyCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -517,7 +517,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D1B/Slides/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -622,10 +622,10 @@ preview slides must clearly state exercises do not require signals yet.**
 
 You are writing the slides speaker script for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D1B/SpeakerScript/D1B-slides-script.md`.
+OUTPUT FOLDER: Save as `Day-1-B-Templates-and-Communication/SpeakerScript/D1B-slides-script.md`.
 Target duration: 30–40 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D1B/` folder in the workspace — the slides and sample code files are already generated there.
+CONTEXT FILES: Read all files from the `Day-1-B-Templates-and-Communication/` folder in the workspace — the slides and sample code files are already generated there.
 
 SPECIFIC GUIDANCE:
 - Four binding types: explain the direction of data flow for each one
@@ -649,10 +649,10 @@ script section for every slide. Format as: ## [Slide Title] followed by the full
 
 You are writing the code walkthrough speaker script for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D1B/SpeakerScript/D1B-code-walkthrough-script.md`.
+OUTPUT FOLDER: Save as `Day-1-B-Templates-and-Communication/SpeakerScript/D1B-code-walkthrough-script.md`.
 Target duration: 15–20 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D1B/` folder in the workspace — the slides, modern sample code (`D1B/SampleCode/`), and legacy sample code (`D1B/LegacySampleCode/`) are already generated there.
+CONTEXT FILES: Read all files from the `Day-1-B-Templates-and-Communication/` folder in the workspace — the slides, modern sample code (`Day-1-B-Templates-and-Communication/SampleCode/`), and legacy sample code (`Day-1-B-Templates-and-Communication/SampleLegacyCode/`) are already generated there.
 
 SCRIPT RULES:
 - Write exactly what the instructor says out loud — full sentences, not bullets
@@ -676,7 +676,7 @@ in both the modern and legacy sample code projects.**
 
 You are writing student exercises for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D1B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - Interpolation
@@ -692,7 +692,7 @@ CONCEPTS THAT MUST BE PRACTICED:
 - ngOnDestroy
 - Signals first look — signal() and computed() only; no effect() yet
 
-CONTEXT FILES: Read all files from the `D1B/` folder in the workspace — the sample code and slides are already generated there.
+CONTEXT FILES: Read all files from the `Day-1-B-Templates-and-Communication/` folder in the workspace — the sample code and slides are already generated there.
 
 EXERCISE RULES:
 - Generate 6–10 exercises from BEGINNER drills to CHALLENGE combinations
@@ -712,7 +712,7 @@ FORMAT:
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
 End the document after the last exercise with a note pointing students to the
-`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
+`DXX/Exercises-Solutions/` folder. Do NOT include solution code in this document.
 
 **NOW WRITE THE D1B-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 1 Part B.**
 ```
@@ -727,7 +727,7 @@ You are generating starter code projects for the first batch of Day 1 Part B exe
 
 Read the exercises document generated in the previous prompt (D1B — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D1B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/Exercises/`.
 
 For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
 named subfolder. Each project must include:
@@ -758,7 +758,7 @@ You are generating starter code projects for the remaining Day 1 Part B exercise
 
 Read the exercises document generated earlier (D1B — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D1B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/Exercises/`.
 
 For each remaining exercise, generate a complete, runnable Angular CLI project in its named
 subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
@@ -784,7 +784,7 @@ You are generating solution files for ALL Day 1 Part B exercises.
 
 Read the exercises and starter code generated in the previous prompts.
 
-OUTPUT FOLDER: Save all generated files in `D1B/Exercise-Solutions/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/Exercises-Solutions/`.
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
@@ -804,7 +804,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 1 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D1B/SampleProject/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/Projects/`.
 
 PROJECT: Tip Calculator
 A reusable TipInputComponent accepts bill amount and tip percentage via @Input() and
@@ -837,7 +837,7 @@ as a clearly labeled optional bonus section.
 
 You are reviewing the generated materials for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D1B/GapCheck/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Interpolation {{ }}
@@ -849,7 +849,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - ngOnDestroy — cleanup
 - Signals first look — signal(), computed()
 
-CONTEXT FILES: Read all files from the `D1B/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `Day-1-B-Templates-and-Communication/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -886,7 +886,7 @@ Part A: ng-content, named slots, ngAfterContentInit, ng-container, ng-template,
 Part B: signal(), computed(), effect() with cleanup, input() readonly, output(),
 model(), fine-grained change detection, ngOnChanges as legacy contrast
 
-CONTEXT FILES: Read all files from the `D1A/` and `D1B/` folders in the workspace — all Day 1 generated materials are there.
+CONTEXT FILES: Read all files from the `Day-1-A-Angular-Foundation/` and `Day-1-B-Templates-and-Communication/` folders in the workspace — all Day 1 generated materials are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -912,9 +912,9 @@ CONTEXT FILES: Read all files from the `D1A/` and `D1B/` folders in the workspac
 
 You are generating sample code for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save modern sample code files in `D2A/SampleCode/`. Save legacy sample code files in `D2A/LegacySampleCode/`.
+OUTPUT FOLDER: Save modern sample code files in `Day-2-A-Content-Directives-Pipes/SampleCode/`. Save legacy sample code files in `Day-2-A-Content-Directives-Pipes/SampleLegacyCode/`.
 
-Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+Both `SampleCode/` and `SampleLegacyCode/` must be complete, runnable Angular CLI projects
 following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
 tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
 src/app/ folder structure with each component in its own subfolder.
@@ -949,7 +949,7 @@ DELIVERABLES (modern — `SampleCode/`):
 8. src/app/pipes/truncate.pipe.ts — custom pure pipe with configurable limit
 9. src/app/pipes/filter.pipe.ts — pure pipe; comments explaining pure re-evaluation behavior
 
-DELIVERABLES (legacy — `LegacySampleCode/`):
+DELIVERABLES (legacy — `SampleLegacyCode/`):
 A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
 entirely with legacy patterns: *ngIf, *ngFor with trackBy, *ngSwitch, *ngIf="expr as name",
 NgModule with declarations and imports.
@@ -962,7 +962,7 @@ Every file has comments explaining what @if/@for/@switch replaced.
 **NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
 Use the full path from the project root as the label
 (e.g., ### SampleCode/src/app/card/card.component.ts or
-### LegacySampleCode/src/app/app.module.ts).**
+### SampleLegacyCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -973,7 +973,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D2A/Slides/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -1073,10 +1073,10 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 You are writing the slides speaker script for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D2A/SpeakerScript/D2A-slides-script.md`.
+OUTPUT FOLDER: Save as `Day-2-A-Content-Directives-Pipes/SpeakerScript/D2A-slides-script.md`.
 Target duration: 30–40 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D2A/` folder in the workspace — the slides and sample code files are already generated there.
+CONTEXT FILES: Read all files from the `Day-2-A-Content-Directives-Pipes/` folder in the workspace — the slides and sample code files are already generated there.
 
 SPECIFIC GUIDANCE:
 - ng-content: use the picture frame analogy — "the frame is the component;
@@ -1102,10 +1102,10 @@ script section for every slide. Format as: ## [Slide Title] followed by the full
 
 You are writing the code walkthrough speaker script for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D2A/SpeakerScript/D2A-code-walkthrough-script.md`.
+OUTPUT FOLDER: Save as `Day-2-A-Content-Directives-Pipes/SpeakerScript/D2A-code-walkthrough-script.md`.
 Target duration: 15–20 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D2A/` folder in the workspace — the slides, modern sample code (`D2A/SampleCode/`), and legacy sample code (`D2A/LegacySampleCode/`) are already generated there.
+CONTEXT FILES: Read all files from the `Day-2-A-Content-Directives-Pipes/` folder in the workspace — the slides, modern sample code (`Day-2-A-Content-Directives-Pipes/SampleCode/`), and legacy sample code (`Day-2-A-Content-Directives-Pipes/SampleLegacyCode/`) are already generated there.
 
 SCRIPT RULES:
 - Write exactly what the instructor says out loud — full sentences, not bullets
@@ -1129,7 +1129,7 @@ in both the modern and legacy sample code projects.**
 
 You are writing student exercises for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D2A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - ng-content single-slot projection
@@ -1147,7 +1147,7 @@ CONCEPTS THAT MUST BE PRACTICED:
 - Pure vs impure pipe behavior
 - Custom pure pipe with transform()
 
-CONTEXT FILES: Read all files from the `D2A/` folder in the workspace — the sample code and slides are already generated there.
+CONTEXT FILES: Read all files from the `Day-2-A-Content-Directives-Pipes/` folder in the workspace — the sample code and slides are already generated there.
 
 EXERCISE RULES:
 - Generate 6–10 exercises from BEGINNER drills to CHALLENGE combinations
@@ -1167,7 +1167,7 @@ FORMAT:
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
 End the document after the last exercise with a note pointing students to the
-`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
+`DXX/Exercises-Solutions/` folder. Do NOT include solution code in this document.
 
 **NOW WRITE THE D2A-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 2 Part A.**
 ```
@@ -1182,7 +1182,7 @@ You are generating starter code projects for the first batch of Day 2 Part A exe
 
 Read the exercises document generated in the previous prompt (D2A — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D2A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/Exercises/`.
 
 For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
 named subfolder. Each project must include:
@@ -1213,7 +1213,7 @@ You are generating starter code projects for the remaining Day 2 Part A exercise
 
 Read the exercises document generated earlier (D2A — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D2A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/Exercises/`.
 
 For each remaining exercise, generate a complete, runnable Angular CLI project in its named
 subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
@@ -1239,7 +1239,7 @@ You are generating solution files for ALL Day 2 Part A exercises.
 
 Read the exercises and starter code generated in the previous prompts.
 
-OUTPUT FOLDER: Save all generated files in `D2A/Exercise-Solutions/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/Exercises-Solutions/`.
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
@@ -1259,7 +1259,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 2 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D2A/SampleProject/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/Projects/`.
 
 PROJECT: Movie Listing
 A movie listing app with genre filters, formatted dates and ratings, and a reusable
@@ -1293,7 +1293,7 @@ Represents Day 1 and Day 2 Part A knowledge only.
 
 You are reviewing the generated materials for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D2A/GapCheck/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - ng-content single-slot and named slots
@@ -1307,7 +1307,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Pure vs impure pipes
 - Custom pure pipe
 
-CONTEXT FILES: Read all files from the `D2A/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `Day-2-A-Content-Directives-Pipes/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -1333,9 +1333,9 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating sample code for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save modern sample code files in `D2B/SampleCode/`. Save legacy sample code files in `D2B/LegacySampleCode/`.
+OUTPUT FOLDER: Save modern sample code files in `Day-2-B-Signals/SampleCode/`. Save legacy sample code files in `Day-2-B-Signals/SampleLegacyCode/`.
 
-Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+Both `SampleCode/` and `SampleLegacyCode/` must be complete, runnable Angular CLI projects
 following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
 tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
 src/app/ folder structure with each component in its own subfolder.
@@ -1348,7 +1348,7 @@ LESSON CONCEPTS TO DEMONSTRATE:
 - Signal-based output() — .emit()
 - model() — two-way signal binding between parent and child
 - Fine-grained change detection — comment explaining only affected DOM nodes re-render
-- ngOnChanges as legacy contrast — demonstrated in the `LegacySampleCode/` subfolder; SimpleChanges;
+- ngOnChanges as legacy contrast — demonstrated in the `SampleLegacyCode/` subfolder; SimpleChanges;
   students can run the legacy app to compare the experience
 - Angular direction callout — after signals are fully shown, a comment block:
   "Zoneless (stable in v21+) is the payoff — signals tell Angular exactly what changed,
@@ -1364,7 +1364,7 @@ DELIVERABLES (modern — `SampleCode/`):
 7. src/app/budget-tracker/budget-tracker.component.ts / .html / .css — computed() total/spent/remaining from signal list
 8. src/app/rating-input/rating-input.component.ts / .html / .css — model() two-way; input() for config; output() for event
 
-DELIVERABLES (legacy — `LegacySampleCode/`):
+DELIVERABLES (legacy — `SampleLegacyCode/`):
 A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
 entirely with legacy patterns: @Input() mutable properties, ngOnChanges with SimpleChanges,
 constructor injection, NgModule with declarations.
@@ -1377,7 +1377,7 @@ Every file has comments explaining what computed() and effect() replaced.
 **NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
 Use the full path from the project root as the label
 (e.g., ### SampleCode/src/app/shopping-cart/shopping-cart.component.ts or
-### LegacySampleCode/src/app/app.module.ts).**
+### SampleLegacyCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -1388,7 +1388,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D2B/Slides/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -1487,10 +1487,10 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 You are writing the slides speaker script for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D2B/SpeakerScript/D2B-slides-script.md`.
+OUTPUT FOLDER: Save as `Day-2-B-Signals/SpeakerScript/D2B-slides-script.md`.
 Target duration: 30–40 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D2B/` folder in the workspace — the slides and sample code files are already generated there.
+CONTEXT FILES: Read all files from the `Day-2-B-Signals/` folder in the workspace — the slides and sample code files are already generated there.
 
 SPECIFIC GUIDANCE:
 - Open calling back to Day 1 preview: "Yesterday you saw signal() and computed() for
@@ -1518,10 +1518,10 @@ script section for every slide. Format as: ## [Slide Title] followed by the full
 
 You are writing the code walkthrough speaker script for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D2B/SpeakerScript/D2B-code-walkthrough-script.md`.
+OUTPUT FOLDER: Save as `Day-2-B-Signals/SpeakerScript/D2B-code-walkthrough-script.md`.
 Target duration: 15–20 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D2B/` folder in the workspace — the slides, modern sample code (`D2B/SampleCode/`), and legacy sample code (`D2B/LegacySampleCode/`) are already generated there.
+CONTEXT FILES: Read all files from the `Day-2-B-Signals/` folder in the workspace — the slides, modern sample code (`Day-2-B-Signals/SampleCode/`), and legacy sample code (`Day-2-B-Signals/SampleLegacyCode/`) are already generated there.
 
 SCRIPT RULES:
 - Write exactly what the instructor says out loud — full sentences, not bullets
@@ -1545,7 +1545,7 @@ in both the modern and legacy sample code projects.**
 
 You are writing student exercises for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D2B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - signal() with .set() and .update()
@@ -1557,7 +1557,7 @@ CONCEPTS THAT MUST BE PRACTICED:
 - Fine-grained change detection understanding
 - ngOnChanges with SimpleChanges (one exercise: read and convert legacy code to signals)
 
-CONTEXT FILES: Read all files from the `D2B/` folder in the workspace — the sample code and slides are already generated there.
+CONTEXT FILES: Read all files from the `Day-2-B-Signals/` folder in the workspace — the sample code and slides are already generated there.
 
 EXERCISE RULES:
 - Generate 6–10 exercises from BEGINNER drills to CHALLENGE combinations
@@ -1577,7 +1577,7 @@ FORMAT:
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
 End the document after the last exercise with a note pointing students to the
-`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
+`DXX/Exercises-Solutions/` folder. Do NOT include solution code in this document.
 
 **NOW WRITE THE D2B-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 2 Part B.**
 ```
@@ -1592,7 +1592,7 @@ You are generating starter code projects for the first batch of Day 2 Part B exe
 
 Read the exercises document generated in the previous prompt (D2B — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D2B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/Exercises/`.
 
 For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
 named subfolder. Each project must include:
@@ -1623,7 +1623,7 @@ You are generating starter code projects for the remaining Day 2 Part B exercise
 
 Read the exercises document generated earlier (D2B — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D2B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/Exercises/`.
 
 For each remaining exercise, generate a complete, runnable Angular CLI project in its named
 subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
@@ -1649,7 +1649,7 @@ You are generating solution files for ALL Day 2 Part B exercises.
 
 Read the exercises and starter code generated in the previous prompts.
 
-OUTPUT FOLDER: Save all generated files in `D2B/Exercise-Solutions/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/Exercises-Solutions/`.
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
@@ -1669,7 +1669,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 2 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D2B/SampleProject/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/Projects/`.
 
 PROJECT: Budget Tracker
 Total, spent, and remaining balance are all computed() signals derived from a writable
@@ -1700,7 +1700,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D2B/GapCheck/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - signal() — .set(), .update()
@@ -1713,7 +1713,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - ngOnChanges as legacy contrast (SimpleChanges)
 - Angular direction — zoneless stable in v21+
 
-CONTEXT FILES: Read all files from the `D2B/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `Day-2-B-Signals/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -1750,7 +1750,7 @@ takeUntilDestroyed(), toSignal(), async pipe vs toSignal()
 Part B: provideHttpClient(), typed interfaces, GET/POST/PUT/DELETE, HttpParams,
 switchMap/catchError/forkJoin, HttpErrorResponse, loading states, HttpInterceptorFn, environment files
 
-CONTEXT FILES: Read all files from the `D2A/` and `D2B/` folders in the workspace — all Day 2 generated materials are there.
+CONTEXT FILES: Read all files from the `Day-2-A-Content-Directives-Pipes/` and `Day-2-B-Signals/` folders in the workspace — all Day 2 generated materials are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 1. List every Day 3 concept that builds on something from Day 2
@@ -1772,9 +1772,9 @@ CONTEXT FILES: Read all files from the `D2A/` and `D2B/` folders in the workspac
 
 You are generating sample code for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save modern sample code files in `D3A/SampleCode/`. Save legacy sample code files in `D3A/LegacySampleCode/`.
+OUTPUT FOLDER: Save modern sample code files in `Day-3-A-Services-DI-RxJS/SampleCode/`. Save legacy sample code files in `Day-3-A-Services-DI-RxJS/SampleLegacyCode/`.
 
-Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+Both `SampleCode/` and `SampleLegacyCode/` must be complete, runnable Angular CLI projects
 following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
 tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
 src/app/ folder structure with each component in its own subfolder.
@@ -1806,7 +1806,7 @@ DELIVERABLES (modern — `SampleCode/`):
 7. src/app/services/notification.service.ts — Subject; push(); auto-dismiss via timer(); takeUntilDestroyed()
 8. src/app/rxjs-operators/rxjs-operators.component.ts / .html / .css — all operators with comments; hot/cold comment block
 
-DELIVERABLES (legacy — `LegacySampleCode/`):
+DELIVERABLES (legacy — `SampleLegacyCode/`):
 A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
 entirely with legacy patterns: constructor injection, async pipe with @if null guard,
 NgModule with declarations, takeUntil + ngOnDestroy Subject pattern.
@@ -1819,7 +1819,7 @@ Every file has comments explaining what inject() and toSignal() replaced.
 **NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
 Use the full path from the project root as the label
 (e.g., ### SampleCode/src/app/services/cart.service.ts or
-### LegacySampleCode/src/app/app.module.ts).**
+### SampleLegacyCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -1830,7 +1830,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D3A/Slides/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -1939,10 +1939,10 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 You are writing the slides speaker script for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D3A/SpeakerScript/D3A-slides-script.md`.
+OUTPUT FOLDER: Save as `Day-3-A-Services-DI-RxJS/SpeakerScript/D3A-slides-script.md`.
 Target duration: 30–40 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D3A/` folder in the workspace — the slides and sample code files are already generated there.
+CONTEXT FILES: Read all files from the `Day-3-A-Services-DI-RxJS/` folder in the workspace — the slides and sample code files are already generated there.
 
 SPECIFIC GUIDANCE:
 - Open with the prop drilling problem: "Right now if two components need the same
@@ -1967,10 +1967,10 @@ script section for every slide. Format as: ## [Slide Title] followed by the full
 
 You are writing the code walkthrough speaker script for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D3A/SpeakerScript/D3A-code-walkthrough-script.md`.
+OUTPUT FOLDER: Save as `Day-3-A-Services-DI-RxJS/SpeakerScript/D3A-code-walkthrough-script.md`.
 Target duration: 15–20 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D3A/` folder in the workspace — the slides, modern sample code (`D3A/SampleCode/`), and legacy sample code (`D3A/LegacySampleCode/`) are already generated there.
+CONTEXT FILES: Read all files from the `Day-3-A-Services-DI-RxJS/` folder in the workspace — the slides, modern sample code (`Day-3-A-Services-DI-RxJS/SampleCode/`), and legacy sample code (`Day-3-A-Services-DI-RxJS/SampleLegacyCode/`) are already generated there.
 
 SCRIPT RULES:
 - Write exactly what the instructor says out loud — full sentences, not bullets
@@ -1994,7 +1994,7 @@ in both the modern and legacy sample code projects.**
 
 You are writing student exercises for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D3A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - @Injectable providedIn root
@@ -2009,7 +2009,7 @@ CONCEPTS THAT MUST BE PRACTICED:
 - toSignal() with initialValue
 - async pipe null behavior — one exercise demonstrates the gotcha, then fixes with toSignal()
 
-CONTEXT FILES: Read all files from the `D3A/` folder in the workspace — the sample code and slides are already generated there.
+CONTEXT FILES: Read all files from the `Day-3-A-Services-DI-RxJS/` folder in the workspace — the sample code and slides are already generated there.
 
 EXERCISE RULES:
 - Generate 6–10 exercises from BEGINNER drills to CHALLENGE combinations
@@ -2029,7 +2029,7 @@ FORMAT:
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
 End the document after the last exercise with a note pointing students to the
-`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
+`DXX/Exercises-Solutions/` folder. Do NOT include solution code in this document.
 
 **NOW WRITE THE D3A-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 3 Part A.**
 ```
@@ -2044,7 +2044,7 @@ You are generating starter code projects for the first batch of Day 3 Part A exe
 
 Read the exercises document generated in the previous prompt (D3A — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D3A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/Exercises/`.
 
 For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
 named subfolder. Each project must include:
@@ -2075,7 +2075,7 @@ You are generating starter code projects for the remaining Day 3 Part A exercise
 
 Read the exercises document generated earlier (D3A — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D3A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/Exercises/`.
 
 For each remaining exercise, generate a complete, runnable Angular CLI project in its named
 subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
@@ -2101,7 +2101,7 @@ You are generating solution files for ALL Day 3 Part A exercises.
 
 Read the exercises and starter code generated in the previous prompts.
 
-OUTPUT FOLDER: Save all generated files in `D3A/Exercise-Solutions/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/Exercises-Solutions/`.
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
@@ -2121,7 +2121,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 3 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D3A/SampleProject/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/Projects/`.
 
 PROJECT: Shopping Cart
 A shopping cart app where the header displays cart count and the cart page shows the
@@ -2150,7 +2150,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D3A/GapCheck/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - @Injectable providedIn root
@@ -2165,7 +2165,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - toSignal() — primary RxJS-to-signals bridge
 - async pipe vs toSignal() — null gotcha and initialValue solution
 
-CONTEXT FILES: Read all files from the `D3A/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `Day-3-A-Services-DI-RxJS/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -2191,9 +2191,9 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating sample code for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save modern sample code files in `D3B/SampleCode/`. Save legacy sample code files in `D3B/LegacySampleCode/`.
+OUTPUT FOLDER: Save modern sample code files in `Day-3-B-HTTP-Async-Data/SampleCode/`. Save legacy sample code files in `Day-3-B-HTTP-Async-Data/SampleLegacyCode/`.
 
-Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+Both `SampleCode/` and `SampleLegacyCode/` must be complete, runnable Angular CLI projects
 following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
 tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
 src/app/ folder structure with each component in its own subfolder.
@@ -2225,7 +2225,7 @@ DELIVERABLES (modern — `SampleCode/`):
 10. src/app/parallel-data/parallel-data.component.ts / .html / .css — forkJoin loading users and posts simultaneously
 11. src/app/interceptors/auth.interceptor.ts — HttpInterceptorFn; adds Authorization header; logs URL+method
 
-DELIVERABLES (legacy — `LegacySampleCode/`):
+DELIVERABLES (legacy — `SampleLegacyCode/`):
 A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
 entirely with legacy patterns: HttpClientModule in AppModule, class-based HttpInterceptor,
 HTTP_INTERCEPTORS multi-token provider, constructor injection.
@@ -2239,7 +2239,7 @@ Every file has comments explaining what provideHttpClient() and HttpInterceptorF
 **NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
 Use the full path from the project root as the label
 (e.g., ### SampleCode/src/app/services/user.service.ts or
-### LegacySampleCode/src/app/app.module.ts).**
+### SampleLegacyCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -2250,7 +2250,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D3B/Slides/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -2357,10 +2357,10 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 You are writing the slides speaker script for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D3B/SpeakerScript/D3B-slides-script.md`.
+OUTPUT FOLDER: Save as `Day-3-B-HTTP-Async-Data/SpeakerScript/D3B-slides-script.md`.
 Target duration: 30–40 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D3B/` folder in the workspace — the slides and sample code files are already generated there.
+CONTEXT FILES: Read all files from the `Day-3-B-HTTP-Async-Data/` folder in the workspace — the slides and sample code files are already generated there.
 
 SPECIFIC GUIDANCE:
 - Open connecting to Part A: "HTTP is just an Observable that fetches data.
@@ -2385,10 +2385,10 @@ script section for every slide. Format as: ## [Slide Title] followed by the full
 
 You are writing the code walkthrough speaker script for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D3B/SpeakerScript/D3B-code-walkthrough-script.md`.
+OUTPUT FOLDER: Save as `Day-3-B-HTTP-Async-Data/SpeakerScript/D3B-code-walkthrough-script.md`.
 Target duration: 15–20 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D3B/` folder in the workspace — the slides, modern sample code (`D3B/SampleCode/`), and legacy sample code (`D3B/LegacySampleCode/`) are already generated there.
+CONTEXT FILES: Read all files from the `Day-3-B-HTTP-Async-Data/` folder in the workspace — the slides, modern sample code (`Day-3-B-HTTP-Async-Data/SampleCode/`), and legacy sample code (`Day-3-B-HTTP-Async-Data/SampleLegacyCode/`) are already generated there.
 
 SCRIPT RULES:
 - Write exactly what the instructor says out loud — full sentences, not bullets
@@ -2412,7 +2412,7 @@ in both the modern and legacy sample code projects.**
 
 You are writing student exercises for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D3B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - provideHttpClient() setup
@@ -2428,7 +2428,7 @@ CONCEPTS THAT MUST BE PRACTICED:
 - Functional HttpInterceptorFn
 - environment.ts for API configuration
 
-CONTEXT FILES: Read all files from the `D3B/` folder in the workspace — the sample code and slides are already generated there.
+CONTEXT FILES: Read all files from the `Day-3-B-HTTP-Async-Data/` folder in the workspace — the sample code and slides are already generated there.
 
 EXERCISE RULES:
 - Generate 6–10 exercises from BEGINNER drills to CHALLENGE combinations
@@ -2449,7 +2449,7 @@ FORMAT:
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
 End the document after the last exercise with a note pointing students to the
-`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
+`DXX/Exercises-Solutions/` folder. Do NOT include solution code in this document.
 
 **NOW WRITE THE D3B-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 3 Part B.**
 ```
@@ -2464,7 +2464,7 @@ You are generating starter code projects for the first batch of Day 3 Part B exe
 
 Read the exercises document generated in the previous prompt (D3B — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D3B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/Exercises/`.
 
 For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
 named subfolder. Each project must include:
@@ -2495,7 +2495,7 @@ You are generating starter code projects for the remaining Day 3 Part B exercise
 
 Read the exercises document generated earlier (D3B — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D3B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/Exercises/`.
 
 For each remaining exercise, generate a complete, runnable Angular CLI project in its named
 subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
@@ -2521,7 +2521,7 @@ You are generating solution files for ALL Day 3 Part B exercises.
 
 Read the exercises and starter code generated in the previous prompts.
 
-OUTPUT FOLDER: Save all generated files in `D3B/Exercise-Solutions/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/Exercises-Solutions/`.
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
@@ -2541,7 +2541,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 3 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D3B/SampleProject/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/Projects/`.
 
 PROJECT: Weather Dashboard
 Fetches current weather and 5-day forecast from Open-Meteo (no API key required).
@@ -2573,7 +2573,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D3B/GapCheck/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - provideHttpClient() in app.config.ts
@@ -2588,7 +2588,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Functional HttpInterceptorFn
 - environment.ts / environment.development.ts
 
-CONTEXT FILES: Read all files from the `D3B/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `Day-3-B-HTTP-Async-Data/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -2626,7 +2626,7 @@ Part B: Template-driven forms, reactive forms, FormArray, custom validators,
 ngSubmit handler with navigate+reset, toSignal(form.valueChanges),
 ngModel + reactive form mistake warning
 
-CONTEXT FILES: Read all files from the `D3A/` and `D3B/` folders in the workspace — all Day 3 generated materials are there.
+CONTEXT FILES: Read all files from the `Day-3-A-Services-DI-RxJS/` and `Day-3-B-HTTP-Async-Data/` folders in the workspace — all Day 3 generated materials are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 1. List every Day 4 concept that builds on something from Day 3
@@ -2648,9 +2648,9 @@ CONTEXT FILES: Read all files from the `D3A/` and `D3B/` folders in the workspac
 
 You are generating sample code for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save modern sample code files in `D4A/SampleCode/`. Save legacy sample code files in `D4A/LegacySampleCode/`.
+OUTPUT FOLDER: Save modern sample code files in `Day-4-A-Routing/SampleCode/`. Save legacy sample code files in `Day-4-A-Routing/SampleLegacyCode/`.
 
-Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+Both `SampleCode/` and `SampleLegacyCode/` must be complete, runnable Angular CLI projects
 following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
 tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
 src/app/ folder structure with each component in its own subfolder.
@@ -2682,7 +2682,7 @@ DELIVERABLES (modern — `SampleCode/`):
 10. src/app/recipe-list/recipe-list.component.ts / .html / .css — query params; Router.navigate() on row click
 11. src/app/recipe-detail/recipe-detail.component.ts / .html / .css — route param as input() signal
 
-DELIVERABLES (legacy — `LegacySampleCode/`):
+DELIVERABLES (legacy — `SampleLegacyCode/`):
 A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
 entirely with legacy patterns: RouterModule.forRoot(), AppRoutingModule, class-based CanActivate
 guard, constructor-injected ActivatedRoute with manual param subscription, loadChildren with
@@ -2698,7 +2698,7 @@ Every file has comments explaining what provideRouter() and functional guards re
 **NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
 Use the full path from the project root as the label
 (e.g., ### SampleCode/src/app/guards/auth.guard.ts or
-### LegacySampleCode/src/app/app-routing.module.ts).**
+### SampleLegacyCode/src/app/app-routing.module.ts).**
 ```
 
 ---
@@ -2709,7 +2709,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D4A/Slides/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -2815,10 +2815,10 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 You are writing the slides speaker script for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D4A/SpeakerScript/D4A-slides-script.md`.
+OUTPUT FOLDER: Save as `Day-4-A-Routing/SpeakerScript/D4A-slides-script.md`.
 Target duration: 30–40 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D4A/` folder in the workspace — the slides and sample code files are already generated there.
+CONTEXT FILES: Read all files from the `Day-4-A-Routing/` folder in the workspace — the slides and sample code files are already generated there.
 
 SPECIFIC GUIDANCE:
 - Open with why routing matters: "everything we've built so far is a single page.
@@ -2845,10 +2845,10 @@ script section for every slide. Format as: ## [Slide Title] followed by the full
 
 You are writing the code walkthrough speaker script for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D4A/SpeakerScript/D4A-code-walkthrough-script.md`.
+OUTPUT FOLDER: Save as `Day-4-A-Routing/SpeakerScript/D4A-code-walkthrough-script.md`.
 Target duration: 15–20 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D4A/` folder in the workspace — the slides, modern sample code (`D4A/SampleCode/`), and legacy sample code (`D4A/LegacySampleCode/`) are already generated there.
+CONTEXT FILES: Read all files from the `Day-4-A-Routing/` folder in the workspace — the slides, modern sample code (`Day-4-A-Routing/SampleCode/`), and legacy sample code (`Day-4-A-Routing/SampleLegacyCode/`) are already generated there.
 
 SCRIPT RULES:
 - Write exactly what the instructor says out loud — full sentences, not bullets
@@ -2872,7 +2872,7 @@ in both the modern and legacy sample code projects.**
 
 You are writing student exercises for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D4A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - provideRouter() setup
@@ -2887,7 +2887,7 @@ CONCEPTS THAT MUST BE PRACTICED:
 - withHashLocation() — configure and observe the URL change
 - Converting legacy AppRoutingModule to modern provideRouter()
 
-CONTEXT FILES: Read all files from the `D4A/` folder in the workspace — the sample code and slides are already generated there.
+CONTEXT FILES: Read all files from the `Day-4-A-Routing/` folder in the workspace — the sample code and slides are already generated there.
 
 EXERCISE RULES:
 - Generate 6–10 exercises from BEGINNER drills to CHALLENGE combinations
@@ -2907,7 +2907,7 @@ FORMAT:
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
 End the document after the last exercise with a note pointing students to the
-`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
+`DXX/Exercises-Solutions/` folder. Do NOT include solution code in this document.
 
 **NOW WRITE THE D4A-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 4 Part A.**
 ```
@@ -2922,7 +2922,7 @@ You are generating starter code projects for the first batch of Day 4 Part A exe
 
 Read the exercises document generated in the previous prompt (D4A — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D4A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/Exercises/`.
 
 For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
 named subfolder. Each project must include:
@@ -2953,7 +2953,7 @@ You are generating starter code projects for the remaining Day 4 Part A exercise
 
 Read the exercises document generated earlier (D4A — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D4A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/Exercises/`.
 
 For each remaining exercise, generate a complete, runnable Angular CLI project in its named
 subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
@@ -2979,7 +2979,7 @@ You are generating solution files for ALL Day 4 Part A exercises.
 
 Read the exercises and starter code generated in the previous prompts.
 
-OUTPUT FOLDER: Save all generated files in `D4A/Exercise-Solutions/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/Exercises-Solutions/`.
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
@@ -2999,7 +2999,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 4 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D4A/SampleProject/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/Projects/`.
 
 PROJECT: Recipe Browser
 A recipe browser with a home page, a recipe list page (filterable by category via
@@ -3032,7 +3032,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D4A/GapCheck/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - provideRouter() in app.config.ts
@@ -3046,7 +3046,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - canActivate functional guard with UrlTree
 - canDeactivate functional guard with generic hasUnsavedChanges property
 
-CONTEXT FILES: Read all files from the `D4A/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `Day-4-A-Routing/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -3072,9 +3072,9 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating sample code for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save modern sample code files in `D4B/SampleCode/`. Save legacy sample code files in `D4B/LegacySampleCode/`.
+OUTPUT FOLDER: Save modern sample code files in `Day-4-B-Forms/SampleCode/`. Save legacy sample code files in `Day-4-B-Forms/SampleLegacyCode/`.
 
-Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+Both `SampleCode/` and `SampleLegacyCode/` must be complete, runnable Angular CLI projects
 following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
 tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
 src/app/ folder structure with each component in its own subfolder.
@@ -3106,7 +3106,7 @@ DELIVERABLES (modern — `SampleCode/`):
 8. src/app/checkout-form/checkout-form.component.ts / .html / .css — multi-step; computed() completion %;
    FormArray line items; navigate to /confirmation
 
-DELIVERABLES (legacy — `LegacySampleCode/`):
+DELIVERABLES (legacy — `SampleLegacyCode/`):
 A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
 entirely with legacy patterns: FormsModule and ReactiveFormsModule imported in NgModule,
 manual valueChanges subscription in ngOnInit/ngOnDestroy, constructor injection.
@@ -3120,7 +3120,7 @@ Every file has comments explaining what toSignal(form.valueChanges) and modern p
 **NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
 Use the full path from the project root as the label
 (e.g., ### SampleCode/src/app/registration-form/registration-form.component.ts or
-### LegacySampleCode/src/app/app.module.ts).**
+### SampleLegacyCode/src/app/app.module.ts).**
 ```
 
 ---
@@ -3131,7 +3131,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D4B/Slides/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -3244,10 +3244,10 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 You are writing the slides speaker script for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D4B/SpeakerScript/D4B-slides-script.md`.
+OUTPUT FOLDER: Save as `Day-4-B-Forms/SpeakerScript/D4B-slides-script.md`.
 Target duration: 30–40 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D4B/` folder in the workspace — the slides and sample code files are already generated there.
+CONTEXT FILES: Read all files from the `Day-4-B-Forms/` folder in the workspace — the slides and sample code files are already generated there.
 
 SPECIFIC GUIDANCE:
 - Open contrasting the two systems: "Angular gives you two completely different ways
@@ -3275,10 +3275,10 @@ script section for every slide. Format as: ## [Slide Title] followed by the full
 
 You are writing the code walkthrough speaker script for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D4B/SpeakerScript/D4B-code-walkthrough-script.md`.
+OUTPUT FOLDER: Save as `Day-4-B-Forms/SpeakerScript/D4B-code-walkthrough-script.md`.
 Target duration: 15–20 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D4B/` folder in the workspace — the slides, modern sample code (`D4B/SampleCode/`), and legacy sample code (`D4B/LegacySampleCode/`) are already generated there.
+CONTEXT FILES: Read all files from the `Day-4-B-Forms/` folder in the workspace — the slides, modern sample code (`Day-4-B-Forms/SampleCode/`), and legacy sample code (`Day-4-B-Forms/SampleLegacyCode/`) are already generated there.
 
 SCRIPT RULES:
 - Write exactly what the instructor says out loud — full sentences, not bullets
@@ -3302,7 +3302,7 @@ in both the modern and legacy sample code projects.**
 
 You are writing student exercises for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D4B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - Template-driven form with ngModel, ngForm, HTML5 validators
@@ -3317,7 +3317,7 @@ CONCEPTS THAT MUST BE PRACTICED:
 - ngModel inside reactive form mistake — one exercise deliberately triggers
   the error so students learn to recognize and fix it
 
-CONTEXT FILES: Read all files from the `D4B/` folder in the workspace — the sample code and slides are already generated there.
+CONTEXT FILES: Read all files from the `Day-4-B-Forms/` folder in the workspace — the sample code and slides are already generated there.
 
 EXERCISE RULES:
 - Generate 6–10 exercises from BEGINNER drills to CHALLENGE combinations
@@ -3338,7 +3338,7 @@ FORMAT:
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
 End the document after the last exercise with a note pointing students to the
-`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
+`DXX/Exercises-Solutions/` folder. Do NOT include solution code in this document.
 
 **NOW WRITE THE D4B-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 4 Part B.**
 ```
@@ -3353,7 +3353,7 @@ You are generating starter code projects for the first batch of Day 4 Part B exe
 
 Read the exercises document generated in the previous prompt (D4B — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D4B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/Exercises/`.
 
 For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
 named subfolder. Each project must include:
@@ -3384,7 +3384,7 @@ You are generating starter code projects for the remaining Day 4 Part B exercise
 
 Read the exercises document generated earlier (D4B — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D4B/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/Exercises/`.
 
 For each remaining exercise, generate a complete, runnable Angular CLI project in its named
 subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
@@ -3410,7 +3410,7 @@ You are generating solution files for ALL Day 4 Part B exercises.
 
 Read the exercises and starter code generated in the previous prompts.
 
-OUTPUT FOLDER: Save all generated files in `D4B/Exercise-Solutions/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/Exercises-Solutions/`.
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
@@ -3430,7 +3430,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 4 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D4B/SampleProject/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/Projects/`.
 
 PROJECT: Multi-Step Checkout Form
 Three steps (shipping, payment, review). Each step is a separate FormGroup.
@@ -3460,7 +3460,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D4B/GapCheck/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Template-driven forms — ngModel, ngForm, HTML5 validators, error display
@@ -3473,7 +3473,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - toSignal(form.valueChanges)
 - ngModel inside reactive form — runtime error warning
 
-CONTEXT FILES: Read all files from the `D4B/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `Day-4-B-Forms/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -3509,7 +3509,7 @@ computed() testing, service testing, HttpTestingController, pipe testing,
 lifecycle testing, NO_ERRORS_SCHEMA vs integration
 Part B: Capstone — Task Management App
 
-CONTEXT FILES: Read all files from the `D4A/` and `D4B/` folders in the workspace — all Day 4 generated materials are there.
+CONTEXT FILES: Read all files from the `Day-4-A-Routing/` and `Day-4-B-Forms/` folders in the workspace — all Day 4 generated materials are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 1. List every Day 5 testing concept that requires understanding something from Days 1–4
@@ -3531,9 +3531,9 @@ CONTEXT FILES: Read all files from the `D4A/` and `D4B/` folders in the workspac
 
 You are generating sample code for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save modern sample code files in `D5A/SampleCode/`. Save legacy sample code files in `D5A/LegacySampleCode/`.
+OUTPUT FOLDER: Save modern sample code files in `Day-5-A-Testing/SampleCode/`. Save legacy sample code files in `Day-5-A-Testing/SampleLegacyCode/`.
 
-Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects
+Both `SampleCode/` and `SampleLegacyCode/` must be complete, runnable Angular CLI projects
 following the SAMPLE CODE PROJECT STRUCTURE RULES in the Master Context. Include package.json,
 tsconfig.json, tsconfig.app.json, angular.json, src/index.html, src/styles.css, and the full
 src/app/ folder structure. Since these are test files, also include the source component/service/pipe
@@ -3569,7 +3569,7 @@ DELIVERABLES (modern — `SampleCode/`):
 6. src/app/recipe-list/recipe-list-integration.spec.ts — real child imports; comment on unit vs integration tradeoff
 7. src/app/pipes/truncate.pipe.spec.ts — multiple transform() assertions; edge cases; configurable limit
 
-DELIVERABLES (legacy — `LegacySampleCode/`):
+DELIVERABLES (legacy — `SampleLegacyCode/`):
 A complete, runnable NgModule-based test setup demonstrating the same test scenarios but built
 entirely with legacy patterns: declarations array in TestBed, HttpClientTestingModule import,
 constructor injection in tests.
@@ -3582,7 +3582,7 @@ Every file has comments explaining what standalone test setup and provideHttpCli
 **NOW WRITE ALL OF THE FILES. Output each as a separate labeled code block.
 Use the full path from the project root as the label
 (e.g., ### SampleCode/src/app/services/recipe.service.spec.ts or
-### LegacySampleCode/src/app/services/recipe.service.spec.ts).**
+### SampleLegacyCode/src/app/services/recipe.service.spec.ts).**
 ```
 
 ---
@@ -3593,7 +3593,7 @@ Use the full path from the project root as the label
 
 You are generating slides for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D5A/Slides/`.
+OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/Slides/`.
 
 SLIDE DEPTH RULES:
 These slides are detailed descriptions fed into a visual slide generator. Each slide
@@ -3704,10 +3704,10 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 You are writing the slides speaker script for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D5A/SpeakerScript/D5A-slides-script.md`.
+OUTPUT FOLDER: Save as `Day-5-A-Testing/SpeakerScript/D5A-slides-script.md`.
 Target duration: 30–40 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D5A/` folder in the workspace — the slides and sample code files are already generated there.
+CONTEXT FILES: Read all files from the `Day-5-A-Testing/` folder in the workspace — the slides and sample code files are already generated there.
 
 SPECIFIC GUIDANCE:
 - Open with the right mindset: "Testing is not about proving your code works.
@@ -3735,10 +3735,10 @@ script section for every slide. Format as: ## [Slide Title] followed by the full
 
 You are writing the code walkthrough speaker script for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save as `D5A/SpeakerScript/D5A-code-walkthrough-script.md`.
+OUTPUT FOLDER: Save as `Day-5-A-Testing/SpeakerScript/D5A-code-walkthrough-script.md`.
 Target duration: 15–20 minutes of spoken delivery.
 
-CONTEXT FILES: Read all files from the `D5A/` folder in the workspace — the slides, modern sample code (`D5A/SampleCode/`), and legacy sample code (`D5A/LegacySampleCode/`) are already generated there.
+CONTEXT FILES: Read all files from the `Day-5-A-Testing/` folder in the workspace — the slides, modern sample code (`Day-5-A-Testing/SampleCode/`), and legacy sample code (`Day-5-A-Testing/SampleLegacyCode/`) are already generated there.
 
 SCRIPT RULES:
 - Write exactly what the instructor says out loud — full sentences, not bullets
@@ -3762,7 +3762,7 @@ in both the modern and legacy sample code projects.**
 
 You are writing student exercises for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D5A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/Exercises/`.
 
 CONCEPTS THAT MUST BE PRACTICED:
 - TestBed.configureTestingModule with imports: [StandaloneComponent]
@@ -3781,7 +3781,7 @@ CONCEPTS THAT MUST BE PRACTICED:
 - Testing ngOnDestroy cleanup
 - NO_ERRORS_SCHEMA vs real child imports
 
-CONTEXT FILES: Read all files from the `D5A/` folder in the workspace — the sample code and slides are already generated there.
+CONTEXT FILES: Read all files from the `Day-5-A-Testing/` folder in the workspace — the sample code and slides are already generated there.
 
 EXERCISE RULES:
 - Generate 6–10 exercises from BEGINNER drills to CHALLENGE combinations
@@ -3802,7 +3802,7 @@ FORMAT:
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
 End the document after the last exercise with a note pointing students to the
-`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
+`DXX/Exercises-Solutions/` folder. Do NOT include solution code in this document.
 
 **NOW WRITE THE D5A-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 5 Part A.**
 ```
@@ -3817,7 +3817,7 @@ You are generating starter code projects for the first batch of Day 5 Part A exe
 
 Read the exercises document generated in the previous prompt (D5A — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D5A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/Exercises/`.
 
 For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
 named subfolder. Each project must include:
@@ -3848,7 +3848,7 @@ You are generating starter code projects for the remaining Day 5 Part A exercise
 
 Read the exercises document generated earlier (D5A — EXERCISES).
 
-OUTPUT FOLDER: Save all generated files in `D5A/Exercises/`.
+OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/Exercises/`.
 
 For each remaining exercise, generate a complete, runnable Angular CLI project in its named
 subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
@@ -3874,7 +3874,7 @@ You are generating solution files for ALL Day 5 Part A exercises.
 
 Read the exercises and starter code generated in the previous prompts.
 
-OUTPUT FOLDER: Save all generated files in `D5A/Exercise-Solutions/`.
+OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/Exercises-Solutions/`.
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
@@ -3894,12 +3894,12 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 5 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D5A/SampleProject/`.
+OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/Projects/`.
 
 PROJECT: Recipe Browser Test Suite
 A complete test suite for the Day 4 Part A Recipe Browser app.
 
-CONTEXT FILES: Read the sample project files from the `D4A/` folder in the workspace — the Recipe Browser app code is already generated there.
+CONTEXT FILES: Read the sample project files from the `Day-4-A-Routing/` folder in the workspace — the Recipe Browser app code is already generated there.
 
 TESTS TO WRITE:
 - RecipeService — BehaviorSubject state, error$ stream, HTTP calls, HttpErrorResponse
@@ -3930,7 +3930,7 @@ CONCEPTS TO DEMONSTRATE:
 
 You are reviewing the generated materials for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D5A/GapCheck/`.
+OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/GapCheck/`.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Jasmine + Karma setup; Jest alternative
@@ -3945,7 +3945,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Lifecycle testing — ngOnInit, ngOnDestroy cleanup
 - NO_ERRORS_SCHEMA vs real child imports tradeoff
 
-CONTEXT FILES: Read all files from the `D5A/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `Day-5-A-Testing/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -3971,7 +3971,7 @@ SCOPE CREEP: List anything in materials not in requirements.
 
 You are generating the complete capstone project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D5B/Capstone/`.
+OUTPUT FOLDER: Save all generated files in `Day-5-B-Capstone/Capstone/`.
 
 PROJECT: Task Management App
 
@@ -4053,7 +4053,7 @@ Every file must have a comment block at the top: which day, which Part, which co
 
 You are reviewing the generated capstone project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D5B/GapCheck/`.
+OUTPUT FOLDER: Save all generated files in `Day-5-B-Capstone/GapCheck/`.
 
 CAPSTONE REQUIREMENTS BY DAY:
 Day 1: standalone components, @Input/@Output on TaskCardComponent, ngOnInit, ngOnDestroy
@@ -4065,7 +4065,7 @@ Day 4: all 6 routes, withComponentInputBinding, queryParamMap, canDeactivate,
        computed() subtask completion
 Day 5: task.service.spec.ts, task-list.component.spec.ts, status-label.pipe.spec.ts
 
-CONTEXT FILES: Read all files from the `D5B/` folder in the workspace — the generated capstone code is there.
+CONTEXT FILES: Read all files from the `Day-5-B-Capstone/` folder in the workspace — the generated capstone code is there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 1. For each requirement, confirm it is present in the generated code
@@ -4114,7 +4114,7 @@ disable submit, ngSubmit with navigate+reset, toSignal(form.valueChanges), ngMod
 Day 5A: TestBed, ComponentFixture, standalone test setup, @Input/@Output testing, setInput(),
 computed testing, service testing, HTTP testing, pipe testing, lifecycle testing, NO_ERRORS_SCHEMA
 
-CONTEXT FILES: Read all files from every output folder in the workspace — `D1A/`, `D1B/`, `D2A/`, `D2B/`, `D3A/`, `D3B/`, `D4A/`, `D4B/`, `D5A/`, `D5B/`. All generated materials across all days are there.
+CONTEXT FILES: Read all files from every output folder in the workspace — `Day-1-A-Angular-Foundation/`, `Day-1-B-Templates-and-Communication/`, `Day-2-A-Content-Directives-Pipes/`, `Day-2-B-Signals/`, `Day-3-A-Services-DI-RxJS/`, `Day-3-B-HTTP-Async-Data/`, `Day-4-A-Routing/`, `Day-4-B-Forms/`, `Day-5-A-Testing/`, `Day-5-B-Capstone/`. All generated materials across all days are there.
 
 **NOW PRODUCE THE FINAL AUDIT across all eight sections:**
 
@@ -4208,8 +4208,8 @@ HOW A SESSION WORKS:
 Master Context is auto-loaded from .github/copilot-instructions.md.
 Just paste the specific prompt into Copilot chat — no need to paste Master Context.
 Each deliverable goes in its own subfolder within the day folder:
-  SampleCode/, LegacySampleCode/, Slides/, SpeakerScript/,
-  Exercises/, SampleProject/, GapCheck/
+  SampleCode/, SampleLegacyCode/, Slides/, SpeakerScript/,
+  Exercises/, Projects/, GapCheck/
 Cross-Day Checks go in Cross-Day-Checks/. Final review goes in Final-Review/.
 
 FOR EACH PART (in this order):

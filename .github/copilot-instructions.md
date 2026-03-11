@@ -112,27 +112,39 @@ LEGACY CONTRAST RULES
   pain it caused — combine onto one slide only if the comparison is brief enough to avoid
   overcrowding
 - Never show legacy code mid-lesson without clearly labeling it as legacy
-- Every SAMPLE CODE prompt includes a complete legacy app in a `LegacySampleCode/` subfolder inside the
-  day/part output folder (e.g., `D1A/LegacySampleCode/`). Modern sample code goes in a `SampleCode/`
-  subfolder (e.g., `D1A/SampleCode/`). Both are fully runnable Angular projects — not loose files.
+- Every SAMPLE CODE prompt includes a complete legacy app in a `SampleLegacyCode/` subfolder inside the
+  day/part output folder (e.g., `Day-1-A-Angular-Foundation/SampleLegacyCode/`). Modern sample code goes in a `SampleCode/`
+  subfolder (e.g., `Day-1-A-Angular-Foundation/SampleCode/`). Both are fully runnable Angular projects — not loose files.
   The legacy app demonstrates the same concepts as the modern deliverables but built entirely with
   legacy patterns so students can run both side by side, compare the developer experience, and
   understand what modern Angular replaced.
 
 OUTPUT FOLDER RULES
 
+Day/part folders use descriptive names following the pattern `Day-N-X-Topic`:
+- `Day-1-A-Angular-Foundation`
+- `Day-1-B-Templates-and-Communication`
+- `Day-2-A-Content-Directives-Pipes`
+- `Day-2-B-Signals`
+- `Day-3-A-Services-DI-RxJS`
+- `Day-3-B-HTTP-Async-Data`
+- `Day-4-A-Routing`
+- `Day-4-B-Forms`
+- `Day-5-A-Testing`
+- `Day-5-B-Capstone`
+
 Every deliverable type within a day/part goes in its own subfolder:
 
-- Sample Code → `DXX/SampleCode/`
-- Legacy Sample Code → `DXX/LegacySampleCode/`
-- Slides → `DXX/Slides/`
-- Speaker Script → `DXX/SpeakerScript/`
-- Exercises → `DXX/Exercises/`
-- Exercise Solutions → `DXX/Exercise-Solutions/`
-- Sample Project → `DXX/SampleProject/`
-- Gap Check → `DXX/GapCheck/`
-- Capstone → `D5B/Capstone/`
-- Capstone Gap Check → `D5B/GapCheck/`
+- Sample Code → `Day-N-X-Topic/SampleCode/`
+- Legacy Sample Code → `Day-N-X-Topic/SampleLegacyCode/`
+- Slides → `Day-N-X-Topic/Slides/`
+- Speaker Script → `Day-N-X-Topic/SpeakerScript/`
+- Exercises → `Day-N-X-Topic/Exercises/`
+- Exercise Solutions → `Day-N-X-Topic/Exercises-Solutions/`
+- Sample Project → `Day-N-X-Topic/Projects/`
+- Gap Check → `Day-N-X-Topic/GapCheck/`
+- Capstone → `Day-5-B-Capstone/Capstone/`
+- Capstone Gap Check → `Day-5-B-Capstone/GapCheck/`
 - Cross-Day Checks → `Cross-Day-Checks/`
 - Final Review → `Final-Review/`
   Never save deliverables directly in the day/part root folder. Each prompt's OUTPUT FOLDER
@@ -140,7 +152,7 @@ Every deliverable type within a day/part goes in its own subfolder:
 
 SAMPLE CODE PROJECT STRUCTURE RULES
 
-Both `SampleCode/` and `LegacySampleCode/` must be complete, runnable Angular CLI projects.
+Both `SampleCode/` and `SampleLegacyCode/` must be complete, runnable Angular CLI projects.
 Every generated sample code project MUST include:
 
 1. **Project config files (project root):**
@@ -168,7 +180,7 @@ Every generated sample code project MUST include:
 
 4. **File labels in output:** Use the full path from the project root as the label:
    - Modern: ### SampleCode/src/app/header/header.component.ts
-   - Legacy: ### LegacySampleCode/src/app/header/header.component.ts
+   - Legacy: ### SampleLegacyCode/src/app/header/header.component.ts
    - Config: ### SampleCode/package.json
 
 This structure mirrors what `ng new` generates so students see a real Angular project.
@@ -176,14 +188,14 @@ This structure mirrors what `ng new` generates so students see a real Angular pr
 EXERCISE WORKSPACE RULES
 
 All exercises for a day/part are organized as an **npm workspaces** monorepo inside the
-`DXX/Exercises/` folder. This lets students run `npm install` once at the exercises root
+`Day-N-X-Topic/Exercises/` folder. This lets students run `npm install` once at the exercises root
 and share a single `node_modules` across every exercise — saving significant disk space
 and eliminating repeated installs.
 
 Folder layout:
 
 ```
-DXX/Exercises/
+Day-N-X-Topic/Exercises/
   .gitignore                ← ignores node_modules/, dist/, .angular/, etc.
   package.json              ← npm workspaces root (private, no deps of its own)
   README.md                 ← one-time setup instructions for students
@@ -204,7 +216,7 @@ DXX/Exercises/
   Exercise-2-Short-Title/
     ...same complete Angular project structure
 
-DXX/Exercise-Solutions/     ← separate sibling folder to DXX/Exercises/
+Day-N-X-Topic/Exercises-Solutions/     ← separate sibling folder to Day-N-X-Topic/Exercises/
   Exercise-1-Solution/      ← solution files for Exercise 1 (only changed files)
     src/
       app/
@@ -234,7 +246,7 @@ Rules:
    (`start`, `build`, `test`). The `"name"` field uses the lowercase-hyphenated version
    of the folder name (e.g., `"exercise-1-scaffold-and-explore"`). npm hoists shared
    packages to the root `node_modules` so only one copy exists on disk.
-6. **Students run `npm install` once** at the `DXX/Exercises/` root before starting
+6. **Students run `npm install` once** at the `Day-N-X-Topic/Exercises/` root before starting
    any exercises. They never run `npm install` inside individual exercise folders.
 7. **Serving an exercise:** Students `cd` into the exercise folder and run `npx ng serve`
    (or `npm start` if the `start` script is defined). They stop the dev server before
@@ -245,7 +257,7 @@ Rules:
 9. **File labels in output** use the full path from the exercises root:
    `### Exercise-1-Scaffold-and-Explore/src/app/header/header.component.ts`
 10. **Solution folders** — every exercise gets a matching solution folder inside
-    a separate `DXX/Exercise-Solutions/` folder (a sibling to `DXX/Exercises/`),
+    a separate `Day-N-X-Topic/Exercises-Solutions/` folder (a sibling to `Day-N-X-Topic/Exercises/`),
     named `Exercise-N-Solution` (e.g., `Exercise-1-Solution/`,
     `Exercise-2-Solution/`). Each solution folder mirrors the exercise's `src/`
     structure but includes ONLY the files students need to create or modify —
@@ -253,7 +265,7 @@ Rules:
     code files so students can compare their work file-by-file. The master
     `DXX-exercises.md` document should NOT contain a SOLUTIONS section — it ends
     after the last exercise with a note pointing students to the solution folders
-    in `DXX/Exercise-Solutions/`.
+    in `Day-N-X-Topic/Exercises-Solutions/`.
 11. **Legacy exercise** — the FINAL exercise in every day/part must always be a
     LEGACY exercise that gives students a working modern standalone app and asks them
     to convert it to the classic (legacy) Angular patterns covered in that lesson's
