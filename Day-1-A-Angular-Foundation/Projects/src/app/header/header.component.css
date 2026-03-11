@@ -1,0 +1,28 @@
+/* header.component.css — Styles SCOPED to HeaderComponent only.
+   
+   WHAT THIS FILE DEMONSTRATES:
+   - ViewEncapsulation.Emulated (the default): Angular adds a unique attribute
+     like _nghost-abc123 to this component's elements, so these styles apply
+     ONLY to HeaderComponent's template — not to BioCardComponent, FooterComponent,
+     or any other component.
+   - Even though we use generic class names like .header-banner, there's zero risk
+     of style collisions with other components.
+   
+   TRY THIS: Inspect the <header> element in Chrome DevTools. You'll see Angular
+   added a unique attribute like _ngcontent-xxx. That's how scoping works. */
+
+/* Blue gradient banner — scoped to this component only */
+.header-banner {
+  background: linear-gradient(135deg, #1a73e8, #0d47a1);
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Title styling — this will NOT affect <h1> tags in other components */
+.header-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}

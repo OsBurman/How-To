@@ -1,0 +1,26 @@
+/* skill-badge.component.css — Styles SCOPED to SkillBadgeComponent only.
+   
+   WHAT THIS FILE DEMONSTRATES:
+   - Scoped styles on a repeated component: every <app-skill-badge> instance
+     gets these same styles, but they don't affect any other <span> in the app. */
+
+/* Pill-shaped badge with subtle background */
+.skill-badge {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #1a73e8;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Hover effect — visual feedback that this is a distinct element */
+.skill-badge:hover {
+  background: #d2e3fc;
+  transform: translateY(-1px);
+}

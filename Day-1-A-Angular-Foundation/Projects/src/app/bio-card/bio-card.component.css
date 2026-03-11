@@ -1,0 +1,59 @@
+/* bio-card.component.css — Styles SCOPED to BioCardComponent only.
+
+   WHAT THIS FILE DEMONSTRATES:
+   - ViewEncapsulation in action: this card has a box-shadow, border-radius,
+     and specific padding. HeaderComponent ALSO has border-radius and padding,
+     but completely different values. Because each component's styles are scoped,
+     they never conflict — even though both use generic class names.
+   - Inspect both <header> and <article> in DevTools — each has a different
+     _ngcontent-xxx attribute, proving styles are isolated. */
+
+/* Card container with shadow and rounded corners */
+.bio-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Circular avatar image */
+.bio-card__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #1a73e8;
+  margin-bottom: 1rem;
+}
+
+/* Content area below the avatar */
+.bio-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Name — large and bold */
+.bio-card__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* Role — smaller, colored text */
+.bio-card__role {
+  font-size: 1rem;
+  color: #1a73e8;
+  font-weight: 500;
+}
+
+/* Bio paragraph — readable body text */
+.bio-card__bio {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0.5rem auto 0;
+}

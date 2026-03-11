@@ -1,0 +1,33 @@
+<!--
+  bio-card.component.html — Template for the bio card display.
+
+  WHAT THIS TEMPLATE DEMONSTRATES:
+  - Interpolation {{ }} — displaying @Input() values in the template
+  - Property binding [src]="avatarUrl" — binding a component property to an HTML attribute
+  - Property binding [alt]="name" — dynamic alt text for accessibility
+  - Multiple @Input() values used together to build a complete UI card
+-->
+
+<article class="bio-card">
+  <!--
+    [src]="avatarUrl" — property binding: the img src comes from the @Input() property.
+    [alt]="name + ' avatar'" — dynamic alt text using a TypeScript expression.
+    Property binding uses [brackets] because we're setting a DOM property to a dynamic value.
+  -->
+  <img
+    class="bio-card__avatar"
+    [src]="avatarUrl"
+    [alt]="name + ' avatar'"
+  />
+
+  <div class="bio-card__content">
+    <!-- {{ name }} — interpolation displays the @Input() value as text -->
+    <h2 class="bio-card__name">{{ name }}</h2>
+
+    <!-- {{ role }} — another @Input() displayed via interpolation -->
+    <p class="bio-card__role">{{ role }}</p>
+
+    <!-- {{ bio }} — the biography text from the parent component -->
+    <p class="bio-card__bio">{{ bio }}</p>
+  </div>
+</article>

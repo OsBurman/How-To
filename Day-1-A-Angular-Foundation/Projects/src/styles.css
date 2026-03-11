@@ -1,0 +1,28 @@
+/* styles.css — Global styles that apply to the entire application.
+   These are NOT scoped to any single component.
+   Use this for resets, fonts, and app-wide layout. */
+
+/* Simple CSS reset for consistent spacing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base font and background for the whole page */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Utility: centered container used by AppComponent */
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
