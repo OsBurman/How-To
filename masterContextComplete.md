@@ -11,10 +11,10 @@
 
 **File references marked `CONTEXT FILES:`** tell Copilot which previously generated files to read for context. Each reference points to a folder in the workspace (e.g., `Day-1-A-Angular-Foundation/`). When you paste a prompt into Copilot chat, attach the referenced files using `#file:Day-1-A-Angular-Foundation/filename.md` syntax, or simply open the files as editor tabs so Copilot can see them. You do NOT need to paste file contents inline — Copilot reads the files directly.
 
-**Folder organization:** All generated output for a day/part goes in a folder named for that section: `Day-1-A-Angular-Foundation/`, `Day-1-B-Templates-and-Communication/`, `Day-2-A-Content-Directives-Pipes/`, `Day-2-B-Signals/`, `Day-3-A-Services-DI-RxJS/`, `Day-3-B-HTTP-Async-Data/`, `Day-4-A-Routing/`, `Day-4-B-Forms/`, `Day-5-A-Testing/`, `Day-5-B-Capstone/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `SampleLegacyCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercise starter code, `Exercises-Solutions/` for exercise solution files, `Projects/` for the sample project, and `GapCheck/` for the gap check report. The capstone project goes in `Day-5-B-Capstone/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
+**Folder organization:** All generated output for a day/part goes in a folder named for that section: `Day-1-A-Angular-Foundation/`, `Day-1-B-Templates-and-Communication/`, `Day-2-A-Content-Directives-Pipes/`, `Day-2-B-Signals/`, `Day-3-A-Services-DI-RxJS/`, `Day-3-B-HTTP-Async-Data/`, `Day-4-A-Routing/`, `Day-4-B-Forms/`, `Day-5-A-Testing/`, `Day-5-B-Capstone/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `SampleLegacyCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercise starter code, `Exercises-Solutions/` for exercise solution files, `Project/` for the sample project, `Project-Portfolio-Builder/` for portfolio project ideas, and `GapCheck/` for the gap check report. The capstone project goes in `Day-5-B-Capstone/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
 
 **Session order for every Part:**
-1. Sample Code → 2. Slides → 3. Speaker Scripts (Slides + Code Walkthrough) → 4. Exercises → 5. Sample Project → 6. Gap Check
+1. Sample Code → 2. Slides → 3. Speaker Scripts (Slides + Code Walkthrough) → 4. Exercises → 5. Sample Project → 6. Project Portfolio Builder → 7. Gap Check
 
 **Every prompt ends with a NOW WRITE / NOW GENERATE command in bold.** This is what tells Copilot to produce output rather than describe what it would do. Do not remove it.
 
@@ -386,7 +386,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 1 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/Projects/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/Project/`.
 
 PROJECT: Personal Bio Card
 A static personal bio card app. Contains a HeaderComponent, a BioCardComponent that
@@ -408,6 +408,46 @@ no services, no routing.
 1. A full file tree listing every file
 2. Every .ts, .html, and .css file as a separate labeled code block
 3. A README.md listing what each file demonstrates and which CLI command created it
+4. An instructions.md file that gives students step-by-step instructions to build this project from scratch without looking at the sample code
+```
+
+---
+
+## D1A — PROJECT PORTFOLIO BUILDER
+
+```
+
+You are generating the Project Portfolio Builder for Day 1 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/Project-Portfolio-Builder/`.
+
+Create a single file called `Projects.md` containing 5–7 project ideas that students can build
+to practice and reinforce what they learned in Day 1 Part A.
+
+CONCEPTS STUDENTS CAN USE (Day 1 Part A only):
+- Standalone components with standalone: true
+- The imports array on a standalone component
+- @Input() for parent-to-child data flow
+- Property binding [inputName]="value"
+- Interpolation {{ }}
+- ViewEncapsulation scoped styles
+- bootstrapApplication() and app.config.ts
+- Multiple components composed in a parent template
+- Angular CLI: ng new, ng generate component, ng serve
+
+Do NOT use concepts from later days: no signals, no services, no routing, no HTTP, no pipes,
+no @Output(), no lifecycle hooks beyond what a constructor provides.
+
+Each project idea should include:
+- A descriptive title
+- A difficulty rating (⭐ Beginner or ⭐⭐ Intermediate)
+- A 2–3 sentence description of what to build
+- A "Components to create" section listing the main pieces
+- A "What you'll practice" section listing 3–4 specific Day 1 Part A concepts
+
+End the file with general tips that apply to all projects.
+
+**NOW WRITE THE Projects.md FILE.**
 ```
 
 ---
@@ -804,7 +844,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 1 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/Projects/`.
+OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/Project/`.
 
 PROJECT: Tip Calculator
 A reusable TipInputComponent accepts bill amount and tip percentage via @Input() and
@@ -827,6 +867,43 @@ as a clearly labeled optional bonus section.
 1. Full file tree
 2. Every .ts, .html, .css file as a separate labeled code block
 3. README.md
+4. An instructions.md file that gives students step-by-step instructions to build this project from scratch without looking at the sample code
+```
+
+---
+
+## D1B — PROJECT PORTFOLIO BUILDER
+
+```
+
+You are generating the Project Portfolio Builder for Day 1 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/Project-Portfolio-Builder/`.
+
+Create a single file called `Projects.md` containing 5–7 project ideas that students can build
+to practice and reinforce what they learned in Day 1 Part B.
+
+CONCEPTS STUDENTS CAN USE (Day 1 Part B and Day 1 Part A):
+- Everything from Day 1 Part A (standalone components, @Input, ViewEncapsulation, imports array)
+- Interpolation {{ }}, property binding [], event binding (), two-way binding [()]
+- Template reference variables #ref
+- Safe navigation ?. and nullish coalescing ??
+- @Input() for parent-to-child data flow
+- @Output() and EventEmitter for child-to-parent communication
+- ngOnInit for initialization logic
+- ngOnDestroy for cleanup (timers, subscriptions)
+- FormsModule for [(ngModel)]
+
+Each project idea should include:
+- A descriptive title
+- A difficulty rating (⭐ Beginner or ⭐⭐ Intermediate)
+- A 2–3 sentence description of what to build
+- A "Components to create" section listing the main pieces
+- A "What you'll practice" section listing 3–4 specific concepts
+
+End the file with general tips that apply to all projects.
+
+**NOW WRITE THE Projects.md FILE.**
 ```
 
 ---
@@ -1259,7 +1336,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 2 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/Projects/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/Project/`.
 
 PROJECT: Movie Listing
 A movie listing app with genre filters, formatted dates and ratings, and a reusable
@@ -1283,6 +1360,43 @@ Represents Day 1 and Day 2 Part A knowledge only.
 1. Full file tree
 2. Every .ts, .html, .css file as a separate labeled code block
 3. README.md
+4. An instructions.md file that gives students step-by-step instructions to build this project from scratch without looking at the sample code
+```
+
+---
+
+## D2A — PROJECT PORTFOLIO BUILDER
+
+```
+
+You are generating the Project Portfolio Builder for Day 2 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/Project-Portfolio-Builder/`.
+
+Create a single file called `Projects.md` containing 5–7 project ideas that students can build
+to practice and reinforce what they learned in Day 2 Part A.
+
+CONCEPTS STUDENTS CAN USE (Day 2 Part A and all prior days):
+- Everything from Day 1 (components, @Input/@Output, lifecycle hooks, binding types)
+- ng-content single-slot and multi-slot projection
+- ngAfterContentInit lifecycle hook
+- ng-container and ng-template
+- @for with track, @if/@else, @switch, @let
+- [ngClass] and [ngStyle] attribute directives
+- Built-in pipes: date, currency, uppercase, lowercase, titlecase
+- Custom pure pipes (TruncatePipe, FilterPipe)
+- Pipe chaining and parameterized pipes
+
+Each project idea should include:
+- A descriptive title
+- A difficulty rating (⭐ Beginner or ⭐⭐ Intermediate)
+- A 2–3 sentence description of what to build
+- A "Components to create" section listing the main pieces
+- A "What you'll practice" section listing 3–4 specific concepts
+
+End the file with general tips that apply to all projects.
+
+**NOW WRITE THE Projects.md FILE.**
 ```
 
 ---
@@ -1669,7 +1783,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 2 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/Projects/`.
+OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/Project/`.
 
 PROJECT: Budget Tracker
 Total, spent, and remaining balance are all computed() signals derived from a writable
@@ -1690,6 +1804,43 @@ CONCEPTS TO DEMONSTRATE:
 1. Full file tree
 2. Every .ts, .html, .css file as a separate labeled code block
 3. README.md
+4. An instructions.md file that gives students step-by-step instructions to build this project from scratch without looking at the sample code
+```
+
+---
+
+## D2B — PROJECT PORTFOLIO BUILDER
+
+```
+
+You are generating the Project Portfolio Builder for Day 2 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/Project-Portfolio-Builder/`.
+
+Create a single file called `Projects.md` containing 5–7 project ideas that students can build
+to practice and reinforce what they learned in Day 2 Part B.
+
+CONCEPTS STUDENTS CAN USE (Day 2 Part B and all prior days):
+- Everything from Day 1 and Day 2 Part A (components, @Input/@Output, content projection, directives, pipes)
+- signal() with .set() and .update()
+- computed() for derived state
+- effect() with cleanup function
+- Signal-based input() — readonly
+- Signal-based output()
+- model() for two-way binding
+- linkedSignal() for dependent resets
+- Immutable array update patterns with signals
+
+Each project idea should include:
+- A descriptive title
+- A difficulty rating (⭐ Beginner or ⭐⭐ Intermediate)
+- A 2–3 sentence description of what to build
+- A "Components to create" section listing the main pieces
+- A "What you'll practice" section listing 3–4 specific concepts
+
+End the file with general tips that apply to all projects.
+
+**NOW WRITE THE Projects.md FILE.**
 ```
 
 ---
@@ -2121,7 +2272,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 3 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/Projects/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/Project/`.
 
 PROJECT: Shopping Cart
 A shopping cart app where the header displays cart count and the cart page shows the
@@ -2140,6 +2291,43 @@ CONCEPTS TO DEMONSTRATE:
 1. Full file tree
 2. Every .ts, .html, .css file as a separate labeled code block
 3. README.md
+4. An instructions.md file that gives students step-by-step instructions to build this project from scratch without looking at the sample code
+```
+
+---
+
+## D3A — PROJECT PORTFOLIO BUILDER
+
+```
+
+You are generating the Project Portfolio Builder for Day 3 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/Project-Portfolio-Builder/`.
+
+Create a single file called `Projects.md` containing 5–7 project ideas that students can build
+to practice and reinforce what they learned in Day 3 Part A.
+
+CONCEPTS STUDENTS CAN USE (Day 3 Part A and all prior days):
+- Everything from Days 1–2 (components, signals, content projection, directives, pipes)
+- @Injectable({ providedIn: 'root' }) services
+- inject() function for dependency injection
+- BehaviorSubject for shared state across components
+- Subject for event streams
+- RxJS operators: map, tap, filter, switchMap, takeUntilDestroyed()
+- toSignal() to convert Observables to signals for templates
+- DestroyRef and takeUntilDestroyed() for cleanup
+- Service-to-component communication patterns
+
+Each project idea should include:
+- A descriptive title
+- A difficulty rating (⭐ Beginner or ⭐⭐ Intermediate)
+- A 2–3 sentence description of what to build
+- A "Components to create" section listing the main pieces
+- A "What you'll practice" section listing 3–4 specific concepts
+
+End the file with general tips that apply to all projects.
+
+**NOW WRITE THE Projects.md FILE.**
 ```
 
 ---
@@ -2541,7 +2729,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 3 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/Projects/`.
+OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/Project/`.
 
 PROJECT: Weather Dashboard
 Fetches current weather and 5-day forecast from Open-Meteo (no API key required).
@@ -2563,6 +2751,45 @@ CONCEPTS TO DEMONSTRATE:
 1. Full file tree
 2. Every .ts, .html, .css file as a separate labeled code block
 3. README.md
+4. An instructions.md file that gives students step-by-step instructions to build this project from scratch without looking at the sample code
+```
+
+---
+
+## D3B — PROJECT PORTFOLIO BUILDER
+
+```
+
+You are generating the Project Portfolio Builder for Day 3 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/Project-Portfolio-Builder/`.
+
+Create a single file called `Projects.md` containing 5–7 project ideas that students can build
+to practice and reinforce what they learned in Day 3 Part B.
+
+CONCEPTS STUDENTS CAN USE (Day 3 Part B and all prior days):
+- Everything from Days 1–2 and Day 3 Part A (components, signals, services, DI, RxJS)
+- provideHttpClient() with withInterceptors()
+- Typed HttpClient calls: http.get<MyType>(url)
+- Response interfaces defined for every API shape
+- HttpParams for query strings
+- forkJoin for parallel HTTP requests
+- isLoading signal pattern with finalize()
+- HttpErrorResponse with status code branching
+- Functional HttpInterceptorFn (auth headers, logging)
+- environment.ts for API base URL
+- retry(), catchError() operators
+
+Each project idea should include:
+- A descriptive title
+- A difficulty rating (⭐ Beginner or ⭐⭐ Intermediate)
+- A 2–3 sentence description of what to build
+- A "Components to create" section listing the main pieces
+- A "What you'll practice" section listing 3–4 specific concepts
+
+End the file with general tips that apply to all projects.
+
+**NOW WRITE THE Projects.md FILE.**
 ```
 
 ---
@@ -2999,7 +3226,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 4 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/Projects/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/Project/`.
 
 PROJECT: Recipe Browser
 A recipe browser with a home page, a recipe list page (filterable by category via
@@ -3022,6 +3249,44 @@ CONCEPTS TO DEMONSTRATE:
 1. Full file tree
 2. Every .ts, .html, .css file as a separate labeled code block
 3. README.md
+4. An instructions.md file that gives students step-by-step instructions to build this project from scratch without looking at the sample code
+```
+
+---
+
+## D4A — PROJECT PORTFOLIO BUILDER
+
+```
+
+You are generating the Project Portfolio Builder for Day 4 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/Project-Portfolio-Builder/`.
+
+Create a single file called `Projects.md` containing 5–7 project ideas that students can build
+to practice and reinforce what they learned in Day 4 Part A.
+
+CONCEPTS STUDENTS CAN USE (Day 4 Part A and all prior days):
+- Everything from Days 1–3 (components, signals, services, DI, RxJS, HTTP)
+- provideRouter() with withComponentInputBinding()
+- router-outlet, routerLink, routerLinkActive
+- Route params via input() signal
+- Query params via ActivatedRoute.queryParamMap
+- loadComponent() lazy loading
+- canActivate functional guard with UrlTree redirect
+- canDeactivate functional guard with hasUnsavedChanges flag
+- Router.navigate() programmatic navigation
+- Nested routes and child router-outlet
+
+Each project idea should include:
+- A descriptive title
+- A difficulty rating (⭐ Beginner or ⭐⭐ Intermediate)
+- A 2–3 sentence description of what to build
+- A "Components to create" section listing the main pieces
+- A "What you'll practice" section listing 3–4 specific concepts
+
+End the file with general tips that apply to all projects.
+
+**NOW WRITE THE Projects.md FILE.**
 ```
 
 ---
@@ -3430,7 +3695,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 4 Part B sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/Projects/`.
+OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/Project/`.
 
 PROJECT: Multi-Step Checkout Form
 Three steps (shipping, payment, review). Each step is a separate FormGroup.
@@ -3450,6 +3715,45 @@ CONCEPTS TO DEMONSTRATE:
 1. Full file tree
 2. Every .ts, .html, .css file as a separate labeled code block
 3. README.md
+4. An instructions.md file that gives students step-by-step instructions to build this project from scratch without looking at the sample code
+```
+
+---
+
+## D4B — PROJECT PORTFOLIO BUILDER
+
+```
+
+You are generating the Project Portfolio Builder for Day 4 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/Project-Portfolio-Builder/`.
+
+Create a single file called `Projects.md` containing 5–7 project ideas that students can build
+to practice and reinforce what they learned in Day 4 Part B.
+
+CONCEPTS STUDENTS CAN USE (Day 4 Part B and all prior days):
+- Everything from Days 1–3 and Day 4 Part A (components, signals, services, DI, RxJS, HTTP, routing)
+- Reactive forms: FormGroup, FormControl, FormArray
+- Template-driven forms with FormsModule
+- Built-in validators (required, minLength, maxLength, pattern, email)
+- Custom validators (sync and async)
+- Form state: touched, dirty, pristine, valid, invalid
+- Error display patterns
+- (ngSubmit) form submission
+- Multi-step forms with separate FormGroups per step
+- toSignal(form.valueChanges) for reactive form state
+- computed() for form-derived state (completion percentage, etc.)
+
+Each project idea should include:
+- A descriptive title
+- A difficulty rating (⭐ Beginner or ⭐⭐ Intermediate)
+- A 2–3 sentence description of what to build
+- A "Components to create" section listing the main pieces
+- A "What you'll practice" section listing 3–4 specific concepts
+
+End the file with general tips that apply to all projects.
+
+**NOW WRITE THE Projects.md FILE.**
 ```
 
 ---
@@ -3894,7 +4198,7 @@ File label format: ### Exercise-1-Solution/src/app/component/component.component
 
 You are generating the Day 5 Part A sample project for a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/Projects/`.
+OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/Project/`.
 
 PROJECT: Recipe Browser Test Suite
 A complete test suite for the Day 4 Part A Recipe Browser app.
@@ -3920,6 +4224,42 @@ CONCEPTS TO DEMONSTRATE:
 1. Full test file tree
 2. Every .spec.ts file as a separate labeled code block
 3. README.md explaining what each test file covers and why
+```
+
+---
+
+## D5A — PROJECT PORTFOLIO BUILDER
+
+```
+
+You are generating the Project Portfolio Builder for Day 5 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/Project-Portfolio-Builder/`.
+
+Create a single file called `Projects.md` containing 5–7 project ideas that students can build
+to practice and reinforce what they learned in Day 5 Part A.
+
+CONCEPTS STUDENTS CAN USE (Day 5 Part A and all prior days):
+- Everything from Days 1–4 (components, signals, services, DI, RxJS, HTTP, routing, forms)
+- Standalone component test setup with TestBed
+- setInput() for signal inputs in tests
+- computed() assertion patterns
+- BehaviorSubject and error$ stream testing
+- HttpTestingController with flush and HttpErrorResponse
+- Pure pipe transform() assertion
+- NO_ERRORS_SCHEMA unit test vs real child integration test
+- Test doubles: spies, stubs, mocks
+
+Each project idea should include:
+- A descriptive title
+- A difficulty rating (⭐ Beginner or ⭐⭐ Intermediate)
+- A 2–3 sentence description of what to build
+- A "Components/Tests to create" section listing the main pieces
+- A "What you'll practice" section listing 3–4 specific testing concepts
+
+End the file with general tips that apply to all projects.
+
+**NOW WRITE THE Projects.md FILE.**
 ```
 
 ---
@@ -4209,7 +4549,7 @@ Master Context is auto-loaded from .github/copilot-instructions.md.
 Just paste the specific prompt into Copilot chat — no need to paste Master Context.
 Each deliverable goes in its own subfolder within the day folder:
   SampleCode/, SampleLegacyCode/, Slides/, SpeakerScript/,
-  Exercises/, Projects/, GapCheck/
+  Exercises/, Project/, Project-Portfolio-Builder/, GapCheck/
 Cross-Day Checks go in Cross-Day-Checks/. Final review goes in Final-Review/.
 
 FOR EACH PART (in this order):
@@ -4218,7 +4558,8 @@ FOR EACH PART (in this order):
 3. Speaker Scripts — Slides script + Code walkthrough script (paste: specific prompts + slides)
 4. Exercises (paste: specific prompt + slides)
 5. Sample Project (paste: specific prompt)
-6. Gap Check (paste: specific prompt + all materials)
+6. Project Portfolio Builder (paste: specific prompt)
+7. Gap Check (paste: specific prompt + all materials)
 
 AFTER EACH FULL DAY:
 Run the Cross-Day Continuity Check

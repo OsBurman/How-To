@@ -9,7 +9,7 @@ A static personal bio card application built with Angular. This project demonstr
 ## File Tree
 
 ```
-D1A/SampleProject/
+Day-1-A-Angular-Foundation/Project/
 ├── README.md                                         ← This file
 ├── package.json                                      ← Angular dependencies and scripts
 ├── tsconfig.json                                     ← Base TypeScript configuration
@@ -103,7 +103,7 @@ HeaderComponent has a blue gradient banner with `border-radius: 12px`. BioCardCo
 ## How to Run
 
 ```bash
-cd D1A/SampleProject
+cd Day-1-A-Angular-Foundation/Project
 npm install
 ng serve
 ```

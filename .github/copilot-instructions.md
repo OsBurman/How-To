@@ -142,7 +142,8 @@ Every deliverable type within a day/part goes in its own subfolder:
 - Speaker Script → `Day-N-X-Topic/SpeakerScript/`
 - Exercises → `Day-N-X-Topic/Exercises/`
 - Exercise Solutions → `Day-N-X-Topic/Exercises-Solutions/`
-- Sample Project → `Day-N-X-Topic/Projects/`
+- Sample Project → `Day-N-X-Topic/Project/`
+- Project Portfolio Builder → `Day-N-X-Topic/Project-Portfolio-Builder/`
 - Gap Check → `Day-N-X-Topic/GapCheck/`
 - Capstone → `Day-5-B-Capstone/Capstone/`
 - Capstone Gap Check → `Day-5-B-Capstone/GapCheck/`
