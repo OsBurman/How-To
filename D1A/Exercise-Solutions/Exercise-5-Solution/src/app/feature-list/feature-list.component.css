@@ -1,0 +1,12 @@
+.features {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.features h2 { color: #1a1a2e; margin: 0 0 1rem; }
+.features ul { list-style: none; padding: 0; }
+.features li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}

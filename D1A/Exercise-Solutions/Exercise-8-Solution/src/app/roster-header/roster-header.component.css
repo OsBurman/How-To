@@ -1,0 +1,7 @@
+.roster-header {
+  background-color: #263238;
+  color: #ffffff;
+  text-align: center;
+  padding: 1.5rem;
+}
+.roster-header h1 { margin: 0; font-size: 1.8rem; }

@@ -1,0 +1,10 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1a1a2e;
+  color: #ffffff;
+}
+.site-name { font-size: 1.3rem; font-weight: 600; }
+.nav-links { font-size: 0.9rem; color: #b0b0b0; }

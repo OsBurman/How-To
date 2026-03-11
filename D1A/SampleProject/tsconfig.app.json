@@ -1,0 +1,11 @@
+/* tsconfig.app.json — Extends the base tsconfig for the application build.
+   Tells the compiler which files to include when building the app. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.d.ts"]
+}

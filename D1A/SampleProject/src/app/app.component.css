@@ -1,0 +1,32 @@
+/* app.component.css — Styles scoped to AppComponent only.
+   These styles control the overall page layout.
+   They do NOT leak into child components thanks to ViewEncapsulation.Emulated (the default). */
+
+/* Centered column layout for the entire app */
+.app-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Section heading for the skills area */
+.skills-section {
+  text-align: center;
+}
+
+.skills-title {
+  font-size: 1.4rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+/* Flexbox grid to lay out skill badges in a row that wraps */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}

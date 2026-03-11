@@ -1,0 +1,59 @@
+<!--
+  app.component.html — Root template for the Personal Bio Card app.
+
+  WHAT THIS TEMPLATE DEMONSTRATES:
+  - Rendering multiple child components in one parent template
+  - Property binding [inputName]="value" to pass data into @Input() properties
+  - Each child component is a standalone component listed in the imports array
+  - The skills array is iterated here — each skill string is passed to a SkillBadgeComponent
+-->
+
+<div class="app-container">
+
+  <!--
+    HeaderComponent: receives the page title via [title] property binding.
+    The [title] on the left matches the @Input() title property in HeaderComponent.
+    The "pageTitle" on the right is a property defined in AppComponent.
+  -->
+  <app-header [title]="pageTitle"></app-header>
+
+  <!--
+    BioCardComponent: receives four @Input() properties from the parent.
+    Each [bracket] binding connects an AppComponent property to a BioCardComponent @Input().
+    This is one-way data flow: parent → child only.
+  -->
+  <app-bio-card
+    [name]="userName"
+    [role]="userRole"
+    [bio]="userBio"
+    [avatarUrl]="userAvatarUrl">
+  </app-bio-card>
+
+  <!--
+    Skills section: renders a SkillBadgeComponent for each skill in the array.
+    We use a simple repeated element here — on Day 2 you'll learn @for to do this
+    more elegantly. For now, each badge is written out individually to keep
+    the focus on @Input() and component composition.
+  -->
+  <section class="skills-section">
+    <h2 class="skills-title">Skills</h2>
+    <div class="skills-grid">
+      <!--
+        Each SkillBadgeComponent receives one skill name via [skillName].
+        We access the array by index — simple and clear for Day 1.
+      -->
+      <app-skill-badge [skillName]="skills[0]"></app-skill-badge>
+      <app-skill-badge [skillName]="skills[1]"></app-skill-badge>
+      <app-skill-badge [skillName]="skills[2]"></app-skill-badge>
+      <app-skill-badge [skillName]="skills[3]"></app-skill-badge>
+      <app-skill-badge [skillName]="skills[4]"></app-skill-badge>
+    </div>
+  </section>
+
+  <!--
+    FooterComponent: no inputs needed — it generates the current year internally.
+    Not every component needs @Input(). Simple components can be fully self-contained.
+  -->
+  <app-footer></app-footer>
+
+</div>

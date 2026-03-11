@@ -128,6 +128,7 @@ Every deliverable type within a day/part goes in its own subfolder:
 - Slides → `DXX/Slides/`
 - Speaker Script → `DXX/SpeakerScript/`
 - Exercises → `DXX/Exercises/`
+- Exercise Solutions → `DXX/Exercise-Solutions/`
 - Sample Project → `DXX/SampleProject/`
 - Gap Check → `DXX/GapCheck/`
 - Capstone → `D5B/Capstone/`
@@ -187,6 +188,7 @@ DXX/Exercises/
   package.json              ← npm workspaces root (private, no deps of its own)
   README.md                 ← one-time setup instructions for students
   Exercise-1-Short-Title/
+    README.md               ← exercise instructions, acceptance criteria, and hints
     package.json            ← lists Angular deps + scripts (start, build, test)
     angular.json
     tsconfig.json
@@ -201,6 +203,14 @@ DXX/Exercises/
         ...child components in subfolders
   Exercise-2-Short-Title/
     ...same complete Angular project structure
+
+DXX/Exercise-Solutions/     ← separate sibling folder to DXX/Exercises/
+  Exercise-1-Solution/      ← solution files for Exercise 1 (only changed files)
+    src/
+      app/
+        ...only the files students need to change
+  Exercise-2-Solution/
+    ...solution files for Exercise 2
 ```
 
 Rules:
@@ -210,7 +220,7 @@ Rules:
    `coverage/`, IDE folders (`.idea/`, `.vscode/`), and OS files (`.DS_Store`, `Thumbs.db`).
 2. **Root `package.json`** — `"private": true` with a `"workspaces"` array listing every
    exercise subfolder by its descriptive name (e.g., `["Exercise-1-Scaffold-and-Explore",
-   "Exercise-2-Your-First-Component", …]`). It has NO dependencies of its own — it exists
+"Exercise-2-Your-First-Component", …]`). It has NO dependencies of its own — it exists
    solely to enable npm workspace hoisting.
 3. **Exercise folder naming** — each exercise subfolder is named
    `Exercise-N-Short-Descriptive-Title` using PascalCase-with-hyphens (e.g.,
@@ -234,14 +244,39 @@ Rules:
    (`Ctrl+C`) before starting the next exercise.
 9. **File labels in output** use the full path from the exercises root:
    `### Exercise-1-Scaffold-and-Explore/src/app/header/header.component.ts`
-10. **Solutions** at the end of the exercises document use the same exercise subfolder
-    labeling: `### Exercise-3-Fix-the-Error/src/app/app.component.ts`
+10. **Solution folders** — every exercise gets a matching solution folder inside
+    a separate `DXX/Exercise-Solutions/` folder (a sibling to `DXX/Exercises/`),
+    named `Exercise-N-Solution` (e.g., `Exercise-1-Solution/`,
+    `Exercise-2-Solution/`). Each solution folder mirrors the exercise's `src/`
+    structure but includes ONLY the files students need to create or modify —
+    not config files, not unchanged files, not descriptions. It contains pure
+    code files so students can compare their work file-by-file. The master
+    `DXX-exercises.md` document should NOT contain a SOLUTIONS section — it ends
+    after the last exercise with a note pointing students to the solution folders
+    in `DXX/Exercise-Solutions/`.
 11. **Legacy exercise** — the FINAL exercise in every day/part must always be a
     LEGACY exercise that gives students a working modern standalone app and asks them
     to convert it to the classic (legacy) Angular patterns covered in that lesson's
     legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE.
     It teaches recognition, not mastery. The exercise subfolder is named
     `Exercise-N-Legacy-[Topic]` (e.g., `Exercise-9-Legacy-NgModule`).
+12. **Per-exercise `README.md`** — every exercise subfolder MUST include a `README.md`
+    containing the full exercise instructions for that exercise: title, difficulty,
+    concepts practiced, what you're building, step-by-step instructions, acceptance
+    criteria, and hints. This is the file students open first when they start an
+    exercise. The master `DXX-exercises.md` document collects all exercises in one
+    place for reference, but the individual README is what students work from.
+13. **Starter code** — every exercise project must include meaningful starter code
+    that gives students something to work with. The starter code should match what
+    the exercise instructions describe as the starting point:
+    - "Explore" exercises: a fully working app students annotate or observe
+    - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+      pointing students to where new components should be rendered
+    - "Fix" exercises: a pre-built app with a deliberate bug already in place
+    - "Convert" exercises (legacy): a fully working modern app plus skeleton files
+      with TODO comments for the conversion targets
+    - Students must never start from a completely empty project — there should
+      always be enough context that they know where to begin
 
 GENERATION RULES — APPLY TO ALL OUTPUT
 

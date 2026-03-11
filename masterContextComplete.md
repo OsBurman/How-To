@@ -11,7 +11,7 @@
 
 **File references marked `CONTEXT FILES:`** tell Copilot which previously generated files to read for context. Each reference points to a folder in the workspace (e.g., `D1A/`). When you paste a prompt into Copilot chat, attach the referenced files using `#file:D1A/filename.md` syntax, or simply open the files as editor tabs so Copilot can see them. You do NOT need to paste file contents inline — Copilot reads the files directly.
 
-**Folder organization:** All generated output for a day/part goes in a folder named for that section: `D1A/`, `D1B/`, `D2A/`, `D2B/`, `D3A/`, `D3B/`, `D4A/`, `D4B/`, `D5A/`, `D5B/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `LegacySampleCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercises and solutions, `SampleProject/` for the sample project, and `GapCheck/` for the gap check report. The capstone project goes in `D5B/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
+**Folder organization:** All generated output for a day/part goes in a folder named for that section: `D1A/`, `D1B/`, `D2A/`, `D2B/`, `D3A/`, `D3B/`, `D4A/`, `D4B/`, `D5A/`, `D5B/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `LegacySampleCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercise starter code, `Exercise-Solutions/` for exercise solution files, `SampleProject/` for the sample project, and `GapCheck/` for the gap check report. The capstone project goes in `D5B/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
 
 **Session order for every Part:**
 1. Sample Code → 2. Slides → 3. Speaker Scripts (Slides + Code Walkthrough) → 4. Exercises → 5. Sample Project → 6. Gap Check
@@ -277,8 +277,8 @@ EXERCISE RULES:
 - The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides (e.g., NgModule, declarations, bootstrapModule, constructor injection, *ngIf/*ngFor, HttpClientModule, RouterModule.forRoot, class-based guards — whichever legacy topics apply to that day/part). This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
-share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
-exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
+share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
+`README.md`). Individual exercise projects and solutions will be generated in follow-up prompts.
 
 FORMAT FOR EACH EXERCISE:
 ## Exercise [N]: [Title]
@@ -293,11 +293,89 @@ FORMAT FOR EACH EXERCISE:
 ### Hints
 **Hint 1 — [Topic]:** ...
 
-Collect all solutions at the end under # SOLUTIONS, each solution file as its own
-labeled code block using the exercise subfolder path
-(e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
+End the document after the last exercise with a note pointing students to the
+`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
 
-**NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 1 Part A.**
+**NOW WRITE THE D1A-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 1 Part A.**
+```
+
+---
+
+## D1A — EXERCISE PROJECTS (Part 1)
+
+```
+You are generating starter code projects for the first batch of Day 1 Part A exercises
+(Exercises 1 through 5).
+
+Read the exercises document generated in the previous prompt (D1A — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D1A/Exercises/`.
+
+For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
+named subfolder. Each project must include:
+- package.json, angular.json, tsconfig.json, tsconfig.app.json
+- src/index.html, src/main.ts, src/styles.css
+- src/app/ with app.config.ts, app.component.ts/.html/.css, and child component subfolders
+- README.md at the project root with the full exercise instructions (title, difficulty,
+  concepts, what you're building, numbered steps, acceptance criteria, and hints)
+
+STARTER CODE RULES:
+- "Explore" exercises: a fully working app students annotate or observe
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 1–5 of Day 1 Part A.**
+```
+
+---
+
+## D1A — EXERCISE PROJECTS (Part 2)
+
+```
+You are generating starter code projects for the remaining Day 1 Part A exercises
+(Exercise 6 through the final legacy exercise).
+
+Read the exercises document generated earlier (D1A — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D1A/Exercises/`.
+
+For each remaining exercise, generate a complete, runnable Angular CLI project in its named
+subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
+full src/ folder, and a README.md with the exercise instructions.
+
+STARTER CODE RULES:
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 6 THROUGH THE FINAL EXERCISE of Day 1 Part A.**
+```
+
+---
+
+## D1A — EXERCISE SOLUTIONS
+
+```
+You are generating solution files for ALL Day 1 Part A exercises.
+
+Read the exercises and starter code generated in the previous prompts.
+
+OUTPUT FOLDER: Save all generated files in `D1A/Exercise-Solutions/`.
+
+For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
+`Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
+src/ structure but includes ONLY the files students need to create or modify — not config
+files, not unchanged files. Pure code files so students can compare their work file-by-file.
+
+File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
+
+**NOW WRITE ALL SOLUTION FILES for Day 1 Part A.**
 ```
 
 ---
@@ -624,8 +702,8 @@ EXERCISE RULES:
 - The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
-share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
-exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
+share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
+`README.md`). Individual exercise projects and solutions will be generated in follow-up prompts.
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -633,10 +711,89 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block using the
-exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
+End the document after the last exercise with a note pointing students to the
+`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
 
-**NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 1 Part B.**
+**NOW WRITE THE D1B-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 1 Part B.**
+```
+
+---
+
+## D1B — EXERCISE PROJECTS (Part 1)
+
+```
+You are generating starter code projects for the first batch of Day 1 Part B exercises
+(Exercises 1 through 5).
+
+Read the exercises document generated in the previous prompt (D1B — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D1B/Exercises/`.
+
+For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
+named subfolder. Each project must include:
+- package.json, angular.json, tsconfig.json, tsconfig.app.json
+- src/index.html, src/main.ts, src/styles.css
+- src/app/ with app.config.ts, app.component.ts/.html/.css, and child component subfolders
+- README.md at the project root with the full exercise instructions (title, difficulty,
+  concepts, what you're building, numbered steps, acceptance criteria, and hints)
+
+STARTER CODE RULES:
+- "Explore" exercises: a fully working app students annotate or observe
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 1–5 of Day 1 Part B.**
+```
+
+---
+
+## D1B — EXERCISE PROJECTS (Part 2)
+
+```
+You are generating starter code projects for the remaining Day 1 Part B exercises
+(Exercise 6 through the final legacy exercise).
+
+Read the exercises document generated earlier (D1B — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D1B/Exercises/`.
+
+For each remaining exercise, generate a complete, runnable Angular CLI project in its named
+subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
+full src/ folder, and a README.md with the exercise instructions.
+
+STARTER CODE RULES:
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 6 THROUGH THE FINAL EXERCISE of Day 1 Part B.**
+```
+
+---
+
+## D1B — EXERCISE SOLUTIONS
+
+```
+You are generating solution files for ALL Day 1 Part B exercises.
+
+Read the exercises and starter code generated in the previous prompts.
+
+OUTPUT FOLDER: Save all generated files in `D1B/Exercise-Solutions/`.
+
+For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
+`Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
+src/ structure but includes ONLY the files students need to create or modify — not config
+files, not unchanged files. Pure code files so students can compare their work file-by-file.
+
+File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
+
+**NOW WRITE ALL SOLUTION FILES for Day 1 Part B.**
 ```
 
 ---
@@ -1000,8 +1157,8 @@ EXERCISE RULES:
 - The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
-share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
-exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
+share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
+`README.md`). Individual exercise projects and solutions will be generated in follow-up prompts.
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -1009,10 +1166,89 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block using the
-exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
+End the document after the last exercise with a note pointing students to the
+`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
 
-**NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 2 Part A.**
+**NOW WRITE THE D2A-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 2 Part A.**
+```
+
+---
+
+## D2A — EXERCISE PROJECTS (Part 1)
+
+```
+You are generating starter code projects for the first batch of Day 2 Part A exercises
+(Exercises 1 through 5).
+
+Read the exercises document generated in the previous prompt (D2A — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D2A/Exercises/`.
+
+For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
+named subfolder. Each project must include:
+- package.json, angular.json, tsconfig.json, tsconfig.app.json
+- src/index.html, src/main.ts, src/styles.css
+- src/app/ with app.config.ts, app.component.ts/.html/.css, and child component subfolders
+- README.md at the project root with the full exercise instructions (title, difficulty,
+  concepts, what you're building, numbered steps, acceptance criteria, and hints)
+
+STARTER CODE RULES:
+- "Explore" exercises: a fully working app students annotate or observe
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 1–5 of Day 2 Part A.**
+```
+
+---
+
+## D2A — EXERCISE PROJECTS (Part 2)
+
+```
+You are generating starter code projects for the remaining Day 2 Part A exercises
+(Exercise 6 through the final legacy exercise).
+
+Read the exercises document generated earlier (D2A — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D2A/Exercises/`.
+
+For each remaining exercise, generate a complete, runnable Angular CLI project in its named
+subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
+full src/ folder, and a README.md with the exercise instructions.
+
+STARTER CODE RULES:
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 6 THROUGH THE FINAL EXERCISE of Day 2 Part A.**
+```
+
+---
+
+## D2A — EXERCISE SOLUTIONS
+
+```
+You are generating solution files for ALL Day 2 Part A exercises.
+
+Read the exercises and starter code generated in the previous prompts.
+
+OUTPUT FOLDER: Save all generated files in `D2A/Exercise-Solutions/`.
+
+For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
+`Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
+src/ structure but includes ONLY the files students need to create or modify — not config
+files, not unchanged files. Pure code files so students can compare their work file-by-file.
+
+File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
+
+**NOW WRITE ALL SOLUTION FILES for Day 2 Part A.**
 ```
 
 ---
@@ -1331,8 +1567,8 @@ EXERCISE RULES:
 - The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
-share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
-exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
+share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
+`README.md`). Individual exercise projects and solutions will be generated in follow-up prompts.
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -1340,10 +1576,89 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block using the
-exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
+End the document after the last exercise with a note pointing students to the
+`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
 
-**NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 2 Part B.**
+**NOW WRITE THE D2B-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 2 Part B.**
+```
+
+---
+
+## D2B — EXERCISE PROJECTS (Part 1)
+
+```
+You are generating starter code projects for the first batch of Day 2 Part B exercises
+(Exercises 1 through 5).
+
+Read the exercises document generated in the previous prompt (D2B — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D2B/Exercises/`.
+
+For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
+named subfolder. Each project must include:
+- package.json, angular.json, tsconfig.json, tsconfig.app.json
+- src/index.html, src/main.ts, src/styles.css
+- src/app/ with app.config.ts, app.component.ts/.html/.css, and child component subfolders
+- README.md at the project root with the full exercise instructions (title, difficulty,
+  concepts, what you're building, numbered steps, acceptance criteria, and hints)
+
+STARTER CODE RULES:
+- "Explore" exercises: a fully working app students annotate or observe
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 1–5 of Day 2 Part B.**
+```
+
+---
+
+## D2B — EXERCISE PROJECTS (Part 2)
+
+```
+You are generating starter code projects for the remaining Day 2 Part B exercises
+(Exercise 6 through the final legacy exercise).
+
+Read the exercises document generated earlier (D2B — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D2B/Exercises/`.
+
+For each remaining exercise, generate a complete, runnable Angular CLI project in its named
+subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
+full src/ folder, and a README.md with the exercise instructions.
+
+STARTER CODE RULES:
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 6 THROUGH THE FINAL EXERCISE of Day 2 Part B.**
+```
+
+---
+
+## D2B — EXERCISE SOLUTIONS
+
+```
+You are generating solution files for ALL Day 2 Part B exercises.
+
+Read the exercises and starter code generated in the previous prompts.
+
+OUTPUT FOLDER: Save all generated files in `D2B/Exercise-Solutions/`.
+
+For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
+`Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
+src/ structure but includes ONLY the files students need to create or modify — not config
+files, not unchanged files. Pure code files so students can compare their work file-by-file.
+
+File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
+
+**NOW WRITE ALL SOLUTION FILES for Day 2 Part B.**
 ```
 
 ---
@@ -1704,8 +2019,8 @@ EXERCISE RULES:
 - The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
-share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
-exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
+share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
+`README.md`). Individual exercise projects and solutions will be generated in follow-up prompts.
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -1713,10 +2028,89 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block using the
-exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
+End the document after the last exercise with a note pointing students to the
+`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
 
-**NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 3 Part A.**
+**NOW WRITE THE D3A-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 3 Part A.**
+```
+
+---
+
+## D3A — EXERCISE PROJECTS (Part 1)
+
+```
+You are generating starter code projects for the first batch of Day 3 Part A exercises
+(Exercises 1 through 5).
+
+Read the exercises document generated in the previous prompt (D3A — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D3A/Exercises/`.
+
+For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
+named subfolder. Each project must include:
+- package.json, angular.json, tsconfig.json, tsconfig.app.json
+- src/index.html, src/main.ts, src/styles.css
+- src/app/ with app.config.ts, app.component.ts/.html/.css, and child component subfolders
+- README.md at the project root with the full exercise instructions (title, difficulty,
+  concepts, what you're building, numbered steps, acceptance criteria, and hints)
+
+STARTER CODE RULES:
+- "Explore" exercises: a fully working app students annotate or observe
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 1–5 of Day 3 Part A.**
+```
+
+---
+
+## D3A — EXERCISE PROJECTS (Part 2)
+
+```
+You are generating starter code projects for the remaining Day 3 Part A exercises
+(Exercise 6 through the final legacy exercise).
+
+Read the exercises document generated earlier (D3A — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D3A/Exercises/`.
+
+For each remaining exercise, generate a complete, runnable Angular CLI project in its named
+subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
+full src/ folder, and a README.md with the exercise instructions.
+
+STARTER CODE RULES:
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 6 THROUGH THE FINAL EXERCISE of Day 3 Part A.**
+```
+
+---
+
+## D3A — EXERCISE SOLUTIONS
+
+```
+You are generating solution files for ALL Day 3 Part A exercises.
+
+Read the exercises and starter code generated in the previous prompts.
+
+OUTPUT FOLDER: Save all generated files in `D3A/Exercise-Solutions/`.
+
+For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
+`Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
+src/ structure but includes ONLY the files students need to create or modify — not config
+files, not unchanged files. Pure code files so students can compare their work file-by-file.
+
+File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
+
+**NOW WRITE ALL SOLUTION FILES for Day 3 Part A.**
 ```
 
 ---
@@ -2045,8 +2439,8 @@ EXERCISE RULES:
 - The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
-share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
-exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
+share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
+`README.md`). Individual exercise projects and solutions will be generated in follow-up prompts.
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -2054,10 +2448,89 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block using the
-exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
+End the document after the last exercise with a note pointing students to the
+`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
 
-**NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 3 Part B.**
+**NOW WRITE THE D3B-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 3 Part B.**
+```
+
+---
+
+## D3B — EXERCISE PROJECTS (Part 1)
+
+```
+You are generating starter code projects for the first batch of Day 3 Part B exercises
+(Exercises 1 through 5).
+
+Read the exercises document generated in the previous prompt (D3B — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D3B/Exercises/`.
+
+For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
+named subfolder. Each project must include:
+- package.json, angular.json, tsconfig.json, tsconfig.app.json
+- src/index.html, src/main.ts, src/styles.css
+- src/app/ with app.config.ts, app.component.ts/.html/.css, and child component subfolders
+- README.md at the project root with the full exercise instructions (title, difficulty,
+  concepts, what you're building, numbered steps, acceptance criteria, and hints)
+
+STARTER CODE RULES:
+- "Explore" exercises: a fully working app students annotate or observe
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 1–5 of Day 3 Part B.**
+```
+
+---
+
+## D3B — EXERCISE PROJECTS (Part 2)
+
+```
+You are generating starter code projects for the remaining Day 3 Part B exercises
+(Exercise 6 through the final legacy exercise).
+
+Read the exercises document generated earlier (D3B — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D3B/Exercises/`.
+
+For each remaining exercise, generate a complete, runnable Angular CLI project in its named
+subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
+full src/ folder, and a README.md with the exercise instructions.
+
+STARTER CODE RULES:
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 6 THROUGH THE FINAL EXERCISE of Day 3 Part B.**
+```
+
+---
+
+## D3B — EXERCISE SOLUTIONS
+
+```
+You are generating solution files for ALL Day 3 Part B exercises.
+
+Read the exercises and starter code generated in the previous prompts.
+
+OUTPUT FOLDER: Save all generated files in `D3B/Exercise-Solutions/`.
+
+For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
+`Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
+src/ structure but includes ONLY the files students need to create or modify — not config
+files, not unchanged files. Pure code files so students can compare their work file-by-file.
+
+File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
+
+**NOW WRITE ALL SOLUTION FILES for Day 3 Part B.**
 ```
 
 ---
@@ -2424,8 +2897,8 @@ EXERCISE RULES:
 - The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
-share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
-exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
+share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
+`README.md`). Individual exercise projects and solutions will be generated in follow-up prompts.
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -2433,10 +2906,89 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block using the
-exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
+End the document after the last exercise with a note pointing students to the
+`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
 
-**NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 4 Part A.**
+**NOW WRITE THE D4A-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 4 Part A.**
+```
+
+---
+
+## D4A — EXERCISE PROJECTS (Part 1)
+
+```
+You are generating starter code projects for the first batch of Day 4 Part A exercises
+(Exercises 1 through 5).
+
+Read the exercises document generated in the previous prompt (D4A — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D4A/Exercises/`.
+
+For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
+named subfolder. Each project must include:
+- package.json, angular.json, tsconfig.json, tsconfig.app.json
+- src/index.html, src/main.ts, src/styles.css
+- src/app/ with app.config.ts, app.component.ts/.html/.css, and child component subfolders
+- README.md at the project root with the full exercise instructions (title, difficulty,
+  concepts, what you're building, numbered steps, acceptance criteria, and hints)
+
+STARTER CODE RULES:
+- "Explore" exercises: a fully working app students annotate or observe
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 1–5 of Day 4 Part A.**
+```
+
+---
+
+## D4A — EXERCISE PROJECTS (Part 2)
+
+```
+You are generating starter code projects for the remaining Day 4 Part A exercises
+(Exercise 6 through the final legacy exercise).
+
+Read the exercises document generated earlier (D4A — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D4A/Exercises/`.
+
+For each remaining exercise, generate a complete, runnable Angular CLI project in its named
+subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
+full src/ folder, and a README.md with the exercise instructions.
+
+STARTER CODE RULES:
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 6 THROUGH THE FINAL EXERCISE of Day 4 Part A.**
+```
+
+---
+
+## D4A — EXERCISE SOLUTIONS
+
+```
+You are generating solution files for ALL Day 4 Part A exercises.
+
+Read the exercises and starter code generated in the previous prompts.
+
+OUTPUT FOLDER: Save all generated files in `D4A/Exercise-Solutions/`.
+
+For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
+`Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
+src/ structure but includes ONLY the files students need to create or modify — not config
+files, not unchanged files. Pure code files so students can compare their work file-by-file.
+
+File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
+
+**NOW WRITE ALL SOLUTION FILES for Day 4 Part A.**
 ```
 
 ---
@@ -2776,8 +3328,8 @@ EXERCISE RULES:
 - The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
-share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
-exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
+share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
+`README.md`). Individual exercise projects and solutions will be generated in follow-up prompts.
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -2785,10 +3337,89 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block using the
-exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
+End the document after the last exercise with a note pointing students to the
+`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
 
-**NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 4 Part B.**
+**NOW WRITE THE D4B-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 4 Part B.**
+```
+
+---
+
+## D4B — EXERCISE PROJECTS (Part 1)
+
+```
+You are generating starter code projects for the first batch of Day 4 Part B exercises
+(Exercises 1 through 5).
+
+Read the exercises document generated in the previous prompt (D4B — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D4B/Exercises/`.
+
+For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
+named subfolder. Each project must include:
+- package.json, angular.json, tsconfig.json, tsconfig.app.json
+- src/index.html, src/main.ts, src/styles.css
+- src/app/ with app.config.ts, app.component.ts/.html/.css, and child component subfolders
+- README.md at the project root with the full exercise instructions (title, difficulty,
+  concepts, what you're building, numbered steps, acceptance criteria, and hints)
+
+STARTER CODE RULES:
+- "Explore" exercises: a fully working app students annotate or observe
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 1–5 of Day 4 Part B.**
+```
+
+---
+
+## D4B — EXERCISE PROJECTS (Part 2)
+
+```
+You are generating starter code projects for the remaining Day 4 Part B exercises
+(Exercise 6 through the final legacy exercise).
+
+Read the exercises document generated earlier (D4B — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D4B/Exercises/`.
+
+For each remaining exercise, generate a complete, runnable Angular CLI project in its named
+subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
+full src/ folder, and a README.md with the exercise instructions.
+
+STARTER CODE RULES:
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 6 THROUGH THE FINAL EXERCISE of Day 4 Part B.**
+```
+
+---
+
+## D4B — EXERCISE SOLUTIONS
+
+```
+You are generating solution files for ALL Day 4 Part B exercises.
+
+Read the exercises and starter code generated in the previous prompts.
+
+OUTPUT FOLDER: Save all generated files in `D4B/Exercise-Solutions/`.
+
+For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
+`Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
+src/ structure but includes ONLY the files students need to create or modify — not config
+files, not unchanged files. Pure code files so students can compare their work file-by-file.
+
+File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
+
+**NOW WRITE ALL SOLUTION FILES for Day 4 Part B.**
 ```
 
 ---
@@ -3161,8 +3792,8 @@ EXERCISE RULES:
 - The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
-share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
-exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
+share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
+`README.md`). Individual exercise projects and solutions will be generated in follow-up prompts.
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -3170,10 +3801,89 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block using the
-exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
+End the document after the last exercise with a note pointing students to the
+`DXX/Exercise-Solutions/` folder. Do NOT include solution code in this document.
 
-**NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 5 Part A.**
+**NOW WRITE THE D5A-exercises.md DOCUMENT AND WORKSPACE ROOT FILES for Day 5 Part A.**
+```
+
+---
+
+## D5A — EXERCISE PROJECTS (Part 1)
+
+```
+You are generating starter code projects for the first batch of Day 5 Part A exercises
+(Exercises 1 through 5).
+
+Read the exercises document generated in the previous prompt (D5A — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D5A/Exercises/`.
+
+For each exercise (1 through 5), generate a complete, runnable Angular CLI project in its
+named subfolder. Each project must include:
+- package.json, angular.json, tsconfig.json, tsconfig.app.json
+- src/index.html, src/main.ts, src/styles.css
+- src/app/ with app.config.ts, app.component.ts/.html/.css, and child component subfolders
+- README.md at the project root with the full exercise instructions (title, difficulty,
+  concepts, what you're building, numbered steps, acceptance criteria, and hints)
+
+STARTER CODE RULES:
+- "Explore" exercises: a fully working app students annotate or observe
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 1–5 of Day 5 Part A.**
+```
+
+---
+
+## D5A — EXERCISE PROJECTS (Part 2)
+
+```
+You are generating starter code projects for the remaining Day 5 Part A exercises
+(Exercise 6 through the final legacy exercise).
+
+Read the exercises document generated earlier (D5A — EXERCISES).
+
+OUTPUT FOLDER: Save all generated files in `D5A/Exercises/`.
+
+For each remaining exercise, generate a complete, runnable Angular CLI project in its named
+subfolder with the same structure as Part 1: package.json, angular.json, tsconfig files,
+full src/ folder, and a README.md with the exercise instructions.
+
+STARTER CODE RULES:
+- "Generate" exercises: a bare AppComponent with TODO comments in the HTML
+- "Fix" exercises: a pre-built app with a deliberate bug already in place
+- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- Students must never start from a completely empty project
+
+Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
+
+**NOW WRITE STARTER CODE PROJECTS FOR EXERCISES 6 THROUGH THE FINAL EXERCISE of Day 5 Part A.**
+```
+
+---
+
+## D5A — EXERCISE SOLUTIONS
+
+```
+You are generating solution files for ALL Day 5 Part A exercises.
+
+Read the exercises and starter code generated in the previous prompts.
+
+OUTPUT FOLDER: Save all generated files in `D5A/Exercise-Solutions/`.
+
+For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
+`Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
+src/ structure but includes ONLY the files students need to create or modify — not config
+files, not unchanged files. Pure code files so students can compare their work file-by-file.
+
+File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
+
+**NOW WRITE ALL SOLUTION FILES for Day 5 Part A.**
 ```
 
 ---
