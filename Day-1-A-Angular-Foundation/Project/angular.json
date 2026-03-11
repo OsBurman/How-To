@@ -3,16 +3,16 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "d1a-personal-bio-card": {
+    "d1a-personal-bio-card-project": {
       "projectType": "application",
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/d1a-personal-bio-card",
+            "outputPath": "dist/d1a-personal-bio-card-project",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -36,10 +36,10 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": { "buildTarget": "d1a-personal-bio-card:build:production" },
-            "development": { "buildTarget": "d1a-personal-bio-card:build:development" }
+            "production": { "buildTarget": "d1a-personal-bio-card-project:build:production" },
+            "development": { "buildTarget": "d1a-personal-bio-card-project:build:development" }
           },
           "defaultConfiguration": "development"
         }
