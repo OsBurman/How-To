@@ -183,6 +183,11 @@ GENERATION RULES — APPLY TO ALL OUTPUT
    single concept being taught. Remove any logic unrelated to the lesson.
 4. EXERCISE ALIGNMENT: Every concept covered in slides must be required in at least
    one exercise. No concept should be taught but left unpracticed.
-5. SCRIPT TIMING: Speaker scripts must be written for approximately 45–60 minutes of
-   total Part time, accounting for speaking, code walkthroughs, and Q&A. First half
-   covers new concepts; second half covers worked examples and legacy contrast.
+5. SCRIPT TIMING: Each Part produces TWO separate speaker scripts:
+   (a) **Slides script** — covers concept slides and legacy contrast slides; written for
+   approximately 30–40 minutes of spoken delivery. Saved as `DXX-slides-script.md`.
+   (b) **Code walkthrough script** — walks through the modern sample code first (file by
+   file, explaining what each part demonstrates), then walks through the legacy sample
+   code highlighting the differences and pain points. Written for approximately 15–20
+   minutes of spoken delivery. Saved as `DXX-code-walkthrough-script.md`.
+   Both scripts together account for 45–60 minutes of total Part time including Q&A.

@@ -11,10 +11,10 @@
 
 **File references marked `CONTEXT FILES:`** tell Copilot which previously generated files to read for context. Each reference points to a folder in the workspace (e.g., `D1A/`). When you paste a prompt into Copilot chat, attach the referenced files using `#file:D1A/filename.md` syntax, or simply open the files as editor tabs so Copilot can see them. You do NOT need to paste file contents inline — Copilot reads the files directly.
 
-**Folder organization:** All generated output for a day/part goes in a folder named for that section: `D1A/`, `D1B/`, `D2A/`, `D2B/`, `D3A/`, `D3B/`, `D4A/`, `D4B/`, `D5A/`, `D5B/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `LegacySampleCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker script, `Exercises/` for exercises and solutions, `SampleProject/` for the sample project, and `GapCheck/` for the gap check report. The capstone project goes in `D5B/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
+**Folder organization:** All generated output for a day/part goes in a folder named for that section: `D1A/`, `D1B/`, `D2A/`, `D2B/`, `D3A/`, `D3B/`, `D4A/`, `D4B/`, `D5A/`, `D5B/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `LegacySampleCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercises and solutions, `SampleProject/` for the sample project, and `GapCheck/` for the gap check report. The capstone project goes in `D5B/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
 
 **Session order for every Part:**
-1. Sample Code → 2. Slides → 3. Speaker Script → 4. Exercises → 5. Sample Project → 6. Gap Check
+1. Sample Code → 2. Slides → 3. Speaker Scripts (Slides + Code Walkthrough) → 4. Exercises → 5. Sample Project → 6. Gap Check
 
 **Every prompt ends with a NOW WRITE / NOW GENERATE command in bold.** This is what tells Copilot to produce output rather than describe what it would do. Do not remove it.
 
@@ -188,14 +188,14 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 ---
 
-## D1A — SPEAKER SCRIPT
+## D1A — SPEAKER SCRIPT (Slides)
 
 ```
 
-You are writing the speaker script for Day 1 Part A of a 5-day Angular course.
+You are writing the slides speaker script for Day 1 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D1A/SpeakerScript/`.
-Target duration: 45–60 minutes including code walkthrough and Q&A.
+OUTPUT FOLDER: Save as `D1A/SpeakerScript/D1A-slides-script.md`.
+Target duration: 30–40 minutes of spoken delivery.
 
 CONTEXT FILES: Read all files from the `D1A/` folder in the workspace — the slides and sample code files are already generated there.
 
@@ -211,8 +211,38 @@ SCRIPT RULES:
 - Transitions are natural spoken sentences — never "next slide please"
 - This is the very first session — assume zero Angular knowledge
 
-**NOW WRITE THE COMPLETE WORD-FOR-WORD SPEAKER SCRIPT for Day 1 Part A. Write a script
-section for every slide. Format as: ## [Slide Title] followed by the full spoken text.**
+**NOW WRITE THE COMPLETE WORD-FOR-WORD SLIDES SPEAKER SCRIPT for Day 1 Part A. Write a
+script section for every slide. Format as: ## [Slide Title] followed by the full spoken text.**
+```
+
+---
+
+## D1A — SPEAKER SCRIPT (Code Walkthrough)
+
+```
+
+You are writing the code walkthrough speaker script for Day 1 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Save as `D1A/SpeakerScript/D1A-code-walkthrough-script.md`.
+Target duration: 15–20 minutes of spoken delivery.
+
+CONTEXT FILES: Read all files from the `D1A/` folder in the workspace — the slides, modern sample code (`D1A/SampleCode/`), and legacy sample code (`D1A/LegacySampleCode/`) are already generated there.
+
+SCRIPT RULES:
+- Write exactly what the instructor says out loud — full sentences, not bullets
+- Walk through the MODERN sample code FIRST: go file by file, explain what each part
+  demonstrates, connect back to the concepts covered in the slides
+- Then walk through the LEGACY sample code: go file by file, highlight the differences
+  from the modern code, explain the pain points (NgModule declarations, feature modules,
+  lack of standalone components, etc.)
+- Make comparisons explicit — when showing a legacy file, reference the modern equivalent
+  students just saw: "Compare this to the modern version — there's no standalone: true,
+  no imports array…"
+- This is the very first session — assume zero Angular knowledge
+
+**NOW WRITE THE COMPLETE WORD-FOR-WORD CODE WALKTHROUGH SPEAKER SCRIPT for Day 1 Part A.
+Format as: ## [File or Section Name] followed by the full spoken text. Cover every file
+in both the modern and legacy sample code projects.**
 ```
 
 ---
@@ -317,7 +347,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Angular DevTools
 - ViewEncapsulation basics
 
-CONTEXT FILES: Read all files from the `D1A/` folder in the workspace — all generated materials (sample code, slides, speaker script, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `D1A/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -502,14 +532,14 @@ preview slides must clearly state exercises do not require signals yet.**
 
 ---
 
-## D1B — SPEAKER SCRIPT
+## D1B — SPEAKER SCRIPT (Slides)
 
 ```
 
-You are writing the speaker script for Day 1 Part B of a 5-day Angular course.
+You are writing the slides speaker script for Day 1 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D1B/SpeakerScript/`.
-Target duration: 45–60 minutes including code walkthrough and Q&A.
+OUTPUT FOLDER: Save as `D1B/SpeakerScript/D1B-slides-script.md`.
+Target duration: 30–40 minutes of spoken delivery.
 
 CONTEXT FILES: Read all files from the `D1B/` folder in the workspace — the slides and sample code files are already generated there.
 
@@ -523,7 +553,35 @@ SPECIFIC GUIDANCE:
 - Signals preview: keep it brief; explicitly tell students "don't worry about
   fully understanding this yet — we go deep tomorrow"
 
-**NOW WRITE THE COMPLETE WORD-FOR-WORD SPEAKER SCRIPT for Day 1 Part B.**
+**NOW WRITE THE COMPLETE WORD-FOR-WORD SLIDES SPEAKER SCRIPT for Day 1 Part B. Write a
+script section for every slide. Format as: ## [Slide Title] followed by the full spoken text.**
+```
+
+---
+
+## D1B — SPEAKER SCRIPT (Code Walkthrough)
+
+```
+
+You are writing the code walkthrough speaker script for Day 1 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Save as `D1B/SpeakerScript/D1B-code-walkthrough-script.md`.
+Target duration: 15–20 minutes of spoken delivery.
+
+CONTEXT FILES: Read all files from the `D1B/` folder in the workspace — the slides, modern sample code (`D1B/SampleCode/`), and legacy sample code (`D1B/LegacySampleCode/`) are already generated there.
+
+SCRIPT RULES:
+- Write exactly what the instructor says out loud — full sentences, not bullets
+- Walk through the MODERN sample code FIRST: go file by file, explain what each part
+  demonstrates, connect back to the concepts covered in the slides
+- Then walk through the LEGACY sample code: go file by file, highlight the differences
+  from the modern code, explain the pain points
+- Make comparisons explicit — when showing a legacy file, reference the modern equivalent
+  students just saw
+
+**NOW WRITE THE COMPLETE WORD-FOR-WORD CODE WALKTHROUGH SPEAKER SCRIPT for Day 1 Part B.
+Format as: ## [File or Section Name] followed by the full spoken text. Cover every file
+in both the modern and legacy sample code projects.**
 ```
 
 ---
@@ -622,7 +680,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - ngOnDestroy — cleanup
 - Signals first look — signal(), computed()
 
-CONTEXT FILES: Read all files from the `D1B/` folder in the workspace — all generated materials (sample code, slides, speaker script, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `D1B/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -840,14 +898,14 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 ---
 
-## D2A — SPEAKER SCRIPT
+## D2A — SPEAKER SCRIPT (Slides)
 
 ```
 
-You are writing the speaker script for Day 2 Part A of a 5-day Angular course.
+You are writing the slides speaker script for Day 2 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D2A/SpeakerScript/`.
-Target duration: 45–60 minutes including code walkthrough and Q&A.
+OUTPUT FOLDER: Save as `D2A/SpeakerScript/D2A-slides-script.md`.
+Target duration: 30–40 minutes of spoken delivery.
 
 CONTEXT FILES: Read all files from the `D2A/` folder in the workspace — the slides and sample code files are already generated there.
 
@@ -863,7 +921,35 @@ SPECIFIC GUIDANCE:
 - Reference Day 1: "You already saw @if in the signals preview yesterday — now
   you're seeing the full @if/@else/ng-template pattern"
 
-**NOW WRITE THE COMPLETE WORD-FOR-WORD SPEAKER SCRIPT for Day 2 Part A.**
+**NOW WRITE THE COMPLETE WORD-FOR-WORD SLIDES SPEAKER SCRIPT for Day 2 Part A. Write a
+script section for every slide. Format as: ## [Slide Title] followed by the full spoken text.**
+```
+
+---
+
+## D2A — SPEAKER SCRIPT (Code Walkthrough)
+
+```
+
+You are writing the code walkthrough speaker script for Day 2 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Save as `D2A/SpeakerScript/D2A-code-walkthrough-script.md`.
+Target duration: 15–20 minutes of spoken delivery.
+
+CONTEXT FILES: Read all files from the `D2A/` folder in the workspace — the slides, modern sample code (`D2A/SampleCode/`), and legacy sample code (`D2A/LegacySampleCode/`) are already generated there.
+
+SCRIPT RULES:
+- Write exactly what the instructor says out loud — full sentences, not bullets
+- Walk through the MODERN sample code FIRST: go file by file, explain what each part
+  demonstrates, connect back to the concepts covered in the slides
+- Then walk through the LEGACY sample code: go file by file, highlight the differences
+  from the modern code, explain the pain points
+- Make comparisons explicit — when showing a legacy file, reference the modern equivalent
+  students just saw
+
+**NOW WRITE THE COMPLETE WORD-FOR-WORD CODE WALKTHROUGH SPEAKER SCRIPT for Day 2 Part A.
+Format as: ## [File or Section Name] followed by the full spoken text. Cover every file
+in both the modern and legacy sample code projects.**
 ```
 
 ---
@@ -967,7 +1053,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Pure vs impure pipes
 - Custom pure pipe
 
-CONTEXT FILES: Read all files from the `D2A/` folder in the workspace — all generated materials (sample code, slides, speaker script, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `D2A/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -1141,14 +1227,14 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 ---
 
-## D2B — SPEAKER SCRIPT
+## D2B — SPEAKER SCRIPT (Slides)
 
 ```
 
-You are writing the speaker script for Day 2 Part B of a 5-day Angular course.
+You are writing the slides speaker script for Day 2 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D2B/SpeakerScript/`.
-Target duration: 45–60 minutes including code walkthrough and Q&A.
+OUTPUT FOLDER: Save as `D2B/SpeakerScript/D2B-slides-script.md`.
+Target duration: 30–40 minutes of spoken delivery.
 
 CONTEXT FILES: Read all files from the `D2B/` folder in the workspace — the slides and sample code files are already generated there.
 
@@ -1166,7 +1252,35 @@ SPECIFIC GUIDANCE:
 - Angular direction callout: make it feel like a payoff — "everything you just
   learned is exactly what makes Angular's future possible"
 
-**NOW WRITE THE COMPLETE WORD-FOR-WORD SPEAKER SCRIPT for Day 2 Part B.**
+**NOW WRITE THE COMPLETE WORD-FOR-WORD SLIDES SPEAKER SCRIPT for Day 2 Part B. Write a
+script section for every slide. Format as: ## [Slide Title] followed by the full spoken text.**
+```
+
+---
+
+## D2B — SPEAKER SCRIPT (Code Walkthrough)
+
+```
+
+You are writing the code walkthrough speaker script for Day 2 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Save as `D2B/SpeakerScript/D2B-code-walkthrough-script.md`.
+Target duration: 15–20 minutes of spoken delivery.
+
+CONTEXT FILES: Read all files from the `D2B/` folder in the workspace — the slides, modern sample code (`D2B/SampleCode/`), and legacy sample code (`D2B/LegacySampleCode/`) are already generated there.
+
+SCRIPT RULES:
+- Write exactly what the instructor says out loud — full sentences, not bullets
+- Walk through the MODERN sample code FIRST: go file by file, explain what each part
+  demonstrates, connect back to the concepts covered in the slides
+- Then walk through the LEGACY sample code: go file by file, highlight the differences
+  from the modern code, explain the pain points
+- Make comparisons explicit — when showing a legacy file, reference the modern equivalent
+  students just saw
+
+**NOW WRITE THE COMPLETE WORD-FOR-WORD CODE WALKTHROUGH SPEAKER SCRIPT for Day 2 Part B.
+Format as: ## [File or Section Name] followed by the full spoken text. Cover every file
+in both the modern and legacy sample code projects.**
 ```
 
 ---
@@ -1260,7 +1374,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - ngOnChanges as legacy contrast (SimpleChanges)
 - Angular direction — zoneless stable in v21+
 
-CONTEXT FILES: Read all files from the `D2B/` folder in the workspace — all generated materials (sample code, slides, speaker script, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `D2B/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -1480,14 +1594,14 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 ---
 
-## D3A — SPEAKER SCRIPT
+## D3A — SPEAKER SCRIPT (Slides)
 
 ```
 
-You are writing the speaker script for Day 3 Part A of a 5-day Angular course.
+You are writing the slides speaker script for Day 3 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D3A/SpeakerScript/`.
-Target duration: 45–60 minutes including code walkthrough and Q&A.
+OUTPUT FOLDER: Save as `D3A/SpeakerScript/D3A-slides-script.md`.
+Target duration: 30–40 minutes of spoken delivery.
 
 CONTEXT FILES: Read all files from the `D3A/` folder in the workspace — the slides and sample code files are already generated there.
 
@@ -1502,7 +1616,35 @@ SPECIFIC GUIDANCE:
 - toSignal() vs async pipe: "prefer toSignal() in all new code. Async pipe has a
   quirk: it emits null before data arrives, which breaks your template."
 
-**NOW WRITE THE COMPLETE WORD-FOR-WORD SPEAKER SCRIPT for Day 3 Part A.**
+**NOW WRITE THE COMPLETE WORD-FOR-WORD SLIDES SPEAKER SCRIPT for Day 3 Part A. Write a
+script section for every slide. Format as: ## [Slide Title] followed by the full spoken text.**
+```
+
+---
+
+## D3A — SPEAKER SCRIPT (Code Walkthrough)
+
+```
+
+You are writing the code walkthrough speaker script for Day 3 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Save as `D3A/SpeakerScript/D3A-code-walkthrough-script.md`.
+Target duration: 15–20 minutes of spoken delivery.
+
+CONTEXT FILES: Read all files from the `D3A/` folder in the workspace — the slides, modern sample code (`D3A/SampleCode/`), and legacy sample code (`D3A/LegacySampleCode/`) are already generated there.
+
+SCRIPT RULES:
+- Write exactly what the instructor says out loud — full sentences, not bullets
+- Walk through the MODERN sample code FIRST: go file by file, explain what each part
+  demonstrates, connect back to the concepts covered in the slides
+- Then walk through the LEGACY sample code: go file by file, highlight the differences
+  from the modern code, explain the pain points
+- Make comparisons explicit — when showing a legacy file, reference the modern equivalent
+  students just saw
+
+**NOW WRITE THE COMPLETE WORD-FOR-WORD CODE WALKTHROUGH SPEAKER SCRIPT for Day 3 Part A.
+Format as: ## [File or Section Name] followed by the full spoken text. Cover every file
+in both the modern and legacy sample code projects.**
 ```
 
 ---
@@ -1599,7 +1741,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - toSignal() — primary RxJS-to-signals bridge
 - async pipe vs toSignal() — null gotcha and initialValue solution
 
-CONTEXT FILES: Read all files from the `D3A/` folder in the workspace — all generated materials (sample code, slides, speaker script, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `D3A/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -1785,14 +1927,14 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 ---
 
-## D3B — SPEAKER SCRIPT
+## D3B — SPEAKER SCRIPT (Slides)
 
 ```
 
-You are writing the speaker script for Day 3 Part B of a 5-day Angular course.
+You are writing the slides speaker script for Day 3 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D3B/SpeakerScript/`.
-Target duration: 45–60 minutes including code walkthrough and Q&A.
+OUTPUT FOLDER: Save as `D3B/SpeakerScript/D3B-slides-script.md`.
+Target duration: 30–40 minutes of spoken delivery.
 
 CONTEXT FILES: Read all files from the `D3B/` folder in the workspace — the slides and sample code files are already generated there.
 
@@ -1807,7 +1949,35 @@ SPECIFIC GUIDANCE:
 - forkJoin: contrast with sequential calls — "without forkJoin you'd wait for the
   first request before starting the second. With forkJoin they run simultaneously."
 
-**NOW WRITE THE COMPLETE WORD-FOR-WORD SPEAKER SCRIPT for Day 3 Part B.**
+**NOW WRITE THE COMPLETE WORD-FOR-WORD SLIDES SPEAKER SCRIPT for Day 3 Part B. Write a
+script section for every slide. Format as: ## [Slide Title] followed by the full spoken text.**
+```
+
+---
+
+## D3B — SPEAKER SCRIPT (Code Walkthrough)
+
+```
+
+You are writing the code walkthrough speaker script for Day 3 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Save as `D3B/SpeakerScript/D3B-code-walkthrough-script.md`.
+Target duration: 15–20 minutes of spoken delivery.
+
+CONTEXT FILES: Read all files from the `D3B/` folder in the workspace — the slides, modern sample code (`D3B/SampleCode/`), and legacy sample code (`D3B/LegacySampleCode/`) are already generated there.
+
+SCRIPT RULES:
+- Write exactly what the instructor says out loud — full sentences, not bullets
+- Walk through the MODERN sample code FIRST: go file by file, explain what each part
+  demonstrates, connect back to the concepts covered in the slides
+- Then walk through the LEGACY sample code: go file by file, highlight the differences
+  from the modern code, explain the pain points
+- Make comparisons explicit — when showing a legacy file, reference the modern equivalent
+  students just saw
+
+**NOW WRITE THE COMPLETE WORD-FOR-WORD CODE WALKTHROUGH SPEAKER SCRIPT for Day 3 Part B.
+Format as: ## [File or Section Name] followed by the full spoken text. Cover every file
+in both the modern and legacy sample code projects.**
 ```
 
 ---
@@ -1909,7 +2079,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Functional HttpInterceptorFn
 - environment.ts / environment.development.ts
 
-CONTEXT FILES: Read all files from the `D3B/` folder in the workspace — all generated materials (sample code, slides, speaker script, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `D3B/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -2130,14 +2300,14 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 ---
 
-## D4A — SPEAKER SCRIPT
+## D4A — SPEAKER SCRIPT (Slides)
 
 ```
 
-You are writing the speaker script for Day 4 Part A of a 5-day Angular course.
+You are writing the slides speaker script for Day 4 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D4A/SpeakerScript/`.
-Target duration: 45–60 minutes including code walkthrough and Q&A.
+OUTPUT FOLDER: Save as `D4A/SpeakerScript/D4A-slides-script.md`.
+Target duration: 30–40 minutes of spoken delivery.
 
 CONTEXT FILES: Read all files from the `D4A/` folder in the workspace — the slides and sample code files are already generated there.
 
@@ -2154,7 +2324,35 @@ SPECIFIC GUIDANCE:
 - AppRoutingModule: "I'm showing you this because it is in every Angular project
   you will encounter on a job. You need to read it even if you won't write it."
 
-**NOW WRITE THE COMPLETE WORD-FOR-WORD SPEAKER SCRIPT for Day 4 Part A.**
+**NOW WRITE THE COMPLETE WORD-FOR-WORD SLIDES SPEAKER SCRIPT for Day 4 Part A. Write a
+script section for every slide. Format as: ## [Slide Title] followed by the full spoken text.**
+```
+
+---
+
+## D4A — SPEAKER SCRIPT (Code Walkthrough)
+
+```
+
+You are writing the code walkthrough speaker script for Day 4 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Save as `D4A/SpeakerScript/D4A-code-walkthrough-script.md`.
+Target duration: 15–20 minutes of spoken delivery.
+
+CONTEXT FILES: Read all files from the `D4A/` folder in the workspace — the slides, modern sample code (`D4A/SampleCode/`), and legacy sample code (`D4A/LegacySampleCode/`) are already generated there.
+
+SCRIPT RULES:
+- Write exactly what the instructor says out loud — full sentences, not bullets
+- Walk through the MODERN sample code FIRST: go file by file, explain what each part
+  demonstrates, connect back to the concepts covered in the slides
+- Then walk through the LEGACY sample code: go file by file, highlight the differences
+  from the modern code, explain the pain points
+- Make comparisons explicit — when showing a legacy file, reference the modern equivalent
+  students just saw
+
+**NOW WRITE THE COMPLETE WORD-FOR-WORD CODE WALKTHROUGH SPEAKER SCRIPT for Day 4 Part A.
+Format as: ## [File or Section Name] followed by the full spoken text. Cover every file
+in both the modern and legacy sample code projects.**
 ```
 
 ---
@@ -2254,7 +2452,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - canActivate functional guard with UrlTree
 - canDeactivate functional guard with generic hasUnsavedChanges property
 
-CONTEXT FILES: Read all files from the `D4A/` folder in the workspace — all generated materials (sample code, slides, speaker script, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `D4A/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -2446,14 +2644,14 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 ---
 
-## D4B — SPEAKER SCRIPT
+## D4B — SPEAKER SCRIPT (Slides)
 
 ```
 
-You are writing the speaker script for Day 4 Part B of a 5-day Angular course.
+You are writing the slides speaker script for Day 4 Part B of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D4B/SpeakerScript/`.
-Target duration: 45–60 minutes including code walkthrough and Q&A.
+OUTPUT FOLDER: Save as `D4B/SpeakerScript/D4B-slides-script.md`.
+Target duration: 30–40 minutes of spoken delivery.
 
 CONTEXT FILES: Read all files from the `D4B/` folder in the workspace — the slides and sample code files are already generated there.
 
@@ -2471,7 +2669,35 @@ SPECIFIC GUIDANCE:
 - toSignal(form.valueChanges): "you already used toSignal() on HTTP Observables —
   form.valueChanges is just another Observable. Same bridge, same pattern."
 
-**NOW WRITE THE COMPLETE WORD-FOR-WORD SPEAKER SCRIPT for Day 4 Part B.**
+**NOW WRITE THE COMPLETE WORD-FOR-WORD SLIDES SPEAKER SCRIPT for Day 4 Part B. Write a
+script section for every slide. Format as: ## [Slide Title] followed by the full spoken text.**
+```
+
+---
+
+## D4B — SPEAKER SCRIPT (Code Walkthrough)
+
+```
+
+You are writing the code walkthrough speaker script for Day 4 Part B of a 5-day Angular course.
+
+OUTPUT FOLDER: Save as `D4B/SpeakerScript/D4B-code-walkthrough-script.md`.
+Target duration: 15–20 minutes of spoken delivery.
+
+CONTEXT FILES: Read all files from the `D4B/` folder in the workspace — the slides, modern sample code (`D4B/SampleCode/`), and legacy sample code (`D4B/LegacySampleCode/`) are already generated there.
+
+SCRIPT RULES:
+- Write exactly what the instructor says out loud — full sentences, not bullets
+- Walk through the MODERN sample code FIRST: go file by file, explain what each part
+  demonstrates, connect back to the concepts covered in the slides
+- Then walk through the LEGACY sample code: go file by file, highlight the differences
+  from the modern code, explain the pain points
+- Make comparisons explicit — when showing a legacy file, reference the modern equivalent
+  students just saw
+
+**NOW WRITE THE COMPLETE WORD-FOR-WORD CODE WALKTHROUGH SPEAKER SCRIPT for Day 4 Part B.
+Format as: ## [File or Section Name] followed by the full spoken text. Cover every file
+in both the modern and legacy sample code projects.**
 ```
 
 ---
@@ -2568,7 +2794,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - toSignal(form.valueChanges)
 - ngModel inside reactive form — runtime error warning
 
-CONTEXT FILES: Read all files from the `D4B/` folder in the workspace — all generated materials (sample code, slides, speaker script, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `D4B/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -2793,14 +3019,14 @@ slide(s). After all modern slides, include the legacy contrast section: start wi
 
 ---
 
-## D5A — SPEAKER SCRIPT
+## D5A — SPEAKER SCRIPT (Slides)
 
 ```
 
-You are writing the speaker script for Day 5 Part A of a 5-day Angular course.
+You are writing the slides speaker script for Day 5 Part A of a 5-day Angular course.
 
-OUTPUT FOLDER: Save all generated files in `D5A/SpeakerScript/`.
-Target duration: 45–60 minutes including code walkthrough and Q&A.
+OUTPUT FOLDER: Save as `D5A/SpeakerScript/D5A-slides-script.md`.
+Target duration: 30–40 minutes of spoken delivery.
 
 CONTEXT FILES: Read all files from the `D5A/` folder in the workspace — the slides and sample code files are already generated there.
 
@@ -2818,7 +3044,35 @@ SPECIFIC GUIDANCE:
 - Connect to capstone: "in 45 minutes you'll write tests for the app you're
   about to build. Everything here applies directly."
 
-**NOW WRITE THE COMPLETE WORD-FOR-WORD SPEAKER SCRIPT for Day 5 Part A.**
+**NOW WRITE THE COMPLETE WORD-FOR-WORD SLIDES SPEAKER SCRIPT for Day 5 Part A. Write a
+script section for every slide. Format as: ## [Slide Title] followed by the full spoken text.**
+```
+
+---
+
+## D5A — SPEAKER SCRIPT (Code Walkthrough)
+
+```
+
+You are writing the code walkthrough speaker script for Day 5 Part A of a 5-day Angular course.
+
+OUTPUT FOLDER: Save as `D5A/SpeakerScript/D5A-code-walkthrough-script.md`.
+Target duration: 15–20 minutes of spoken delivery.
+
+CONTEXT FILES: Read all files from the `D5A/` folder in the workspace — the slides, modern sample code (`D5A/SampleCode/`), and legacy sample code (`D5A/LegacySampleCode/`) are already generated there.
+
+SCRIPT RULES:
+- Write exactly what the instructor says out loud — full sentences, not bullets
+- Walk through the MODERN sample code FIRST: go file by file, explain what each part
+  demonstrates, connect back to the concepts covered in the slides
+- Then walk through the LEGACY sample code: go file by file, highlight the differences
+  from the modern code, explain the pain points
+- Make comparisons explicit — when showing a legacy file, reference the modern equivalent
+  students just saw
+
+**NOW WRITE THE COMPLETE WORD-FOR-WORD CODE WALKTHROUGH SPEAKER SCRIPT for Day 5 Part A.
+Format as: ## [File or Section Name] followed by the full spoken text. Cover every file
+in both the modern and legacy sample code projects.**
 ```
 
 ---
@@ -2927,7 +3181,7 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Lifecycle testing — ngOnInit, ngOnDestroy cleanup
 - NO_ERRORS_SCHEMA vs real child imports tradeoff
 
-CONTEXT FILES: Read all files from the `D5A/` folder in the workspace — all generated materials (sample code, slides, speaker script, exercises, sample project) are there.
+CONTEXT FILES: Read all files from the `D5A/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
 
 **NOW PRODUCE THE FOLLOWING REVIEW:**
 
@@ -3197,7 +3451,7 @@ Cross-Day Checks go in Cross-Day-Checks/. Final review goes in Final-Review/.
 FOR EACH PART (in this order):
 1. Sample Code → run both code review prompts → fix violations
 2. Slides (self-contained — just paste the slides prompt)
-3. Speaker Script (paste: specific prompt + slides)
+3. Speaker Scripts — Slides script + Code walkthrough script (paste: specific prompts + slides)
 4. Exercises (paste: specific prompt + slides)
 5. Sample Project (paste: specific prompt)
 6. Gap Check (paste: specific prompt + all materials)
