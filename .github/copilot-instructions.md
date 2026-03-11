@@ -122,6 +122,7 @@ LEGACY CONTRAST RULES
 OUTPUT FOLDER RULES
 
 Day/part folders use descriptive names following the pattern `Day-N-X-Topic`:
+
 - `Day-1-A-Angular-Foundation`
 - `Day-1-B-Templates-and-Communication`
 - `Day-2-A-Content-Directives-Pipes`
