@@ -74,6 +74,13 @@ SLIDE FORMAT RULES
 
 - Slides are detailed descriptions that will be fed to a visual slide generator — write clear,
   complete content that stands on its own without verbal explanation
+- Every slide is numbered sequentially: ## Slide [N]: [Title]
+- The FIRST slide is always a title slide with the day/part name, the session topic, and a
+  one-sentence summary of what students will build or accomplish by the end
+- The SECOND slide is always a learning objectives slide titled "What You'll Be Able to Do"
+  with 4–6 bullet points starting with action verbs (create, explain, fix, use, etc.)
+- The LAST slide (after legacy contrast) is always a closing slide titled "Key Takeaways"
+  that recaps 3–4 key takeaways from this section. Do not preview the next section.
 - Every concept uses AS MANY SLIDES as needed for full comprehension — never cram multiple ideas
   onto one slide. A single concept may require separate slides for: what it is, why it matters,
   syntax/code example, step-by-step walkthrough, common mistakes, and a summary
@@ -94,9 +101,16 @@ LEGACY CONTRAST RULES
 - Legacy code examples always use NgModule, constructor injection, *ngIf/*ngFor,
   HttpClientModule, RouterModule.forRoot(), class-based guards
 - Legacy contrast appears as dedicated slides AFTER all modern concept slides in each section
-- Each legacy contrast topic: first a slide explaining the legacy code and what pain it caused,
-  then a separate slide showing the modern equivalent — combine onto one slide only if the
-  comparison is brief enough to avoid overcrowding
+- The FIRST legacy contrast slide is always a brief TRANSITION SLIDE titled
+  "Coming Up: Modern vs Classic (Legacy) Angular" that announces the upcoming comparison.
+  Keep it short — a few sentences telling students they are about to see how the modern code
+  they just learned compares to the classic (legacy) approach, and that modern Angular is what
+  they should write. This transition slide appears once per section, immediately before the
+  contrast pairs begin.
+- Each legacy contrast topic: first a slide showing the modern code students just learned
+  (reinforcing the pattern), then a separate slide showing the legacy equivalent and what
+  pain it caused — combine onto one slide only if the comparison is brief enough to avoid
+  overcrowding
 - Never show legacy code mid-lesson without clearly labeling it as legacy
 - Every SAMPLE CODE prompt includes a complete legacy app in a `LegacySampleCode/` subfolder inside the
   day/part output folder (e.g., `D1A/LegacySampleCode/`). Modern sample code goes in a `SampleCode/`
@@ -108,6 +122,7 @@ LEGACY CONTRAST RULES
 OUTPUT FOLDER RULES
 
 Every deliverable type within a day/part goes in its own subfolder:
+
 - Sample Code → `DXX/SampleCode/`
 - Legacy Sample Code → `DXX/LegacySampleCode/`
 - Slides → `DXX/Slides/`
@@ -119,8 +134,8 @@ Every deliverable type within a day/part goes in its own subfolder:
 - Capstone Gap Check → `D5B/GapCheck/`
 - Cross-Day Checks → `Cross-Day-Checks/`
 - Final Review → `Final-Review/`
-Never save deliverables directly in the day/part root folder. Each prompt's OUTPUT FOLDER
-line specifies the exact subfolder — always follow it.
+  Never save deliverables directly in the day/part root folder. Each prompt's OUTPUT FOLDER
+  line specifies the exact subfolder — always follow it.
 
 SAMPLE CODE PROJECT STRUCTURE RULES
 

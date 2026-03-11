@@ -10,8 +10,9 @@
  * WHAT STANDALONE COMPONENTS REPLACED:
  * - No standalone: true → The component must be listed in a module's declarations.
  * - No imports: [] → The component cannot declare its own dependencies. If it
- *   needs <app-header>, HeaderComponent must be declared in the SAME module
- *   (or in an imported module's exports).
+ *   needs <app-header>, AppModule must import HeaderModule (which declares and
+ *   exports HeaderComponent). You can't tell from THIS file what dependencies
+ *   are available — you have to check AppModule's imports array.
  * - This made it impossible to look at a component file and know what
  *   dependencies it uses — you had to find its module to see the full picture.
  *

@@ -4,10 +4,11 @@
  * THIS IS THE LEGACY PATTERN — shown for comparison only.
  *
  * WHAT STANDALONE COMPONENTS REPLACED:
- * - No standalone: true → This component must be listed in AppModule.declarations.
+ * - No standalone: true → This component must be declared in HeaderModule's
+ *   declarations array, and HeaderModule must export it so other modules can use it.
  * - No imports: [] → If this component needed to use another component or directive
- *   in its template, that dependency would need to be declared in the SAME module
- *   or imported from another module.
+ *   in its template, that dependency's module would need to be imported into
+ *   HeaderModule's imports array.
  * - @Input() decorator works exactly the same in both legacy and modern.
  *   (Signal-based input() is the modern replacement, taught on Day 2.)
  *
@@ -18,7 +19,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-header', // Same selector in both legacy and modern
-  // NO standalone: true — must be declared in a module
+  // NO standalone: true — must be declared in HeaderModule (its feature module)
   // NO imports: [] — dependencies come from the module
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'], // Legacy uses styleUrls (plural array)

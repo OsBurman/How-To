@@ -68,11 +68,17 @@ DELIVERABLES (modern — `SampleCode/`):
 
 DELIVERABLES (legacy — `LegacySampleCode/`):
 A complete, runnable NgModule-based Angular app demonstrating the same concepts but built
-entirely with legacy patterns: bootstrapModule(AppModule), AppModule with declarations and
-imports arrays, NgModule-based component registration, constructor injection.
-Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json, src/index.html,
-src/styles.css, src/main.ts, src/app/app.module.ts, src/app/app.component.ts/.html/.css,
-src/app/header/header.component.ts/.html/.css, src/app/footer/footer.component.ts/.html/.css.
+entirely with legacy patterns: bootstrapModule(AppModule), feature modules per component area
+(HeaderModule, FooterModule), AppModule importing feature modules, NgModule declarations/
+imports/exports arrays, and the legacy `@angular-devkit/build-angular:browser` builder in
+angular.json (with `main` instead of `browser` entry point).
+Includes: package.json, tsconfig.json, tsconfig.app.json, angular.json (using legacy browser
+builder), src/index.html, src/styles.css, src/main.ts, src/app/app.module.ts (imports
+HeaderModule and FooterModule — does NOT declare child components directly),
+src/app/app.component.ts/.html/.css, src/app/header/header.module.ts (declares and exports
+HeaderComponent), src/app/header/header.component.ts/.html/.css,
+src/app/footer/footer.module.ts (declares and exports FooterComponent),
+src/app/footer/footer.component.ts/.html/.css.
 Every file has comments explaining what standalone components replaced.
 
 Each file must have a comment block at the top explaining its role. Every significant line
@@ -101,6 +107,15 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Procedural steps (CLI commands, setup, configuration)
 show exact commands and walk through each step across multiple slides. Code examples
 appear on their own slides, separate from explanation slides.
+
+SLIDE STRUCTURE RULES:
+- Every slide is numbered sequentially: ## Slide [N]: [Title]
+- Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
+  summary of what students will build or be able to do by the end of this section
+- Slide 2 is always a LEARNING OBJECTIVES slide titled "What You'll Be Able to Do" with
+  4–6 bullet points starting with action verbs (create, explain, fix, use, etc.)
+- The LAST slide (after legacy contrast) is always a CLOSING SLIDE titled "Key Takeaways"
+  that recaps 3–4 key takeaways from this section. Do not preview the next section.
 
 CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
 
@@ -154,17 +169,21 @@ ViewEncapsulation:
 - Emulated vs None vs ShadowDom — what each option does and when you might change it
 
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- App entry point — first explain bootstrapModule(AppModule) legacy code and the boilerplate it required; then show the modern bootstrapApplication() equivalent
-- Component registration — first explain declarations: [] in NgModule and the pain of managing it; then show the modern imports: [] directly on the component
-- App config — first explain the AppModule providers array pattern; then show the modern app.config.ts providers approach
-- Feature grouping — first explain NgModule-per-feature pattern and the boilerplate overhead; then show how modern standalone components organize by folder instead
-Each legacy topic: first explain the legacy code and what pain it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
+The FIRST legacy contrast slide must be a brief transition slide titled "Coming Up: Modern vs Classic (Legacy) Angular" — a short announcement telling students they are about to compare the modern code they just learned with the classic (legacy) approach used before Angular 17. Keep it concise — not a detailed breakdown. Modern Angular is what they should write; classic is shown for recognition only.
+- App entry point — first show the modern bootstrapApplication() code students just learned; then show the legacy bootstrapModule(AppModule) code and the boilerplate it required
+- Component registration — first show the modern imports: [] directly on the component; then show the legacy declarations: [] in NgModule and the pain of managing it
+- App config — first show the modern app.config.ts providers approach; then show the legacy AppModule providers array pattern
+- Feature grouping — first show how modern standalone components organize by folder; then show the legacy NgModule-per-feature pattern and the boilerplate overhead
+Each legacy topic: first show the modern code (reinforcing the pattern students just learned), then show the legacy equivalent and what pain it caused — use a separate slide for the legacy comparison unless it fits on the same slide without overcrowding.
 
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 1 Part A. Generate your own focused code
-examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept and
-sub-concept listed — each gets its own slide(s). After all modern slides, include the
-legacy contrast slides showing actual legacy code examples.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 1 Part A. Number every slide sequentially
+as ## Slide [N]: [Title]. Slide 1 must be a title slide. Slide 2 must be a learning
+objectives slide. The final slide must be a closing "Key Takeaways" slide. Generate your
+own focused code examples for each code slide — do not reference external files. Separate
+slides with ---. Include every concept and sub-concept listed — each gets its own
+slide(s). After all modern slides, include the legacy contrast section: start with a brief
+"Coming Up: Modern vs Classic (Legacy) Angular" transition slide, then for each topic show the modern code first
+(reinforcing what students just learned) followed by the classic (legacy) equivalent.**
 ```
 
 ---
@@ -186,8 +205,9 @@ SCRIPT RULES:
 - For CODE slides: walk through line by line; explain what AND why
 - For the ⚠️ WARNING slide: explain what the error message looks like, why beginners
   hit it, and the exact fix
-- For the legacy contrast slides: walk through each legacy code example,
-  explain what pain it caused, and show why the modern approach is better
+- For the legacy contrast slides: for each topic, first walk through the modern code
+  reinforcing what students just learned, then walk through the legacy code example,
+  explain what pain it caused, and highlight why the modern approach is better
 - Transitions are natural spoken sentences — never "next slide please"
 - This is the very first session — assume zero Angular knowledge
 
@@ -392,6 +412,15 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+SLIDE STRUCTURE RULES:
+- Every slide is numbered sequentially: ## Slide [N]: [Title]
+- Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
+  summary of what students will build or be able to do by the end of this section
+- Slide 2 is always a LEARNING OBJECTIVES slide titled "What You'll Be Able to Do" with
+  4–6 bullet points starting with action verbs (create, explain, fix, use, etc.)
+- The LAST slide (after legacy contrast) is always a CLOSING SLIDE titled "Key Takeaways"
+  that recaps 3–4 key takeaways from this section. Do not preview the next section.
+
 CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
 
 Interpolation:
@@ -453,18 +482,22 @@ Signals first look (Day 2 preview):
 - This is a preview only — exercises do not require signals yet; full coverage on Day 2
 
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- ngModel setup — first explain FormsModule imported in NgModule and the indirection involved; then show the modern FormsModule in the standalone component's imports array
-- Passing data down — @Input() works the same in both; first show the NgModule declarations context around it, then show the modern standalone approach
-- Passing events up — @Output() + EventEmitter works the same; first show the NgModule context, then show the standalone version
-- Lifecycle hooks — ngOnInit/ngOnDestroy work the same in both; first show a full NgModule-based component, then contrast with the standalone version
-Each legacy topic: first explain the legacy code and what overhead it involved, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
+The FIRST legacy contrast slide must be a brief transition slide titled "Coming Up: Modern vs Classic (Legacy) Angular" — a short announcement telling students they are about to compare the modern code they just learned with the classic (legacy) approach used before Angular 17. Keep it concise — not a detailed breakdown. Modern Angular is what they should write; classic is shown for recognition only.
+- ngModel setup — first show the modern FormsModule in the standalone component's imports array; then show the legacy FormsModule imported in NgModule and the indirection involved
+- Passing data down — @Input() works the same in both; first show the modern standalone approach, then show the NgModule declarations context around it
+- Passing events up — @Output() + EventEmitter works the same; first show the modern standalone version, then show the NgModule context
+- Lifecycle hooks — ngOnInit/ngOnDestroy work the same in both; first show the standalone version, then contrast with a full NgModule-based component
+Each legacy topic: first show the modern code (reinforcing the pattern students just learned), then show the legacy equivalent and what overhead it involved — use a separate slide for the legacy comparison unless it fits on the same slide without overcrowding.
 
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 1 Part B. Generate your own focused code
-examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept and
-sub-concept listed — each gets its own slide(s). After all modern slides, include the
-legacy contrast slides showing actual legacy code examples. The signals preview slides
-must clearly state exercises do not require signals yet.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 1 Part B. Number every slide sequentially
+as ## Slide [N]: [Title]. Slide 1 must be a title slide. Slide 2 must be a learning
+objectives slide. The final slide must be a closing "Key Takeaways" slide. Generate your
+own focused code examples for each code slide — do not reference external files. Separate
+slides with ---. Include every concept and sub-concept listed — each gets its own
+slide(s). After all modern slides, include the legacy contrast section: start with a brief
+"Coming Up: Modern vs Classic (Legacy) Angular" transition slide, then for each topic show the modern code first
+(reinforcing what students just learned) followed by the classic (legacy) equivalent. The signals
+preview slides must clearly state exercises do not require signals yet.**
 ```
 
 ---
@@ -722,6 +755,15 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+SLIDE STRUCTURE RULES:
+- Every slide is numbered sequentially: ## Slide [N]: [Title]
+- Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
+  summary of what students will build or be able to do by the end of this section
+- Slide 2 is always a LEARNING OBJECTIVES slide titled "What You'll Be Able to Do" with
+  4–6 bullet points starting with action verbs (create, explain, fix, use, etc.)
+- The LAST slide (after legacy contrast) is always a CLOSING SLIDE titled "Key Takeaways"
+  that recaps 3–4 key takeaways from this section. Do not preview the next section.
+
 CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
 
 Content projection with ng-content:
@@ -778,18 +820,22 @@ Custom pure pipe:
 - Using a custom pipe in a template — {{ text | truncate:100 }}
 
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- Conditional rendering — first explain *ngIf + <ng-template #else> syntax and its indirection; then show the modern @if / @else block syntax
-- List rendering — first explain *ngFor with trackBy method and why trackBy was optional; then show modern @for with required track
-- Switch rendering — first explain [ngSwitch] / *ngSwitchCase / *ngSwitchDefault syntax; then show the modern @switch / @case syntax
-- Track — first explain how optional trackBy in *ngFor led to performance bugs when forgotten; then show required track in @for
-- Template local variable — first explain *ngIf="expr as name" pattern and its limitations; then show the modern @let name = expr syntax
-Each legacy topic: first explain the legacy code and what pain or confusion it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
+The FIRST legacy contrast slide must be a brief transition slide titled "Coming Up: Modern vs Classic (Legacy) Angular" — a short announcement telling students they are about to compare the modern code they just learned with the classic (legacy) approach used before Angular 17. Keep it concise — not a detailed breakdown. Modern Angular is what they should write; classic is shown for recognition only.
+- Conditional rendering — first show the modern @if / @else block syntax; then show the legacy *ngIf + <ng-template #else> syntax and its indirection
+- List rendering — first show the modern @for with required track; then show the legacy *ngFor with trackBy method and why trackBy was optional
+- Switch rendering — first show the modern @switch / @case syntax; then show the legacy [ngSwitch] / *ngSwitchCase / *ngSwitchDefault syntax
+- Track — first show the modern required track in @for; then show the legacy optional trackBy in *ngFor and how forgetting it led to performance bugs
+- Template local variable — first show the modern @let name = expr syntax; then show the legacy *ngIf="expr as name" pattern and its limitations
+Each legacy topic: first show the modern code (reinforcing the pattern students just learned), then show the legacy equivalent and what pain or confusion it caused — use a separate slide for the legacy comparison unless it fits on the same slide without overcrowding.
 
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 2 Part A. Generate your own focused code
-examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept and
-sub-concept listed — each gets its own slide(s). After all modern slides, include the
-legacy contrast slides showing actual legacy code examples.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 2 Part A. Number every slide sequentially
+as ## Slide [N]: [Title]. Slide 1 must be a title slide. Slide 2 must be a learning
+objectives slide. The final slide must be a closing "Key Takeaways" slide. Generate your
+own focused code examples for each code slide — do not reference external files. Separate
+slides with ---. Include every concept and sub-concept listed — each gets its own
+slide(s). After all modern slides, include the legacy contrast section: start with a brief
+"Coming Up: Modern vs Classic (Legacy) Angular" transition slide, then for each topic show the modern code first
+(reinforcing what students just learned) followed by the classic (legacy) equivalent.**
 ```
 
 ---
@@ -1011,6 +1057,15 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+SLIDE STRUCTURE RULES:
+- Every slide is numbered sequentially: ## Slide [N]: [Title]
+- Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
+  summary of what students will build or be able to do by the end of this section
+- Slide 2 is always a LEARNING OBJECTIVES slide titled "What You'll Be Able to Do" with
+  4–6 bullet points starting with action verbs (create, explain, fix, use, etc.)
+- The LAST slide (after legacy contrast) is always a CLOSING SLIDE titled "Key Takeaways"
+  that recaps 3–4 key takeaways from this section. Do not preview the next section.
+
 CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
 
 The problem signals solve:
@@ -1063,21 +1118,25 @@ Angular direction callout:
 - What this means for students — everything you just learned is the foundation of Angular's future
 
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- Component input — first explain @Input() mutable property and how changes were untracked; then show modern input<T>() readonly signal
-- Component output — first explain @Output() + EventEmitter pattern; then show modern output<T>()
-- Two-way binding — first explain the @Input() + @Output() pair pattern and the boilerplate; then show modern model<T>() one-liner
-- Reacting to input changes — first explain ngOnChanges(SimpleChanges) and the complexity of the SimpleChanges object; then show modern computed() or effect()
-- Derived state — first explain getter or ChangeDetectorRef approaches and their limitations; then show modern computed(() => ...)
-- Side effects — first explain ngOnChanges/ngDoCheck/ngOnDestroy and the scattered cleanup; then show modern effect() with cleanup in one place
-- Change detection — first explain Zone.js full tree check and what it costs; then show modern fine-grained signal-based updates
-- Manual optimization — first explain OnPush + markForCheck() and why it was fragile; then show modern signals where manual optimization is unnecessary
-Each legacy topic: first explain the legacy code and what pain or overhead it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
+The FIRST legacy contrast slide must be a brief transition slide titled "Coming Up: Modern vs Classic (Legacy) Angular" — a short announcement telling students they are about to compare the modern code they just learned with the classic (legacy) approach used before Angular 17. Keep it concise — not a detailed breakdown. Modern Angular is what they should write; classic is shown for recognition only.
+- Component input — first show modern input<T>() readonly signal; then show the legacy @Input() mutable property and how changes were untracked
+- Component output — first show modern output<T>(); then show the legacy @Output() + EventEmitter pattern
+- Two-way binding — first show modern model<T>() one-liner; then show the legacy @Input() + @Output() pair pattern and the boilerplate
+- Reacting to input changes — first show modern computed() or effect(); then show the legacy ngOnChanges(SimpleChanges) and the complexity of the SimpleChanges object
+- Derived state — first show modern computed(() => ...); then show the legacy getter or ChangeDetectorRef approaches and their limitations
+- Side effects — first show modern effect() with cleanup in one place; then show the legacy ngOnChanges/ngDoCheck/ngOnDestroy and the scattered cleanup
+- Change detection — first show modern fine-grained signal-based updates; then show the legacy Zone.js full tree check and what it costs
+- Manual optimization — first show modern signals where manual optimization is unnecessary; then show the legacy OnPush + markForCheck() and why it was fragile
+Each legacy topic: first show the modern code (reinforcing the pattern students just learned), then show the legacy equivalent and what pain or overhead it caused — use a separate slide for the legacy comparison unless it fits on the same slide without overcrowding.
 
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 2 Part B. Generate your own focused code
-examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept and
-sub-concept listed — each gets its own slide(s). After all modern slides, include the
-legacy contrast slides showing actual legacy code examples.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 2 Part B. Number every slide sequentially
+as ## Slide [N]: [Title]. Slide 1 must be a title slide. Slide 2 must be a learning
+objectives slide. The final slide must be a closing "Key Takeaways" slide. Generate your
+own focused code examples for each code slide — do not reference external files. Separate
+slides with ---. Include every concept and sub-concept listed — each gets its own
+slide(s). After all modern slides, include the legacy contrast section: start with a brief
+"Coming Up: Modern vs Classic (Legacy) Angular" transition slide, then for each topic show the modern code first
+(reinforcing what students just learned) followed by the classic (legacy) equivalent.**
 ```
 
 ---
@@ -1327,6 +1386,15 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+SLIDE STRUCTURE RULES:
+- Every slide is numbered sequentially: ## Slide [N]: [Title]
+- Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
+  summary of what students will build or be able to do by the end of this section
+- Slide 2 is always a LEARNING OBJECTIVES slide titled "What You'll Be Able to Do" with
+  4–6 bullet points starting with action verbs (create, explain, fix, use, etc.)
+- The LAST slide (after legacy contrast) is always a CLOSING SLIDE titled "Key Takeaways"
+  that recaps 3–4 key takeaways from this section. Do not preview the next section.
+
 CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
 
 What a service is:
@@ -1393,17 +1461,21 @@ toSignal():
 - Guidance: prefer toSignal() in all new code
 
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- Service injection — first explain constructor(private svc: MyService) syntax and the constructor parameter bloat; then show modern inject(MyService)
-- Service scope — first explain NgModule.providers registration and why it was error-prone; then show modern providedIn: 'root'
-- RxJS cleanup — first explain takeUntil(destroy$) + ngOnDestroy Subject pattern and the manual boilerplate; then show modern takeUntilDestroyed() one-liner
-- Observable in template — first explain async pipe + *ngIf null guard and the null timing issue; then show modern toSignal(obs$, {initialValue})
-Each legacy topic: first explain the legacy code and what pain or overhead it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
+The FIRST legacy contrast slide must be a brief transition slide titled "Coming Up: Modern vs Classic (Legacy) Angular" — a short announcement telling students they are about to compare the modern code they just learned with the classic (legacy) approach used before Angular 17. Keep it concise — not a detailed breakdown. Modern Angular is what they should write; classic is shown for recognition only.
+- Service injection — first show modern inject(MyService); then show the legacy constructor(private svc: MyService) syntax and the constructor parameter bloat
+- Service scope — first show modern providedIn: 'root'; then show the legacy NgModule.providers registration and why it was error-prone
+- RxJS cleanup — first show modern takeUntilDestroyed() one-liner; then show the legacy takeUntil(destroy$) + ngOnDestroy Subject pattern and the manual boilerplate
+- Observable in template — first show modern toSignal(obs$, {initialValue}); then show the legacy async pipe + *ngIf null guard and the null timing issue
+Each legacy topic: first show the modern code (reinforcing the pattern students just learned), then show the legacy equivalent and what pain or overhead it caused — use a separate slide for the legacy comparison unless it fits on the same slide without overcrowding.
 
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 3 Part A. Generate your own focused code
-examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept and
-sub-concept listed — each gets its own slide(s). After all modern slides, include the
-legacy contrast slides showing actual legacy code examples.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 3 Part A. Number every slide sequentially
+as ## Slide [N]: [Title]. Slide 1 must be a title slide. Slide 2 must be a learning
+objectives slide. The final slide must be a closing "Key Takeaways" slide. Generate your
+own focused code examples for each code slide — do not reference external files. Separate
+slides with ---. Include every concept and sub-concept listed — each gets its own
+slide(s). After all modern slides, include the legacy contrast section: start with a brief
+"Coming Up: Modern vs Classic (Legacy) Angular" transition slide, then for each topic show the modern code first
+(reinforcing what students just learned) followed by the classic (legacy) equivalent.**
 ```
 
 ---
@@ -1621,6 +1693,15 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+SLIDE STRUCTURE RULES:
+- Every slide is numbered sequentially: ## Slide [N]: [Title]
+- Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
+  summary of what students will build or be able to do by the end of this section
+- Slide 2 is always a LEARNING OBJECTIVES slide titled "What You'll Be Able to Do" with
+  4–6 bullet points starting with action verbs (create, explain, fix, use, etc.)
+- The LAST slide (after legacy contrast) is always a CLOSING SLIDE titled "Key Takeaways"
+  that recaps 3–4 key takeaways from this section. Do not preview the next section.
+
 CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
 
 Setting up HTTP in Angular:
@@ -1684,18 +1765,22 @@ environment.ts:
 - How ng build swaps environments — production vs development configuration at build time
 
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- HTTP setup — first explain HttpClientModule imported in AppModule and the module overhead; then show modern provideHttpClient() in app.config.ts
-- Interceptors — first explain a class implementing HttpInterceptor with its intercept() method; then show modern HttpInterceptorFn as a plain function
-- Registration — first explain HTTP_INTERCEPTORS multi-token provider array pattern; then show modern withInterceptors([fn]) one-liner
+The FIRST legacy contrast slide must be a brief transition slide titled "Coming Up: Modern vs Classic (Legacy) Angular" — a short announcement telling students they are about to compare the modern code they just learned with the classic (legacy) approach used before Angular 17. Keep it concise — not a detailed breakdown. Modern Angular is what they should write; classic is shown for recognition only.
+- HTTP setup — first show modern provideHttpClient() in app.config.ts; then show the legacy HttpClientModule imported in AppModule and the module overhead
+- Interceptors — first show modern HttpInterceptorFn as a plain function; then show the legacy class implementing HttpInterceptor with its intercept() method
+- Registration — first show modern withInterceptors([fn]) one-liner; then show the legacy HTTP_INTERCEPTORS multi-token provider array pattern
 - Response typing — http.get<MyType>(url) is the same in both; note this did not change
 - Environment config — environment.ts swap is the same in both; note this did not change
-Each legacy topic: first explain the legacy code and what pain or overhead it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
+Each legacy topic: first show the modern code (reinforcing the pattern students just learned), then show the legacy equivalent and what pain or overhead it caused — use a separate slide for the legacy comparison unless it fits on the same slide without overcrowding.
 
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 3 Part B. Generate your own focused code
-examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept and
-sub-concept listed — each gets its own slide(s). After all modern slides, include the
-legacy contrast slides showing actual legacy code examples.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 3 Part B. Number every slide sequentially
+as ## Slide [N]: [Title]. Slide 1 must be a title slide. Slide 2 must be a learning
+objectives slide. The final slide must be a closing "Key Takeaways" slide. Generate your
+own focused code examples for each code slide — do not reference external files. Separate
+slides with ---. Include every concept and sub-concept listed — each gets its own
+slide(s). After all modern slides, include the legacy contrast section: start with a brief
+"Coming Up: Modern vs Classic (Legacy) Angular" transition slide, then for each topic show the modern code first
+(reinforcing what students just learned) followed by the classic (legacy) equivalent.**
 ```
 
 ---
@@ -1954,6 +2039,15 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+SLIDE STRUCTURE RULES:
+- Every slide is numbered sequentially: ## Slide [N]: [Title]
+- Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
+  summary of what students will build or be able to do by the end of this section
+- Slide 2 is always a LEARNING OBJECTIVES slide titled "What You'll Be Able to Do" with
+  4–6 bullet points starting with action verbs (create, explain, fix, use, etc.)
+- The LAST slide (after legacy contrast) is always a CLOSING SLIDE titled "Key Takeaways"
+  that recaps 3–4 key takeaways from this section. Do not preview the next section.
+
 CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
 
 Setting up routing:
@@ -2014,20 +2108,24 @@ AppRoutingModule callout:
 - Why students need to recognize it — most Angular projects on the job still use this pattern
 
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- Router setup — first explain RouterModule.forRoot(routes) in AppModule and the import overhead; then show modern provideRouter(routes)
-- Feature routes — first explain RouterModule.forChild() pattern and separate routing modules; then show modern child route arrays
-- Lazy loading — first explain loadChildren: () => import().then() module-based loading; then show modern loadComponent: () => import()
-- Route params as inputs — first explain manual ActivatedRoute injection and param subscription; then show modern withComponentInputBinding()
-- Programmatic nav — first explain constructor-injected Router pattern; then show modern inject(Router).navigate()
-- canActivate — first explain class implementing CanActivate interface; then show modern plain function guard
-- canDeactivate — first explain class implementing CanDeactivate<T> interface; then show modern plain function guard
-Each legacy topic: first explain the legacy code and what pain or overhead it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
+The FIRST legacy contrast slide must be a brief transition slide titled "Coming Up: Modern vs Classic (Legacy) Angular" — a short announcement telling students they are about to compare the modern code they just learned with the classic (legacy) approach used before Angular 17. Keep it concise — not a detailed breakdown. Modern Angular is what they should write; classic is shown for recognition only.
+- Router setup — first show modern provideRouter(routes); then show the legacy RouterModule.forRoot(routes) in AppModule and the import overhead
+- Feature routes — first show modern child route arrays; then show the legacy RouterModule.forChild() pattern and separate routing modules
+- Lazy loading — first show modern loadComponent: () => import(); then show the legacy loadChildren: () => import().then() module-based loading
+- Route params as inputs — first show modern withComponentInputBinding(); then show the legacy manual ActivatedRoute injection and param subscription
+- Programmatic nav — first show modern inject(Router).navigate(); then show the legacy constructor-injected Router pattern
+- canActivate — first show modern plain function guard; then show the legacy class implementing CanActivate interface
+- canDeactivate — first show modern plain function guard; then show the legacy class implementing CanDeactivate<T> interface
+Each legacy topic: first show the modern code (reinforcing the pattern students just learned), then show the legacy equivalent and what pain or overhead it caused — use a separate slide for the legacy comparison unless it fits on the same slide without overcrowding.
 
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 4 Part A. Generate your own focused code
-examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept and
-sub-concept listed — each gets its own slide(s). After all modern slides, include the
-legacy contrast slides showing actual legacy code examples.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 4 Part A. Number every slide sequentially
+as ## Slide [N]: [Title]. Slide 1 must be a title slide. Slide 2 must be a learning
+objectives slide. The final slide must be a closing "Key Takeaways" slide. Generate your
+own focused code examples for each code slide — do not reference external files. Separate
+slides with ---. Include every concept and sub-concept listed — each gets its own
+slide(s). After all modern slides, include the legacy contrast section: start with a brief
+"Coming Up: Modern vs Classic (Legacy) Angular" transition slide, then for each topic show the modern code first
+(reinforcing what students just learned) followed by the classic (legacy) equivalent.**
 ```
 
 ---
@@ -2250,6 +2348,15 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+SLIDE STRUCTURE RULES:
+- Every slide is numbered sequentially: ## Slide [N]: [Title]
+- Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
+  summary of what students will build or be able to do by the end of this section
+- Slide 2 is always a LEARNING OBJECTIVES slide titled "What You'll Be Able to Do" with
+  4–6 bullet points starting with action verbs (create, explain, fix, use, etc.)
+- The LAST slide (after legacy contrast) is always a CLOSING SLIDE titled "Key Takeaways"
+  that recaps 3–4 key takeaways from this section. Do not preview the next section.
+
 CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
 
 Two form systems in Angular:
@@ -2320,17 +2427,21 @@ computed() derived from form signals:
 - Show the exact error message so students recognize it immediately
 
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- FormsModule — first explain FormsModule imported in NgModule and the global registration; then show the modern import in a standalone component's imports array
-- ReactiveFormsModule — first explain ReactiveFormsModule imported in NgModule; then show the modern import in a standalone component
-- Form value as signal — first explain manual valueChanges subscription in ngOnInit + cleanup in ngOnDestroy; then show modern toSignal(form.valueChanges) one-liner
+The FIRST legacy contrast slide must be a brief transition slide titled "Coming Up: Modern vs Classic (Legacy) Angular" — a short announcement telling students they are about to compare the modern code they just learned with the classic (legacy) approach used before Angular 17. Keep it concise — not a detailed breakdown. Modern Angular is what they should write; classic is shown for recognition only.
+- FormsModule — first show the modern import in a standalone component's imports array; then show the legacy FormsModule imported in NgModule and the global registration
+- ReactiveFormsModule — first show the modern import in a standalone component; then show the legacy ReactiveFormsModule imported in NgModule
+- Form value as signal — first show modern toSignal(form.valueChanges) one-liner; then show the legacy manual valueChanges subscription in ngOnInit + cleanup in ngOnDestroy
 - FormArray — identical API in both legacy and modern; note this did not change
-Each legacy topic: first explain the legacy code and what pain or overhead it caused, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
+Each legacy topic: first show the modern code (reinforcing the pattern students just learned), then show the legacy equivalent and what pain or overhead it caused — use a separate slide for the legacy comparison unless it fits on the same slide without overcrowding.
 
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 4 Part B. Generate your own focused code
-examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept and
-sub-concept listed — each gets its own slide(s). After all modern slides, include the
-legacy contrast slides showing actual legacy code examples.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 4 Part B. Number every slide sequentially
+as ## Slide [N]: [Title]. Slide 1 must be a title slide. Slide 2 must be a learning
+objectives slide. The final slide must be a closing "Key Takeaways" slide. Generate your
+own focused code examples for each code slide — do not reference external files. Separate
+slides with ---. Include every concept and sub-concept listed — each gets its own
+slide(s). After all modern slides, include the legacy contrast section: start with a brief
+"Coming Up: Modern vs Classic (Legacy) Angular" transition slide, then for each topic show the modern code first
+(reinforcing what students just learned) followed by the classic (legacy) equivalent.**
 ```
 
 ---
@@ -2586,6 +2697,15 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+SLIDE STRUCTURE RULES:
+- Every slide is numbered sequentially: ## Slide [N]: [Title]
+- Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
+  summary of what students will build or be able to do by the end of this section
+- Slide 2 is always a LEARNING OBJECTIVES slide titled "What You'll Be Able to Do" with
+  4–6 bullet points starting with action verbs (create, explain, fix, use, etc.)
+- The LAST slide (after legacy contrast) is always a CLOSING SLIDE titled "Key Takeaways"
+  that recaps 3–4 key takeaways from this section. Do not preview the next section.
+
 CONCEPTS TO COVER (use as many slides as needed per concept and sub-concept):
 
 Angular testing setup:
@@ -2654,17 +2774,21 @@ Unit vs integration test tradeoffs:
 - Running both — keeping separate .spec.ts and .integration.spec.ts files
 
 LEGACY CONTRAST SLIDES (after all modern concept slides):
-- Component test setup — first explain declarations array + module deps in TestBed.configureTestingModule; then show modern imports: [StandaloneComponent]
-- HTTP testing — first explain HttpClientTestingModule import in the test module; then show modern provideHttpClientTesting()
-- Signal input testing — first explain component.prop = value direct assignment approach; then show modern fixture.componentRef.setInput()
+The FIRST legacy contrast slide must be a brief transition slide titled "Coming Up: Modern vs Classic (Legacy) Angular" — a short announcement telling students they are about to compare the modern code they just learned with the classic (legacy) approach used before Angular 17. Keep it concise — not a detailed breakdown. Modern Angular is what they should write; classic is shown for recognition only.
+- Component test setup — first show modern imports: [StandaloneComponent]; then show the legacy declarations array + module deps in TestBed.configureTestingModule
+- HTTP testing — first show modern provideHttpClientTesting(); then show the legacy HttpClientTestingModule import in the test module
+- Signal input testing — first show modern fixture.componentRef.setInput(); then show the legacy component.prop = value direct assignment approach
 - Change detection — detectChanges() works the same in both; note this did not change
-Each legacy topic: first explain the legacy test code and what overhead it involved, then show the modern equivalent — use a separate slide for the modern comparison unless it fits on the same slide without overcrowding.
+Each legacy topic: first show the modern code (reinforcing the pattern students just learned), then show the legacy equivalent and what overhead it involved — use a separate slide for the legacy comparison unless it fits on the same slide without overcrowding.
 
-**NOW WRITE THE COMPLETE SLIDE DECK for Day 5 Part A. Generate your own focused code
-examples for each code slide — do not reference external files. Format each slide as:
-## [Slide Title] followed by its content, separated by ---. Include every concept and
-sub-concept listed — each gets its own slide(s). After all modern slides, include the
-legacy contrast slides showing actual legacy code examples.**
+**NOW WRITE THE COMPLETE SLIDE DECK for Day 5 Part A. Number every slide sequentially
+as ## Slide [N]: [Title]. Slide 1 must be a title slide. Slide 2 must be a learning
+objectives slide. The final slide must be a closing "Key Takeaways" slide. Generate your
+own focused code examples for each code slide — do not reference external files. Separate
+slides with ---. Include every concept and sub-concept listed — each gets its own
+slide(s). After all modern slides, include the legacy contrast section: start with a brief
+"Coming Up: Modern vs Classic (Legacy) Angular" transition slide, then for each topic show the modern code first
+(reinforcing what students just learned) followed by the classic (legacy) equivalent.**
 ```
 
 ---
