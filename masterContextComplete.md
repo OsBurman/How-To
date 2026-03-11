@@ -11,10 +11,10 @@
 
 **File references marked `CONTEXT FILES:`** tell Copilot which previously generated files to read for context. Each reference points to a folder in the workspace (e.g., `Day-1-A-Angular-Foundation/`). When you paste a prompt into Copilot chat, attach the referenced files using `#file:Day-1-A-Angular-Foundation/filename.md` syntax, or simply open the files as editor tabs so Copilot can see them. You do NOT need to paste file contents inline — Copilot reads the files directly.
 
-**Folder organization:** All generated output for a day/part goes in a folder named for that section: `Day-1-A-Angular-Foundation/`, `Day-1-B-Templates-and-Communication/`, `Day-2-A-Content-Directives-Pipes/`, `Day-2-B-Signals/`, `Day-3-A-Services-DI-RxJS/`, `Day-3-B-HTTP-Async-Data/`, `Day-4-A-Routing/`, `Day-4-B-Forms/`, `Day-5-A-Testing/`, `Day-5-B-Capstone/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `SampleLegacyCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercise starter code, `Exercises-Solutions/` for exercise solution files, `Project/` for the sample project, `Project-Portfolio-Builder/` for portfolio project ideas, and `GapCheck/` for the gap check report. The capstone project goes in `Day-5-B-Capstone/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
+**Folder organization:** All generated output for a day/part goes in a folder named for that section: `Day-1-A-Angular-Foundation/`, `Day-1-B-Templates-and-Communication/`, `Day-2-A-Content-Directives-Pipes/`, `Day-2-B-Signals/`, `Day-3-A-Services-DI-RxJS/`, `Day-3-B-HTTP-Async-Data/`, `Day-4-A-Routing/`, `Day-4-B-Forms/`, `Day-5-A-Testing/`, `Day-5-B-Capstone/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `SampleLegacyCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercise starter code, `Exercises-Solutions/` for exercise solution files, `Project/` for the sample project, `Project-Portfolio-Builder/` for portfolio project ideas, and `GapCheck/` for the three gap check reports (completeness audit, content accuracy, functional validation). The capstone project goes in `Day-5-B-Capstone/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
 
 **Session order for every Part:**
-1. Sample Code → 2. Slides → 3. Speaker Scripts (Slides + Code Walkthrough) → 4. Exercises → 5. Sample Project → 6. Project Portfolio Builder → 7. Gap Check
+1. Sample Code → 2. Slides → 3. Speaker Scripts (Slides + Code Walkthrough) → 4. Exercises → 5. Sample Project → 6. Project Portfolio Builder → 7. Gap Check 1: Completeness Audit → 8. Gap Check 2: Content Accuracy & Scope → 9. Gap Check 3: Functional Validation
 
 **Every prompt ends with a NOW WRITE / NOW GENERATE command in bold.** This is what tells Copilot to produce output rather than describe what it would do. Do not remove it.
 
@@ -452,13 +452,85 @@ End the file with general tips that apply to all projects.
 
 ---
 
-## D1A — GAP CHECK
+## D1A — GAP CHECK 1: COMPLETENESS AUDIT
 
 ```
 
-You are reviewing the generated materials for Day 1 Part A of a 5-day Angular course.
+You are auditing the generated materials for Day 1 Part A of a 5-day Angular course to verify
+that every deliverable from every previous prompt is present, structurally correct, and complete.
 
-OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/GapCheck/`.
+OUTPUT FOLDER: Save as `Day-1-A-Angular-Foundation/GapCheck/D1A-completeness-audit.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-1-A-Angular-Foundation/` folder in the workspace.
+
+**DELIVERABLES THAT MUST EXIST:**
+
+1. SampleCode/ — a complete, runnable Angular CLI project
+   - Must have: package.json, angular.json, tsconfig.json, tsconfig.app.json
+   - Must have: src/index.html, src/main.ts, src/styles.css
+   - Must have: src/app/app.config.ts, src/app/app.component.ts/.html/.css
+   - Each child component in its own subfolder with .ts, .html, .css files
+   - Every component must use standalone: true, templateUrl, styleUrl (never inline)
+   - Every file should have inline comments explaining what it demonstrates
+
+2. SampleLegacyCode/ — a complete, runnable legacy Angular CLI project
+   - Same structure as SampleCode/ but uses NgModule, constructor injection, *ngIf/*ngFor
+   - Must have: src/app/app.module.ts (NOT app.config.ts)
+   - Must use bootstrapModule() in main.ts (NOT bootstrapApplication())
+
+3. Slides/ — D1A-slides.md
+   - First slide: title slide with day/part name and summary
+   - Second slide: "What You'll Be Able to Do" learning objectives
+   - Last slide: "Key Takeaways" recap
+   - Legacy contrast slides at the end (after all modern slides)
+   - Legacy contrast preceded by a transition slide
+
+4. SpeakerScript/ — two files:
+   - D1A-slides-script.md (30–40 minutes of spoken delivery)
+   - D1A-code-walkthrough-script.md (15–20 minutes of spoken delivery)
+
+5. Exercises/ — npm workspaces monorepo
+   - Root: package.json (with workspaces array), .gitignore, README.md, D1A-exercises.md
+   - Each exercise: own subfolder with complete Angular project + README.md
+   - Final exercise must be a ⚠️ LEGACY exercise
+   - Every exercise must have meaningful starter code (never empty)
+
+6. Exercises-Solutions/ — one Exercise-N-Solution/ folder per exercise
+   - Contains ONLY the files students need to create or modify
+
+7. Project/ — complete Angular CLI project + README.md + instructions.md
+   - instructions.md: step-by-step build guide (no sample code peeking)
+
+8. Project-Portfolio-Builder/ — Projects.md with 5–7 project ideas
+
+**NOW PRODUCE THE COMPLETENESS AUDIT:**
+
+For each deliverable above:
+- ✅ PRESENT AND COMPLETE — all required files exist with correct structure
+- ⚠️ PRESENT BUT INCOMPLETE — exists but missing specific files (list them)
+- ❌ MISSING — deliverable not found
+
+Also check:
+- Every .ts component file uses standalone: true
+- Every component uses templateUrl and styleUrl (never inline template or styles)
+- Every component file has inline comments
+- SampleCode/ uses modern patterns ONLY (no NgModule, no constructor injection)
+- SampleLegacyCode/ uses legacy patterns ONLY (NgModule, constructor injection, *ngIf/*ngFor)
+- Exercise workspace package.json workspaces array lists all exercise folders
+```
+
+---
+
+## D1A — GAP CHECK 2: CONTENT ACCURACY & SCOPE
+
+```
+
+You are reviewing the generated materials for Day 1 Part A of a 5-day Angular course to verify
+curriculum coverage, exercise alignment, and that NO concepts from future days leak in.
+
+OUTPUT FOLDER: Save as `Day-1-A-Angular-Foundation/GapCheck/D1A-content-accuracy.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-1-A-Angular-Foundation/` folder in the workspace.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - What Angular is, why it exists, how it compares to vanilla JS
@@ -471,22 +543,101 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Angular DevTools
 - ViewEncapsulation basics
 
-CONTEXT FILES: Read all files from the `Day-1-A-Angular-Foundation/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+**NOW PRODUCE THE CONTENT REVIEW:**
 
-**NOW PRODUCE THE FOLLOWING REVIEW:**
+SECTION 1 — CURRICULUM COVERAGE:
+For each requirement above, mark:
+- FULLY COVERED — explained in slides, shown in sample code, practiced in at least one exercise
+- PARTIALLY COVERED — present but too shallow for a beginner (explain what's missing and where)
+- MISSING — not present at all (state which deliverable it should appear in)
 
-For each curriculum requirement above, mark:
-- FULLY COVERED — explained in slides, shown in code, practiced in exercise
-- PARTIALLY COVERED — present but too shallow for a beginner (explain what's missing)
-- MISSING — not present at all (state which material it should appear in)
+SECTION 2 — EXERCISE ALIGNMENT:
+For each concept in the slides, confirm it is practiced in at least one exercise:
+- ✅ Practiced — [concept] — Exercise [N]: [exercise name]
+- ❌ Taught But Not Practiced — [concept] — suggest which exercise to add it to
 
-EXERCISE ALIGNMENT CHECK:
-For each concept in the slides, confirm it appears in at least one exercise.
-## Practiced in Exercise — [concept] ✓ — Exercise [N]
-## Taught But Not Practiced — [concept] — [which exercise it should be added to]
+SECTION 3 — SCOPE CREEP (FUTURE TOPICS):
+This is critical. The following concepts are taught in FUTURE days and must NOT appear in
+Day 1 Part A materials (except as brief "you'll learn this on Day X" forward references):
+- @Output() and EventEmitter (Day 1 Part B)
+- ngOnInit, ngOnDestroy (Day 1 Part B)
+- Signals: signal(), computed(), effect() (Day 1 Part B first look, Day 2 Part B full)
+- @if, @for, @switch (Day 2 Part A)
+- ng-content, ng-container, ng-template (Day 2 Part A)
+- Pipes (Day 2 Part A)
+- [ngClass], [ngStyle] (Day 2 Part A)
+- Services, @Injectable, inject() (Day 3 Part A)
+- RxJS, Observables, BehaviorSubject (Day 3 Part A)
+- HttpClient, provideHttpClient() (Day 3 Part B)
+- Routing, provideRouter() (Day 4 Part A)
+- Forms, FormGroup, FormControl (Day 4 Part B)
 
-SCOPE CREEP CHECK:
-List any concept appearing in the materials that is NOT in the curriculum requirements.
+For each future concept found in the materials:
+- 🚫 SCOPE CREEP — [concept] found in [file] — belongs to [Day X Part Y]
+- ✅ ACCEPTABLE FORWARD REFERENCE — [concept] briefly mentioned with "you'll learn this on Day X"
+
+SECTION 4 — CROSS-DELIVERABLE CONSISTENCY:
+- Do slides, sample code, exercises, and project teach the same patterns?
+- Any contradictions between deliverables? (e.g., slides say one thing, code does another)
+- Does the speaker script accurately describe what's in the slides and sample code?
+```
+
+---
+
+## D1A — GAP CHECK 3: FUNCTIONAL VALIDATION
+
+```
+
+You are functionally validating that all generated code for Day 1 Part A actually works —
+builds without errors, serves correctly, and follows Angular best practices.
+
+OUTPUT FOLDER: Save as `Day-1-A-Angular-Foundation/GapCheck/D1A-functional-validation.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-1-A-Angular-Foundation/` folder in the workspace.
+
+**NOW PERFORM THE FOLLOWING VALIDATION:**
+
+SECTION 1 — BUILD VALIDATION (SampleCode/):
+1. Check package.json has correct Angular dependencies (^17.0.0 or later)
+2. Check angular.json references the correct project name and source root
+3. Check tsconfig.json has strict mode enabled
+4. Check main.ts imports and calls bootstrapApplication() correctly
+5. Check app.config.ts exports a valid ApplicationConfig
+6. Check every component's imports array lists all components/directives/pipes used in its template
+7. Check every [inputName]="value" binding in templates matches an @Input() in the child component
+8. Check every component selector in templates matches the selector in the component's @Component decorator
+9. Flag any TypeScript errors: missing imports, wrong types, undefined variables
+
+SECTION 2 — BUILD VALIDATION (SampleLegacyCode/):
+1. Same checks as above but for legacy patterns:
+   - main.ts uses bootstrapModule(AppModule)
+   - AppModule exists with @NgModule decorator, declarations, imports, bootstrap arrays
+   - All components are declared in the module (not standalone)
+   - Constructor injection used (not inject())
+2. Flag any modern patterns that leaked into legacy code
+
+SECTION 3 — BUILD VALIDATION (Each Exercise):
+For each exercise in Exercises/:
+1. Check package.json has correct dependencies
+2. Check the starter code is buildable as-is (no missing imports, no undefined references)
+3. Check that TODO comments are present where students need to add code
+4. Check that the exercise README instructions match what the starter code provides
+5. Verify the solution files in Exercises-Solutions/ would produce working code when applied
+
+SECTION 4 — BUILD VALIDATION (Project/):
+Same checks as SampleCode/ — verify all files, imports, bindings, and types are correct.
+
+SECTION 5 — ANGULAR BEST PRACTICES:
+- No use of `any` type (explicit types everywhere)
+- All service methods have explicit return types
+- File naming follows kebab-case convention
+- Component selectors use app- prefix
+- No deprecated Angular APIs used
+
+For each issue found:
+- 🔴 BUILD ERROR — [file]: [description of error]
+- 🟡 WARNING — [file]: [description of issue]
+- ✅ VALID — [project/exercise name] passes all checks
 ```
 
 ---
@@ -908,13 +1059,46 @@ End the file with general tips that apply to all projects.
 
 ---
 
-## D1B — GAP CHECK
+## D1B — GAP CHECK 1: COMPLETENESS AUDIT
 
 ```
 
-You are reviewing the generated materials for Day 1 Part B of a 5-day Angular course.
+You are auditing the generated materials for Day 1 Part B of a 5-day Angular course to verify
+that every deliverable from every previous prompt is present, structurally correct, and complete.
 
-OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/GapCheck/`.
+OUTPUT FOLDER: Save as `Day-1-B-Templates-and-Communication/GapCheck/D1B-completeness-audit.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-1-B-Templates-and-Communication/` folder in the workspace.
+
+**DELIVERABLES THAT MUST EXIST:**
+
+1. SampleCode/ — complete, runnable Angular CLI project demonstrating Day 1 Part B concepts
+2. SampleLegacyCode/ — complete, runnable legacy Angular CLI project (NgModule, constructor injection)
+3. Slides/ — D1B-slides.md with title slide, objectives, content, legacy contrast, key takeaways
+4. SpeakerScript/ — D1B-slides-script.md + D1B-code-walkthrough-script.md
+5. Exercises/ — npm workspaces monorepo with all exercises, each with README.md and starter code; final exercise is ⚠️ LEGACY
+6. Exercises-Solutions/ — one Exercise-N-Solution/ folder per exercise with only changed files
+7. Project/ — complete Angular CLI project + README.md + instructions.md
+8. Project-Portfolio-Builder/ — Projects.md with 5–7 project ideas
+
+**NOW PRODUCE THE COMPLETENESS AUDIT** using the same format as D1A Gap Check 1:
+For each deliverable: ✅ PRESENT AND COMPLETE / ⚠️ PRESENT BUT INCOMPLETE / ❌ MISSING
+Also verify: standalone: true on all modern components, templateUrl/styleUrl (never inline),
+inline comments in all code files, correct patterns in SampleCode/ vs SampleLegacyCode/.
+```
+
+---
+
+## D1B — GAP CHECK 2: CONTENT ACCURACY & SCOPE
+
+```
+
+You are reviewing the generated materials for Day 1 Part B of a 5-day Angular course to verify
+curriculum coverage, exercise alignment, and that NO concepts from future days leak in.
+
+OUTPUT FOLDER: Save as `Day-1-B-Templates-and-Communication/GapCheck/D1B-content-accuracy.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-1-B-Templates-and-Communication/` folder in the workspace.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Interpolation {{ }}
@@ -926,17 +1110,69 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - ngOnDestroy — cleanup
 - Signals first look — signal(), computed()
 
-CONTEXT FILES: Read all files from the `Day-1-B-Templates-and-Communication/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+**NOW PRODUCE THE CONTENT REVIEW:**
 
-**NOW PRODUCE THE FOLLOWING REVIEW:**
+SECTION 1 — CURRICULUM COVERAGE:
+For each requirement: FULLY COVERED / PARTIALLY COVERED / MISSING.
 
-COVERAGE: Mark each requirement FULLY COVERED / PARTIALLY COVERED / MISSING.
+SECTION 2 — EXERCISE ALIGNMENT:
+For each concept in slides: ✅ Practiced — Exercise [N] / ❌ Taught But Not Practiced.
 
-EXERCISE ALIGNMENT CHECK:
-## Practiced in Exercise — [concept] ✓ — Exercise [N]
-## Taught But Not Practiced — [concept] — [which exercise to add it to]
+SECTION 3 — SCOPE CREEP (FUTURE TOPICS):
+These concepts are taught in FUTURE days and must NOT appear in Day 1 Part B materials:
+- @if, @for, @switch control flow blocks (Day 2 Part A)
+- ng-content, ng-container, ng-template (Day 2 Part A)
+- Pipes — built-in or custom (Day 2 Part A)
+- [ngClass], [ngStyle] (Day 2 Part A)
+- Signal-based input(), output(), model() (Day 2 Part B — signals FIRST LOOK is fine, full signal APIs are not)
+- effect() with cleanup (Day 2 Part B)
+- Services, @Injectable, inject() (Day 3 Part A)
+- RxJS, Observables, BehaviorSubject, toSignal() (Day 3 Part A)
+- HttpClient, provideHttpClient() (Day 3 Part B)
+- Routing, provideRouter() (Day 4 Part A)
+- Forms, FormGroup, FormControl, ReactiveFormsModule (Day 4 Part B)
 
-SCOPE CREEP: List anything in the materials not in the requirements.
+For each future concept found:
+🚫 SCOPE CREEP — [concept] in [file] — belongs to [Day X Part Y]
+✅ ACCEPTABLE — brief forward reference with "you'll learn this on Day X"
+
+SECTION 4 — CROSS-DELIVERABLE CONSISTENCY:
+Check slides, code, exercises, and project teach the same patterns without contradictions.
+```
+
+---
+
+## D1B — GAP CHECK 3: FUNCTIONAL VALIDATION
+
+```
+
+You are functionally validating that all generated code for Day 1 Part B actually works.
+
+OUTPUT FOLDER: Save as `Day-1-B-Templates-and-Communication/GapCheck/D1B-functional-validation.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-1-B-Templates-and-Communication/` folder in the workspace.
+
+**NOW PERFORM THE FOLLOWING VALIDATION:**
+
+SECTION 1 — BUILD VALIDATION (SampleCode/):
+Check package.json, angular.json, tsconfig, main.ts, app.config.ts, all component imports arrays,
+all template bindings match @Input()/@Output() declarations, all event bindings match methods.
+Verify FormsModule is imported where [(ngModel)] is used.
+
+SECTION 2 — BUILD VALIDATION (SampleLegacyCode/):
+Verify AppModule with declarations, constructor injection, no modern patterns leaked in.
+
+SECTION 3 — BUILD VALIDATION (Each Exercise):
+Verify each exercise starter builds, has TODO comments, README matches starter code.
+Verify solutions produce working code when applied.
+
+SECTION 4 — BUILD VALIDATION (Project/):
+Same checks as SampleCode/.
+
+SECTION 5 — ANGULAR BEST PRACTICES:
+No `any` types, explicit return types, kebab-case files, app- prefixed selectors, no deprecated APIs.
+
+For each issue: 🔴 BUILD ERROR / 🟡 WARNING / ✅ VALID
 ```
 
 ---
@@ -1401,13 +1637,46 @@ End the file with general tips that apply to all projects.
 
 ---
 
-## D2A — GAP CHECK
+## D2A — GAP CHECK 1: COMPLETENESS AUDIT
 
 ```
 
-You are reviewing the generated materials for Day 2 Part A of a 5-day Angular course.
+You are auditing the generated materials for Day 2 Part A of a 5-day Angular course to verify
+that every deliverable from every previous prompt is present, structurally correct, and complete.
 
-OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/GapCheck/`.
+OUTPUT FOLDER: Save as `Day-2-A-Content-Directives-Pipes/GapCheck/D2A-completeness-audit.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-2-A-Content-Directives-Pipes/` folder in the workspace.
+
+**DELIVERABLES THAT MUST EXIST:**
+
+1. SampleCode/ — complete, runnable Angular CLI project demonstrating Day 2 Part A concepts
+2. SampleLegacyCode/ — complete, runnable legacy Angular CLI project (NgModule, constructor injection)
+3. Slides/ — D2A-slides.md with title slide, objectives, content, legacy contrast, key takeaways
+4. SpeakerScript/ — D2A-slides-script.md + D2A-code-walkthrough-script.md
+5. Exercises/ — npm workspaces monorepo with all exercises, each with README.md and starter code; final exercise is ⚠️ LEGACY
+6. Exercises-Solutions/ — one Exercise-N-Solution/ folder per exercise with only changed files
+7. Project/ — complete Angular CLI project + README.md + instructions.md
+8. Project-Portfolio-Builder/ — Projects.md with 5–7 project ideas
+
+**NOW PRODUCE THE COMPLETENESS AUDIT:**
+For each deliverable: ✅ PRESENT AND COMPLETE / ⚠️ PRESENT BUT INCOMPLETE / ❌ MISSING
+Also verify: standalone: true on all modern components, templateUrl/styleUrl (never inline),
+inline comments in all code files, correct patterns in SampleCode/ vs SampleLegacyCode/.
+```
+
+---
+
+## D2A — GAP CHECK 2: CONTENT ACCURACY & SCOPE
+
+```
+
+You are reviewing the generated materials for Day 2 Part A of a 5-day Angular course to verify
+curriculum coverage, exercise alignment, and that NO concepts from future days leak in.
+
+OUTPUT FOLDER: Save as `Day-2-A-Content-Directives-Pipes/GapCheck/D2A-content-accuracy.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-2-A-Content-Directives-Pipes/` folder in the workspace.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - ng-content single-slot and named slots
@@ -1421,17 +1690,66 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Pure vs impure pipes
 - Custom pure pipe
 
-CONTEXT FILES: Read all files from the `Day-2-A-Content-Directives-Pipes/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+**NOW PRODUCE THE CONTENT REVIEW:**
 
-**NOW PRODUCE THE FOLLOWING REVIEW:**
+SECTION 1 — CURRICULUM COVERAGE:
+For each requirement: FULLY COVERED / PARTIALLY COVERED / MISSING.
 
-COVERAGE: Mark each requirement FULLY COVERED / PARTIALLY COVERED / MISSING.
+SECTION 2 — EXERCISE ALIGNMENT:
+For each concept in slides: ✅ Practiced — Exercise [N] / ❌ Taught But Not Practiced.
 
-EXERCISE ALIGNMENT CHECK:
-## Practiced in Exercise — [concept] ✓ — Exercise [N]
-## Taught But Not Practiced — [concept] — [which exercise to add it to]
+SECTION 3 — SCOPE CREEP (FUTURE TOPICS):
+These concepts are taught in FUTURE days and must NOT appear in Day 2 Part A materials
+(except as brief "you'll learn this on Day X" forward references):
+- signal(), computed(), effect() — full depth (Day 2 Part B — signal first look from D1B is fine)
+- Signal-based input(), output(), model() (Day 2 Part B)
+- Services, @Injectable, inject() (Day 3 Part A)
+- RxJS, Observables, BehaviorSubject, toSignal() (Day 3 Part A)
+- HttpClient, provideHttpClient() (Day 3 Part B)
+- Routing, provideRouter(), routerLink (Day 4 Part A)
+- Forms, FormGroup, FormControl, ReactiveFormsModule (Day 4 Part B)
 
-SCOPE CREEP: List anything in materials not in requirements.
+For each future concept found:
+🚫 SCOPE CREEP — [concept] in [file] — belongs to [Day X Part Y]
+✅ ACCEPTABLE — brief forward reference with "you'll learn this on Day X"
+
+SECTION 4 — CROSS-DELIVERABLE CONSISTENCY:
+Check slides, code, exercises, and project teach the same patterns without contradictions.
+```
+
+---
+
+## D2A — GAP CHECK 3: FUNCTIONAL VALIDATION
+
+```
+
+You are functionally validating that all generated code for Day 2 Part A actually works.
+
+OUTPUT FOLDER: Save as `Day-2-A-Content-Directives-Pipes/GapCheck/D2A-functional-validation.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-2-A-Content-Directives-Pipes/` folder in the workspace.
+
+**NOW PERFORM THE FOLLOWING VALIDATION:**
+
+SECTION 1 — BUILD VALIDATION (SampleCode/):
+Check package.json, angular.json, tsconfig, main.ts, app.config.ts, all component imports arrays,
+all template bindings match component declarations, all event bindings match methods.
+Verify ng-content slots match select attributes. Verify @for has track expression. Verify pipe transforms are pure unless explicitly impure.
+
+SECTION 2 — BUILD VALIDATION (SampleLegacyCode/):
+Verify AppModule with declarations, constructor injection, no modern patterns leaked in.
+
+SECTION 3 — BUILD VALIDATION (Each Exercise):
+Verify each exercise starter builds, has TODO comments, README matches starter code.
+Verify solutions produce working code when applied.
+
+SECTION 4 — BUILD VALIDATION (Project/):
+Same checks as SampleCode/.
+
+SECTION 5 — ANGULAR BEST PRACTICES:
+No `any` types, explicit return types, kebab-case files, app- prefixed selectors, no deprecated APIs.
+
+For each issue: 🔴 BUILD ERROR / 🟡 WARNING / ✅ VALID
 ```
 
 ---
@@ -1845,13 +2163,46 @@ End the file with general tips that apply to all projects.
 
 ---
 
-## D2B — GAP CHECK
+## D2B — GAP CHECK 1: COMPLETENESS AUDIT
 
 ```
 
-You are reviewing the generated materials for Day 2 Part B of a 5-day Angular course.
+You are auditing the generated materials for Day 2 Part B of a 5-day Angular course to verify
+that every deliverable from every previous prompt is present, structurally correct, and complete.
 
-OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/GapCheck/`.
+OUTPUT FOLDER: Save as `Day-2-B-Signals/GapCheck/D2B-completeness-audit.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-2-B-Signals/` folder in the workspace.
+
+**DELIVERABLES THAT MUST EXIST:**
+
+1. SampleCode/ — complete, runnable Angular CLI project demonstrating Day 2 Part B concepts
+2. SampleLegacyCode/ — complete, runnable legacy Angular CLI project (NgModule, constructor injection)
+3. Slides/ — D2B-slides.md with title slide, objectives, content, legacy contrast, key takeaways
+4. SpeakerScript/ — D2B-slides-script.md + D2B-code-walkthrough-script.md
+5. Exercises/ — npm workspaces monorepo with all exercises, each with README.md and starter code; final exercise is ⚠️ LEGACY
+6. Exercises-Solutions/ — one Exercise-N-Solution/ folder per exercise with only changed files
+7. Project/ — complete Angular CLI project + README.md + instructions.md
+8. Project-Portfolio-Builder/ — Projects.md with 5–7 project ideas
+
+**NOW PRODUCE THE COMPLETENESS AUDIT:**
+For each deliverable: ✅ PRESENT AND COMPLETE / ⚠️ PRESENT BUT INCOMPLETE / ❌ MISSING
+Also verify: standalone: true on all modern components, templateUrl/styleUrl (never inline),
+inline comments in all code files, correct patterns in SampleCode/ vs SampleLegacyCode/.
+```
+
+---
+
+## D2B — GAP CHECK 2: CONTENT ACCURACY & SCOPE
+
+```
+
+You are reviewing the generated materials for Day 2 Part B of a 5-day Angular course to verify
+curriculum coverage, exercise alignment, and that NO concepts from future days leak in.
+
+OUTPUT FOLDER: Save as `Day-2-B-Signals/GapCheck/D2B-content-accuracy.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-2-B-Signals/` folder in the workspace.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - signal() — .set(), .update()
@@ -1864,17 +2215,69 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - ngOnChanges as legacy contrast (SimpleChanges)
 - Angular direction — zoneless stable in v21+
 
-CONTEXT FILES: Read all files from the `Day-2-B-Signals/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+**NOW PRODUCE THE CONTENT REVIEW:**
 
-**NOW PRODUCE THE FOLLOWING REVIEW:**
+SECTION 1 — CURRICULUM COVERAGE:
+For each requirement: FULLY COVERED / PARTIALLY COVERED / MISSING.
 
-COVERAGE: Mark each requirement FULLY COVERED / PARTIALLY COVERED / MISSING.
+SECTION 2 — EXERCISE ALIGNMENT:
+For each concept in slides: ✅ Practiced — Exercise [N] / ❌ Taught But Not Practiced.
 
-EXERCISE ALIGNMENT CHECK:
-## Practiced in Exercise — [concept] ✓ — Exercise [N]
-## Taught But Not Practiced — [concept] — [which exercise to add it to]
+SECTION 3 — SCOPE CREEP (FUTURE TOPICS):
+These concepts are taught in FUTURE days and must NOT appear in Day 2 Part B materials
+(except as brief "you'll learn this on Day X" forward references):
+- Services, @Injectable, inject() (Day 3 Part A)
+- RxJS, Observables, BehaviorSubject, toSignal() (Day 3 Part A)
+- takeUntilDestroyed() (Day 3 Part A)
+- HttpClient, provideHttpClient() (Day 3 Part B)
+- HttpInterceptorFn (Day 3 Part B)
+- Routing, provideRouter(), routerLink (Day 4 Part A)
+- Route guards: canActivate, canDeactivate (Day 4 Part A)
+- Forms, FormGroup, FormControl, ReactiveFormsModule (Day 4 Part B)
+- linkedSignal() (Extended Topics — not in core curriculum)
+- untracked() (Extended Topics)
 
-SCOPE CREEP: List anything in materials not in requirements.
+For each future concept found:
+🚫 SCOPE CREEP — [concept] in [file] — belongs to [Day X Part Y]
+✅ ACCEPTABLE — brief forward reference with "you'll learn this on Day X"
+
+SECTION 4 — CROSS-DELIVERABLE CONSISTENCY:
+Check slides, code, exercises, and project teach the same patterns without contradictions.
+```
+
+---
+
+## D2B — GAP CHECK 3: FUNCTIONAL VALIDATION
+
+```
+
+You are functionally validating that all generated code for Day 2 Part B actually works.
+
+OUTPUT FOLDER: Save as `Day-2-B-Signals/GapCheck/D2B-functional-validation.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-2-B-Signals/` folder in the workspace.
+
+**NOW PERFORM THE FOLLOWING VALIDATION:**
+
+SECTION 1 — BUILD VALIDATION (SampleCode/):
+Check package.json, angular.json, tsconfig, main.ts, app.config.ts, all component imports arrays,
+all template bindings match component declarations, all event bindings match methods.
+Verify signal() values use .set()/.update() (not direct assignment). Verify input() signals are never .set() inside the component. Verify effect() has cleanup return where timers or subscriptions are used.
+
+SECTION 2 — BUILD VALIDATION (SampleLegacyCode/):
+Verify AppModule with declarations, constructor injection, no modern patterns leaked in.
+
+SECTION 3 — BUILD VALIDATION (Each Exercise):
+Verify each exercise starter builds, has TODO comments, README matches starter code.
+Verify solutions produce working code when applied.
+
+SECTION 4 — BUILD VALIDATION (Project/):
+Same checks as SampleCode/.
+
+SECTION 5 — ANGULAR BEST PRACTICES:
+No `any` types, explicit return types, kebab-case files, app- prefixed selectors, no deprecated APIs.
+
+For each issue: 🔴 BUILD ERROR / 🟡 WARNING / ✅ VALID
 ```
 
 ---
@@ -2332,13 +2735,46 @@ End the file with general tips that apply to all projects.
 
 ---
 
-## D3A — GAP CHECK
+## D3A — GAP CHECK 1: COMPLETENESS AUDIT
 
 ```
 
-You are reviewing the generated materials for Day 3 Part A of a 5-day Angular course.
+You are auditing the generated materials for Day 3 Part A of a 5-day Angular course to verify
+that every deliverable from every previous prompt is present, structurally correct, and complete.
 
-OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/GapCheck/`.
+OUTPUT FOLDER: Save as `Day-3-A-Services-DI-RxJS/GapCheck/D3A-completeness-audit.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-3-A-Services-DI-RxJS/` folder in the workspace.
+
+**DELIVERABLES THAT MUST EXIST:**
+
+1. SampleCode/ — complete, runnable Angular CLI project demonstrating Day 3 Part A concepts
+2. SampleLegacyCode/ — complete, runnable legacy Angular CLI project (NgModule, constructor injection)
+3. Slides/ — D3A-slides.md with title slide, objectives, content, legacy contrast, key takeaways
+4. SpeakerScript/ — D3A-slides-script.md + D3A-code-walkthrough-script.md
+5. Exercises/ — npm workspaces monorepo with all exercises, each with README.md and starter code; final exercise is ⚠️ LEGACY
+6. Exercises-Solutions/ — one Exercise-N-Solution/ folder per exercise with only changed files
+7. Project/ — complete Angular CLI project + README.md + instructions.md
+8. Project-Portfolio-Builder/ — Projects.md with 5–7 project ideas
+
+**NOW PRODUCE THE COMPLETENESS AUDIT:**
+For each deliverable: ✅ PRESENT AND COMPLETE / ⚠️ PRESENT BUT INCOMPLETE / ❌ MISSING
+Also verify: standalone: true on all modern components, templateUrl/styleUrl (never inline),
+inline comments in all code files, correct patterns in SampleCode/ vs SampleLegacyCode/.
+```
+
+---
+
+## D3A — GAP CHECK 2: CONTENT ACCURACY & SCOPE
+
+```
+
+You are reviewing the generated materials for Day 3 Part A of a 5-day Angular course to verify
+curriculum coverage, exercise alignment, and that NO concepts from future days leak in.
+
+OUTPUT FOLDER: Save as `Day-3-A-Services-DI-RxJS/GapCheck/D3A-content-accuracy.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-3-A-Services-DI-RxJS/` folder in the workspace.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - @Injectable providedIn root
@@ -2353,17 +2789,69 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - toSignal() — primary RxJS-to-signals bridge
 - async pipe vs toSignal() — null gotcha and initialValue solution
 
-CONTEXT FILES: Read all files from the `Day-3-A-Services-DI-RxJS/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+**NOW PRODUCE THE CONTENT REVIEW:**
 
-**NOW PRODUCE THE FOLLOWING REVIEW:**
+SECTION 1 — CURRICULUM COVERAGE:
+For each requirement: FULLY COVERED / PARTIALLY COVERED / MISSING.
 
-COVERAGE: Mark each requirement FULLY COVERED / PARTIALLY COVERED / MISSING.
+SECTION 2 — EXERCISE ALIGNMENT:
+For each concept in slides: ✅ Practiced — Exercise [N] / ❌ Taught But Not Practiced.
 
-EXERCISE ALIGNMENT CHECK:
-## Practiced in Exercise — [concept] ✓ — Exercise [N]
-## Taught But Not Practiced — [concept] — [which exercise to add it to]
+SECTION 3 — SCOPE CREEP (FUTURE TOPICS):
+These concepts are taught in FUTURE days and must NOT appear in Day 3 Part A materials
+(except as brief "you'll learn this on Day X" forward references):
+- HttpClient, provideHttpClient() (Day 3 Part B)
+- HttpParams (Day 3 Part B)
+- HttpInterceptorFn (Day 3 Part B)
+- HttpErrorResponse (Day 3 Part B)
+- environment.ts files (Day 3 Part B)
+- forkJoin for HTTP (Day 3 Part B — RxJS forkJoin concept is fine, HTTP-specific usage is Day 3B)
+- Routing, provideRouter(), routerLink (Day 4 Part A)
+- Route guards beyond inject() usage (Day 4 Part A)
+- Forms, FormGroup, FormControl (Day 4 Part B)
+- Testing, TestBed, ComponentFixture (Day 5 Part A)
 
-SCOPE CREEP: List anything in materials not in requirements.
+For each future concept found:
+🚫 SCOPE CREEP — [concept] in [file] — belongs to [Day X Part Y]
+✅ ACCEPTABLE — brief forward reference with "you'll learn this on Day X"
+
+SECTION 4 — CROSS-DELIVERABLE CONSISTENCY:
+Check slides, code, exercises, and project teach the same patterns without contradictions.
+```
+
+---
+
+## D3A — GAP CHECK 3: FUNCTIONAL VALIDATION
+
+```
+
+You are functionally validating that all generated code for Day 3 Part A actually works.
+
+OUTPUT FOLDER: Save as `Day-3-A-Services-DI-RxJS/GapCheck/D3A-functional-validation.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-3-A-Services-DI-RxJS/` folder in the workspace.
+
+**NOW PERFORM THE FOLLOWING VALIDATION:**
+
+SECTION 1 — BUILD VALIDATION (SampleCode/):
+Check package.json, angular.json, tsconfig, main.ts, app.config.ts, all component imports arrays,
+all template bindings match component declarations, all event bindings match methods.
+Verify services use @Injectable({ providedIn: 'root' }). Verify inject() is used (not constructor injection). Verify takeUntilDestroyed() is called in injection context. Verify toSignal() has initialValue where needed.
+
+SECTION 2 — BUILD VALIDATION (SampleLegacyCode/):
+Verify AppModule with declarations, constructor injection, no modern patterns leaked in.
+
+SECTION 3 — BUILD VALIDATION (Each Exercise):
+Verify each exercise starter builds, has TODO comments, README matches starter code.
+Verify solutions produce working code when applied.
+
+SECTION 4 — BUILD VALIDATION (Project/):
+Same checks as SampleCode/.
+
+SECTION 5 — ANGULAR BEST PRACTICES:
+No `any` types, explicit return types, kebab-case files, app- prefixed selectors, no deprecated APIs.
+
+For each issue: 🔴 BUILD ERROR / 🟡 WARNING / ✅ VALID
 ```
 
 ---
@@ -2794,13 +3282,46 @@ End the file with general tips that apply to all projects.
 
 ---
 
-## D3B — GAP CHECK
+## D3B — GAP CHECK 1: COMPLETENESS AUDIT
 
 ```
 
-You are reviewing the generated materials for Day 3 Part B of a 5-day Angular course.
+You are auditing the generated materials for Day 3 Part B of a 5-day Angular course to verify
+that every deliverable from every previous prompt is present, structurally correct, and complete.
 
-OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/GapCheck/`.
+OUTPUT FOLDER: Save as `Day-3-B-HTTP-Async-Data/GapCheck/D3B-completeness-audit.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-3-B-HTTP-Async-Data/` folder in the workspace.
+
+**DELIVERABLES THAT MUST EXIST:**
+
+1. SampleCode/ — complete, runnable Angular CLI project demonstrating Day 3 Part B concepts
+2. SampleLegacyCode/ — complete, runnable legacy Angular CLI project (NgModule, constructor injection)
+3. Slides/ — D3B-slides.md with title slide, objectives, content, legacy contrast, key takeaways
+4. SpeakerScript/ — D3B-slides-script.md + D3B-code-walkthrough-script.md
+5. Exercises/ — npm workspaces monorepo with all exercises, each with README.md and starter code; final exercise is ⚠️ LEGACY
+6. Exercises-Solutions/ — one Exercise-N-Solution/ folder per exercise with only changed files
+7. Project/ — complete Angular CLI project + README.md + instructions.md
+8. Project-Portfolio-Builder/ — Projects.md with 5–7 project ideas
+
+**NOW PRODUCE THE COMPLETENESS AUDIT:**
+For each deliverable: ✅ PRESENT AND COMPLETE / ⚠️ PRESENT BUT INCOMPLETE / ❌ MISSING
+Also verify: standalone: true on all modern components, templateUrl/styleUrl (never inline),
+inline comments in all code files, correct patterns in SampleCode/ vs SampleLegacyCode/.
+```
+
+---
+
+## D3B — GAP CHECK 2: CONTENT ACCURACY & SCOPE
+
+```
+
+You are reviewing the generated materials for Day 3 Part B of a 5-day Angular course to verify
+curriculum coverage, exercise alignment, and that NO concepts from future days leak in.
+
+OUTPUT FOLDER: Save as `Day-3-B-HTTP-Async-Data/GapCheck/D3B-content-accuracy.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-3-B-HTTP-Async-Data/` folder in the workspace.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - provideHttpClient() in app.config.ts
@@ -2815,17 +3336,67 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Functional HttpInterceptorFn
 - environment.ts / environment.development.ts
 
-CONTEXT FILES: Read all files from the `Day-3-B-HTTP-Async-Data/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+**NOW PRODUCE THE CONTENT REVIEW:**
 
-**NOW PRODUCE THE FOLLOWING REVIEW:**
+SECTION 1 — CURRICULUM COVERAGE:
+For each requirement: FULLY COVERED / PARTIALLY COVERED / MISSING.
 
-COVERAGE: Mark each requirement FULLY COVERED / PARTIALLY COVERED / MISSING.
+SECTION 2 — EXERCISE ALIGNMENT:
+For each concept in slides: ✅ Practiced — Exercise [N] / ❌ Taught But Not Practiced.
 
-EXERCISE ALIGNMENT CHECK:
-## Practiced in Exercise — [concept] ✓ — Exercise [N]
-## Taught But Not Practiced — [concept] — [which exercise to add it to]
+SECTION 3 — SCOPE CREEP (FUTURE TOPICS):
+These concepts are taught in FUTURE days and must NOT appear in Day 3 Part B materials
+(except as brief "you'll learn this on Day X" forward references):
+- Routing, provideRouter(), routerLink, routerLinkActive (Day 4 Part A)
+- Route params, query params (Day 4 Part A)
+- canActivate, canDeactivate guards (Day 4 Part A)
+- Lazy loading with loadComponent() (Day 4 Part A)
+- Template-driven forms, ngModel (Day 4 Part B)
+- Reactive forms, FormGroup, FormControl, FormArray (Day 4 Part B)
+- Custom validators (Day 4 Part B)
+- Testing, TestBed, HttpTestingController (Day 5 Part A)
 
-SCOPE CREEP: List anything in materials not in requirements.
+For each future concept found:
+🚫 SCOPE CREEP — [concept] in [file] — belongs to [Day X Part Y]
+✅ ACCEPTABLE — brief forward reference with "you'll learn this on Day X"
+
+SECTION 4 — CROSS-DELIVERABLE CONSISTENCY:
+Check slides, code, exercises, and project teach the same patterns without contradictions.
+```
+
+---
+
+## D3B — GAP CHECK 3: FUNCTIONAL VALIDATION
+
+```
+
+You are functionally validating that all generated code for Day 3 Part B actually works.
+
+OUTPUT FOLDER: Save as `Day-3-B-HTTP-Async-Data/GapCheck/D3B-functional-validation.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-3-B-HTTP-Async-Data/` folder in the workspace.
+
+**NOW PERFORM THE FOLLOWING VALIDATION:**
+
+SECTION 1 — BUILD VALIDATION (SampleCode/):
+Check package.json, angular.json, tsconfig, main.ts, app.config.ts, all component imports arrays,
+all template bindings match component declarations, all event bindings match methods.
+Verify provideHttpClient() is in app.config.ts providers. Verify withInterceptors() wraps interceptor functions. Verify all HTTP calls are typed: http.get<Type>(). Verify interfaces are defined for every API response shape. Verify environment.ts exists with apiUrl.
+
+SECTION 2 — BUILD VALIDATION (SampleLegacyCode/):
+Verify AppModule with declarations, constructor injection, no modern patterns leaked in.
+
+SECTION 3 — BUILD VALIDATION (Each Exercise):
+Verify each exercise starter builds, has TODO comments, README matches starter code.
+Verify solutions produce working code when applied.
+
+SECTION 4 — BUILD VALIDATION (Project/):
+Same checks as SampleCode/.
+
+SECTION 5 — ANGULAR BEST PRACTICES:
+No `any` types, explicit return types, kebab-case files, app- prefixed selectors, no deprecated APIs.
+
+For each issue: 🔴 BUILD ERROR / 🟡 WARNING / ✅ VALID
 ```
 
 ---
@@ -3291,13 +3862,46 @@ End the file with general tips that apply to all projects.
 
 ---
 
-## D4A — GAP CHECK
+## D4A — GAP CHECK 1: COMPLETENESS AUDIT
 
 ```
 
-You are reviewing the generated materials for Day 4 Part A of a 5-day Angular course.
+You are auditing the generated materials for Day 4 Part A of a 5-day Angular course to verify
+that every deliverable from every previous prompt is present, structurally correct, and complete.
 
-OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/GapCheck/`.
+OUTPUT FOLDER: Save as `Day-4-A-Routing/GapCheck/D4A-completeness-audit.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-4-A-Routing/` folder in the workspace.
+
+**DELIVERABLES THAT MUST EXIST:**
+
+1. SampleCode/ — complete, runnable Angular CLI project demonstrating Day 4 Part A concepts
+2. SampleLegacyCode/ — complete, runnable legacy Angular CLI project (NgModule, constructor injection)
+3. Slides/ — D4A-slides.md with title slide, objectives, content, legacy contrast, key takeaways
+4. SpeakerScript/ — D4A-slides-script.md + D4A-code-walkthrough-script.md
+5. Exercises/ — npm workspaces monorepo with all exercises, each with README.md and starter code; final exercise is ⚠️ LEGACY
+6. Exercises-Solutions/ — one Exercise-N-Solution/ folder per exercise with only changed files
+7. Project/ — complete Angular CLI project + README.md + instructions.md
+8. Project-Portfolio-Builder/ — Projects.md with 5–7 project ideas
+
+**NOW PRODUCE THE COMPLETENESS AUDIT:**
+For each deliverable: ✅ PRESENT AND COMPLETE / ⚠️ PRESENT BUT INCOMPLETE / ❌ MISSING
+Also verify: standalone: true on all modern components, templateUrl/styleUrl (never inline),
+inline comments in all code files, correct patterns in SampleCode/ vs SampleLegacyCode/.
+```
+
+---
+
+## D4A — GAP CHECK 2: CONTENT ACCURACY & SCOPE
+
+```
+
+You are reviewing the generated materials for Day 4 Part A of a 5-day Angular course to verify
+curriculum coverage, exercise alignment, and that NO concepts from future days leak in.
+
+OUTPUT FOLDER: Save as `Day-4-A-Routing/GapCheck/D4A-content-accuracy.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-4-A-Routing/` folder in the workspace.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - provideRouter() in app.config.ts
@@ -3311,17 +3915,67 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - canActivate functional guard with UrlTree
 - canDeactivate functional guard with generic hasUnsavedChanges property
 
-CONTEXT FILES: Read all files from the `Day-4-A-Routing/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+**NOW PRODUCE THE CONTENT REVIEW:**
 
-**NOW PRODUCE THE FOLLOWING REVIEW:**
+SECTION 1 — CURRICULUM COVERAGE:
+For each requirement: FULLY COVERED / PARTIALLY COVERED / MISSING.
 
-COVERAGE: Mark each requirement FULLY COVERED / PARTIALLY COVERED / MISSING.
+SECTION 2 — EXERCISE ALIGNMENT:
+For each concept in slides: ✅ Practiced — Exercise [N] / ❌ Taught But Not Practiced.
 
-EXERCISE ALIGNMENT CHECK:
-## Practiced in Exercise — [concept] ✓ — Exercise [N]
-## Taught But Not Practiced — [concept] — [which exercise to add it to]
+SECTION 3 — SCOPE CREEP (FUTURE TOPICS):
+These concepts are taught in FUTURE days and must NOT appear in Day 4 Part A materials
+(except as brief "you'll learn this on Day X" forward references):
+- Template-driven forms, ngModel, ngForm (Day 4 Part B)
+- Reactive forms, FormGroup, FormControl, FormArray (Day 4 Part B)
+- Custom validators — ValidatorFn, AsyncValidatorFn (Day 4 Part B)
+- toSignal(form.valueChanges) (Day 4 Part B)
+- Testing, TestBed, ComponentFixture (Day 5 Part A)
+- HttpTestingController (Day 5 Part A)
+- Route resolvers with ResolveFn (Extended Topics)
+- canMatch guard (Extended Topics)
 
-SCOPE CREEP: List anything in materials not in requirements.
+For each future concept found:
+🚫 SCOPE CREEP — [concept] in [file] — belongs to [Day X Part Y]
+✅ ACCEPTABLE — brief forward reference with "you'll learn this on Day X"
+
+SECTION 4 — CROSS-DELIVERABLE CONSISTENCY:
+Check slides, code, exercises, and project teach the same patterns without contradictions.
+```
+
+---
+
+## D4A — GAP CHECK 3: FUNCTIONAL VALIDATION
+
+```
+
+You are functionally validating that all generated code for Day 4 Part A actually works.
+
+OUTPUT FOLDER: Save as `Day-4-A-Routing/GapCheck/D4A-functional-validation.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-4-A-Routing/` folder in the workspace.
+
+**NOW PERFORM THE FOLLOWING VALIDATION:**
+
+SECTION 1 — BUILD VALIDATION (SampleCode/):
+Check package.json, angular.json, tsconfig, main.ts, app.config.ts, all component imports arrays,
+all template bindings match component declarations, all event bindings match methods.
+Verify provideRouter(routes) is in app.config.ts. Verify route paths match routerLink values. Verify withComponentInputBinding() is configured if input() signals read route params. Verify loadComponent() uses arrow function with dynamic import. Verify guards return boolean | UrlTree.
+
+SECTION 2 — BUILD VALIDATION (SampleLegacyCode/):
+Verify AppModule with declarations, constructor injection, no modern patterns leaked in.
+
+SECTION 3 — BUILD VALIDATION (Each Exercise):
+Verify each exercise starter builds, has TODO comments, README matches starter code.
+Verify solutions produce working code when applied.
+
+SECTION 4 — BUILD VALIDATION (Project/):
+Same checks as SampleCode/.
+
+SECTION 5 — ANGULAR BEST PRACTICES:
+No `any` types, explicit return types, kebab-case files, app- prefixed selectors, no deprecated APIs.
+
+For each issue: 🔴 BUILD ERROR / 🟡 WARNING / ✅ VALID
 ```
 
 ---
@@ -3758,13 +4412,46 @@ End the file with general tips that apply to all projects.
 
 ---
 
-## D4B — GAP CHECK
+## D4B — GAP CHECK 1: COMPLETENESS AUDIT
 
 ```
 
-You are reviewing the generated materials for Day 4 Part B of a 5-day Angular course.
+You are auditing the generated materials for Day 4 Part B of a 5-day Angular course to verify
+that every deliverable from every previous prompt is present, structurally correct, and complete.
 
-OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/GapCheck/`.
+OUTPUT FOLDER: Save as `Day-4-B-Forms/GapCheck/D4B-completeness-audit.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-4-B-Forms/` folder in the workspace.
+
+**DELIVERABLES THAT MUST EXIST:**
+
+1. SampleCode/ — complete, runnable Angular CLI project demonstrating Day 4 Part B concepts
+2. SampleLegacyCode/ — complete, runnable legacy Angular CLI project (NgModule, constructor injection)
+3. Slides/ — D4B-slides.md with title slide, objectives, content, legacy contrast, key takeaways
+4. SpeakerScript/ — D4B-slides-script.md + D4B-code-walkthrough-script.md
+5. Exercises/ — npm workspaces monorepo with all exercises, each with README.md and starter code; final exercise is ⚠️ LEGACY
+6. Exercises-Solutions/ — one Exercise-N-Solution/ folder per exercise with only changed files
+7. Project/ — complete Angular CLI project + README.md + instructions.md
+8. Project-Portfolio-Builder/ — Projects.md with 5–7 project ideas
+
+**NOW PRODUCE THE COMPLETENESS AUDIT:**
+For each deliverable: ✅ PRESENT AND COMPLETE / ⚠️ PRESENT BUT INCOMPLETE / ❌ MISSING
+Also verify: standalone: true on all modern components, templateUrl/styleUrl (never inline),
+inline comments in all code files, correct patterns in SampleCode/ vs SampleLegacyCode/.
+```
+
+---
+
+## D4B — GAP CHECK 2: CONTENT ACCURACY & SCOPE
+
+```
+
+You are reviewing the generated materials for Day 4 Part B of a 5-day Angular course to verify
+curriculum coverage, exercise alignment, and that NO concepts from future days leak in.
+
+OUTPUT FOLDER: Save as `Day-4-B-Forms/GapCheck/D4B-content-accuracy.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-4-B-Forms/` folder in the workspace.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Template-driven forms — ngModel, ngForm, HTML5 validators, error display
@@ -3777,17 +4464,63 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - toSignal(form.valueChanges)
 - ngModel inside reactive form — runtime error warning
 
-CONTEXT FILES: Read all files from the `Day-4-B-Forms/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+**NOW PRODUCE THE CONTENT REVIEW:**
 
-**NOW PRODUCE THE FOLLOWING REVIEW:**
+SECTION 1 — CURRICULUM COVERAGE:
+For each requirement: FULLY COVERED / PARTIALLY COVERED / MISSING.
 
-COVERAGE: Mark each requirement FULLY COVERED / PARTIALLY COVERED / MISSING.
+SECTION 2 — EXERCISE ALIGNMENT:
+For each concept in slides: ✅ Practiced — Exercise [N] / ❌ Taught But Not Practiced.
 
-EXERCISE ALIGNMENT CHECK:
-## Practiced in Exercise — [concept] ✓ — Exercise [N]
-## Taught But Not Practiced — [concept] — [which exercise to add it to]
+SECTION 3 — SCOPE CREEP (FUTURE TOPICS):
+These concepts are taught in FUTURE days and must NOT appear in Day 4 Part B materials
+(except as brief "you'll learn this on Day X" forward references):
+- Testing, TestBed, ComponentFixture (Day 5 Part A)
+- HttpTestingController (Day 5 Part A)
+- Service testing with jasmine.createSpyObj (Day 5 Part A)
+- ControlValueAccessor (Extended Topics)
 
-SCOPE CREEP: List anything in materials not in requirements.
+For each future concept found:
+🚫 SCOPE CREEP — [concept] in [file] — belongs to [Day X Part Y]
+✅ ACCEPTABLE — brief forward reference with "you'll learn this on Day X"
+
+SECTION 4 — CROSS-DELIVERABLE CONSISTENCY:
+Check slides, code, exercises, and project teach the same patterns without contradictions.
+```
+
+---
+
+## D4B — GAP CHECK 3: FUNCTIONAL VALIDATION
+
+```
+
+You are functionally validating that all generated code for Day 4 Part B actually works.
+
+OUTPUT FOLDER: Save as `Day-4-B-Forms/GapCheck/D4B-functional-validation.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-4-B-Forms/` folder in the workspace.
+
+**NOW PERFORM THE FOLLOWING VALIDATION:**
+
+SECTION 1 — BUILD VALIDATION (SampleCode/):
+Check package.json, angular.json, tsconfig, main.ts, app.config.ts, all component imports arrays,
+all template bindings match component declarations, all event bindings match methods.
+Verify FormsModule is imported where ngModel is used. Verify ReactiveFormsModule is imported where FormGroup/FormControl is used. Verify FormArray uses push()/removeAt() with @for iteration. Verify custom validators return ValidationErrors | null. Verify ngModel is NOT mixed with reactive form controls.
+
+SECTION 2 — BUILD VALIDATION (SampleLegacyCode/):
+Verify AppModule with declarations, constructor injection, no modern patterns leaked in.
+
+SECTION 3 — BUILD VALIDATION (Each Exercise):
+Verify each exercise starter builds, has TODO comments, README matches starter code.
+Verify solutions produce working code when applied.
+
+SECTION 4 — BUILD VALIDATION (Project/):
+Same checks as SampleCode/.
+
+SECTION 5 — ANGULAR BEST PRACTICES:
+No `any` types, explicit return types, kebab-case files, app- prefixed selectors, no deprecated APIs.
+
+For each issue: 🔴 BUILD ERROR / 🟡 WARNING / ✅ VALID
 ```
 
 ---
@@ -4264,13 +4997,46 @@ End the file with general tips that apply to all projects.
 
 ---
 
-## D5A — GAP CHECK
+## D5A — GAP CHECK 1: COMPLETENESS AUDIT
 
 ```
 
-You are reviewing the generated materials for Day 5 Part A of a 5-day Angular course.
+You are auditing the generated materials for Day 5 Part A of a 5-day Angular course to verify
+that every deliverable from every previous prompt is present, structurally correct, and complete.
 
-OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/GapCheck/`.
+OUTPUT FOLDER: Save as `Day-5-A-Testing/GapCheck/D5A-completeness-audit.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-5-A-Testing/` folder in the workspace.
+
+**DELIVERABLES THAT MUST EXIST:**
+
+1. SampleCode/ — complete, runnable Angular CLI project demonstrating Day 5 Part A concepts
+2. SampleLegacyCode/ — complete, runnable legacy Angular CLI project (NgModule, constructor injection)
+3. Slides/ — D5A-slides.md with title slide, objectives, content, legacy contrast, key takeaways
+4. SpeakerScript/ — D5A-slides-script.md + D5A-code-walkthrough-script.md
+5. Exercises/ — npm workspaces monorepo with all exercises, each with README.md and starter code; final exercise is ⚠️ LEGACY
+6. Exercises-Solutions/ — one Exercise-N-Solution/ folder per exercise with only changed files
+7. Project/ — complete Angular CLI project + README.md + instructions.md
+8. Project-Portfolio-Builder/ — Projects.md with 5–7 project ideas
+
+**NOW PRODUCE THE COMPLETENESS AUDIT:**
+For each deliverable: ✅ PRESENT AND COMPLETE / ⚠️ PRESENT BUT INCOMPLETE / ❌ MISSING
+Also verify: standalone: true on all modern components, templateUrl/styleUrl (never inline),
+inline comments in all code files, correct patterns in SampleCode/ vs SampleLegacyCode/.
+```
+
+---
+
+## D5A — GAP CHECK 2: CONTENT ACCURACY & SCOPE
+
+```
+
+You are reviewing the generated materials for Day 5 Part A of a 5-day Angular course to verify
+curriculum coverage, exercise alignment, and that NO concepts from future days leak in.
+
+OUTPUT FOLDER: Save as `Day-5-A-Testing/GapCheck/D5A-content-accuracy.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-5-A-Testing/` folder in the workspace.
 
 CURRICULUM REQUIREMENTS FOR THIS PART:
 - Jasmine + Karma setup; Jest alternative
@@ -4285,17 +5051,64 @@ CURRICULUM REQUIREMENTS FOR THIS PART:
 - Lifecycle testing — ngOnInit, ngOnDestroy cleanup
 - NO_ERRORS_SCHEMA vs real child imports tradeoff
 
-CONTEXT FILES: Read all files from the `Day-5-A-Testing/` folder in the workspace — all generated materials (sample code, slides, speaker scripts, exercises, sample project) are there.
+**NOW PRODUCE THE CONTENT REVIEW:**
 
-**NOW PRODUCE THE FOLLOWING REVIEW:**
+SECTION 1 — CURRICULUM COVERAGE:
+For each requirement: FULLY COVERED / PARTIALLY COVERED / MISSING.
 
-COVERAGE: Mark each requirement FULLY COVERED / PARTIALLY COVERED / MISSING.
+SECTION 2 — EXERCISE ALIGNMENT:
+For each concept in slides: ✅ Practiced — Exercise [N] / ❌ Taught But Not Practiced.
 
-EXERCISE ALIGNMENT CHECK:
-## Practiced in Exercise — [concept] ✓ — Exercise [N]
-## Taught But Not Practiced — [concept] — [which exercise to add it to]
+SECTION 3 — SCOPE CREEP (FUTURE TOPICS):
+These concepts are taught in FUTURE days and must NOT appear in Day 5 Part A materials
+(except as brief "you'll learn this on Day X" forward references):
+- There are no future day/part topics after Day 5 Part A (Day 5 Part B is the capstone which applies everything)
+- However, these Extended Topics must NOT appear in core materials:
+- Route resolvers testing (Extended Topics)
+- ControlValueAccessor testing (Extended Topics)
+- E2E testing with Cypress or Playwright (not in curriculum)
 
-SCOPE CREEP: List anything in materials not in requirements.
+For each future concept found:
+🚫 SCOPE CREEP — [concept] in [file] — belongs to [Day X Part Y]
+✅ ACCEPTABLE — brief forward reference with "you'll learn this on Day X"
+
+SECTION 4 — CROSS-DELIVERABLE CONSISTENCY:
+Check slides, code, exercises, and project teach the same patterns without contradictions.
+```
+
+---
+
+## D5A — GAP CHECK 3: FUNCTIONAL VALIDATION
+
+```
+
+You are functionally validating that all generated code for Day 5 Part A actually works.
+
+OUTPUT FOLDER: Save as `Day-5-A-Testing/GapCheck/D5A-functional-validation.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-5-A-Testing/` folder in the workspace.
+
+**NOW PERFORM THE FOLLOWING VALIDATION:**
+
+SECTION 1 — BUILD VALIDATION (SampleCode/):
+Check package.json, angular.json, tsconfig, main.ts, app.config.ts, all component imports arrays,
+all template bindings match component declarations, all event bindings match methods.
+Verify TestBed.configureTestingModule uses imports: [] for standalone components. Verify provideHttpClientTesting() is used (not HttpClientTestingModule). Verify setInput() is used for signal inputs. Verify HttpTestingController.expectOne() matches request URLs. Verify .spec.ts files follow Arrange-Act-Assert pattern.
+
+SECTION 2 — BUILD VALIDATION (SampleLegacyCode/):
+Verify AppModule with declarations, constructor injection, no modern patterns leaked in.
+
+SECTION 3 — BUILD VALIDATION (Each Exercise):
+Verify each exercise starter builds, has TODO comments, README matches starter code.
+Verify solutions produce working code when applied.
+
+SECTION 4 — BUILD VALIDATION (Project/):
+Same checks as SampleCode/.
+
+SECTION 5 — ANGULAR BEST PRACTICES:
+No `any` types, explicit return types, kebab-case files, app- prefixed selectors, no deprecated APIs.
+
+For each issue: 🔴 BUILD ERROR / 🟡 WARNING / ✅ VALID
 ```
 
 ---
@@ -4387,13 +5200,50 @@ Every file must have a comment block at the top: which day, which Part, which co
 
 ---
 
-## CAPSTONE — GAP CHECK
+## CAPSTONE — GAP CHECK 1: COMPLETENESS AUDIT
 
 ```
 
-You are reviewing the generated capstone project for a 5-day Angular course.
+You are auditing the generated capstone project for a 5-day Angular course to verify
+that every required file, component, service, route, and test is present.
 
-OUTPUT FOLDER: Save all generated files in `Day-5-B-Capstone/GapCheck/`.
+OUTPUT FOLDER: Save as `Day-5-B-Capstone/GapCheck/CAPSTONE-completeness-audit.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-5-B-Capstone/` folder in the workspace.
+
+**REQUIRED FILES AND STRUCTURE:**
+1. Complete, runnable Angular CLI project (package.json, angular.json, tsconfig files, src/)
+2. db.json for json-server at project root
+3. environment.ts with apiUrl: 'http://localhost:3000'
+4. README.md organized by course day and part
+5. All components in separate subfolders with .ts, .html, .css (never inline)
+6. Every file has a comment block identifying day, part, and concepts demonstrated
+
+**REQUIRED COMPONENTS, SERVICES, PIPES:**
+- TaskListComponent, TaskDetailComponent, TaskFormComponent, TaskCardComponent
+- SubtaskListComponent (or equivalent)
+- TaskService with BehaviorSubject + error$ pattern
+- StatusLabelPipe (custom pipe)
+- Auth interceptor + logging interceptor
+- canDeactivate guard on TaskFormComponent
+- At least 3 test files: task.service.spec.ts, task-list.component.spec.ts, status-label.pipe.spec.ts
+
+**NOW PRODUCE THE COMPLETENESS AUDIT:**
+For each item: ✅ PRESENT AND COMPLETE / ⚠️ PRESENT BUT INCOMPLETE / ❌ MISSING
+```
+
+---
+
+## CAPSTONE — GAP CHECK 2: CURRICULUM TRACEABILITY
+
+```
+
+You are verifying that the capstone project uses concepts from EVERY day of the course
+and does NOT introduce any Extended Topics concepts.
+
+OUTPUT FOLDER: Save as `Day-5-B-Capstone/GapCheck/CAPSTONE-curriculum-traceability.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-5-B-Capstone/` folder in the workspace.
 
 CAPSTONE REQUIREMENTS BY DAY:
 Day 1: standalone components, @Input/@Output on TaskCardComponent, ngOnInit, ngOnDestroy
@@ -4405,16 +5255,63 @@ Day 4: all 6 routes, withComponentInputBinding, queryParamMap, canDeactivate,
        computed() subtask completion
 Day 5: task.service.spec.ts, task-list.component.spec.ts, status-label.pipe.spec.ts
 
-CONTEXT FILES: Read all files from the `Day-5-B-Capstone/` folder in the workspace — the generated capstone code is there.
+**NOW PRODUCE THE TRACEABILITY REVIEW:**
 
-**NOW PRODUCE THE FOLLOWING REVIEW:**
-1. For each requirement, confirm it is present in the generated code
-2. List any requirement that is missing or incomplete
-3. Confirm every file has a comment block identifying day, part, and concepts
-4. Confirm the README is organized by course day and Part
-5. List any Extended Topics concepts that appeared in required files (scope creep)
-6. List any component using inline template or styles (multi-file rule violation)
-7. List any constructor injection, NgModule, or *ngIf/*ngFor in modern files
+SECTION 1 — DAY-BY-DAY TRACEABILITY:
+For each requirement: ✅ PRESENT — [file] / ❌ MISSING
+
+SECTION 2 — SCOPE CREEP:
+These must NOT appear in the capstone (they are Extended Topics):
+- Route resolvers (ResolveFn)
+- canMatch guard
+- ControlValueAccessor
+- linkedSignal(), untracked()
+- @ContentChild, @ContentChildren
+- Dynamic components (ViewContainerRef)
+For each: 🚫 SCOPE CREEP — found in [file] / ✅ NOT PRESENT
+
+SECTION 3 — MODERN ANGULAR COMPLIANCE:
+No constructor injection, no NgModule, no *ngIf/*ngFor, no HttpClientModule,
+no RouterModule.forRoot(), no class-based guards. standalone: true on every component.
+```
+
+---
+
+## CAPSTONE — GAP CHECK 3: FUNCTIONAL VALIDATION
+
+```
+
+You are functionally validating that the capstone project code actually builds and works.
+
+OUTPUT FOLDER: Save as `Day-5-B-Capstone/GapCheck/CAPSTONE-functional-validation.md`.
+
+CONTEXT FILES: Read ALL files from the `Day-5-B-Capstone/` folder in the workspace.
+
+**NOW PERFORM THE FOLLOWING VALIDATION:**
+
+SECTION 1 — BUILD VALIDATION:
+Check package.json scripts, angular.json config, tsconfig, main.ts, app.config.ts.
+Verify provideRouter(routes), provideHttpClient(withInterceptors([...])).
+Verify all component imports arrays include every dependency used in their templates.
+Verify all template bindings match component class properties and methods.
+Verify route paths match routerLink values.
+Verify reactive form structure matches template form controls.
+
+SECTION 2 — JSON-SERVER VALIDATION:
+Verify db.json has tasks array matching the Task interface.
+Verify API calls in TaskService match db.json endpoints.
+
+SECTION 3 — TEST FILE VALIDATION:
+Verify TestBed.configureTestingModule uses imports: [] for standalone components.
+Verify provideHttpClientTesting() is used.
+Verify HttpTestingController.expectOne() URLs match service calls.
+Verify .spec.ts files follow Arrange-Act-Assert.
+
+SECTION 4 — ANGULAR BEST PRACTICES:
+No `any` types, explicit return types, kebab-case files, app- prefixed selectors.
+Multi-file components only. Inline comments in every file.
+
+For each issue: 🔴 BUILD ERROR / 🟡 WARNING / ✅ VALID
 ```
 
 ---
@@ -4425,8 +5322,9 @@ CONTEXT FILES: Read all files from the `Day-5-B-Capstone/` folder in the workspa
 ```
 
 You are performing the final curriculum audit for a 5-day Angular course.
+This is the last quality gate before the course is considered complete.
 
-OUTPUT FOLDER: Create or use the folder `Final-Review/` in the workspace. Save output there.
+OUTPUT FOLDER: Create or use the folder `Final-Review/` in the workspace. Save output as `final-curriculum-audit.md`.
 
 COMPLETE CURRICULUM:
 Day 1A: CLI, project structure, bootstrapApplication, standalone components, imports array,
@@ -4456,7 +5354,7 @@ computed testing, service testing, HTTP testing, pipe testing, lifecycle testing
 
 CONTEXT FILES: Read all files from every output folder in the workspace — `Day-1-A-Angular-Foundation/`, `Day-1-B-Templates-and-Communication/`, `Day-2-A-Content-Directives-Pipes/`, `Day-2-B-Signals/`, `Day-3-A-Services-DI-RxJS/`, `Day-3-B-HTTP-Async-Data/`, `Day-4-A-Routing/`, `Day-4-B-Forms/`, `Day-5-A-Testing/`, `Day-5-B-Capstone/`. All generated materials across all days are there.
 
-**NOW PRODUCE THE FINAL AUDIT across all eight sections:**
+**NOW PRODUCE THE FINAL AUDIT across all sections:**
 
 1. COVERAGE: Any curriculum concept missing from all generated materials?
 2. CONSISTENCY: Any concept taught one way early and conflicting way later?
@@ -4468,6 +5366,16 @@ CONTEXT FILES: Read all files from every output folder in the workspace — `Day
 8. EXERCISE ALIGNMENT: Any concept taught but not practiced in any exercise?
 9. ANGULAR VERSION: Any API not compatible with Angular 17–21?
 10. INVENTED APIS: Any method, option, or property that does not exist in Angular docs?
+11. SCOPE CREEP ACROSS DAYS: Any day/part teaching concepts that belong to a later day?
+    Check that D1A doesn't use @Output (D1B), D1B doesn't use @if/@for (D2A),
+    D2A doesn't use signal input()/output() (D2B), D2B doesn't use services (D3A),
+    D3A doesn't use HttpClient (D3B), D3B doesn't use routing (D4A),
+    D4A doesn't use forms (D4B), D4B doesn't use TestBed (D5A).
+12. DELIVERABLE COMPLETENESS: Every day/part has all 8 deliverable folders
+    (SampleCode, SampleLegacyCode, Slides, SpeakerScript, Exercises, Exercises-Solutions,
+    Project, Project-Portfolio-Builder) plus GapCheck after auditing.
+13. CROSS-DELIVERABLE CONSISTENCY: Slides, code, exercises, and project within each
+    day/part teach the same patterns without contradictions.
 
 Output each section separately. Be exhaustive.
 ```
@@ -4549,7 +5457,7 @@ Master Context is auto-loaded from .github/copilot-instructions.md.
 Just paste the specific prompt into Copilot chat — no need to paste Master Context.
 Each deliverable goes in its own subfolder within the day folder:
   SampleCode/, SampleLegacyCode/, Slides/, SpeakerScript/,
-  Exercises/, Project/, Project-Portfolio-Builder/, GapCheck/
+  Exercises/, Exercises-Solutions/, Project/, Project-Portfolio-Builder/, GapCheck/
 Cross-Day Checks go in Cross-Day-Checks/. Final review goes in Final-Review/.
 
 FOR EACH PART (in this order):
@@ -4559,7 +5467,9 @@ FOR EACH PART (in this order):
 4. Exercises (paste: specific prompt + slides)
 5. Sample Project (paste: specific prompt)
 6. Project Portfolio Builder (paste: specific prompt)
-7. Gap Check (paste: specific prompt + all materials)
+7. Gap Check 1: Completeness Audit (verifies all deliverables exist)
+8. Gap Check 2: Content Accuracy & Scope (curriculum coverage + future-topic scope creep)
+9. Gap Check 3: Functional Validation (code builds and follows best practices)
 
 AFTER EACH FULL DAY:
 Run the Cross-Day Continuity Check

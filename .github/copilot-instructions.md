@@ -144,9 +144,9 @@ Every deliverable type within a day/part goes in its own subfolder:
 - Exercise Solutions → `Day-N-X-Topic/Exercises-Solutions/`
 - Sample Project → `Day-N-X-Topic/Project/`
 - Project Portfolio Builder → `Day-N-X-Topic/Project-Portfolio-Builder/`
-- Gap Check → `Day-N-X-Topic/GapCheck/`
+- Gap Check → `Day-N-X-Topic/GapCheck/` (contains 3 reports: DXX-completeness-audit.md, DXX-content-accuracy.md, DXX-functional-validation.md)
 - Capstone → `Day-5-B-Capstone/Capstone/`
-- Capstone Gap Check → `Day-5-B-Capstone/GapCheck/`
+- Capstone Gap Check → `Day-5-B-Capstone/GapCheck/` (contains 3 reports: CAPSTONE-completeness-audit.md, CAPSTONE-curriculum-traceability.md, CAPSTONE-functional-validation.md)
 - Cross-Day Checks → `Cross-Day-Checks/`
 - Final Review → `Final-Review/`
   Never save deliverables directly in the day/part root folder. Each prompt's OUTPUT FOLDER
