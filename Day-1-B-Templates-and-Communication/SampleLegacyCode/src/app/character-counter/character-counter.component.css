@@ -56,7 +56,9 @@ textarea:focus {
   border: none;
   border-radius: 6px;
   font-weight: 600;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .clear-btn:hover:not(:disabled) {
