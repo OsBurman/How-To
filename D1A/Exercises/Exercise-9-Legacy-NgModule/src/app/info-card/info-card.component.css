@@ -1,0 +1,18 @@
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 280px;
+}
+.card-heading {
+  margin: 0 0 0.5rem 0;
+  color: #1a237e;
+  font-size: 1.2rem;
+}
+.card-description {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}

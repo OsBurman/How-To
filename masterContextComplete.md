@@ -274,6 +274,11 @@ EXERCISE RULES:
 - Each exercise builds something new — students never copy the sample code
 - Each step produces something visible so students know they're on track
 - Follow all multi-file component rules from the Master Context
+- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides (e.g., NgModule, declarations, bootstrapModule, constructor injection, *ngIf/*ngFor, HttpClientModule, RouterModule.forRoot, class-based guards — whichever legacy topics apply to that day/part). This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+
+WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
+share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
+exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
 
 FORMAT FOR EACH EXERCISE:
 ## Exercise [N]: [Title]
@@ -289,7 +294,8 @@ FORMAT FOR EACH EXERCISE:
 **Hint 1 — [Topic]:** ...
 
 Collect all solutions at the end under # SOLUTIONS, each solution file as its own
-labeled code block.
+labeled code block using the exercise subfolder path
+(e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
 
 **NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 1 Part A.**
 ```
@@ -615,6 +621,11 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Signals exercises are BEGINNER only — signal() and computed() only
 - Follow all multi-file component rules from the Master Context
+- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+
+WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
+share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
+exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -622,7 +633,8 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block.
+All solutions under # SOLUTIONS, each file as its own labeled code block using the
+exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
 
 **NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 1 Part B.**
 ```
@@ -985,6 +997,11 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Final 1–2 exercises combine ng-content + control flow + pipes
 - Follow all multi-file component rules from the Master Context
+- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+
+WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
+share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
+exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -992,7 +1009,8 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block.
+All solutions under # SOLUTIONS, each file as its own labeled code block using the
+exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
 
 **NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 2 Part A.**
 ```
@@ -1310,6 +1328,11 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Include one exercise where students convert legacy ngOnChanges code to signals
 - Follow all multi-file component rules from the Master Context
+- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+
+WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
+share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
+exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -1317,7 +1340,8 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block.
+All solutions under # SOLUTIONS, each file as its own labeled code block using the
+exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
 
 **NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 2 Part B.**
 ```
@@ -1677,6 +1701,11 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Include one exercise showing async pipe null gotcha then converting to toSignal()
 - Follow all multi-file component rules from the Master Context
+- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+
+WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
+share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
+exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -1684,7 +1713,8 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block.
+All solutions under # SOLUTIONS, each file as its own labeled code block using the
+exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
 
 **NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 3 Part A.**
 ```
@@ -2012,6 +2042,11 @@ EXERCISE RULES:
 - Include one exercise that deliberately omits switchMap causing stale results,
   then adds it to fix the problem
 - Follow all multi-file component rules from the Master Context
+- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+
+WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
+share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
+exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -2019,7 +2054,8 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block.
+All solutions under # SOLUTIONS, each file as its own labeled code block using the
+exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
 
 **NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 3 Part B.**
 ```
@@ -2385,6 +2421,11 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Include one exercise where students convert an AppRoutingModule to modern syntax
 - Follow all multi-file component rules from the Master Context
+- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+
+WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
+share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
+exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -2392,7 +2433,8 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block.
+All solutions under # SOLUTIONS, each file as its own labeled code block using the
+exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
 
 **NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 4 Part A.**
 ```
@@ -2731,6 +2773,11 @@ EXERCISE RULES:
 - Include one exercise that deliberately mixes ngModel and reactive form,
   shows the error, then fixes it
 - Follow all multi-file component rules from the Master Context
+- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+
+WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
+share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
+exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -2738,7 +2785,8 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block.
+All solutions under # SOLUTIONS, each file as its own labeled code block using the
+exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
 
 **NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 4 Part B.**
 ```
@@ -3110,6 +3158,11 @@ EXERCISE RULES:
 - Include one exercise that starts with a broken test that always passes
   (missing detectChanges) and asks students to find and fix it
 - Follow all multi-file component rules from the Master Context
+- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+
+WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
+share one npm workspace. Generate the workspace root `.gitignore`, `package.json`, `README.md`, and each
+exercise as a complete Angular project in its own descriptive subfolder (e.g., `Exercise-1-Scaffold-and-Explore/`, `Exercise-2-Your-First-Component/`, etc.).
 
 FORMAT:
 ## Exercise [N]: [Title]
@@ -3117,7 +3170,8 @@ FORMAT:
 **Concepts practiced:** [list]
 ### What You're Building / ### Instructions / ### Acceptance Criteria / ### Hints
 
-All solutions under # SOLUTIONS, each file as its own labeled code block.
+All solutions under # SOLUTIONS, each file as its own labeled code block using the
+exercise subfolder path (e.g., ### Exercise-3-Fix-the-Error/src/app/app.component.ts).
 
 **NOW WRITE ALL EXERCISES AND ALL SOLUTIONS for Day 5 Part A.**
 ```

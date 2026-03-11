@@ -172,6 +172,77 @@ Every generated sample code project MUST include:
 
 This structure mirrors what `ng new` generates so students see a real Angular project.
 
+EXERCISE WORKSPACE RULES
+
+All exercises for a day/part are organized as an **npm workspaces** monorepo inside the
+`DXX/Exercises/` folder. This lets students run `npm install` once at the exercises root
+and share a single `node_modules` across every exercise — saving significant disk space
+and eliminating repeated installs.
+
+Folder layout:
+
+```
+DXX/Exercises/
+  .gitignore                ← ignores node_modules/, dist/, .angular/, etc.
+  package.json              ← npm workspaces root (private, no deps of its own)
+  README.md                 ← one-time setup instructions for students
+  Exercise-1-Short-Title/
+    package.json            ← lists Angular deps + scripts (start, build, test)
+    angular.json
+    tsconfig.json
+    tsconfig.app.json
+    src/
+      index.html
+      main.ts
+      styles.css
+      app/
+        app.config.ts
+        app.component.ts / .html / .css
+        ...child components in subfolders
+  Exercise-2-Short-Title/
+    ...same complete Angular project structure
+```
+
+Rules:
+
+1. **Root `.gitignore`** — every exercises workspace MUST include a `.gitignore` that
+   ignores `node_modules/`, `package-lock.json`, `dist/`, `out-tsc/`, `.angular/`,
+   `coverage/`, IDE folders (`.idea/`, `.vscode/`), and OS files (`.DS_Store`, `Thumbs.db`).
+2. **Root `package.json`** — `"private": true` with a `"workspaces"` array listing every
+   exercise subfolder by its descriptive name (e.g., `["Exercise-1-Scaffold-and-Explore",
+   "Exercise-2-Your-First-Component", …]`). It has NO dependencies of its own — it exists
+   solely to enable npm workspace hoisting.
+3. **Exercise folder naming** — each exercise subfolder is named
+   `Exercise-N-Short-Descriptive-Title` using PascalCase-with-hyphens (e.g.,
+   `Exercise-3-Fix-the-Error`, `Exercise-5-Multiple-Components`). The title should be
+   2–4 words that describe what the exercise teaches. Never use generic names like
+   `exercise-1` or `exercise-2`.
+4. **Each exercise subfolder** is a complete, runnable Angular CLI project with its own
+   `package.json`, `angular.json`, `tsconfig.json`, `tsconfig.app.json`, and full `src/`
+   folder following the same structure rules as sample code projects.
+5. **Each exercise `package.json`** lists the same Angular dependencies and scripts
+   (`start`, `build`, `test`). The `"name"` field uses the lowercase-hyphenated version
+   of the folder name (e.g., `"exercise-1-scaffold-and-explore"`). npm hoists shared
+   packages to the root `node_modules` so only one copy exists on disk.
+6. **Students run `npm install` once** at the `DXX/Exercises/` root before starting
+   any exercises. They never run `npm install` inside individual exercise folders.
+7. **Serving an exercise:** Students `cd` into the exercise folder and run `npx ng serve`
+   (or `npm start` if the `start` script is defined). They stop the dev server before
+   switching to the next exercise.
+8. **Root `README.md`** must include: a one-time setup section (`cd` into exercises root,
+   `npm install`), how to serve each exercise, and a reminder to stop the dev server
+   (`Ctrl+C`) before starting the next exercise.
+9. **File labels in output** use the full path from the exercises root:
+   `### Exercise-1-Scaffold-and-Explore/src/app/header/header.component.ts`
+10. **Solutions** at the end of the exercises document use the same exercise subfolder
+    labeling: `### Exercise-3-Fix-the-Error/src/app/app.component.ts`
+11. **Legacy exercise** — the FINAL exercise in every day/part must always be a
+    LEGACY exercise that gives students a working modern standalone app and asks them
+    to convert it to the classic (legacy) Angular patterns covered in that lesson's
+    legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE.
+    It teaches recognition, not mastery. The exercise subfolder is named
+    `Exercise-N-Legacy-[Topic]` (e.g., `Exercise-9-Legacy-NgModule`).
+
 GENERATION RULES — APPLY TO ALL OUTPUT
 
 1. ANGULAR VERSION COMPATIBILITY: All code must be compatible with Angular 17–21.

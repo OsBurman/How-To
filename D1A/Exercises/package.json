@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "workspaces": [
+    "Exercise-1-Scaffold-and-Explore",
+    "Exercise-2-Your-First-Component",
+    "Exercise-3-Fix-the-Error",
+    "Exercise-4-Passing-Data-with-Input",
+    "Exercise-5-Multiple-Components",
+    "Exercise-6-Scoped-Styles",
+    "Exercise-7-ViewEncapsulation",
+    "Exercise-8-Team-Roster",
+    "Exercise-9-Legacy-NgModule"
+  ]
+}
