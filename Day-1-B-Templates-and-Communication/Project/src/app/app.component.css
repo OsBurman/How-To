@@ -102,7 +102,9 @@
   color: #e53e3e;
   cursor: pointer;
   font-size: 0.85rem;
-  transition: background 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
 }
 
 .clear-btn:hover:not(:disabled) {

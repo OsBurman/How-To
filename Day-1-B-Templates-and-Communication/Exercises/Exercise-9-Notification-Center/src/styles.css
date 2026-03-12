@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f7fafc;
   color: #1a202c;
   padding: 2rem;
@@ -26,7 +26,9 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   border-left: 4px solid #4299e1;
   position: relative;
-  transition: opacity 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
 }
 
 .notification-card:hover {
