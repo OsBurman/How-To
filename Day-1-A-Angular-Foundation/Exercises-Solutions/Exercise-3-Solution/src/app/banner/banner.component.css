@@ -6,5 +6,10 @@
   color: #ffffff;
   text-align: center;
 }
-.banner h2 { margin: 0 0 0.5rem; }
-.banner p { margin: 0; opacity: 0.9; }
+.banner h2 {
+  margin: 0 0 0.5rem;
+}
+.banner p {
+  margin: 0;
+  opacity: 0.9;
+}
