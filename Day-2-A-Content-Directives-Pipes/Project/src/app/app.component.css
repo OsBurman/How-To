@@ -51,11 +51,21 @@
   margin-top: 0.4rem;
 }
 
-.genre-action   { background-color: #e74c3c; }  /* red   */
-.genre-drama    { background-color: #9b59b6; }  /* purple */
-.genre-comedy   { background-color: #f39c12; }  /* amber  */
-.genre-scifi    { background-color: #2980b9; }  /* blue   */
-.genre-thriller { background-color: #1abc9c; }  /* teal   */
+.genre-action {
+  background-color: #e74c3c;
+} /* red   */
+.genre-drama {
+  background-color: #9b59b6;
+} /* purple */
+.genre-comedy {
+  background-color: #f39c12;
+} /* amber  */
+.genre-scifi {
+  background-color: #2980b9;
+} /* blue   */
+.genre-thriller {
+  background-color: #1abc9c;
+} /* teal   */
 
 /* ── Rating stars ────────────────────────────────────────────────────── */
 /* Applied by @switch inside the template */
@@ -71,11 +81,21 @@
   letter-spacing: 2px;
 }
 
-.stars-5 { color: #f1c40f; }  /* gold   — Masterpiece */
-.stars-4 { color: #e67e22; }  /* orange — Excellent   */
-.stars-3 { color: #3498db; }  /* blue   — Good        */
-.stars-2 { color: #95a5a6; }  /* grey   — Fair        */
-.stars-1 { color: #c0392b; }  /* red    — Poor        */
+.stars-5 {
+  color: #f1c40f;
+} /* gold   — Masterpiece */
+.stars-4 {
+  color: #e67e22;
+} /* orange — Excellent   */
+.stars-3 {
+  color: #3498db;
+} /* blue   — Good        */
+.stars-2 {
+  color: #95a5a6;
+} /* grey   — Fair        */
+.stars-1 {
+  color: #c0392b;
+} /* red    — Poor        */
 
 .rating-label {
   font-size: 0.8rem;
@@ -125,7 +145,7 @@
 /* ── Empty state ─────────────────────────────────────────────────────── */
 /* Rendered from the ng-template #noResults via [ngTemplateOutlet] */
 .empty-state {
-  grid-column: 1 / -1;   /* span all grid columns */
+  grid-column: 1 / -1; /* span all grid columns */
   text-align: center;
   padding: 4rem 2rem;
   color: #8892b0;
