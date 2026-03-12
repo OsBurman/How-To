@@ -1,0 +1,54 @@
+<!--
+  movie-card.component.html — Named ng-content Slots
+
+  This template defines the LAYOUT of the card.
+  The CONTENT in each region is supplied entirely by the parent (app.component.html).
+
+  Three named slots:
+    select="[movie-poster]"  — left column: the poster emoji
+    select="[movie-title]"   — top-right: title and genre badge
+    select="[movie-details]" — bottom-right: description, meta, rating
+
+  How named slots work:
+    1. Parent marks its content with an attribute: <div movie-poster>…</div>
+    2. Child declares the matching slot: <ng-content select="[movie-poster]">
+    3. Angular projects the <div movie-poster> element INTO the matching slot.
+
+  The select attribute uses a CSS attribute selector, so:
+    select="[movie-poster]" matches any element that has the 'movie-poster' attribute.
+-->
+
+<!--
+  [ngStyle] binds the borderColor @Input to the left-border CSS property.
+  This is how the parent communicates the genre colour to this component
+  — the parent sets [borderColor]="getGenreColor(movie.genre)", and the
+  component applies it here with [ngStyle].
+-->
+<article class="movie-card" [ngStyle]="{ 'border-left-color': borderColor }">
+
+  <!-- Left column: poster slot -->
+  <div class="card-poster">
+    <!--
+      Single-slot ng-content (named):
+      Any element in the parent template that has the 'movie-poster' attribute
+      will be projected here.
+    -->
+    <ng-content select="[movie-poster]"></ng-content>
+  </div>
+
+  <!-- Right column: title + details -->
+  <div class="card-body">
+
+    <!-- Named slot: receives the title and genre badge from the parent -->
+    <div class="card-title">
+      <ng-content select="[movie-title]"></ng-content>
+    </div>
+
+    <!-- Named slot: receives the description, meta row, and rating from the parent -->
+    <div class="card-details">
+      <ng-content select="[movie-details]"></ng-content>
+    </div>
+
+  </div>
+
+</article>

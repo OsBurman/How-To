@@ -1,0 +1,25 @@
+/* Global styles — apply to the entire app */
+
+/* Reset box-sizing and set a clean baseline */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #0f0f1a;  /* dark cinema background */
+  color: #e8e8f0;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Utility: visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}

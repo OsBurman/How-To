@@ -1,0 +1,176 @@
+/* app.component.css — Root component styles */
+
+/* ── Layout ──────────────────────────────────────────────────────────── */
+.app-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────── */
+.app-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.app-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.4rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #8892b0;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle strong {
+  color: #ccd6f6;
+}
+
+/* ── Movie Grid ──────────────────────────────────────────────────────── */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Genre Badge colours — applied via [ngClass] ─────────────────────── */
+/* getGenreClass() maps genre name → CSS class: 'genre-action', 'genre-scifi', etc. */
+.genre-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff;
+  margin-top: 0.4rem;
+}
+
+.genre-action   { background-color: #e74c3c; }  /* red   */
+.genre-drama    { background-color: #9b59b6; }  /* purple */
+.genre-comedy   { background-color: #f39c12; }  /* amber  */
+.genre-scifi    { background-color: #2980b9; }  /* blue   */
+.genre-thriller { background-color: #1abc9c; }  /* teal   */
+
+/* ── Rating stars ────────────────────────────────────────────────────── */
+/* Applied by @switch inside the template */
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.stars {
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.stars-5 { color: #f1c40f; }  /* gold   — Masterpiece */
+.stars-4 { color: #e67e22; }  /* orange — Excellent   */
+.stars-3 { color: #3498db; }  /* blue   — Good        */
+.stars-2 { color: #95a5a6; }  /* grey   — Fair        */
+.stars-1 { color: #c0392b; }  /* red    — Poor        */
+
+.rating-label {
+  font-size: 0.8rem;
+  color: #8892b0;
+  font-style: italic;
+}
+
+/* ── Description and meta ────────────────────────────────────────────── */
+.description {
+  font-size: 0.9rem;
+  color: #a8b2d8;
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  color: #8892b0;
+}
+
+.meta-item {
+  white-space: nowrap;
+}
+
+/* ── Poster emoji ────────────────────────────────────────────────────── */
+.poster-emoji {
+  font-size: 3.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* ── Title block ─────────────────────────────────────────────────────── */
+.movie-title-block h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ccd6f6;
+  line-height: 1.3;
+  margin-bottom: 0.2rem;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────── */
+/* Rendered from the ng-template #noResults via [ngTemplateOutlet] */
+.empty-state {
+  grid-column: 1 / -1;   /* span all grid columns */
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #8892b0;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.empty-message {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #a8b2d8;
+}
+
+.empty-message strong {
+  color: #ccd6f6;
+}
+
+.reset-btn {
+  background: #2d3561;
+  color: #ccd6f6;
+  border: 1px solid #495db3;
+  border-radius: 6px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.reset-btn:hover {
+  background: #3d4a80;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.app-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #1e2140;
+  font-size: 0.85rem;
+  color: #8892b0;
+}
+
+.app-footer strong {
+  color: #ccd6f6;
+}

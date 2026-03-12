@@ -1,0 +1,220 @@
+<!--
+  app.component.html — Root Template
+
+  Key patterns demonstrated in this file:
+  ┌────────────────────────────────────────────────────────────────────────┐
+  │  @let        — defines filteredMovies and filteredCount ONCE;          │
+  │               both variables are reused in the header, list, and footer│
+  │  @if / @else — shows movie grid or empty-state template                │
+  │  ng-template  — #noResults defines the empty state block               │
+  │  @for + track — renders each card; track movie.id for reconciliation   │
+  │  ng-container — groups the card without adding a DOM element           │
+  │  @switch      — picks the star-rating label from the numeric value     │
+  │  [ngClass]    — applies genre-specific badge colour class              │
+  │  [ngStyle]    — drives the card's left-border accent via @Input        │
+  │  Pipes: date, currency, uppercase, TruncatePipe, FilterPipe            │
+  │  Named ng-content slots — movie-poster, movie-title, movie-details     │
+  └────────────────────────────────────────────────────────────────────────┘
+-->
+
+<!--
+  @let: defines two template variables at the TOP of the template so they
+  are in scope for every section below — header, list, and footer all use them.
+
+  filteredMovies — applies FilterPipe to derive the genre-filtered array
+  filteredCount  — derived from filteredMovies.length for the subtitle and footer
+
+  ⚠️ @let is NOT reactive like a signal. It re-evaluates on each change
+  detection cycle. Changing selectedGenre triggers change detection, which
+  causes Angular to re-evaluate @let and re-run FilterPipe.
+-->
+@let filteredMovies = movies | filter:selectedGenre;
+@let filteredCount  = filteredMovies.length;
+
+<div class="app-container">
+
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
+  <header class="app-header">
+    <h1>🎬 Movie Listing</h1>
+
+    <!-- filteredCount: FIRST USE — shows how many movies match the active filter -->
+    <p class="subtitle">
+      Showing <strong>{{ filteredCount }}</strong>
+      {{ filteredCount === 1 ? 'movie' : 'movies' }}
+    </p>
+
+    <!--
+      GenreFilterComponent:
+        [genres]         — passes the full genre list down via @Input()
+        [activeGenre]    — highlights the currently selected button via @Input()
+        (genreSelected)  — listens for the child's @Output() event
+    -->
+    <app-genre-filter
+      [genres]="allGenres"
+      [activeGenre]="selectedGenre"
+      (genreSelected)="onGenreSelected($event)"
+    />
+  </header>
+
+  <!-- ── Movie Grid ─────────────────────────────────────────────────────── -->
+  <main class="movie-grid">
+
+    <!--
+      @if checks filteredMovies — the SAME @let variable from above.
+      If the genre filter produces an empty array, the @else branch runs.
+    -->
+    @if (filteredMovies.length > 0) {
+
+      <!--
+        @for iterates the filtered list.
+        track movie.id — tells Angular the unique identifier for each item.
+        Angular uses this to reuse existing DOM nodes instead of re-rendering
+        everything when the list changes. Always use track in @for.
+      -->
+      @for (movie of filteredMovies; track movie.id) {
+
+        <!--
+          ng-container: a logical grouping wrapper that renders NO DOM element.
+          Use it when you need to apply structural directives or group content
+          without adding a <div> or <span> to the page.
+        -->
+        <ng-container>
+
+          <!--
+            MovieCardComponent:
+              [borderColor] — passes the genre accent colour via @Input().
+              Inside MovieCard, [ngStyle] applies it as 'border-left-color'.
+          -->
+          <app-movie-card [borderColor]="getGenreColor(movie.genre)">
+
+            <!-- ── Named slot: [movie-poster] ─────────────────────────── -->
+            <!--
+              The attribute 'movie-poster' matches the ng-content select="[movie-poster]"
+              slot declared inside movie-card.component.html.
+              Angular projects this <div> into that exact slot position.
+            -->
+            <div movie-poster class="poster-emoji">
+              {{ movie.posterEmoji }}
+            </div>
+
+            <!-- ── Named slot: [movie-title] ──────────────────────────── -->
+            <div movie-title class="movie-title-block">
+              <h2>{{ movie.title }}</h2>
+
+              <!--
+                [ngClass] with string shorthand:
+                  getGenreClass('Sci-Fi')  → 'genre-scifi'
+                  getGenreClass('Action')  → 'genre-action'
+                The CSS file defines .genre-action, .genre-drama, etc. as badge colours.
+
+                | uppercase pipe: 'Sci-Fi' → 'SCI-FI'
+              -->
+              <span class="genre-badge" [ngClass]="getGenreClass(movie.genre)">
+                {{ movie.genre | uppercase }}
+              </span>
+            </div>
+
+            <!-- ── Named slot: [movie-details] ────────────────────────── -->
+            <div movie-details class="movie-details-block">
+
+              <!--
+                TruncatePipe (custom pure pipe):
+                  {{ movie.description | truncate:120 }}
+                  Truncates to 120 characters at a word boundary and appends '…'
+                  Pure pipes only re-run when the input reference changes.
+              -->
+              <p class="description">{{ movie.description | truncate:120 }}</p>
+
+              <div class="meta-row">
+                <!--
+                  date pipe: transforms an ISO string to a readable format.
+                  'mediumDate' → 'Mar 15, 2024'
+                -->
+                <span class="meta-item">📅 {{ movie.releaseDate | date:'mediumDate' }}</span>
+
+                <!--
+                  currency pipe: formats a number as a currency string.
+                  Default locale is USD: 180000000 → '$180,000,000.00'
+                -->
+                <span class="meta-item">💰 {{ movie.budget | currency }}</span>
+              </div>
+
+              <!--
+                @switch on the numeric rating value:
+                  Each @case matches an exact number.
+                  @default catches anything that didn't match (e.g. rating === 1).
+              -->
+              <div class="rating">
+                @switch (movie.rating) {
+                  @case (5) {
+                    <span class="stars stars-5">★★★★★</span>
+                    <span class="rating-label">Masterpiece</span>
+                  }
+                  @case (4) {
+                    <span class="stars stars-4">★★★★☆</span>
+                    <span class="rating-label">Excellent</span>
+                  }
+                  @case (3) {
+                    <span class="stars stars-3">★★★☆☆</span>
+                    <span class="rating-label">Good</span>
+                  }
+                  @case (2) {
+                    <span class="stars stars-2">★★☆☆☆</span>
+                    <span class="rating-label">Fair</span>
+                  }
+                  @default {
+                    <span class="stars stars-1">★☆☆☆☆</span>
+                    <span class="rating-label">Poor</span>
+                  }
+                }
+              </div>
+
+            </div><!-- end [movie-details] slot -->
+
+          </app-movie-card>
+        </ng-container>
+
+      }<!-- end @for -->
+
+    } @else {
+
+      <!--
+        @else branch: renders when the filtered list is empty.
+        [ngTemplateOutlet] tells Angular to stamp the #noResults ng-template here.
+        This keeps the empty-state markup separate and reusable.
+      -->
+      <ng-container [ngTemplateOutlet]="noResults"></ng-container>
+
+    }<!-- end @if -->
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+  <footer class="app-footer">
+    <!--
+      filteredCount: THIRD USE of the same @let variable.
+      No re-calculation needed — Angular already has the value from the @let above.
+    -->
+    <p>
+      {{ filteredCount }} {{ filteredCount === 1 ? 'result' : 'results' }}
+      &nbsp;·&nbsp;
+      Genre: <strong>{{ selectedGenre }}</strong>
+    </p>
+  </footer>
+
+</div><!-- end .app-container -->
+
+<!--
+  ng-template: defines a reusable template block that renders NOTHING on its own.
+  It only renders when referenced — here via [ngTemplateOutlet]="noResults" above.
+  Keeps the empty-state markup out of the main flow while still being part of
+  the same template file.
+-->
+<ng-template #noResults>
+  <div class="empty-state">
+    <p class="empty-icon">🎬</p>
+    <p class="empty-message">No movies found for <strong>"{{ selectedGenre }}"</strong></p>
+    <!-- Clicking "Show All" resets the filter by emitting 'All' to onGenreSelected -->
+    <button class="reset-btn" (click)="onGenreSelected('All')">Show All Movies</button>
+  </div>
+</ng-template>

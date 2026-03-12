@@ -1,0 +1,34 @@
+/* genre-filter.component.css — Filter bar button styles */
+
+.genre-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  background: #1a1d35;
+  color: #8892b0;
+  border: 1px solid #2d3561;
+  border-radius: 20px;          /* pill shape */
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.filter-btn:hover {
+  background: #252850;
+  color: #ccd6f6;
+  border-color: #495db3;
+}
+
+/* .active class is applied by [ngClass]="{ 'active': genre === activeGenre }" */
+.filter-btn.active {
+  background: #2d3561;
+  color: #ffffff;
+  border-color: #6278d0;
+  font-weight: 700;
+}

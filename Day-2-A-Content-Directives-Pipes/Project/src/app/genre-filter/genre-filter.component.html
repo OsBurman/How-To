@@ -1,0 +1,29 @@
+<!--
+  genre-filter.component.html — Genre Filter Buttons
+
+  Renders one button per genre from the @Input() genres array.
+
+  [ngClass] object syntax:
+    { 'active': genre === activeGenre }
+    — adds the 'active' class when this button's genre matches the parent's selectedGenre.
+    — removes 'active' from all other buttons automatically.
+
+  (click) event binding:
+    Calls onSelect(genre) which emits up to the parent via @Output().
+-->
+<nav class="genre-filter" aria-label="Filter by genre">
+  @for (genre of genres; track genre) {
+    <!--
+      [ngClass] object syntax: { 'className': booleanExpression }
+      When genre === activeGenre → the 'active' class is added.
+      Angular evaluates this on every change detection cycle.
+    -->
+    <button
+      class="filter-btn"
+      [ngClass]="{ 'active': genre === activeGenre }"
+      (click)="onSelect(genre)"
+    >
+      {{ genre }}
+    </button>
+  }
+</nav>
