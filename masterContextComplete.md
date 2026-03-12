@@ -11,10 +11,10 @@
 
 **File references marked `CONTEXT FILES:`** tell Copilot which previously generated files to read for context. Each reference points to a folder in the workspace (e.g., `Day-1-A-Angular-Foundation/`). When you paste a prompt into Copilot chat, attach the referenced files using `#file:Day-1-A-Angular-Foundation/filename.md` syntax, or simply open the files as editor tabs so Copilot can see them. You do NOT need to paste file contents inline — Copilot reads the files directly.
 
-**Folder organization:** All generated output for a day/part goes in a folder named for that section: `Day-1-A-Angular-Foundation/`, `Day-1-B-Templates-and-Communication/`, `Day-2-A-Content-Directives-Pipes/`, `Day-2-B-Signals/`, `Day-3-A-Services-DI-RxJS/`, `Day-3-B-HTTP-Async-Data/`, `Day-4-A-Routing/`, `Day-4-B-Forms/`, `Day-5-A-Testing/`, `Day-5-B-Capstone/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `SampleLegacyCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercise starter code, `Exercises-Solutions/` for exercise solution files, `Project/` for the sample project, `Project-Portfolio-Builder/` for portfolio project ideas, and `GapCheck/` for the gap check report. The capstone project goes in `Day-5-B-Capstone/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
+**Folder organization:** All generated output for a day/part goes in a folder named for that section: `Day-1-A-Angular-Foundation/`, `Day-1-B-Templates-and-Communication/`, `Day-2-A-Content-Directives-Pipes/`, `Day-2-B-Signals/`, `Day-3-A-Services-DI-RxJS/`, `Day-3-B-HTTP-Async-Data/`, `Day-4-A-Routing/`, `Day-4-B-Forms/`, `Day-5-A-Testing/`, `Day-5-B-Capstone/`. Within each day/part folder, every deliverable type goes in its own subfolder: `SampleCode/` for modern sample code, `SampleLegacyCode/` for legacy sample code, `Slides/` for the slide deck, `SpeakerScript/` for the speaker scripts (slides script and code walkthrough script), `Exercises/` for exercise starter code, `Exercises-Solutions/` for exercise solution files, `Project/` for the sample project, `Project-Portfolio-Builder/` for portfolio project ideas, and `GapCheck/` for the three gap check reports (completeness audit, content accuracy, functional validation). The capstone project goes in `Day-5-B-Capstone/Capstone/`. Cross-Day Continuity Checks go in `Cross-Day-Checks/`. The Final Gap Check goes in `Final-Review/`. Each prompt includes an OUTPUT FOLDER line — Copilot must create that subfolder if it doesn't exist and save all generated files there.
 
 **Session order for every Part:**
-1. Sample Code → 2. Slides → 3. Speaker Scripts (Slides + Code Walkthrough) → 4. Exercises → 5. Sample Project → 6. Project Portfolio Builder → 7. Gap Check
+1. Sample Code → 2. Slides → 3. Speaker Scripts (Slides + Code Walkthrough) → 4. Exercises → 5. Sample Project → 6. Project Portfolio Builder → 7. Gap Check 1: Completeness Audit → 8. Gap Check 2: Content Accuracy & Scope → 9. Gap Check 3: Functional Validation
 
 **Every prompt ends with a NOW WRITE / NOW GENERATE command in bold.** This is what tells Copilot to produce output rather than describe what it would do. Do not remove it.
 
@@ -107,6 +107,36 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Procedural steps (CLI commands, setup, configuration)
 show exact commands and walk through each step across multiple slides. Code examples
 appear on their own slides, separate from explanation slides.
+
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide
+deck. For example, if introducing "standalone components," the first slide gives the definition
+plus 2–3 key facts, and the following slide(s) explain why Angular introduced them, how they
+differ from module-based components, and show a code example.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
 
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
@@ -274,7 +304,7 @@ EXERCISE RULES:
 - Each exercise builds something new — students never copy the sample code
 - Each step produces something visible so students know they're on track
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides (e.g., NgModule, declarations, bootstrapModule, constructor injection, *ngIf/*ngFor, HttpClientModule, RouterModule.forRoot, class-based guards — whichever legacy topics apply to that day/part). This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app (e.g., NgModule, declarations, bootstrapModule, constructor injection, *ngIf/*ngFor, HttpClientModule, RouterModule.forRoot, class-based guards — whichever legacy topics apply to that day/part) and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -349,7 +379,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -717,6 +747,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -890,7 +947,7 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Signals exercises are BEGINNER only — signal() and computed() only
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -958,7 +1015,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -1295,6 +1352,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -1467,7 +1551,7 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Final 1–2 exercises combine ng-content + control flow + pipes
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -1535,7 +1619,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -1829,6 +1913,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -1996,7 +2107,7 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Include one exercise where students convert legacy ngOnChanges code to signals
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -2064,7 +2175,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -2393,6 +2504,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -2570,7 +2708,7 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Include one exercise showing async pipe null gotcha then converting to toSignal()
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -2638,7 +2776,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -2935,6 +3073,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -3112,7 +3277,7 @@ EXERCISE RULES:
 - Include one exercise that deliberately omits switchMap causing stale results,
   then adds it to fix the problem
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -3180,7 +3345,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -3516,6 +3681,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -3692,7 +3884,7 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Include one exercise where students convert an AppRoutingModule to modern syntax
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -3760,7 +3952,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -4059,6 +4251,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -4244,7 +4463,7 @@ EXERCISE RULES:
 - Include one exercise that deliberately mixes ngModel and reactive form,
   shows the error, then fixes it
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -4312,7 +4531,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -4639,6 +4858,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -4826,7 +5072,7 @@ EXERCISE RULES:
 - Include one exercise that starts with a broken test that always passes
   (missing detectChanges) and asks students to find and fix it
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -4894,7 +5140,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -5354,7 +5600,7 @@ computed testing, service testing, HTTP testing, pipe testing, lifecycle testing
 
 CONTEXT FILES: Read all files from every output folder in the workspace — `Day-1-A-Angular-Foundation/`, `Day-1-B-Templates-and-Communication/`, `Day-2-A-Content-Directives-Pipes/`, `Day-2-B-Signals/`, `Day-3-A-Services-DI-RxJS/`, `Day-3-B-HTTP-Async-Data/`, `Day-4-A-Routing/`, `Day-4-B-Forms/`, `Day-5-A-Testing/`, `Day-5-B-Capstone/`. All generated materials across all days are there.
 
-**NOW PRODUCE THE FINAL AUDIT across all eight sections:**
+**NOW PRODUCE THE FINAL AUDIT across all sections:**
 
 1. COVERAGE: Any curriculum concept missing from all generated materials?
 2. CONSISTENCY: Any concept taught one way early and conflicting way later?
@@ -5366,6 +5612,16 @@ CONTEXT FILES: Read all files from every output folder in the workspace — `Day
 8. EXERCISE ALIGNMENT: Any concept taught but not practiced in any exercise?
 9. ANGULAR VERSION: Any API not compatible with Angular 17–21?
 10. INVENTED APIS: Any method, option, or property that does not exist in Angular docs?
+11. SCOPE CREEP ACROSS DAYS: Any day/part teaching concepts that belong to a later day?
+    Check that D1A doesn't use @Output (D1B), D1B doesn't use @if/@for (D2A),
+    D2A doesn't use signal input()/output() (D2B), D2B doesn't use services (D3A),
+    D3A doesn't use HttpClient (D3B), D3B doesn't use routing (D4A),
+    D4A doesn't use forms (D4B), D4B doesn't use TestBed (D5A).
+12. DELIVERABLE COMPLETENESS: Every day/part has all 8 deliverable folders
+    (SampleCode, SampleLegacyCode, Slides, SpeakerScript, Exercises, Exercises-Solutions,
+    Project, Project-Portfolio-Builder) plus GapCheck after auditing.
+13. CROSS-DELIVERABLE CONSISTENCY: Slides, code, exercises, and project within each
+    day/part teach the same patterns without contradictions.
 
 Output each section separately. Be exhaustive.
 ```
@@ -5447,7 +5703,7 @@ Master Context is auto-loaded from .github/copilot-instructions.md.
 Just paste the specific prompt into Copilot chat — no need to paste Master Context.
 Each deliverable goes in its own subfolder within the day folder:
   SampleCode/, SampleLegacyCode/, Slides/, SpeakerScript/,
-  Exercises/, Project/, Project-Portfolio-Builder/, GapCheck/
+  Exercises/, Exercises-Solutions/, Project/, Project-Portfolio-Builder/, GapCheck/
 Cross-Day Checks go in Cross-Day-Checks/. Final review goes in Final-Review/.
 
 FOR EACH PART (in this order):
@@ -5457,7 +5713,9 @@ FOR EACH PART (in this order):
 4. Exercises (paste: specific prompt + slides)
 5. Sample Project (paste: specific prompt)
 6. Project Portfolio Builder (paste: specific prompt)
-7. Gap Check (paste: specific prompt + all materials)
+7. Gap Check 1: Completeness Audit (verifies all deliverables exist)
+8. Gap Check 2: Content Accuracy & Scope (curriculum coverage + future-topic scope creep)
+9. Gap Check 3: Functional Validation (code builds and follows best practices)
 
 AFTER EACH FULL DAY:
 Run the Cross-Day Continuity Check
