@@ -1,0 +1,24 @@
+<!-- Exercise 8 — Feedback Form: Parent Component — SOLUTION -->
+<div class="app-container">
+  <h1>📝 Product Feedback</h1>
+
+  <!-- SOLUTION: Render the FeedbackFormComponent with property and event binding -->
+  <!-- [productName] sends the product name DOWN to the child via @Input() -->
+  <!-- (feedbackSubmitted) listens for the feedback event FROM the child via @Output() -->
+  <app-feedback-form
+    [productName]="'Angular Course'"
+    (feedbackSubmitted)="onFeedback($event)">
+  </app-feedback-form>
+
+  <!-- Submitted feedback display area -->
+  <div class="feedback-result">
+    <h3>Last Submitted Feedback</h3>
+
+    <!-- SOLUTION: Display lastFeedback using safe navigation (?.) and nullish coalescing (??) -->
+    <!-- ?. prevents crashing when lastFeedback is null -->
+    <!-- ?? provides fallback text when no feedback has been submitted yet -->
+    <p><strong>Reviewer:</strong> {{ lastFeedback?.reviewer ?? 'No feedback yet' }}</p>
+    <p><strong>Comment:</strong> {{ lastFeedback?.comment ?? '' }}</p>
+    <p><strong>Rating:</strong> {{ lastFeedback?.rating ?? 'N/A' }}</p>
+  </div>
+</div>

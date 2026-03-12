@@ -1,0 +1,63 @@
+<!-- Exercise 4: Safe Navigation and Fallbacks — SOLUTION -->
+<!-- Demonstrates ?. (safe navigation) and ?? (nullish coalescing) -->
+
+<h1>User Profiles</h1>
+
+<div class="cards">
+
+  <!-- CARD 1: Full Profile — all data exists -->
+  <div class="card">
+    <h2>Full Profile</h2>
+
+    <p class="label">Name</p>
+    <!-- Safe navigation: fullUser?.name — safe even though fullUser always exists here -->
+    <p class="value">{{ fullUser?.name }}</p>
+
+    <p class="label">Email</p>
+    <p class="value">{{ fullUser?.email }}</p>
+
+    <p class="label">Location</p>
+    <!-- Nested safe navigation: address?.city and address?.zip -->
+    <p class="value">{{ fullUser?.address?.city }}, {{ fullUser?.address?.zip }}</p>
+  </div>
+
+  <!-- CARD 2: Partial Profile — some fields missing, use ?? for fallbacks -->
+  <div class="card">
+    <h2>Partial Profile</h2>
+
+    <p class="label">Name</p>
+    <p class="value">{{ partialUser?.name }}</p>
+
+    <p class="label">Email</p>
+    <!-- ?. returns undefined for missing email, ?? provides the fallback string -->
+    <p class="value">{{ partialUser?.email ?? 'No email provided' }}</p>
+
+    <p class="label">Street</p>
+    <!-- Nested safe navigation with fallback — street is undefined -->
+    <p class="value">{{ partialUser?.address?.street ?? 'No street on file' }}</p>
+
+    <p class="label">City</p>
+    <p class="value">{{ partialUser?.address?.city ?? 'Unknown city' }}</p>
+
+    <p class="label">Zip</p>
+    <!-- zip is undefined, so ?? kicks in with 'N/A' -->
+    <p class="value">{{ partialUser?.address?.zip ?? 'N/A' }}</p>
+  </div>
+
+  <!-- CARD 3: Guest — noUser is null, everything needs fallbacks -->
+  <div class="card">
+    <h2>Guest</h2>
+
+    <p class="label">Name</p>
+    <!-- noUser is null — ?. short-circuits, ?? provides 'Anonymous' -->
+    <p class="value">{{ noUser?.name ?? 'Anonymous' }}</p>
+
+    <p class="label">Email</p>
+    <p class="value">{{ noUser?.email ?? 'guest@example.com' }}</p>
+
+    <p class="label">Location</p>
+    <!-- The entire chain is null — falls through to 'Unknown location' -->
+    <p class="value">{{ noUser?.address?.city ?? 'Unknown location' }}</p>
+  </div>
+
+</div>

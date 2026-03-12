@@ -1,0 +1,25 @@
+<!-- Exercise 2: Two-Way Binding with ngModel — SOLUTION -->
+<!-- Demonstrates [(ngModel)] two-way binding, interpolation, and class binding -->
+
+<div class="message-preview">
+
+  <h1>Live Message Preview</h1>
+
+  <!-- Two-way binding: [(ngModel)] keeps textarea and message property in sync -->
+  <!-- Class binding: [class.over-limit] adds CSS class when message exceeds maxLength -->
+  <textarea
+    [(ngModel)]="message"
+    [class.over-limit]="message.length > maxLength"
+    placeholder="Type your message here..."
+    rows="4">
+  </textarea>
+
+  <!-- Interpolation: displays the live character count and max length -->
+  <p class="char-count">{{ message.length }} / {{ maxLength }} characters</p>
+
+  <div class="preview">
+    <!-- Interpolation: displays the live preview of the message as the user types -->
+    <p><span class="preview-label">Preview:</span> {{ message }}</p>
+  </div>
+
+</div>

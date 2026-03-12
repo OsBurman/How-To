@@ -1,0 +1,33 @@
+<!-- Exercise 7 — Signals Preview: Temperature Converter -->
+<div class="converter-card">
+  <h1>🌡️ Temperature Converter</h1>
+  <p class="subtitle">Powered by Angular Signals</p>
+
+  <!-- Temperature display area -->
+  <div class="temp-display">
+    <!-- TODO: Display the celsius signal value -->
+    <!-- Remember: signals are functions — use {{ celsius() }} with parentheses! -->
+    <div class="temp-value">??°C</div>
+
+    <!-- TODO: Display the fahrenheit computed signal value -->
+    <div class="temp-secondary">??°F</div>
+
+    <!-- TODO: Display the description computed signal value -->
+    <div class="temp-description">???</div>
+  </div>
+
+  <!-- Button controls -->
+  <div class="button-group">
+    <!-- TODO: Wire each button to its method using event binding (click) -->
+    <button class="btn-decrease">➖ Cooler</button>
+    <button class="btn-reset">🔄 Reset</button>
+    <button class="btn-increase">➕ Warmer</button>
+  </div>
+
+  <!-- Signal explanation (keep this — it reminds students how signals work) -->
+  <div class="signal-note">
+    <p><strong>How it works:</strong> <code>celsius</code> is a writable signal.
+       <code>fahrenheit</code> and <code>description</code> are computed signals
+       that automatically update when <code>celsius</code> changes.</p>
+  </div>
+</div>

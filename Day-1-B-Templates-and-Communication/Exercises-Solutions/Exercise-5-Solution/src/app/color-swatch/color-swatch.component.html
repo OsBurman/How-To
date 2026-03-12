@@ -1,0 +1,9 @@
+<!-- Exercise 5: ColorSwatchComponent template — SOLUTION -->
+<!-- Property binding sets the background color, event binding emits on click,
+     interpolation displays the color name -->
+
+<div class="swatch"
+     [style.background-color]="hexCode"
+     (click)="onSelect()">
+  <span>{{ colorName }}</span>
+</div>

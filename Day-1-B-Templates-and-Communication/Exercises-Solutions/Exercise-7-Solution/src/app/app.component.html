@@ -1,0 +1,31 @@
+<!-- Exercise 7 — Signals Preview: Temperature Converter — SOLUTION -->
+<div class="converter-card">
+  <h1>🌡️ Temperature Converter</h1>
+  <p class="subtitle">Powered by Angular Signals</p>
+
+  <!-- Temperature display area -->
+  <div class="temp-display">
+    <!-- Read the celsius signal with parentheses — it's a function call -->
+    <div class="temp-value">{{ celsius() }}°C</div>
+
+    <!-- Read the fahrenheit computed signal — automatically derived from celsius -->
+    <div class="temp-secondary">{{ fahrenheit() }}°F</div>
+
+    <!-- Read the description computed signal — changes based on temperature ranges -->
+    <div class="temp-description">{{ description() }}</div>
+  </div>
+
+  <!-- Button controls — event binding calls methods that update the signal -->
+  <div class="button-group">
+    <button class="btn-decrease" (click)="decreaseTemp()">➖ Cooler</button>
+    <button class="btn-reset" (click)="resetTemp()">🔄 Reset</button>
+    <button class="btn-increase" (click)="increaseTemp()">➕ Warmer</button>
+  </div>
+
+  <!-- Signal explanation (kept from starter for reference) -->
+  <div class="signal-note">
+    <p><strong>How it works:</strong> <code>celsius</code> is a writable signal.
+       <code>fahrenheit</code> and <code>description</code> are computed signals
+       that automatically update when <code>celsius</code> changes.</p>
+  </div>
+</div>

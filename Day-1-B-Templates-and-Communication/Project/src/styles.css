@@ -1,0 +1,22 @@
+/* Global styles — applies to the entire application */
+
+/* Reset and base typography */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  color: #2d3748;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Utility: smooth transitions for interactive elements */
+button, input, select {
+  font-family: inherit;
+  font-size: inherit;
+}

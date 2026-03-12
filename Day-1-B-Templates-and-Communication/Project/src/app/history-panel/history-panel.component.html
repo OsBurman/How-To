@@ -1,0 +1,97 @@
+<!-- HistoryPanelComponent Template -->
+<!-- Demonstrates: @Input() receiving data, safe navigation (?.), nullish coalescing (??),
+     interpolation {{ }}, and the timer display driven by ngOnInit/ngOnDestroy -->
+<div class="history-panel">
+  <!-- Timer display — shows how long the panel has been open -->
+  <!-- secondsOpen is incremented by an interval timer started in ngOnInit -->
+  <!-- The timer is cleared in ngOnDestroy to prevent memory leaks -->
+  <div class="timer-bar">
+    ⏱️ Panel open for {{ secondsOpen }} second(s)
+  </div>
+
+  <!-- Empty state — shown when there are no calculations yet -->
+  <!-- Property binding [hidden] hides this when history has entries -->
+  <div class="empty-state" [hidden]="history.length > 0">
+    <p>📋 No calculations yet. Use the calculator above to get started!</p>
+  </div>
+
+  <!-- History entries — one card per calculation -->
+  <!-- We render the first 5 entries manually (no @for until Day 2) -->
+
+  <!-- Entry 1 — uses safe navigation because history[0] might not exist -->
+  <div class="history-entry" [hidden]="history.length < 1">
+    <div class="entry-header">
+      <!-- Safe navigation (?.) prevents crash if history[0] is undefined -->
+      <span class="entry-time">{{ history[0]?.calculatedAt ?? 'N/A' }}</span>
+      <span class="entry-id">#{{ history[0]?.id ?? '—' }}</span>
+    </div>
+    <div class="entry-body">
+      <!-- Interpolation with safe navigation on each property -->
+      <span>Bill: {{ formatCurrency(history[0]?.billAmount) }}</span>
+      <span>Tip: {{ history[0]?.tipPercentage ?? 0 }}%</span>
+      <span class="entry-tip">Tip: {{ formatCurrency(history[0]?.tipAmount) }}</span>
+      <span class="entry-total">Total: {{ formatCurrency(history[0]?.totalAmount) }}</span>
+    </div>
+  </div>
+
+  <!-- Entry 2 -->
+  <div class="history-entry" [hidden]="history.length < 2">
+    <div class="entry-header">
+      <span class="entry-time">{{ history[1]?.calculatedAt ?? 'N/A' }}</span>
+      <span class="entry-id">#{{ history[1]?.id ?? '—' }}</span>
+    </div>
+    <div class="entry-body">
+      <span>Bill: {{ formatCurrency(history[1]?.billAmount) }}</span>
+      <span>Tip: {{ history[1]?.tipPercentage ?? 0 }}%</span>
+      <span class="entry-tip">Tip: {{ formatCurrency(history[1]?.tipAmount) }}</span>
+      <span class="entry-total">Total: {{ formatCurrency(history[1]?.totalAmount) }}</span>
+    </div>
+  </div>
+
+  <!-- Entry 3 -->
+  <div class="history-entry" [hidden]="history.length < 3">
+    <div class="entry-header">
+      <span class="entry-time">{{ history[2]?.calculatedAt ?? 'N/A' }}</span>
+      <span class="entry-id">#{{ history[2]?.id ?? '—' }}</span>
+    </div>
+    <div class="entry-body">
+      <span>Bill: {{ formatCurrency(history[2]?.billAmount) }}</span>
+      <span>Tip: {{ history[2]?.tipPercentage ?? 0 }}%</span>
+      <span class="entry-tip">Tip: {{ formatCurrency(history[2]?.tipAmount) }}</span>
+      <span class="entry-total">Total: {{ formatCurrency(history[2]?.totalAmount) }}</span>
+    </div>
+  </div>
+
+  <!-- Entry 4 -->
+  <div class="history-entry" [hidden]="history.length < 4">
+    <div class="entry-header">
+      <span class="entry-time">{{ history[3]?.calculatedAt ?? 'N/A' }}</span>
+      <span class="entry-id">#{{ history[3]?.id ?? '—' }}</span>
+    </div>
+    <div class="entry-body">
+      <span>Bill: {{ formatCurrency(history[3]?.billAmount) }}</span>
+      <span>Tip: {{ history[3]?.tipPercentage ?? 0 }}%</span>
+      <span class="entry-tip">Tip: {{ formatCurrency(history[3]?.tipAmount) }}</span>
+      <span class="entry-total">Total: {{ formatCurrency(history[3]?.totalAmount) }}</span>
+    </div>
+  </div>
+
+  <!-- Entry 5 -->
+  <div class="history-entry" [hidden]="history.length < 5">
+    <div class="entry-header">
+      <span class="entry-time">{{ history[4]?.calculatedAt ?? 'N/A' }}</span>
+      <span class="entry-id">#{{ history[4]?.id ?? '—' }}</span>
+    </div>
+    <div class="entry-body">
+      <span>Bill: {{ formatCurrency(history[4]?.billAmount) }}</span>
+      <span>Tip: {{ history[4]?.tipPercentage ?? 0 }}%</span>
+      <span class="entry-tip">Tip: {{ formatCurrency(history[4]?.tipAmount) }}</span>
+      <span class="entry-total">Total: {{ formatCurrency(history[4]?.totalAmount) }}</span>
+    </div>
+  </div>
+
+  <!-- Overflow notice if more than 5 entries -->
+  <div class="overflow-note" [hidden]="history.length <= 5">
+    <p>...and {{ history.length - 5 }} more calculation(s)</p>
+  </div>
+</div>

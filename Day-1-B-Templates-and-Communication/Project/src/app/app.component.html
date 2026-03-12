@@ -1,0 +1,96 @@
+<!-- AppComponent Template — The parent that ties everything together -->
+<div class="app-container">
+  <!-- App header — simple interpolation {{ }} -->
+  <header class="app-header">
+    <h1>💰 Tip Calculator</h1>
+    <p class="subtitle">Calculate tips instantly — powered by Angular</p>
+  </header>
+
+  <main class="app-main">
+    <!-- ──────────────────────────────────────────────────────────── -->
+    <!-- TIP INPUT SECTION                                           -->
+    <!-- Demonstrates: @Input() (property binding DOWN to child)     -->
+    <!--               @Output() (event binding UP from child)       -->
+    <!-- ──────────────────────────────────────────────────────────── -->
+    <section class="calculator-section">
+      <!-- Property binding [billAmount] sends data DOWN to the child's @Input() -->
+      <!-- Property binding [tipPercentage] sends data DOWN to the child's @Input() -->
+      <!-- Event binding (calculate) listens for the child's @Output() event -->
+      <app-tip-input
+        [billAmount]="defaultBillAmount"
+        [tipPercentage]="defaultTipPercentage"
+        (calculate)="onCalculate($event)">
+      </app-tip-input>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────── -->
+    <!-- RESULT DISPLAY                                              -->
+    <!-- Demonstrates: Safe navigation (?.) — lastResult starts null -->
+    <!--               Nullish coalescing (??) — fallback values     -->
+    <!--               Interpolation {{ }} — displaying data         -->
+    <!-- ──────────────────────────────────────────────────────────── -->
+    <section class="result-section">
+      <div class="result-card">
+        <h2>Calculation Result</h2>
+
+        <!-- Safe navigation (?.) prevents crash when lastResult is null -->
+        <!-- Nullish coalescing (??) provides user-friendly fallback text -->
+        <div class="result-row">
+          <span class="result-label">Bill Amount:</span>
+          <!-- ?. safely accesses billAmount; ?? shows fallback if null -->
+          <span class="result-value">${{ lastResult?.billAmount ?? '—' }}</span>
+        </div>
+
+        <div class="result-row">
+          <span class="result-label">Tip Percentage:</span>
+          <span class="result-value">{{ lastResult?.tipPercentage ?? '—' }}%</span>
+        </div>
+
+        <div class="result-row highlight">
+          <span class="result-label">Tip Amount:</span>
+          <span class="result-value">${{ lastResult?.tipAmount ?? '—' }}</span>
+        </div>
+
+        <div class="result-row highlight total">
+          <span class="result-label">Total:</span>
+          <span class="result-value">${{ lastResult?.totalAmount ?? '—' }}</span>
+        </div>
+
+        <div class="result-row">
+          <span class="result-label">Calculated At:</span>
+          <span class="result-value">{{ lastResult?.calculatedAt ?? 'No calculation yet' }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────── -->
+    <!-- HISTORY PANEL                                               -->
+    <!-- Demonstrates: @Input() sending array data to child          -->
+    <!--               Event binding (click) for clear action        -->
+    <!-- ──────────────────────────────────────────────────────────── -->
+    <section class="history-section">
+      <div class="history-header">
+        <h2>Calculation History</h2>
+        <!-- Event binding (click) — calls onClearHistory() when clicked -->
+        <!-- Property binding [disabled] — disables button when history is empty -->
+        <button
+          class="clear-btn"
+          (click)="onClearHistory()"
+          [disabled]="calculationHistory.length === 0">
+          🗑️ Clear History
+        </button>
+      </div>
+
+      <!-- Property binding [history] sends the array DOWN to HistoryPanelComponent -->
+      <app-history-panel [history]="calculationHistory"></app-history-panel>
+
+      <!-- Interpolation showing the count -->
+      <p class="history-count">{{ calculationHistory.length }} calculation(s) saved</p>
+    </section>
+  </main>
+
+  <!-- Footer with interpolation -->
+  <footer class="app-footer">
+    <p>Day 1 Part B — Templates, Data Binding &amp; Component Communication</p>
+  </footer>
+</div>

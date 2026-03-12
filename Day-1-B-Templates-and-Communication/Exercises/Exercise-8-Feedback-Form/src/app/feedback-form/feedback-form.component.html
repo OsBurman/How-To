@@ -1,0 +1,43 @@
+<!-- Exercise 8 — Feedback Form: Child Component -->
+<div class="form-card">
+  <!-- TODO: Display the displayTitle using interpolation -->
+  <!-- This value is built in ngOnInit from the @Input() productName -->
+  <h2>Review: (product name here)</h2>
+
+  <!-- Reviewer name — uses a template reference variable -->
+  <div class="form-group">
+    <label for="reviewer">Your Name</label>
+    <!-- TODO: Add #reviewerInput template reference variable to this input -->
+    <input id="reviewer" type="text" placeholder="Enter your name (optional)">
+  </div>
+
+  <!-- Comment — uses two-way binding with [(ngModel)] -->
+  <div class="form-group">
+    <label for="comment">Your Feedback</label>
+    <!-- TODO: Add [(ngModel)]="comment" for two-way binding -->
+    <!-- This keeps the textarea value and the comment property in sync -->
+    <textarea id="comment" rows="3" placeholder="Write your feedback here..."></textarea>
+  </div>
+
+  <!-- Character count — shows the live comment length via interpolation -->
+  <p class="char-count">Characters: 0</p>
+  <!-- TODO: Replace 0 with {{ comment.length }} to show the live count -->
+
+  <!-- Rating — uses a template reference variable -->
+  <div class="form-group">
+    <label for="rating">Rating</label>
+    <!-- TODO: Add #ratingSelect template reference variable to this select -->
+    <select id="rating">
+      <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+      <option value="4">⭐⭐⭐⭐ (4)</option>
+      <option value="3">⭐⭐⭐ (3)</option>
+      <option value="2">⭐⭐ (2)</option>
+      <option value="1">⭐ (1)</option>
+    </select>
+  </div>
+
+  <!-- Submit button — uses event binding and property binding -->
+  <!-- TODO: Add (click)="onSubmit(reviewerInput.value, ratingSelect.value)" -->
+  <!-- TODO: Add [disabled]="comment.length === 0" to prevent empty submissions -->
+  <button class="submit-btn">Submit Feedback</button>
+</div>

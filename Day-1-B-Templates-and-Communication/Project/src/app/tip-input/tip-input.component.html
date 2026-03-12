@@ -1,0 +1,83 @@
+<!-- TipInputComponent Template -->
+<!-- Demonstrates: two-way binding, event binding, property binding, template refs, interpolation -->
+<div class="input-card">
+  <h2>Enter Bill Details</h2>
+
+  <!-- ──────────────────────────────────────────────────────────── -->
+  <!-- BILL AMOUNT INPUT                                           -->
+  <!-- Two-way binding: [(ngModel)] keeps currentBill in sync      -->
+  <!-- Template ref: #billInput gives direct access to this element -->
+  <!-- ──────────────────────────────────────────────────────────── -->
+  <div class="form-group">
+    <label for="bill">Bill Amount ($)</label>
+    <!-- #billInput is a template reference variable — we pass it to onQuickTip() below -->
+    <!-- [(ngModel)]="currentBill" is two-way binding: typing updates the property,
+         and changing the property updates the input -->
+    <input
+      #billInput
+      id="bill"
+      type="number"
+      min="0"
+      step="0.01"
+      placeholder="Enter bill amount"
+      [(ngModel)]="currentBill">
+  </div>
+
+  <!-- ──────────────────────────────────────────────────────────── -->
+  <!-- TIP PERCENTAGE INPUT                                         -->
+  <!-- Two-way binding: [(ngModel)] keeps currentTipPercentage in sync -->
+  <!-- ──────────────────────────────────────────────────────────── -->
+  <div class="form-group">
+    <label for="tip">Tip Percentage (%)</label>
+    <!-- [(ngModel)] two-way binding on the percentage input -->
+    <input
+      id="tip"
+      type="number"
+      min="0"
+      max="100"
+      step="1"
+      placeholder="Enter tip %"
+      [(ngModel)]="currentTipPercentage">
+  </div>
+
+  <!-- Live preview — interpolation {{ }} reads the bound properties in real time -->
+  <div class="live-preview">
+    <span>Bill: ${{ currentBill }}</span>
+    <span>Tip: {{ currentTipPercentage }}%</span>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────────────── -->
+  <!-- CALCULATE BUTTON                                             -->
+  <!-- Event binding: (click) calls onCalculateTip()                -->
+  <!-- Property binding: [disabled] prevents calculation on $0 bill -->
+  <!-- ──────────────────────────────────────────────────────────── -->
+  <button
+    class="calculate-btn"
+    (click)="onCalculateTip()"
+    [disabled]="currentBill <= 0">
+    🧮 Calculate Tip
+  </button>
+
+  <!-- ──────────────────────────────────────────────────────────── -->
+  <!-- QUICK TIP BUTTONS                                            -->
+  <!-- Template reference variable: #billInput is passed to the     -->
+  <!-- method so we can read the input's current value directly     -->
+  <!-- Event binding: (click) calls onQuickTip() with the ref and % -->
+  <!-- ──────────────────────────────────────────────────────────── -->
+  <div class="quick-tips">
+    <p class="quick-label">Quick Tip:</p>
+    <!-- Each button passes #billInput (the template ref) and a fixed percentage -->
+    <!-- This demonstrates reading a template ref's .value in an event handler -->
+    <button class="quick-btn" (click)="onQuickTip(billInput, 10)">10%</button>
+    <button class="quick-btn" (click)="onQuickTip(billInput, 15)">15%</button>
+    <button class="quick-btn" (click)="onQuickTip(billInput, 18)">18%</button>
+    <button class="quick-btn" (click)="onQuickTip(billInput, 20)">20%</button>
+    <button class="quick-btn" (click)="onQuickTip(billInput, 25)">25%</button>
+  </div>
+
+  <!-- Success message — shows when a calculation has been performed -->
+  <!-- Interpolation displays the timestamp of the last calculation -->
+  <p class="success-msg" [hidden]="lastCalculationTime.length === 0">
+    ✅ Last calculated at {{ lastCalculationTime }}
+  </p>
+</div>

@@ -1,0 +1,133 @@
+/* AppComponent styles — scoped to this component via ViewEncapsulation */
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ── Header ── */
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.app-header h1 {
+  font-size: 2.2rem;
+  color: #2d3748;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: #718096;
+  font-size: 1rem;
+}
+
+/* ── Main layout ── */
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Result card ── */
+.result-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.result-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  color: #2d3748;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.result-label {
+  color: #718096;
+  font-weight: 500;
+}
+
+.result-value {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.result-row.highlight .result-value {
+  color: #38a169;
+  font-size: 1.1rem;
+}
+
+.result-row.total {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 2px solid #e2e8f0;
+}
+
+.result-row.total .result-value {
+  font-size: 1.3rem;
+  color: #2b6cb0;
+}
+
+/* ── History section ── */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.history-header h2 {
+  font-size: 1.3rem;
+  color: #2d3748;
+}
+
+.clear-btn {
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  color: #e53e3e;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.clear-btn:hover:not(:disabled) {
+  background: #fff5f5;
+  border-color: #feb2b2;
+}
+
+.clear-btn:disabled {
+  color: #cbd5e0;
+  cursor: not-allowed;
+}
+
+.history-count {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+/* ── Footer ── */
+.app-footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+  color: #a0aec0;
+  font-size: 0.85rem;
+}

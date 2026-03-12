@@ -1,0 +1,15 @@
+/* Scoped styles for AppComponent — Feedback Form parent */
+
+:host {
+  display: block;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}

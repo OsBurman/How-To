@@ -1,0 +1,26 @@
+<!-- Exercise 9 — Notification Card: Child Component — SOLUTION -->
+<div class="notification-card">
+  <!-- SOLUTION: Dismiss button with event binding -->
+  <button class="dismiss-btn" title="Dismiss" (click)="onDismiss()">✕</button>
+
+  <!-- SOLUTION: Title — safe navigation with fallback -->
+  <!-- ?. prevents crash if notification is null; ?? provides fallback text -->
+  <div class="notification-title">{{ notification?.title ?? 'Untitled' }}</div>
+
+  <!-- SOLUTION: Message — safe navigation with fallback -->
+  <!-- message is optional in the Notification interface, so ?. is essential -->
+  <div class="notification-message">{{ notification?.message ?? 'No message content' }}</div>
+
+  <!-- SOLUTION: Sender — NESTED safe navigation -->
+  <!-- sender is optional, AND avatar within sender is also optional -->
+  <!-- Chain ?. operators: notification?.sender?.avatar -->
+  <div class="notification-sender">
+    <span>{{ notification?.sender?.avatar ?? '👤' }}</span>
+    {{ notification?.sender?.name ?? 'System' }}
+  </div>
+
+  <!-- SOLUTION: Timestamp and time-ago counter using interpolation -->
+  <div class="notification-time">
+    Received at {{ formattedTime }} · {{ secondsAgo }}s ago
+  </div>
+</div>

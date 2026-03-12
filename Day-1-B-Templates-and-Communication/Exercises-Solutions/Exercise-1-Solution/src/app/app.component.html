@@ -1,0 +1,19 @@
+<!-- Exercise 1: Display and Bind — SOLUTION -->
+<!-- Demonstrates interpolation {{ }}, property binding [], and event binding () -->
+
+<div class="greeting-card">
+
+  <!-- Interpolation: displays the userName property from the component class -->
+  <h1>Hello, {{ userName }}!</h1>
+
+  <!-- Interpolation: displays the clickCount property -->
+  <p>You have clicked {{ clickCount }} times.</p>
+
+  <!-- Property binding: [disabled] disables the button when userName is empty -->
+  <!-- Event binding: (click) calls onGreet() when the button is clicked -->
+  <button [disabled]="userName.length === 0" (click)="onGreet()">Greet</button>
+
+  <!-- Interpolation with ternary expression: conditional message -->
+  <p>{{ clickCount > 0 ? 'Thanks for clicking!' : 'Go ahead, click the button.' }}</p>
+
+</div>

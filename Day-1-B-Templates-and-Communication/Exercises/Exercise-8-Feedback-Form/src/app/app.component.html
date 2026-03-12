@@ -1,0 +1,23 @@
+<!-- Exercise 8 — Feedback Form: Parent Component -->
+<div class="app-container">
+  <h1>📝 Product Feedback</h1>
+
+  <!-- TODO: Render the FeedbackFormComponent here -->
+  <!-- Pass the product name via property binding: [productName]="'Angular Course'" -->
+  <!-- Listen for feedback via event binding: (feedbackSubmitted)="onFeedback($event)" -->
+  <!-- <app-feedback-form [productName]="'Angular Course'" (feedbackSubmitted)="onFeedback($event)"></app-feedback-form> -->
+
+  <!-- Submitted feedback display area -->
+  <div class="feedback-result">
+    <h3>Last Submitted Feedback</h3>
+
+    <!-- TODO: Display lastFeedback using safe navigation (?.) and nullish coalescing (??) -->
+    <!-- Use ?. because lastFeedback starts as null — without it, accessing .reviewer crashes -->
+    <!-- Use ?? to provide fallback text when no feedback has been submitted yet -->
+
+    <!-- Example: {{ lastFeedback?.reviewer ?? 'No feedback yet' }} -->
+    <p><strong>Reviewer:</strong> (wire up safe navigation here)</p>
+    <p><strong>Comment:</strong> (wire up safe navigation here)</p>
+    <p><strong>Rating:</strong> (wire up safe navigation here)</p>
+  </div>
+</div>

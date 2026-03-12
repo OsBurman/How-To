@@ -1,0 +1,37 @@
+<!-- Exercise 9 — Notification Center: Parent Component — SOLUTION -->
+<div class="center-container">
+  <h1>🔔 Notification Center</h1>
+
+  <!-- SOLUTION: Display the live notification count using interpolation -->
+  <div class="notification-count">
+    {{ notifications.length }} notifications
+  </div>
+
+  <!-- Notification cards — one per notification in the array -->
+  <!-- We haven't learned @for yet (Day 2), so render them manually -->
+
+  <!-- SOLUTION: Each card receives a notification via [notification] property binding -->
+  <!-- and emits dismiss events via (dismiss) event binding -->
+  <app-notification-card
+    [notification]="notifications[0]"
+    (dismiss)="onDismiss($event)">
+  </app-notification-card>
+
+  <app-notification-card
+    [notification]="notifications[1]"
+    (dismiss)="onDismiss($event)">
+  </app-notification-card>
+
+  <app-notification-card
+    [notification]="notifications[2]"
+    (dismiss)="onDismiss($event)">
+  </app-notification-card>
+
+  <app-notification-card
+    [notification]="notifications[3]"
+    (dismiss)="onDismiss($event)">
+  </app-notification-card>
+
+  <!-- Note: After dismissing cards, some array indices will be undefined.
+       That's okay — the card component handles null/undefined via safe navigation. -->
+</div>

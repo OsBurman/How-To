@@ -1,0 +1,51 @@
+<!-- Exercise 8 — Feedback Form: Child Component — SOLUTION -->
+<div class="form-card">
+  <!-- SOLUTION: Display the displayTitle — built in ngOnInit from @Input() productName -->
+  <h2>{{ displayTitle }}</h2>
+
+  <!-- Reviewer name — uses a template reference variable -->
+  <div class="form-group">
+    <label for="reviewer">Your Name</label>
+    <!-- SOLUTION: #reviewerInput creates a template reference variable -->
+    <!-- We read its .value when the submit button is clicked -->
+    <input #reviewerInput id="reviewer" type="text" placeholder="Enter your name (optional)">
+  </div>
+
+  <!-- Comment — uses two-way binding with [(ngModel)] -->
+  <div class="form-group">
+    <label for="comment">Your Feedback</label>
+    <!-- SOLUTION: [(ngModel)]="comment" keeps the textarea and the comment property in sync -->
+    <textarea
+      id="comment"
+      rows="3"
+      placeholder="Write your feedback here..."
+      [(ngModel)]="comment">
+    </textarea>
+  </div>
+
+  <!-- SOLUTION: Character count — reads the live comment length via interpolation -->
+  <p class="char-count">Characters: {{ comment.length }}</p>
+
+  <!-- Rating — uses a template reference variable -->
+  <div class="form-group">
+    <label for="rating">Rating</label>
+    <!-- SOLUTION: #ratingSelect creates a template reference variable -->
+    <select #ratingSelect id="rating">
+      <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+      <option value="4">⭐⭐⭐⭐ (4)</option>
+      <option value="3">⭐⭐⭐ (3)</option>
+      <option value="2">⭐⭐ (2)</option>
+      <option value="1">⭐ (1)</option>
+    </select>
+  </div>
+
+  <!-- SOLUTION: Submit button with event binding and disabled property binding -->
+  <!-- (click) calls onSubmit with values from the template ref variables -->
+  <!-- [disabled] prevents submission when the comment is empty -->
+  <button
+    class="submit-btn"
+    (click)="onSubmit(reviewerInput.value, ratingSelect.value)"
+    [disabled]="comment.length === 0">
+    Submit Feedback
+  </button>
+</div>

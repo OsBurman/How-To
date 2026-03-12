@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "workspaces": [
+    "Exercise-1-Display-and-Bind",
+    "Exercise-2-Two-Way-Binding",
+    "Exercise-3-Template-Refs",
+    "Exercise-4-Safe-Navigation",
+    "Exercise-5-Parent-Child",
+    "Exercise-6-Lifecycle-Hooks",
+    "Exercise-7-Signals-Preview",
+    "Exercise-8-Feedback-Form",
+    "Exercise-9-Notification-Center",
+    "Exercise-10-Legacy-NgModule"
+  ]
+}

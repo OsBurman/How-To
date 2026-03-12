@@ -1,0 +1,48 @@
+<!-- Exercise 5: Parent-Child Communication — SOLUTION -->
+<!-- Demonstrates @Input(), @Output(), property binding, and event binding -->
+
+<h1>Color Picker</h1>
+
+<div class="swatch-grid">
+  <!-- Each <app-color-swatch> receives data via @Input and emits via @Output -->
+
+  <!-- Swatch 1: Crimson -->
+  <app-color-swatch
+    [colorName]="'Crimson'"
+    [hexCode]="'#DC143C'"
+    (colorSelected)="onColorSelected($event)">
+  </app-color-swatch>
+
+  <!-- Swatch 2: Ocean Blue -->
+  <app-color-swatch
+    [colorName]="'Ocean Blue'"
+    [hexCode]="'#0077B6'"
+    (colorSelected)="onColorSelected($event)">
+  </app-color-swatch>
+
+  <!-- Swatch 3: Forest Green -->
+  <app-color-swatch
+    [colorName]="'Forest Green'"
+    [hexCode]="'#228B22'"
+    (colorSelected)="onColorSelected($event)">
+  </app-color-swatch>
+
+  <!-- Swatch 4: Sunset Orange -->
+  <app-color-swatch
+    [colorName]="'Sunset Orange'"
+    [hexCode]="'#FF6F00'"
+    (colorSelected)="onColorSelected($event)">
+  </app-color-swatch>
+
+  <!-- Swatch 5: Royal Purple -->
+  <app-color-swatch
+    [colorName]="'Royal Purple'"
+    [hexCode]="'#7B2D8E'"
+    (colorSelected)="onColorSelected($event)">
+  </app-color-swatch>
+</div>
+
+<!-- Display the selected color — uses || for a fallback string -->
+<div class="selected-display">
+  <span class="selected-label">Selected:</span> {{ selectedColor || 'Click a swatch to choose' }}
+</div>

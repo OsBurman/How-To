@@ -1,0 +1,25 @@
+<!-- Exercise 2: Two-Way Binding with ngModel -->
+<!-- Practice [(ngModel)] two-way binding, interpolation, and class binding -->
+
+<div class="message-preview">
+
+  <h1>Live Message Preview</h1>
+
+  <!-- TODO (Step 5): Add two-way binding to this textarea: [(ngModel)]="message" -->
+  <!-- TODO (Step 8): Add class binding: [class.over-limit]="message.length > maxLength" -->
+  <textarea
+    placeholder="Type your message here..."
+    rows="4">
+  </textarea>
+
+  <!-- TODO (Step 7): Display the character count using interpolation -->
+  <!-- Format: {{ message.length }} / {{ maxLength }} characters -->
+  <p class="char-count">? / ? characters</p>
+
+  <div class="preview">
+    <!-- TODO (Step 6): Display the live preview using interpolation -->
+    <!-- Format: Preview: {{ message }} -->
+    <p><span class="preview-label">Preview:</span> (your message will appear here)</p>
+  </div>
+
+</div>

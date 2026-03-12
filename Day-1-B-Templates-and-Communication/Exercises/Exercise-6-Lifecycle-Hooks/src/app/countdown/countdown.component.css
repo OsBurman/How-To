@@ -1,0 +1,5 @@
+/* Styles for the countdown component */
+
+:host {
+  display: block;
+}

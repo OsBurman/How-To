@@ -1,0 +1,66 @@
+<!-- Exercise 4: Safe Navigation and Fallbacks -->
+<!-- Practice ?. (safe navigation) and ?? (nullish coalescing) -->
+
+<h1>User Profiles</h1>
+
+<div class="cards">
+
+  <!-- CARD 1: Full Profile — all data exists -->
+  <div class="card">
+    <h2>Full Profile</h2>
+
+    <p class="label">Name</p>
+    <!-- TODO (Step 3): Display fullUser?.name -->
+    <p class="value">???</p>
+
+    <p class="label">Email</p>
+    <!-- TODO (Step 3): Display fullUser?.email -->
+    <p class="value">???</p>
+
+    <p class="label">Location</p>
+    <!-- TODO (Step 3): Display fullUser?.address?.city, fullUser?.address?.zip -->
+    <p class="value">???, ???</p>
+  </div>
+
+  <!-- CARD 2: Partial Profile — some fields missing, use ?? for fallbacks -->
+  <div class="card">
+    <h2>Partial Profile</h2>
+
+    <p class="label">Name</p>
+    <!-- This one works fine — name always exists -->
+    <p class="value">{{ partialUser?.name }}</p>
+
+    <p class="label">Email</p>
+    <!-- TODO (Step 4): Use ?. and ?? to show 'No email provided' as fallback -->
+    <p class="value">???</p>
+
+    <p class="label">Street</p>
+    <!-- TODO (Step 4): Use ?. and ?? to show 'No street on file' as fallback -->
+    <p class="value">???</p>
+
+    <p class="label">City</p>
+    <p class="value">{{ partialUser?.address?.city ?? 'Unknown city' }}</p>
+
+    <p class="label">Zip</p>
+    <!-- TODO (Step 4): Use ?. and ?? to show 'N/A' as fallback -->
+    <p class="value">???</p>
+  </div>
+
+  <!-- CARD 3: Guest — noUser is null, everything needs fallbacks -->
+  <div class="card">
+    <h2>Guest</h2>
+
+    <p class="label">Name</p>
+    <!-- TODO (Step 5): Use ?. and ?? to show 'Anonymous' -->
+    <p class="value">???</p>
+
+    <p class="label">Email</p>
+    <!-- TODO (Step 5): Use ?. and ?? to show 'guest@example.com' -->
+    <p class="value">???</p>
+
+    <p class="label">Location</p>
+    <!-- TODO (Step 5): Use ?. and ?? to show 'Unknown location' -->
+    <p class="value">???</p>
+  </div>
+
+</div>

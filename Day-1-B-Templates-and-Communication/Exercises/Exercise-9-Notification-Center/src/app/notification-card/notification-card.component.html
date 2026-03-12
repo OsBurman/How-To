@@ -1,0 +1,27 @@
+<!-- Exercise 9 — Notification Card: Child Component -->
+<div class="notification-card">
+  <!-- Dismiss button — event binding -->
+  <!-- TODO: Add (click)="onDismiss()" to this button -->
+  <button class="dismiss-btn" title="Dismiss">✕</button>
+
+  <!-- Title — safe navigation with fallback -->
+  <!-- TODO: Display {{ notification?.title ?? 'Untitled' }} -->
+  <div class="notification-title">Notification Title Here</div>
+
+  <!-- Message — safe navigation with fallback (message is optional!) -->
+  <!-- TODO: Display {{ notification?.message ?? 'No message content' }} -->
+  <div class="notification-message">Message content here</div>
+
+  <!-- Sender — NESTED safe navigation (sender is optional, and avatar within sender is also optional!) -->
+  <!-- TODO: Display sender avatar: {{ notification?.sender?.avatar ?? '👤' }} -->
+  <!-- TODO: Display sender name: {{ notification?.sender?.name ?? 'System' }} -->
+  <div class="notification-sender">
+    <span>👤</span> Sender name here
+  </div>
+
+  <!-- Timestamp and time-ago counter -->
+  <!-- TODO: Display {{ formattedTime }} and {{ secondsAgo }} -->
+  <div class="notification-time">
+    Received at (time) · (seconds)s ago
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<!-- Exercise 9 — Notification Center: Parent Component -->
+<div class="center-container">
+  <h1>🔔 Notification Center</h1>
+
+  <!-- Notification count — uses interpolation -->
+  <div class="notification-count">
+    <!-- TODO: Display the count using {{ notifications.length }} -->
+    0 notifications
+  </div>
+
+  <!-- Notification cards — one per notification in the array -->
+  <!-- We haven't learned @for yet (Day 2), so render them manually -->
+
+  <!-- TODO: Render a <app-notification-card> for notifications[0] -->
+  <!-- Pass the notification via property binding: [notification]="notifications[0]" -->
+  <!-- Listen for dismiss via event binding: (dismiss)="onDismiss($event)" -->
+  <!-- <app-notification-card [notification]="notifications[0]" (dismiss)="onDismiss($event)"></app-notification-card> -->
+
+  <!-- TODO: Render a <app-notification-card> for notifications[1] -->
+  <!-- <app-notification-card [notification]="notifications[1]" (dismiss)="onDismiss($event)"></app-notification-card> -->
+
+  <!-- TODO: Render a <app-notification-card> for notifications[2] -->
+  <!-- <app-notification-card [notification]="notifications[2]" (dismiss)="onDismiss($event)"></app-notification-card> -->
+
+  <!-- TODO: Render a <app-notification-card> for notifications[3] -->
+  <!-- <app-notification-card [notification]="notifications[3]" (dismiss)="onDismiss($event)"></app-notification-card> -->
+
+  <!-- Note: After dismissing cards, some array indices will be undefined.
+       That's okay — the card component handles null/undefined via safe navigation. -->
+</div>

@@ -1,0 +1,35 @@
+<!-- Exercise 3: Template Reference Variables -->
+<!-- Practice #ref variables and passing ref values to event handlers -->
+
+<div class="quick-add">
+
+  <h1>Quick-Add Tasks</h1>
+
+  <div class="form-row">
+    <!-- TODO (Step 2): Add a template reference variable #taskInput to this input -->
+    <input type="text" placeholder="Task name...">
+
+    <!-- TODO (Step 3): Add a template reference variable #prioritySelect to this select -->
+    <select>
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+
+    <!-- TODO (Step 4): Add event binding (click) that calls onAddTask(taskInput.value, prioritySelect.value) -->
+    <button>Add Task</button>
+  </div>
+
+  <!-- TODO (Step 6): Use interpolation to show the last added task name -->
+  <p class="info">Last added: (none yet)</p>
+
+  <!-- TODO (Step 7): Use interpolation to show the total task count -->
+  <p class="info">Total tasks: 0</p>
+
+  <!-- This list will show tasks once you add them -->
+  <ul class="task-list">
+    <!-- Tasks will appear here after you implement the method -->
+    <!-- Bonus: if you know @for from Day 1A, use it to loop through tasks -->
+  </ul>
+
+</div>

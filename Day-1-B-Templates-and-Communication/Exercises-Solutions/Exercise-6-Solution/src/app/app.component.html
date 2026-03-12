@@ -1,0 +1,24 @@
+<!-- Exercise 6: Lifecycle Hooks in Action — SOLUTION -->
+<!-- Demonstrates ngOnInit, ngOnDestroy, @Input(), and conditional rendering -->
+
+<h1>Countdown Timer</h1>
+
+<div class="toggle-area">
+  <!-- This button toggles the timer component on and off -->
+  <button (click)="toggleTimer()">
+    {{ showTimer ? 'Hide Timer (Destroy)' : 'Show Timer (Create)' }}
+  </button>
+  <p>Timer is {{ showTimer ? 'visible' : 'hidden' }}</p>
+</div>
+
+<!-- Conditional rendering: when showTimer is false, Angular removes the component
+     and calls ngOnDestroy. When it becomes true again, Angular creates a new
+     instance and calls ngOnInit. -->
+
+<!-- Render the countdown component with a starting value of 15 -->
+<!-- Only displayed when showTimer is true -->
+<div>
+  @if (showTimer) {
+    <app-countdown [startValue]="15"></app-countdown>
+  }
+</div>

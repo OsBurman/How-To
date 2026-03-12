@@ -1,0 +1,5 @@
+/* Styles for the user profile cards */
+
+:host {
+  display: block;
+}
