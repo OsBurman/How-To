@@ -1,13 +1,11 @@
-// MODERN standalone InfoCardComponent — students will convert this to a legacy component
-// wrapped in an InfoCardModule feature module.
+// LEGACY InfoCardComponent — declared in InfoCardModule, not standalone.
+// Students will convert this to a modern standalone component.
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-info-card',
-  standalone: true,
-  imports: [],
   templateUrl: './info-card.component.html',
-  styleUrl: './info-card.component.css'
+  styleUrls: ['./info-card.component.css']
 })
 export class InfoCardComponent {
   @Input() heading: string = '';

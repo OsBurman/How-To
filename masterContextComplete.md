@@ -274,7 +274,7 @@ EXERCISE RULES:
 - Each exercise builds something new — students never copy the sample code
 - Each step produces something visible so students know they're on track
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides (e.g., NgModule, declarations, bootstrapModule, constructor injection, *ngIf/*ngFor, HttpClientModule, RouterModule.forRoot, class-based guards — whichever legacy topics apply to that day/part). This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app (e.g., NgModule, declarations, bootstrapModule, constructor injection, *ngIf/*ngFor, HttpClientModule, RouterModule.forRoot, class-based guards — whichever legacy topics apply to that day/part) and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -349,7 +349,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -890,7 +890,7 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Signals exercises are BEGINNER only — signal() and computed() only
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -958,7 +958,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -1467,7 +1467,7 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Final 1–2 exercises combine ng-content + control flow + pipes
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -1535,7 +1535,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -1996,7 +1996,7 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Include one exercise where students convert legacy ngOnChanges code to signals
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -2064,7 +2064,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -2570,7 +2570,7 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Include one exercise showing async pipe null gotcha then converting to toSignal()
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -2638,7 +2638,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -3112,7 +3112,7 @@ EXERCISE RULES:
 - Include one exercise that deliberately omits switchMap causing stale results,
   then adds it to fix the problem
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -3180,7 +3180,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -3692,7 +3692,7 @@ EXERCISE RULES:
 - Every concept above in at least one exercise
 - Include one exercise where students convert an AppRoutingModule to modern syntax
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -3760,7 +3760,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -4244,7 +4244,7 @@ EXERCISE RULES:
 - Include one exercise that deliberately mixes ngModel and reactive form,
   shows the error, then fixes it
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -4312,7 +4312,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.
@@ -4826,7 +4826,7 @@ EXERCISE RULES:
 - Include one exercise that starts with a broken test that always passes
   (missing detectChanges) and asks students to find and fix it
 - Follow all multi-file component rules from the Master Context
-- The FINAL exercise must always be a LEGACY exercise that gives students a working modern standalone app and asks them to convert it to the classic (legacy) Angular patterns covered in that lesson's legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
+- The FINAL exercise must always be a LEGACY exercise that gives students a working legacy Angular app and asks them to convert it to the modern standalone patterns covered in that lesson's slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE. It teaches recognition, not mastery.
 
 WORKSPACE SETUP: Follow the EXERCISE WORKSPACE RULES from the Master Context — all exercises
 share one npm workspace. Generate ONLY the workspace root files (`.gitignore`, `package.json`,
@@ -4894,7 +4894,7 @@ full src/ folder, and a README.md with the exercise instructions.
 STARTER CODE RULES:
 - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
 - "Fix" exercises: a pre-built app with a deliberate bug already in place
-- "Convert" exercises (legacy): a fully working modern app plus skeleton files with TODO comments
+- "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files with TODO comments
 - Students must never start from a completely empty project
 
 Follow all multi-file component rules and SAMPLE CODE PROJECT STRUCTURE RULES from the Master Context.

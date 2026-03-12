@@ -1,18 +1,22 @@
+// SOLUTION: Converted from legacy NgModule-declared to modern standalone component.
+// Changes made:
+//   1. Added standalone: true — this component manages its own dependencies
+//   2. Added imports: [FormsModule, MessageCardComponent] — declares what this component uses
+//   3. Added TypeScript imports for FormsModule and MessageCardComponent at the top
+//   4. Changed styleUrls (plural array) to styleUrl (singular string) — modern syntax
+// Notice: FormsModule and MessageCardComponent are now VISIBLE right here in the component.
+// You can tell exactly what this component depends on. That's the modern improvement.
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MessageCardComponent } from './message-card/message-card.component';
 import { Message } from './message.model';
 
-// SOLUTION: Converted from standalone to legacy NgModule-declared component.
-// Changes made:
-//   1. Removed standalone: true — this component is now declared in AppModule
-//   2. Removed imports: [...] — dependencies are provided by the module, not the component
-//   3. Changed styleUrl (singular) to styleUrls (plural array) — legacy syntax
-// Notice: FormsModule and MessageCardComponent are NO LONGER imported here.
-// They're imported in AppModule instead. That's the legacy pain — you can't tell
-// from looking at this file what dependencies it actually uses.
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [FormsModule, MessageCardComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   // New message form — two-way bound via [(ngModel)]

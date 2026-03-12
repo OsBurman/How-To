@@ -445,82 +445,83 @@ A notification center with two components. `AppComponent` manages a list of noti
 
 ---
 
-## Exercise 10: ⚠️ LEGACY — Convert to NgModule
+## Exercise 10: ⚠️ LEGACY — Convert to Modern Standalone
 
 **Difficulty:** INTERMEDIATE
-**Concepts practiced:** Legacy NgModule pattern, `declarations` array, `FormsModule` in NgModule, `styleUrls` plural, `bootstrapModule`
+**Concepts practiced:** Modern standalone components, `standalone: true`, `imports` array, `bootstrapApplication`, removing NgModule, `styleUrl` singular
 
 ### What You're Building
 
-You're given a fully working modern standalone app — a simple message board with a `MessageCardComponent` that uses `@Input()`, `@Output()`, two-way binding, and lifecycle hooks. Your job is to convert it to the legacy NgModule pattern: create an `AppModule`, move FormsModule to the module, remove standalone from components, and switch the bootstrap.
+You're given a fully working **legacy** Angular app — a simple message board with a `MessageCardComponent` that uses `@Input()`, `@Output()`, two-way binding, and lifecycle hooks. Everything is wired through an `AppModule` with `declarations`, `FormsModule`, and `bootstrapModule()`. Your job is to convert it to the **modern standalone pattern**: add `standalone: true` to all components, move `FormsModule` into the component that needs it, replace `bootstrapModule()` with `bootstrapApplication()`, and delete the NgModule.
 
 ### Instructions
 
-1. Open `Exercise-10-Legacy-NgModule/`. Run `npx ng serve` to verify the modern app works — it's a message board with cards that display author, message, and a "like" button.
-2. **Create `src/app/app.module.ts`:**
-   - Import `NgModule` from `@angular/core`
-   - Import `BrowserModule` from `@angular/platform-browser`
-   - Import `FormsModule` from `@angular/forms`
-   - Import `AppComponent` and `MessageCardComponent`
-   - Create an `@NgModule` with:
-     - `declarations: [AppComponent, MessageCardComponent]`
-     - `imports: [BrowserModule, FormsModule]`
-     - `providers: []`
-     - `bootstrap: [AppComponent]`
-   - Export the class `AppModule`
-3. **Modify `src/main.ts`:**
-   - Replace `bootstrapApplication` with `platformBrowserDynamic().bootstrapModule(AppModule)`
-   - Update imports accordingly
-4. **Modify `src/app/app.component.ts`:**
-   - Remove `standalone: true`
-   - Remove the `imports: [...]` array entirely
-   - Change `styleUrl` (singular) to `styleUrls` (plural array): `styleUrls: ['./app.component.css']`
-5. **Modify `src/app/message-card/message-card.component.ts`:**
-   - Remove `standalone: true`
-   - Remove the `imports: [FormsModule]` array (FormsModule now comes from the NgModule)
-   - Change `styleUrl` to `styleUrls` (plural array)
-6. **Delete `src/app/app.config.ts`** — the NgModule replaces it.
+1. Open `Exercise-10-Legacy-NgModule/`. Run `npx ng serve` to verify the legacy app works — it's a message board with cards that display author, message, and a "like" button.
+2. **Convert `MessageCardComponent` to a modern standalone component:**
+   - Open `src/app/message-card/message-card.component.ts`
+   - Add `standalone: true` to the `@Component` decorator
+   - Add `imports: []` to the `@Component` decorator (this component has no template dependencies)
+   - Change `styleUrls: ['./message-card.component.css']` to `styleUrl: './message-card.component.css'`
+3. **Convert `AppComponent` to a modern standalone component:**
+   - Open `src/app/app.component.ts`
+   - Add `standalone: true` to the `@Component` decorator
+   - Add `imports: [FormsModule, MessageCardComponent]` to the `@Component` decorator
+   - Add import statements at the top:
+     ```typescript
+     import { FormsModule } from '@angular/forms';
+     import { MessageCardComponent } from './message-card/message-card.component';
+     ```
+   - Change `styleUrls: ['./app.component.css']` to `styleUrl: './app.component.css'`
+4. **Convert `main.ts` to modern bootstrap:**
+   - Replace the entire contents of `src/main.ts` with:
+     ```typescript
+     import { bootstrapApplication } from '@angular/platform-browser';
+     import { appConfig } from './app/app.config';
+     import { AppComponent } from './app/app.component';
+
+     bootstrapApplication(AppComponent, appConfig)
+       .catch((err) => console.error(err));
+     ```
+5. **Create `src/app/app.config.ts`:**
+   ```typescript
+   import { ApplicationConfig } from '@angular/core';
+
+   export const appConfig: ApplicationConfig = {
+     providers: []
+   };
+   ```
+6. **Delete `src/app/app.module.ts`** — the standalone components replace it.
 7. Save all files and run `npx ng serve`. The app should work exactly the same as before.
-8. Observe: how many files did you have to edit? Can you tell from `message-card.component.ts` that it depends on FormsModule? (No — that's the hidden coupling problem.)
+8. **Reflect:** In the modern version, open `app.component.ts`. Can you see exactly what this component depends on? (Yes — `FormsModule` and `MessageCardComponent` are right there in the `imports` array.) In the legacy version, these dependencies were hidden in `app.module.ts`.
 
 ### Acceptance Criteria
 
-- [ ] `app.module.ts` exists with `@NgModule` decorator
-- [ ] `declarations` array lists both `AppComponent` and `MessageCardComponent`
-- [ ] `imports` array includes `BrowserModule` and `FormsModule`
-- [ ] `bootstrap` array includes `AppComponent`
-- [ ] `main.ts` uses `platformBrowserDynamic().bootstrapModule(AppModule)`
-- [ ] Neither component has `standalone: true`
-- [ ] Neither component has its own `imports` array
-- [ ] Both components use `styleUrls` (plural array) instead of `styleUrl`
-- [ ] `app.config.ts` is deleted
+- [ ] `app.module.ts` is deleted
+- [ ] `app.config.ts` exists with `ApplicationConfig` and `providers: []`
+- [ ] `main.ts` uses `bootstrapApplication(AppComponent, appConfig)`
+- [ ] Both components have `standalone: true`
+- [ ] `AppComponent` imports `[FormsModule, MessageCardComponent]` in its `@Component` decorator
+- [ ] `MessageCardComponent` has `imports: []` in its `@Component` decorator
+- [ ] Both components use `styleUrl` (singular string) instead of `styleUrls` (plural array)
 - [ ] The app builds and runs without errors
 
 ### Hints
 
-**Hint 1 — NgModule structure:**
+**Hint 1 — FormsModule placement:** In the legacy version, `FormsModule` is imported in `AppModule` and available to ALL components. In modern standalone, `FormsModule` goes in the `imports` array of the specific component that uses `[(ngModel)]` — which is `AppComponent`.
+
+**Hint 2 — Modern bootstrap:**
 ```typescript
-@NgModule({
-  declarations: [AppComponent, MessageCardComponent],
-  imports: [BrowserModule, FormsModule],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));
 ```
 
-**Hint 2 — Legacy bootstrap:**
-```typescript
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
+**Hint 3 — styleUrl vs styleUrls:** Modern uses `styleUrl: './file.css'` (string). Legacy used `styleUrls: ['./file.css']` (array). Both work in Angular 17+.
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
-```
-
-**Hint 3 — styleUrls:** Legacy uses `styleUrls: ['./file.css']` (array). Modern uses `styleUrl: './file.css'` (string). This is a small but breaking difference.
-
-**Hint 4 — Reflection:** After converting, notice that `message-card.component.ts` has no indication it needs `FormsModule`. The dependency is invisible — hidden in `app.module.ts`. This is the core pain point that standalone components fixed.
+**Hint 4 — Reflection:** After converting, notice that `app.component.ts` now clearly shows it depends on `FormsModule` and `MessageCardComponent`. The dependency is visible and local. This is the core improvement that standalone components bring.
 
 ---
 

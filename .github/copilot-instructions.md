@@ -269,9 +269,9 @@ Rules:
     after the last exercise with a note pointing students to the solution folders
     in `Day-N-X-Topic/Exercises-Solutions/`.
 11. **Legacy exercise** — the FINAL exercise in every day/part must always be a
-    LEGACY exercise that gives students a working modern standalone app and asks them
-    to convert it to the classic (legacy) Angular patterns covered in that lesson's
-    legacy contrast slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE.
+    LEGACY exercise that gives students a working legacy Angular app and asks them
+    to convert it to the modern standalone patterns covered in that lesson's
+    slides. This exercise is labeled ⚠️ LEGACY and rated INTERMEDIATE.
     It teaches recognition, not mastery. The exercise subfolder is named
     `Exercise-N-Legacy-[Topic]` (e.g., `Exercise-9-Legacy-NgModule`).
 12. **Per-exercise `README.md`** — every exercise subfolder MUST include a `README.md`
@@ -287,7 +287,7 @@ Rules:
     - "Generate" exercises: a bare AppComponent with TODO comments in the HTML
       pointing students to where new components should be rendered
     - "Fix" exercises: a pre-built app with a deliberate bug already in place
-    - "Convert" exercises (legacy): a fully working modern app plus skeleton files
+    - "Convert" exercises (legacy): a fully working legacy app plus skeleton modern files
       with TODO comments for the conversion targets
     - Students must never start from a completely empty project — there should
       always be enough context that they know where to begin

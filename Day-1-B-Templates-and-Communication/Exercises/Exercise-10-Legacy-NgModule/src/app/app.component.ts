@@ -1,20 +1,14 @@
+// LEGACY AppComponent — declared in AppModule, no standalone flag.
+// FormsModule is imported in AppModule — notice how you can't tell from this file
+// that [(ngModel)] requires FormsModule. That hidden dependency is the pain point.
+// Students will convert this to a modern standalone component with its own imports array.
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MessageCardComponent } from './message-card/message-card.component';
 import { Message } from './message.model';
 
-// MODERN: standalone component with explicit imports.
-// Each component declares exactly what it depends on.
-// After converting to legacy NgModule:
-//   - Remove standalone: true
-//   - Remove the imports array
-//   - Change styleUrl to styleUrls (plural array)
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [FormsModule, MessageCardComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   // New message form — two-way bound via [(ngModel)]

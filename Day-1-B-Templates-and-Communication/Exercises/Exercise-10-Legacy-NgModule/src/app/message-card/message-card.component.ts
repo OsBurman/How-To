@@ -1,18 +1,13 @@
+// LEGACY MessageCardComponent — declared in AppModule, not standalone.
+// Notice there is no indication in this file that FormsModule exists anywhere.
+// Students will convert this to a modern standalone component.
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Message } from '../message.model';
 
-// MODERN: standalone component with explicit imports.
-// FormsModule is NOT needed here — this component has no [(ngModel)].
-// After converting to legacy NgModule:
-//   - Remove standalone: true
-//   - Remove the imports array
-//   - Change styleUrl to styleUrls (plural array)
 @Component({
   selector: 'app-message-card',
-  standalone: true,
-  imports: [],
   templateUrl: './message-card.component.html',
-  styleUrl: './message-card.component.css'
+  styleUrls: ['./message-card.component.css']
 })
 export class MessageCardComponent implements OnInit {
   // Receives a message from the parent via property binding

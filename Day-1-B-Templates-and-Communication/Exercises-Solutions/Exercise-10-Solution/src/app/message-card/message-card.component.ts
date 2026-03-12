@@ -1,18 +1,18 @@
+// SOLUTION: Converted from legacy NgModule-declared to modern standalone component.
+// Changes made:
+//   1. Added standalone: true — this component manages its own dependencies
+//   2. Added imports: [] — no template dependencies (no directives or other components used)
+//   3. Changed styleUrls (plural array) to styleUrl (singular string) — modern syntax
+// The component logic is IDENTICAL — only the decorator metadata changed.
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Message } from '../message.model';
 
-// SOLUTION: Converted from standalone to legacy NgModule-declared component.
-// Changes made:
-//   1. Removed standalone: true — this component is now declared in AppModule
-//   2. Removed imports: [] — no longer needed (was empty anyway, but the property itself is removed)
-//   3. Changed styleUrl (singular) to styleUrls (plural array) — legacy syntax
-// The component logic is IDENTICAL — only the decorator metadata changed.
-// That's the key takeaway: legacy vs modern is about how components are organized,
-// not about how they work internally.
 @Component({
   selector: 'app-message-card',
+  standalone: true,
+  imports: [],
   templateUrl: './message-card.component.html',
-  styleUrls: ['./message-card.component.css']
+  styleUrl: './message-card.component.css'
 })
 export class MessageCardComponent implements OnInit {
   // Receives a message from the parent via property binding

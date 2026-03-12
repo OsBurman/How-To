@@ -472,11 +472,11 @@ A team roster page with a `RosterHeaderComponent` (accepts team name via @Input)
 ## Exercise 9: Legacy NgModule Conversion
 
 **Difficulty:** INTERMEDIATE
-**Concepts practiced:** Legacy NgModule pattern, bootstrapModule vs bootstrapApplication, declarations array, feature modules with exports, legacy component registration
+**Concepts practiced:** Modern standalone components, bootstrapApplication vs bootstrapModule, imports array, removing NgModule boilerplate, standalone: true
 
 ### What You're Building
 
-You start with a working modern standalone Angular app (a banner and three info cards). Your job is to convert it to the legacy NgModule pattern: replace `bootstrapApplication()` with `bootstrapModule()`, create an `AppModule`, remove `standalone: true` from all components, and wrap `BannerComponent` and `InfoCardComponent` in their own feature modules. The app should look and work exactly the same — only the wiring changes.
+You start with a working **legacy** Angular app (a banner and three info cards) that uses NgModules, feature modules, declarations arrays, and `bootstrapModule()`. Your job is to convert it to the **modern standalone pattern**: add `standalone: true` to all components, give each component its own `imports` array, replace `bootstrapModule()` with `bootstrapApplication()`, and delete all the module files. The app should look and work exactly the same — only the wiring changes.
 
 **⚠️ This exercise teaches the LEGACY pattern for recognition only. You should always write modern standalone code in real projects.**
 
@@ -484,80 +484,75 @@ You start with a working modern standalone Angular app (a banner and three info 
 
 1. Open the `Exercise-9-Legacy-NgModule/` folder. Serve it first (`npx ng serve`) and confirm the app works — you should see a dark blue banner and three white info cards. Stop the server.
 
-2. **Convert `main.ts` to the legacy bootstrap:**
+2. **Convert `BannerComponent` to a modern standalone component:**
+   - Open `src/app/banner/banner.component.ts`
+   - Add `standalone: true` to the `@Component` decorator
+   - Add `imports: []` to the `@Component` decorator (this component has no dependencies)
+   - Change `styleUrls` (plural array) to `styleUrl` (singular string): `styleUrl: './banner.component.css'`
+
+3. **Convert `InfoCardComponent` to a modern standalone component:**
+   - Open `src/app/info-card/info-card.component.ts`
+   - Add `standalone: true` to the `@Component` decorator
+   - Add `imports: []` to the `@Component` decorator
+   - Change `styleUrls` to `styleUrl: './info-card.component.css'`
+
+4. **Convert `AppComponent` to a modern standalone component:**
+   - Open `src/app/app.component.ts`
+   - Add `standalone: true` to the `@Component` decorator
+   - Add `imports: [BannerComponent, InfoCardComponent]` to the `@Component` decorator
+   - Add import statements at the top: `import { BannerComponent } from './banner/banner.component';` and `import { InfoCardComponent } from './info-card/info-card.component';`
+   - Change `styleUrls` to `styleUrl: './app.component.css'`
+
+5. **Convert `main.ts` to the modern bootstrap:**
    - Replace the entire contents of `src/main.ts` with:
      ```typescript
-     import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-     import { AppModule } from './app/app.module';
+     import { bootstrapApplication } from '@angular/platform-browser';
+     import { AppComponent } from './app/app.component';
+     import { appConfig } from './app/app.config';
 
-     platformBrowserDynamic()
-       .bootstrapModule(AppModule)
+     bootstrapApplication(AppComponent, appConfig)
        .catch((err) => console.error(err));
      ```
-   - Delete `src/app/app.config.ts` — it is no longer needed.
 
-3. **Convert `BannerComponent` to a legacy component:**
-   - Open `src/app/banner/banner.component.ts`
-   - Remove `standalone: true` and `imports: []` from the `@Component` decorator
-   - Change `styleUrl` to `styleUrls` (plural) and wrap the value in an array: `styleUrls: ['./banner.component.css']`
-   - The rest of the component stays the same
+6. **Create `src/app/app.config.ts`:**
+   ```typescript
+   import { ApplicationConfig } from '@angular/core';
 
-4. **Complete `BannerModule` — a feature module for the banner:**
-   - Open the provided skeleton file `src/app/banner/banner.module.ts`
-   - Add the missing imports at the top: `NgModule` from `@angular/core`, `CommonModule` from `@angular/common`, and `BannerComponent` from `./banner.component`
-   - Fill in the `@NgModule` decorator's TODO sections:
-     - `declarations: [BannerComponent]` — registers the component in this module
-     - `imports: [CommonModule]` — provides standard Angular directives
-     - `exports: [BannerComponent]` — makes `<app-banner>` available to modules that import `BannerModule`
+   export const appConfig: ApplicationConfig = {
+     providers: []
+   };
+   ```
 
-5. **Convert `InfoCardComponent` to a legacy component:**
-   - Open `src/app/info-card/info-card.component.ts`
-   - Remove `standalone: true` and `imports: []`
-   - Change `styleUrl` to `styleUrls: ['./info-card.component.css']`
+7. **Delete the module files** — they are no longer needed:
+   - Delete `src/app/app.module.ts`
+   - Delete `src/app/banner/banner.module.ts`
+   - Delete `src/app/info-card/info-card.module.ts`
 
-6. **Complete `InfoCardModule` — a feature module for the info card:**
-   - Open the provided skeleton file `src/app/info-card/info-card.module.ts`
-   - Same pattern as `BannerModule`: add the imports at the top, then fill in the TODO sections to declare `InfoCardComponent`, import `CommonModule`, and export `InfoCardComponent`
+8. Serve the app: `npx ng serve`. Confirm it looks exactly the same — dark blue banner, three info cards.
 
-7. **Convert `AppComponent` to a legacy component:**
-   - Open `src/app/app.component.ts`
-   - Remove `standalone: true` and `imports: [BannerComponent, InfoCardComponent]`
-   - Remove the import statements for `BannerComponent` and `InfoCardComponent` at the top of the file
-   - Change `styleUrl` to `styleUrls: ['./app.component.css']`
-
-8. **Complete `AppModule` — the root NgModule:**
-   - Open the provided skeleton file `src/app/app.module.ts`
-   - Add the missing imports at the top: `NgModule` from `@angular/core`, `BrowserModule` from `@angular/platform-browser`, `AppComponent` from `./app.component`, `BannerModule` from `./banner/banner.module`, and `InfoCardModule` from `./info-card/info-card.module`
-   - Fill in the `@NgModule` decorator's TODO sections:
-     - `declarations: [AppComponent]` — the root component belongs to the root module
-     - `imports: [BrowserModule, BannerModule, InfoCardModule]` — brings in browser support and both feature modules
-     - `bootstrap: [AppComponent]` — tells Angular which component to render first
-
-9. Serve the app: `npx ng serve`. Confirm it looks exactly the same as before — dark blue banner, three info cards.
-
-10. **Deliberate break (optional):** Remove `BannerModule` from AppModule's `imports` array. The app will show the "not a known element" error for `<app-banner>`. Add it back to fix. Notice how this error is harder to debug in the legacy pattern — you have to trace module imports instead of just checking the component's own imports array.
+9. **Deliberate break (optional):** Remove `InfoCardComponent` from AppComponent's `imports` array. Notice the error is clear and local — you can see exactly which component is missing directly in the file that uses it. Compare that to the legacy approach where you'd have to trace through module imports. Add it back to fix.
 
 ### Acceptance Criteria
 
-- [ ] `main.ts` uses `platformBrowserDynamic().bootstrapModule(AppModule)` instead of `bootstrapApplication()`
-- [ ] `app.config.ts` is deleted
-- [ ] `AppModule` exists with `declarations: [AppComponent]`, `imports: [BrowserModule, BannerModule, InfoCardModule]`, and `bootstrap: [AppComponent]`
-- [ ] `BannerModule` exists with `declarations: [BannerComponent]` and `exports: [BannerComponent]`
-- [ ] `InfoCardModule` exists with `declarations: [InfoCardComponent]` and `exports: [InfoCardComponent]`
-- [ ] No component has `standalone: true` — all use the legacy pattern
-- [ ] All components use `styleUrls` (plural array) instead of `styleUrl` (singular)
-- [ ] The app looks and works exactly the same as the modern version
-- [ ] You can explain why the legacy pattern requires more files and more wiring
+- [ ] `main.ts` uses `bootstrapApplication(AppComponent, appConfig)` instead of `platformBrowserDynamic().bootstrapModule()`
+- [ ] `app.config.ts` exists with `ApplicationConfig` and `providers: []`
+- [ ] `app.module.ts` is deleted
+- [ ] `banner.module.ts` is deleted
+- [ ] `info-card.module.ts` is deleted
+- [ ] All three components have `standalone: true`
+- [ ] `AppComponent` imports `[BannerComponent, InfoCardComponent]` in its `@Component` decorator
+- [ ] All components use `styleUrl` (singular string) instead of `styleUrls` (plural array)
+- [ ] The app looks and works exactly the same as the legacy version
 
 ### Hints
 
-**Hint 1 — platformBrowserDynamic:** Make sure you import from `'@angular/platform-browser-dynamic'` (note the `-dynamic` suffix). This is different from the modern `'@angular/platform-browser'`.
+**Hint 1 — bootstrapApplication:** Import from `'@angular/platform-browser'` (no `-dynamic` suffix). This is different from the legacy `'@angular/platform-browser-dynamic'`.
 
-**Hint 2 — exports array:** If you declare a component in a feature module but forget to add it to the `exports` array, other modules that import your feature module still won't be able to use that component. The `exports` array is what makes components publicly available.
+**Hint 2 — imports array:** In modern Angular, each standalone component lists its own dependencies in its `imports` array. AppComponent needs to import the child components it uses in its template. Child components with no dependencies use `imports: []`.
 
-**Hint 3 — styleUrls vs styleUrl:** Legacy Angular used `styleUrls: ['./file.css']` (an array of strings). Modern Angular uses `styleUrl: './file.css'` (a single string). Both work in Angular 17+, but the legacy pattern always used the plural form.
+**Hint 3 — styleUrl vs styleUrls:** Modern uses `styleUrl: './file.css'` (string). Legacy used `styleUrls: ['./file.css']` (array). Both work in Angular 17+, but modern convention is the singular form.
 
-**Hint 4 — Only one declarations home:** A component can only be declared in ONE module. If you accidentally declare `BannerComponent` in both `BannerModule` and `AppModule`, you'll get a "declared in 2 modules" error. Declare it in `BannerModule` and import the module into `AppModule`.
+**Hint 4 — standalone: true:** This single flag is what makes a component self-contained. Without it, the component must be declared in a module. With it, the component manages its own dependencies.
 
 ---
 
