@@ -61,7 +61,7 @@ h1 span {
 }
 
 /* Category badge base */
-[class^='badge-'] {
+[class^="badge-"] {
   display: inline-block;
   padding: 0.2rem 0.6rem;
   border-radius: 9999px;

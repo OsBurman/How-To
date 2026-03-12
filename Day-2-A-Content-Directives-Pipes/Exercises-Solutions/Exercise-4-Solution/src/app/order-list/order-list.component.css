@@ -49,26 +49,26 @@ h2 {
 /* SOLUTION: distinct colour for each status value */
 
 .badge-pending {
-  background-color: #fef9c3;  /* soft yellow */
+  background-color: #fef9c3; /* soft yellow */
   color: #854d0e;
 }
 
 .badge-processing {
-  background-color: #dbeafe;  /* soft blue */
+  background-color: #dbeafe; /* soft blue */
   color: #1d4ed8;
 }
 
 .badge-shipped {
-  background-color: #e0f2fe;  /* sky blue */
+  background-color: #e0f2fe; /* sky blue */
   color: #0369a1;
 }
 
 .badge-delivered {
-  background-color: #dcfce7;  /* soft green */
+  background-color: #dcfce7; /* soft green */
   color: #166534;
 }
 
 .badge-cancelled {
-  background-color: #fee2e2;  /* soft red */
+  background-color: #fee2e2; /* soft red */
   color: #991b1b;
 }

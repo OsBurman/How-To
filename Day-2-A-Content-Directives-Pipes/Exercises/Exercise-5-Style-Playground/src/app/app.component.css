@@ -21,7 +21,10 @@ h1 {
   border: 2px dashed #cbd5e1;
   border-radius: 8px;
   margin-bottom: 2rem;
-  transition: background-color 0.2s, color 0.2s, font-size 0.1s;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    font-size 0.1s;
 }
 
 .preview-box p {
@@ -53,12 +56,12 @@ h1 {
   font-weight: 500;
 }
 
-.control-group input[type='range'] {
+.control-group input[type="range"] {
   flex: 1;
   cursor: pointer;
 }
 
-.control-group input[type='color'] {
+.control-group input[type="color"] {
   width: 48px;
   height: 32px;
   border: none;
@@ -76,7 +79,7 @@ h1 {
   min-width: unset;
 }
 
-.control-group--checkbox input[type='checkbox'] {
+.control-group--checkbox input[type="checkbox"] {
   width: 16px;
   height: 16px;
   cursor: pointer;
