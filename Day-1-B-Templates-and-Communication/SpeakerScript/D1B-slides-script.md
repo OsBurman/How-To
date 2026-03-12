@@ -62,7 +62,7 @@ Data still flows one direction — component to template — just like interpola
 
 ---
 
-## Property Binding vs Interpolation
+## Interpolation vs Property Binding — When to Use Which
 
 So when do you use which? Both interpolation and property binding display component data, but they have different sweet spots.
 
@@ -128,11 +128,15 @@ So our complete direction summary is now: interpolation goes component to templa
 
 ---
 
-## Why FormsModule Is Needed
+## What Is FormsModule?
 
 Now, there's a catch with `[(ngModel)]`. The `ngModel` directive — the thing that makes two-way binding work — lives inside Angular's `FormsModule`. If you don't import `FormsModule`, Angular has no idea what `ngModel` means.
 
-In a standalone component, you import it directly in the component's `imports` array. You add `import { FormsModule } from '@angular/forms'` at the top of the file, and then add `FormsModule` to the `imports` array in the `@Component` decorator.
+In a standalone component, you import it directly in the component's `imports` array. You add `import { FormsModule } from '@angular/forms'` at the top of the file, and then add `FormsModule` to the `imports` array in the `@Component` decorator. And here's the standalone-specific detail: each standalone component that uses `[(ngModel)]` must import `FormsModule` individually. There's no central place that makes it globally available — the dependency is declared right where it's used.
+
+---
+
+## ⚠️ WARNING — FormsModule Silent Failure
 
 Here's the frustrating part: if you forget this import, there's no error message. Your `[(ngModel)]` just silently does nothing. The input renders, it looks normal, you type in it — but the component property never updates. This is one of the most common "why isn't my binding working?" moments for Angular beginners.
 
@@ -152,7 +156,7 @@ And here's the cool part — if your code sets `message = ''` somewhere (like a 
 
 ---
 
-## What Are Template Reference Variables?
+## What Is a Template Reference Variable?
 
 Alright, let's talk about template reference variables. These give you a direct handle to a DOM element right in your template. You create one by adding a hash sign followed by a name on any HTML element: `#myInput`.
 
@@ -194,19 +198,7 @@ Here's the problem. Say you have a `user` variable that could be null. If you wr
 
 The fix is `?.`: `{{ user?.address?.city }}`. Now Angular checks each step. Is `user` null? If yes, stop here and return undefined. Is `user.address` null? If yes, stop here and return undefined. Only if every step succeeds does it return the actual city value. And Angular renders `undefined` as an empty string — so you get blank space instead of a crash.
 
-Here's the thing that makes this immediately relevant: you'll need this the moment you start loading data from an API, which you'll do on Day 3. API data arrives asynchronously — your component renders before the data shows up. During that gap, your data is null. Safe navigation handles that gracefully.
-
----
-
-## Why Safe Navigation Matters
-
-Let me paint the real-world picture. You have a `ProfileComponent` with a `user` property typed as `User | null`, initialized to `null`. In a real app, you'd fetch this from an API — that call takes time. During those one or two seconds while you're waiting for the API response, `user` is null.
-
-Without `?.`, your template crashes instantly — Angular tries to render `{{ user.name }}` and throws an error because you can't read `.name` on `null`.
-
-With `?.`, your template renders safely. The name shows up blank for a moment, and then when the API data arrives and `user` gets populated, Angular re-renders and fills in the actual values. Smooth, no crash.
-
-You'll use `?.` on pretty much every property access that involves data coming from an API, a database, or any source where the data might not be available immediately. Get comfortable with it now, because starting Day 3, it'll be in almost every template you write.
+Here's the thing that makes this immediately relevant: you'll need this the moment you start loading data from an API, which you'll do on Day 3. API data arrives asynchronously — your component renders before the data shows up. During that gap, your data is null. Without `?.`, the template crashes. With `?.`, it renders blank until the data arrives, then fills in. That's the pattern. Get comfortable with it now, because starting Day 3, it'll be in almost every template you write.
 
 ---
 
@@ -262,7 +254,7 @@ The critical thing to understand: data flows one direction only. Parent to child
 
 ---
 
-## How Property Binding Drives @Input
+## @Input() Example
 
 Let me show the full wiring. In the parent, we have `currentUser = 'Angela'` and `currentAge = 28`. In the parent's template, we write `<app-greeting [name]="currentUser" [age]="currentAge">`. Both `name` and `age` are `@Input()` properties on `GreetingComponent`.
 
@@ -296,7 +288,7 @@ The parent listens using event binding — parentheses — just like we listened
 
 ---
 
-## EventEmitter — Creating, Emitting, and Receiving
+## @Output() Example
 
 Let me walk through this step by step.
 
@@ -326,15 +318,23 @@ The parent owns the data. The child requests changes by emitting events. The par
 
 ---
 
+## Angular Component Lifecycle
+
+Now let's talk about lifecycle hooks. A lifecycle hook is a method Angular calls automatically at a specific stage in a component's life. You never call these yourself — Angular calls them for you at the right moment.
+
+There are six of them, but for most of the components you'll write, only two matter. `ngOnChanges` fires whenever an `@Input()` value changes. `ngOnInit` fires once, after the component's inputs are set for the first time — this is your setup hook. `ngDoCheck` fires on every change detection cycle — you'll rarely touch it. `ngAfterContentInit` and `ngAfterViewInit` fire after projected content and the view are initialized — useful for advanced cases. And `ngOnDestroy` fires once, just before the component is removed from the DOM — that's your cleanup hook.
+
+For the vast majority of components you write, you'll only implement two of these: `ngOnInit` for setup and `ngOnDestroy` for cleanup. Let's look at each in detail.
+
+---
+
 ## What Is ngOnInit?
 
-Now let's talk about lifecycle hooks. A lifecycle hook is a method that Angular calls automatically at a specific moment in a component's life. The most important one is `ngOnInit`.
+`ngOnInit` is the lifecycle hook you'll use the most. Angular calls it once, right after it sets the component's `@Input()` values for the first time. That makes it the correct place for any initialization logic that depends on input data.
 
-Angular calls `ngOnInit()` once, right after it sets the component's `@Input()` values for the first time. That makes it the perfect place for any initialization logic that depends on input data.
+To use it, implement the `OnInit` interface — `implements OnInit` — and define the `ngOnInit()` method. Inside that method, your `@Input()` values are set and ready to use.
 
-To use it, you implement the `OnInit` interface — `implements OnInit` — and define the `ngOnInit()` method. Inside that method, your `@Input()` values are set and ready to use.
-
-Here's why this matters: `ngOnInit` runs once. It's not called every time an input changes. It's your setup moment — the point where you process input data, build display strings, make initial calculations. Think of it as the "I'm ready to go" signal from Angular.
+`ngOnInit` runs exactly once — not every time an input changes. It's your setup moment: where you process input data, build display strings, and make initial calculations. Think of it as the "I'm ready to go" signal from Angular.
 
 ---
 
@@ -390,7 +390,7 @@ The reason `ngOnDestroy` exists is cleanup. If your component started a timer, o
 
 ---
 
-## Why Cleanup Matters — Memory Leaks
+## Memory Leak Example
 
 Let me show you what a memory leak looks like. Here's a component that starts a `setInterval` in `ngOnInit`. Every second, it logs a message to the console. But there's no `ngOnDestroy` — no cleanup.
 
@@ -414,7 +414,7 @@ Build this habit now. Every time you start something in `ngOnInit`, immediately 
 
 ---
 
-## Signals First Look — signal()
+## Signals — First Look
 
 Alright, I want to give you a brief preview of something called signals. Don't worry about fully understanding this yet — we go deep on signals tomorrow on Day 2. This is just a first look so the syntax isn't completely new when you see it.
 
@@ -428,7 +428,7 @@ Again — exercises today do not require signals. This is just a preview.
 
 ---
 
-## Signals First Look — computed()
+## computed() — Derived Signals
 
 One more signals concept: `computed()`. A computed signal creates a derived value that recalculates automatically when its source changes.
 
@@ -442,7 +442,7 @@ Don't worry about fully grasping the implications yet. We'll spend a full sessio
 
 ---
 
-## Signals in a Component (Preview)
+## Signals in a Component
 
 Here's what signals look like inside a component — just for reference. A `readonly count = signal(0)` creates the writable signal. A `readonly doubled = computed(() => this.count() * 2)` creates the derived value. Methods call `this.count.update()` or `this.count.set()` to change the value.
 
@@ -462,81 +462,61 @@ I'm going to show you the classic approach for a few of the patterns we just cov
 
 ---
 
-## Modern ngModel Setup
+## Modern ngModel vs Legacy ngModel
 
-Let's start with how FormsModule works in modern Angular — reinforcing what you just learned. In a standalone component, you import `FormsModule` directly in the component's `imports` array. Right there, in `character-counter.component.ts`, you can see `imports: [FormsModule]`.
+Let's start with `FormsModule` — reinforcing what you just learned. In the modern standalone approach, you import `FormsModule` directly in the component's `imports` array. You can see the dependency right in `character-counter.component.ts`. If you delete the component, the import goes with it. No dead dependencies hanging around.
 
-What's great about this? Three things. First, you can see exactly which components use FormsModule — the dependency is declared right where it's used. Second, there are no hidden dependencies — everything the component needs is listed in its own `imports` array. Third, if you delete this component, FormsModule goes with it. No dead imports hanging around in some central file.
+In the classic NgModule approach, `FormsModule` was imported in `app.module.ts` — a completely separate file. It was available to every component in the module, even those that didn't use it. You couldn't tell from a component file that it depended on FormsModule. If someone cleaned up `app.module.ts` and removed it, every `[(ngModel)]` in the app would silently break — no error, just non-functional inputs.
 
-This is the modern pattern. Let me show you what the legacy version looked like.
-
----
-
-## Legacy ngModel Setup
-
-In the classic approach, `FormsModule` was imported in an `NgModule` — typically `app.module.ts`. You had this central `@NgModule` decorator with a `declarations` array listing every component and an `imports` array listing modules like `BrowserModule` and `FormsModule`.
-
-Here's the problem: `FormsModule` imported once was available to every component declared in that module, even components that didn't use it. You couldn't tell from `character-counter.component.ts` that it depended on FormsModule — that dependency was invisible, living in a completely different file.
-
-Even worse — if someone was cleaning up `app.module.ts` and removed FormsModule thinking "nothing uses this," every `[(ngModel)]` in the app would silently break. No error, just non-functional inputs.
-
-And every new component had to be added to the `declarations` array. Forget to add it? "Is not a known element" error. In large apps, this `declarations` array grew to dozens or even hundreds of entries.
-
-This is the overhead that standalone components eliminated.
+And every new component had to be added to the `declarations` array manually. Forget to add it? "Is not a known element" error. In large apps, that array grew to dozens of entries. The standalone approach eliminated all of that boilerplate.
 
 ---
 
-## Modern @Input() — Standalone Approach
+## Modern @Input() vs Legacy @Input()
 
-Now let's look at `@Input()` in the modern context. The child component — `GreetingComponent` — has `standalone: true` and `@Input() name`. The parent — `AppComponent` — has `standalone: true` and `imports: [GreetingComponent]`.
+The `@Input()` decorator syntax is identical in modern and legacy — same decorator, same property, same behavior. What's different is how the component is registered and how visible its dependencies are.
 
-See that? The parent explicitly lists which child components it uses in its `imports` array. If you open `app.component.ts`, you can immediately see that it uses `GreetingComponent`. The dependency is visible, traceable, and explicit. That's the modern way.
+In the modern version, the parent has `standalone: true` and `imports: [GreetingComponent]`. You open `app.component.ts` and immediately see that it depends on `GreetingComponent`. Explicit, traceable, right there in the file.
 
----
+In the legacy version, both components live in an NgModule's `declarations` array. You can't tell from `app.component.ts` which children it uses — you have to dig through `app.module.ts`. And if `GreetingComponent` was in a different module — say a `SharedModule` — you'd need to export it there and import that module here. Two files to edit just to use one component.
 
-## Legacy @Input() — NgModule Approach
-
-In the legacy version, the `@Input()` decorator itself works identically — same syntax, same behavior. What's different is the registration context.
-
-The child component has no `standalone: true`, no `imports` array. Instead, it's listed in an NgModule's `declarations` array. Both `AppComponent` and `GreetingComponent` are declared in the same module.
-
-What that means: you can't tell from `app.component.ts` which child components it uses. You have to go check `app.module.ts` to find out that `GreetingComponent` is declared there. And because they're in the same module, they can use each other without any explicit imports — hidden coupling.
-
-Also notice `styleUrls` — plural, an array — instead of the modern `styleUrl` — singular, a string. That's a small but visible difference you'll spot in legacy code.
+Also: in legacy code you'll see `styleUrls` plural with an array instead of the modern `styleUrl` singular. A small tell, but you'll spot it right away.
 
 ---
 
-## Modern @Output() — Standalone Approach
+## Modern @Output() vs Legacy @Output()
 
-For `@Output()`, the modern version looks exactly like what we just learned. The child has `@Output() countChanged = new EventEmitter<number>()` and `standalone: true`. The parent imports the child and binds to the event: `(countChanged)="onCountChanged($event)"`.
+This is the easiest legacy comparison of the session: the `@Output()` decorator, `EventEmitter`, and `.emit()` syntax are identical in modern and legacy Angular. There is no difference in how you create, emit, or listen to events. The code inside your component is exactly the same.
 
-The `@Output()` and `EventEmitter` syntax is exactly the same in modern and legacy. There's no difference in how you create, emit, or listen to events. The only difference is how the child component is registered.
+The only difference — again — is registration. Modern: `standalone: true`, parent imports the child directly. Legacy: registered in an NgModule's `declarations` array, and the cross-module component sharing headaches are the same as with `@Input()`.
 
----
-
-## Legacy @Output() — NgModule Approach
-
-In the legacy version, same `@Output()` code, but the component isn't standalone. It's registered in an NgModule's `declarations` array.
-
-And here's the pain that caused: if `CounterComponent` was declared in a different module — say, a `SharedModule` — you'd need to export it from that module, then import that module into the module that wanted to use it. That's two files to edit just to use one component. In large apps, you'd end up with a complex web of module imports and exports just to make components available where they were needed. Standalone components eliminated all of that. You just import the component directly — done.
+If `CounterComponent` lived in a `SharedModule`, you'd export it there, import `SharedModule` in the module that needed it — two files to edit just to use one component's events. Standalone components made that entire dance unnecessary.
 
 ---
 
-## Modern Lifecycle Hooks — Standalone
+## Legacy Lifecycle Hooks
 
-For lifecycle hooks — `ngOnInit` and `ngOnDestroy` — the modern version is what you just learned. A standalone component that implements `OnInit` and `OnDestroy`, with a timer that starts in `ngOnInit` and cleans up in `ngOnDestroy`.
+Here's the most important thing to know about lifecycle hooks in the context of legacy Angular: they work exactly the same. The `OnInit` and `OnDestroy` interfaces, the method names, the timing, the behavior — all identical between modern and legacy. `ngOnInit` and `ngOnDestroy` are a core Angular concept that has not changed.
 
-I want to point out something important: lifecycle hooks work exactly the same in modern and legacy Angular. The `OnInit` and `OnDestroy` interfaces, the method names, the timing, the behavior — all identical. Lifecycle hooks are a core Angular concept that hasn't changed.
+In legacy code you'll see the familiar tells: no `standalone: true`, `styleUrls` plural as an array, and the component registered in an NgModule's `declarations`. But open up `ngOnInit()` and `ngOnDestroy()` and the code inside looks just like what you wrote today — same `setInterval`, same `clearInterval`, same cleanup pattern.
+
+That's the overarching lesson from this entire legacy section: the core Angular features — data binding, `@Input()`, `@Output()`, lifecycle hooks — all work the same. What modern Angular fixed was the overhead around component registration. Standalone components replaced the module system and made every dependency explicit right at the point of use.
 
 ---
 
-## Legacy Lifecycle Hooks — NgModule
+## Binding Syntax Cheat Sheet
 
-And here's the legacy version. Spot the differences: no `standalone: true`, `styleUrls` with an "s" and an array instead of `styleUrl` singular, and the component must be declared in an NgModule.
+Before we close, let's lock in the four binding types with a quick review of the cheat sheet on this slide. Use it as a reference card.
 
-But look at `ngOnInit()` and `ngOnDestroy()` — the code inside is identical. Same `setInterval`, same `clearInterval`, same pattern. Lifecycle hooks didn't change. What changed is how components are organized and registered.
+Interpolation — double curly braces, `{{ expression }}` — component to template. Use it for text content between HTML tags.
 
-That's the key takeaway from the legacy contrast section: the core features — data binding, `@Input()`, `@Output()`, lifecycle hooks — work the same. What modern Angular fixed was the overhead around component registration. Standalone components replaced the module system, making dependencies explicit and eliminating boilerplate.
+Property binding — square brackets, `[property]="expr"` — component to template. Use it when setting an element property, especially booleans, numbers, or anything that's not purely a string.
+
+Event binding — parentheses, `(event)="handler()"` — template to component. Use it whenever you're reacting to a user action: a click, a keystroke, a form input.
+
+Two-way binding — banana in a box, `[(ngModel)]="prop"` — both directions simultaneously. Use it when you need real-time sync between a form input and a component property. And always remember to import `FormsModule`.
+
+These are the four tools you'll use every day building Angular templates.
 
 ---
 

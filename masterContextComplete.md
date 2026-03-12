@@ -108,6 +108,36 @@ get their own dedicated slides. Procedural steps (CLI commands, setup, configura
 show exact commands and walk through each step across multiple slides. Code examples
 appear on their own slides, separate from explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide
+deck. For example, if introducing "standalone components," the first slide gives the definition
+plus 2–3 key facts, and the following slide(s) explain why Angular introduced them, how they
+differ from module-based components, and show a code example.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -717,6 +747,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -1295,6 +1352,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -1828,6 +1912,33 @@ must stand on its own with clear, complete content. Every concept uses as many s
 as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
+
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
 
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
@@ -2393,6 +2504,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -2934,6 +3072,33 @@ must stand on its own with clear, complete content. Every concept uses as many s
 as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
+
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
 
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
@@ -3516,6 +3681,33 @@ as needed for full comprehension — never cram multiple ideas onto one slide. S
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
 
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
+
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
 - Slide 1 is always a TITLE SLIDE with the day/part name, session topic, and a one-sentence
@@ -4058,6 +4250,33 @@ must stand on its own with clear, complete content. Every concept uses as many s
 as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
+
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
 
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]
@@ -4638,6 +4857,33 @@ must stand on its own with clear, complete content. Every concept uses as many s
 as needed for full comprehension — never cram multiple ideas onto one slide. Sub-concepts
 get their own dedicated slides. Code examples appear on their own slides, separate from
 explanation slides.
+
+DEFINITION-FIRST RULE:
+Whenever a new concept, term, or technology is introduced for the first time, the FIRST
+slide for that concept must be a dedicated DEFINITION slide. This slide contains the exact,
+concise definition of the concept — what it IS in one to three sentences — followed by 2–4
+key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key facts
+may clarify what the concept does or doesn't do, but must NOT include code examples, "how it
+works" walkthroughs, or "why it matters" context — those belong on the NEXT slide(s). The
+following slide(s) then explain the concept further: why it matters, how it works, examples,
+common mistakes, etc. This pattern applies to every new concept throughout the entire slide deck.
+
+TWO-COLUMN CODE LAYOUT RULE:
+When a code example includes BOTH a TypeScript (.ts) file and a template (.html) file,
+format them for a two-column layout: TypeScript on the LEFT, template HTML on the RIGHT.
+Mark the slide with the directive:
+> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**
+Then label each code block with its filename in bold (e.g., **app.component.ts** and
+**app.component.html**). TypeScript goes first (left column) to represent the data source,
+HTML goes second (right column) to show the binding in the template.
+
+SLIDE DENSITY RULE:
+Each slide should communicate ONE clear idea. If a slide has a definition, it should NOT
+also have code examples or "how it works" steps. If a slide has a code example, keep
+surrounding explanation to one or two sentences max. Err on the side of too little per slide
+rather than too much — the speaker script provides the verbal detail. Slides are visual anchors,
+not transcripts. Do NOT add mid-deck summary or overview slides that duplicate content already
+covered in the closing cheat sheet or key takeaways — all summaries belong at the end.
 
 SLIDE STRUCTURE RULES:
 - Every slide is numbered sequentially: ## Slide [N]: [Title]

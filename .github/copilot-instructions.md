@@ -84,6 +84,15 @@ SLIDE FORMAT RULES
 - Every concept uses AS MANY SLIDES as needed for full comprehension — never cram multiple ideas
   onto one slide. A single concept may require separate slides for: what it is, why it matters,
   syntax/code example, step-by-step walkthrough, common mistakes, and a summary
+- DEFINITION-FIRST RULE: Whenever a new concept, term, or technology is introduced for the
+  first time, the FIRST slide for that concept must be a dedicated DEFINITION slide. This slide
+  contains the exact, concise definition — what it IS in one to three sentences — followed by
+  2–4 key facts as brief bullet points (e.g., data direction, scope, essential behavior). Key
+  facts may clarify what the concept does or doesn't do, but must NOT include code examples,
+  "how it works" steps, or "why it matters" context — those go on the NEXT slide(s). The NEXT
+  slide(s) then explain the concept further: why it matters, how it works, examples, common
+  mistakes, etc. This pattern (define + key facts, then describe) applies to every new concept
+  throughout the entire slide deck.
 - Sub-concepts always get their own dedicated slides — for example, "Installing the CLI and
   generating a project" requires separate slides for prerequisites, the install command, the
   ng new command with its options, and walking through the generated output
@@ -91,6 +100,21 @@ SLIDE FORMAT RULES
   and walk through each step across multiple slides
 - Maximum 5 bullet points per content slide — if more are needed, split into additional slides
 - Code slides show one focused chunk of code at a time — never a full file on one slide
+- TWO-COLUMN CODE LAYOUT: When a code example includes BOTH a TypeScript (.ts) file and
+  a template (.html) file, format them for a two-column layout: TypeScript on the LEFT,
+  template HTML on the RIGHT. Mark the slide with the directive:
+  `> 📐 **Two-Column Layout — TypeScript (left) | Template (right)**`
+  then label each block with its filename in bold (e.g., **app.component.ts** and
+  **app.component.html**). The TypeScript goes first (left column) to represent the data
+  source, and the HTML goes second (right column) to show the binding in the template.
+  This helps the visual slide generator (Gamma.app) produce side-by-side code views.
+- SLIDE DENSITY LIMIT: Each slide should communicate ONE clear idea. If a slide has a
+  definition, it should NOT also have code examples or "how it works" steps. If a slide has
+  a code example, keep surrounding explanation to one or two sentences max. Err on the
+  side of too little per slide rather than too much — the speaker script provides the
+  verbal detail. Slides are visual anchors, not transcripts. Do NOT add mid-deck summary
+  or overview slides that duplicate content already covered in the closing cheat sheet or
+  key takeaways — all summaries belong at the end.
 - Every section ends with legacy contrast slides after all modern concept slides
 - Slide titles are short (3–6 words) and action-oriented where possible
 - No transitional filler slides
