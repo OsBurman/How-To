@@ -121,10 +121,22 @@
   font-weight: 600;
 }
 
-.genre-badge--action { background: #fee2e2; color: #b91c1c; }
-.genre-badge--comedy { background: #fef3c7; color: #92400e; }
-.genre-badge--drama  { background: #ede9fe; color: #6d28d9; }
-.genre-badge--scifi  { background: #dbeafe; color: #1d4ed8; }
+.genre-badge--action {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.genre-badge--comedy {
+  background: #fef3c7;
+  color: #92400e;
+}
+.genre-badge--drama {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+.genre-badge--scifi {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
 
 .movie-card__description {
   font-size: 0.85rem;

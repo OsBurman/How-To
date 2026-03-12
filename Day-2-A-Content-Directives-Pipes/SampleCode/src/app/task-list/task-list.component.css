@@ -52,7 +52,9 @@
   border-radius: 8px;
   padding: 1rem 1.25rem;
   background: white;
-  transition: background 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
 }
 
 /* [ngClass] modifier: status = done */
