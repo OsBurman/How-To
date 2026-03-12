@@ -1,0 +1,170 @@
+<!--
+  movie-list.component.html
+  CONCEPTS: @switch/@case, [ngStyle], | date, | currency, | uppercase, | async,
+            FilterPipe (custom pure), TruncatePipe (custom pure)
+-->
+
+<div class="movie-list">
+
+  <!-- =================================================================
+       SECTION A: async pipe demo
+
+       featuredMovie$ is an Observable that emits a Movie after 1.5 seconds.
+       The | async pipe subscribes to it and passes the emitted value to 'featured'.
+
+       @if (obs$ | async; as localVar) is the MODERN way to work with async data:
+         - When the Observable hasn't emitted yet → condition is null/false → @else renders
+         - When it emits → 'featured' is bound to the Movie object → @if block renders
+         - When this component is destroyed → | async unsubscribes automatically
+
+       On Day 3 Part B you'll replace of({...}).pipe(delay()) with a real http.get() call.
+  ==================================================================== -->
+  <div class="featured-section">
+    <h3>Featured Movie <em>(async pipe demo — loads after 1.5s)</em></h3>
+
+    @if (featuredMovie$ | async; as featured) {
+      <!-- 'featured' is the resolved Movie object — safe to access all its properties -->
+      <div class="featured-card">
+
+        <!--
+          | uppercase — transforms the string to ALL CAPS for display.
+          The component property featured.title is NOT changed — only the displayed value.
+        -->
+        <h4>{{ featured.title | uppercase }}</h4>
+
+        <!--
+          | date — formats a Date object using Angular's DatePipe.
+          'MMMM d, y' produces: "June 1, 2025"
+          Other formats: 'shortDate' → 6/1/25, 'mediumDate' → Jun 1, 2025
+        -->
+        <p>🗓 {{ featured.releaseDate | date:'MMMM d, y' }}</p>
+
+        <!--
+          | currency — formats a number as a currency string.
+          Defaults to USD. 19.99 → "$19.99"
+          Other: | currency:'EUR' → "€19.99", | currency:'GBP':'symbol':'1.0-0' → "£20"
+        -->
+        <p>🎟 Tickets from {{ featured.ticketPrice | currency }}</p>
+      </div>
+
+    } @else {
+      <!-- Renders while the Observable hasn't emitted yet (the 1.5-second delay) -->
+      <div class="loading-state">
+        <p>⏳ Loading featured movie…</p>
+      </div>
+    }
+  </div>
+
+  <!-- =================================================================
+       SECTION B: Genre filter buttons
+
+       PURE PIPE NOTE (FilterPipe):
+       FilterPipe is a PURE pipe — it only re-evaluates when its input
+       REFERENCE changes. If you mutate the movies array in place
+       (e.g. this.movies.push(newMovie)), the pipe will NOT re-run
+       because the array reference is the same object.
+       To trigger the pipe: create a new array reference instead:
+         this.movies = [...this.movies, newMovie]
+  ==================================================================== -->
+  <div class="filter-section">
+    <h3>All Movies</h3>
+    <div class="genre-filters">
+
+      <!--
+        @for iterates over the genres array to render filter buttons.
+        track genre works because the genre strings are unique primitives.
+      -->
+      @for (genre of genres; track genre) {
+        <button
+          (click)="setGenre(genre)"
+          class="btn-filter"
+          [ngClass]="{ 'btn-filter--active': selectedGenre === genre }"
+        >
+          {{ genre === '' ? 'All' : genre }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- =================================================================
+       SECTION C: Movie cards
+
+       movies | filter:selectedGenre
+         FilterPipe filters the array by genre. selectedGenre='' returns all movies.
+
+       movie.description | truncate:80
+         TruncatePipe truncates descriptions longer than 80 characters.
+         The 80 is passed as the second argument to transform(value, limit).
+  ==================================================================== -->
+  @for (movie of movies | filter:selectedGenre; track movie.id) {
+
+    <div class="movie-card">
+      <div class="movie-card__header">
+
+        <!-- | uppercase — title displayed in all caps; source data is unchanged -->
+        <h4 class="movie-card__title">{{ movie.title | uppercase }}</h4>
+
+        <!--
+          @switch — renders ONE block based on the value of movie.genre.
+          @case values are compared with === (strict equality).
+          @default catches any value not matched by a @case.
+          This replaces the legacy [ngSwitch] / *ngSwitchCase / *ngSwitchDefault syntax.
+        -->
+        @switch (movie.genre) {
+          @case ('action') {
+            <span class="genre-badge genre-badge--action">💥 Action</span>
+          }
+          @case ('comedy') {
+            <span class="genre-badge genre-badge--comedy">😂 Comedy</span>
+          }
+          @case ('drama') {
+            <span class="genre-badge genre-badge--drama">🎭 Drama</span>
+          }
+          @case ('sci-fi') {
+            <span class="genre-badge genre-badge--scifi">🚀 Sci-Fi</span>
+          }
+          @default {
+            <span class="genre-badge">🎬 {{ movie.genre }}</span>
+          }
+        }
+
+      </div>
+
+      <!--
+        TruncatePipe (custom pure pipe) — truncates description to 80 characters.
+        Syntax: {{ value | truncate:limit }}
+        The limit (80) is passed as the second argument to transform(value, limit).
+      -->
+      <p class="movie-card__description">{{ movie.description | truncate:80 }}</p>
+
+      <div class="movie-card__meta">
+        <!-- | date with 'mediumDate' format → "Mar 15, 2024" -->
+        <span>📅 {{ movie.releaseDate | date:'mediumDate' }}</span>
+
+        <!-- | currency with no arguments defaults to USD -->
+        <span>🎟 {{ movie.ticketPrice | currency }}</span>
+      </div>
+
+      <!--
+        [ngStyle] — sets inline styles dynamically from a method's return value.
+        getRatingBarStyle() returns: { 'width': '80%', 'background-color': '#22c55e' }
+        [ngStyle] applies each key-value pair as an inline CSS style on this element.
+
+        Contrast with [ngClass]: use [ngStyle] when the CSS value itself is dynamic
+        (e.g. a percentage width from data). Use [ngClass] when you just need to
+        toggle a pre-defined class on or off.
+      -->
+      <div class="rating-bar-track">
+        <div class="rating-bar" [ngStyle]="getRatingBarStyle(movie.rating)">
+          ★ {{ movie.rating }}/5
+        </div>
+      </div>
+
+    </div>
+
+  } @empty {
+    <!-- @empty renders when the filtered list has zero items -->
+    <p class="no-results">No movies match the selected genre.</p>
+  }
+
+</div>

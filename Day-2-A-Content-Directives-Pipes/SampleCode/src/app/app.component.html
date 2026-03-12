@@ -1,0 +1,87 @@
+<!--
+  app.component.html — Root template
+  Composes all four demo sections for Day 2 Part A.
+  Open the browser console — you will see ngAfterContentInit fire from LayoutCardComponent.
+-->
+
+<header class="page-header">
+  <h1>Day 2 Part A — Content Projection, Directives &amp; Pipes</h1>
+  <p>Open the browser console to see <code>ngAfterContentInit</code> log from LayoutCardComponent.</p>
+</header>
+
+<main class="page-main">
+
+  <!-- =====================================================
+       DEMO 1: Single-Slot Content Projection
+       AppComponent projects HTML inside <app-card> tags.
+       CardComponent uses <ng-content> to render that HTML
+       inside its own template — it never knows what it receives.
+  ====================================================== -->
+  <section class="demo-section">
+    <h2 class="demo-section__title">1 — Single-Slot Content Projection</h2>
+
+    <app-card>
+      <!--
+        Everything between these tags is PROJECTED CONTENT.
+        Angular passes it through to CardComponent's <ng-content>.
+        The card provides the frame — the parent provides the picture.
+      -->
+      <h3>Projected Heading</h3>
+      <p>
+        This paragraph lives in <strong>AppComponent</strong> but renders
+        inside <strong>CardComponent</strong> via <code>ng-content</code>.
+      </p>
+      <p>The card component has no idea what HTML appears here — it just provides the frame.</p>
+    </app-card>
+  </section>
+
+  <!-- =====================================================
+       DEMO 2: Named ng-content Slots + ngAfterContentInit
+       LayoutCardComponent uses select="[slot=X]" to route
+       projected content into header, body, and footer slots.
+       Check the browser console — ngAfterContentInit fires here.
+  ====================================================== -->
+  <section class="demo-section">
+    <h2 class="demo-section__title">2 — Named Slots &amp; ngAfterContentInit</h2>
+
+    <app-layout-card>
+      <!--
+        slot="header" matches the child's  <ng-content select="[slot=header]">
+        slot="body"   matches the child's  <ng-content select="[slot=body]">
+        slot="footer" matches the child's  <ng-content select="[slot=footer]">
+        Any content without a matching slot attribute is silently discarded.
+      -->
+      <div slot="header">
+        <h3>Card Title (Header Slot)</h3>
+      </div>
+
+      <div slot="body">
+        <p>This content goes into the <strong>body</strong> slot.</p>
+        <p>LayoutCardComponent owns the layout structure — AppComponent fills the content.</p>
+      </div>
+
+      <div slot="footer">
+        <small>Posted by Jane Developer &middot; January 15, 2025</small>
+      </div>
+    </app-layout-card>
+  </section>
+
+  <!-- =====================================================
+       DEMO 3: Control Flow, @let, ng-container, ng-template, [ngClass]
+       See task-list.component.html for detailed comments.
+  ====================================================== -->
+  <section class="demo-section">
+    <h2 class="demo-section__title">3 — Control Flow, @let, ng-container &amp; [ngClass]</h2>
+    <app-task-list></app-task-list>
+  </section>
+
+  <!-- =====================================================
+       DEMO 4: @switch, [ngStyle], Pipes & async
+       See movie-list.component.html for detailed comments.
+  ====================================================== -->
+  <section class="demo-section">
+    <h2 class="demo-section__title">4 — @switch, [ngStyle], Pipes &amp; async</h2>
+    <app-movie-list></app-movie-list>
+  </section>
+
+</main>

@@ -1,0 +1,18 @@
+<!--
+  card.component.html — Single-Slot ng-content
+
+  <ng-content> is a PLACEHOLDER element.
+  At runtime, Angular replaces it with whatever HTML the parent
+  placed inside <app-card>...</app-card>.
+
+  This is a single (default) slot — ALL projected content from the
+  parent lands here, regardless of what it is.
+
+  Inspect the DOM: you will see the parent's HTML rendered
+  inside .card, with no trace of the <ng-content> element itself.
+-->
+
+<div class="card">
+  <!-- ng-content: projects all parent content into this exact spot -->
+  <ng-content></ng-content>
+</div>

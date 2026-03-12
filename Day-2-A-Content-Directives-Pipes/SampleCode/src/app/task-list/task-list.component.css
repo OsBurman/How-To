@@ -1,0 +1,147 @@
+/* task-list.component.css — scoped to TaskListComponent only */
+
+.task-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.task-list__header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.progress-note {
+  font-size: 0.85rem;
+  color: #4b5563;
+  background: #f3f4f6;
+  padding: 0.3rem 0.75rem;
+  border-radius: 12px;
+}
+
+.progress-note--pending {
+  color: #9ca3af;
+}
+
+.btn-toggle {
+  align-self: flex-start;
+  padding: 0.45rem 1rem;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  transition: background 0.15s;
+}
+
+.btn-toggle:hover {
+  background: #4f46e5;
+}
+
+/* Task card base */
+.task-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  background: white;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+/* [ngClass] modifier: status = done */
+.task-card--done {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+/* [ngClass] modifier: status = in-progress */
+.task-card--in-progress {
+  background: #fffbeb;
+  border-color: #fcd34d;
+}
+
+/* [ngClass] modifier: priority = high — adds a left accent border */
+.task-card--high {
+  border-left: 4px solid #ef4444;
+}
+
+.task-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.task-card__title {
+  font-weight: 600;
+  color: #111827;
+}
+
+.task-card__description {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0.25rem 0 0.6rem;
+}
+
+/* Priority badge */
+.badge {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.badge--high {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Status badge — dynamic class set via [ngClass] string expression */
+.status-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.status-badge--todo {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.status-badge--in-progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge--done {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* Empty states */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  background: #f9fafb;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  color: #6b7280;
+}
+
+.no-items {
+  color: #9ca3af;
+  font-style: italic;
+  padding: 1rem;
+  text-align: center;
+}

@@ -1,0 +1,30 @@
+<!--
+  app.component.html — Legacy Root Template
+  Composes the two demo sections for the legacy Day 2 Part A project.
+  No ng-content demos — those concepts use the same ng-content syntax in legacy too.
+-->
+
+<header class="page-header">
+  <h1>Day 2 Part A — Legacy Patterns</h1>
+  <p>
+    This app uses <strong>NgModule</strong>, <code>*ngIf</code>, <code>*ngFor</code>,
+    and <code>*ngSwitch</code>. Compare with <code>SampleCode/</code> to see
+    what Angular 17+ replaced.
+  </p>
+</header>
+
+<main class="page-main">
+
+  <!-- TaskListComponent: *ngFor, *ngIf, [ngClass], NgTemplateOutlet -->
+  <section class="demo-section">
+    <h2 class="demo-section__title">Control Flow (Legacy: *ngIf, *ngFor)</h2>
+    <app-task-list></app-task-list>
+  </section>
+
+  <!-- MovieListComponent: *ngSwitch, [ngStyle], pipes, async -->
+  <section class="demo-section">
+    <h2 class="demo-section__title">@switch &amp; Pipes (Legacy: *ngSwitch, *ngIf as)</h2>
+    <app-movie-list></app-movie-list>
+  </section>
+
+</main>

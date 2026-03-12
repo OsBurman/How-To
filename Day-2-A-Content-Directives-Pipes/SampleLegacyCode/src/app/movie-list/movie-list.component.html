@@ -1,0 +1,140 @@
+<!--
+  movie-list.component.html — LEGACY version
+  LEGACY PATTERNS: *ngIf="obs$ | async as name", *ngSwitch/*ngSwitchCase, *ngFor with trackBy
+
+  Compare with the MODERN version in SampleCode/src/app/movie-list/movie-list.component.html
+-->
+
+<div class="movie-list">
+
+  <!-- =================================================================
+       LEGACY: async pipe with *ngIf="obs$ | async as name"
+
+       This was the only way before Angular 17 to:
+         1. Subscribe to an Observable
+         2. Unwrap the value into a local variable
+         3. Show a loading state while waiting
+
+       Problem: the *ngIf="... as name" pattern is awkward.
+         - The truthy check and the variable assignment are tangled together.
+         - A Movie object with value 0 or false would be treated as falsy!
+         - You also need a separate [ngIf]="!featured" for the loading state,
+           which subscribes to the Observable a SECOND time.
+
+       MODERN REPLACEMENT:
+         @if (featuredMovie$ | async; as featured) { ... } @else { ... }
+         Cleaner: the truthy check and variable binding are explicit and separate.
+  ==================================================================== -->
+  <div class="featured-section">
+    <h3>Featured Movie <em>(async pipe — loads after 1.5s)</em></h3>
+
+    <!--
+      LEGACY: *ngIf="featuredMovie$ | async as featured"
+      'featured' holds the emitted Movie object when the Observable has a value.
+      When the Observable hasn't emitted yet, *ngIf is falsy → block is hidden.
+    -->
+    <div *ngIf="featuredMovie$ | async as featured">
+      <div class="featured-card">
+        <h4>{{ featured.title | uppercase }}</h4>
+        <p>🗓 {{ featured.releaseDate | date:'MMMM d, y' }}</p>
+        <p>🎟 Tickets from {{ featured.ticketPrice | currency }}</p>
+      </div>
+    </div>
+
+    <!--
+      LEGACY: A second *ngIf="!(featuredMovie$ | async)" for the loading state.
+      This creates TWO subscriptions to the same Observable — wasteful.
+      The async pipe will subscribe twice.
+
+      MODERN REPLACEMENT: @else { } handles this with a single subscription.
+    -->
+    <div *ngIf="!(featuredMovie$ | async)" class="loading-state">
+      <p>⏳ Loading featured movie…</p>
+    </div>
+  </div>
+
+  <!-- Filter buttons -->
+  <div class="filter-section">
+    <h3>All Movies</h3>
+    <div class="genre-filters">
+      <!--
+        LEGACY: *ngFor with trackBy — trackBy is OPTIONAL here.
+        The trackByGenre method is defined on the class.
+        MODERN REPLACEMENT: @for (genre of genres; track genre) — track is required.
+      -->
+      <button
+        *ngFor="let genre of genres; trackBy: trackByGenre"
+        (click)="setGenre(genre)"
+        class="btn-filter"
+        [ngClass]="{ 'btn-filter--active': selectedGenre === genre }"
+      >
+        {{ genre === '' ? 'All' : genre }}
+      </button>
+    </div>
+  </div>
+
+  <!-- =================================================================
+       LEGACY: *ngFor + *ngSwitch for the movie list
+
+       MODERN REPLACEMENTS:
+         @for (movie of movies | filter:selectedGenre; track movie.id)
+         @switch (movie.genre) { @case ('action') { ... } }
+  ==================================================================== -->
+  <div
+    *ngFor="let movie of movies | filter:selectedGenre; trackBy: trackByMovieId"
+    class="movie-card"
+  >
+    <div class="movie-card__header">
+      <h4 class="movie-card__title">{{ movie.title | uppercase }}</h4>
+
+      <!--
+        LEGACY: [ngSwitch] is a directive placed on a wrapper element.
+        *ngSwitchCase and *ngSwitchDefault are structural directives on child elements.
+        This requires a real DOM wrapper element (<span> here) just to host [ngSwitch].
+
+        MODERN REPLACEMENT:
+          @switch (movie.genre) {
+            @case ('action') { ... }
+            @default { ... }
+          }
+        No wrapper element needed — the block IS the switch.
+      -->
+      <span [ngSwitch]="movie.genre">
+        <span *ngSwitchCase="'action'" class="genre-badge genre-badge--action">💥 Action</span>
+        <span *ngSwitchCase="'comedy'" class="genre-badge genre-badge--comedy">😂 Comedy</span>
+        <span *ngSwitchCase="'drama'"  class="genre-badge genre-badge--drama">🎭 Drama</span>
+        <span *ngSwitchCase="'sci-fi'" class="genre-badge genre-badge--scifi">🚀 Sci-Fi</span>
+        <span *ngSwitchDefault         class="genre-badge">🎬 {{ movie.genre }}</span>
+      </span>
+    </div>
+
+    <!-- TruncatePipe and DatePipe — same syntax in legacy and modern -->
+    <p class="movie-card__description">{{ movie.description | truncate:80 }}</p>
+
+    <div class="movie-card__meta">
+      <span>📅 {{ movie.releaseDate | date:'mediumDate' }}</span>
+      <span>🎟 {{ movie.ticketPrice | currency }}</span>
+    </div>
+
+    <!-- [ngStyle] — unchanged between legacy and modern -->
+    <div class="rating-bar-track">
+      <div class="rating-bar" [ngStyle]="getRatingBarStyle(movie.rating)">
+        ★ {{ movie.rating }}/5
+      </div>
+    </div>
+
+  </div>
+
+  <!--
+    LEGACY: *ngIf for the "no results" message.
+    Requires calling the pipe again or using a class getter — extra boilerplate.
+    MODERN: @empty block inside @for handles this automatically.
+  -->
+  <p
+    *ngIf="(movies | filter:selectedGenre).length === 0"
+    class="no-results"
+  >
+    No movies match the selected genre.
+  </p>
+
+</div>

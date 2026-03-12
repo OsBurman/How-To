@@ -1,0 +1,30 @@
+/* layout-card.component.css — scoped to LayoutCardComponent only */
+
+.layout-card {
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.layout-card__header {
+  background: #1a1a2e;
+  color: white;
+  padding: 1rem 1.5rem;
+}
+
+.layout-card__header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.layout-card__body {
+  padding: 1.25rem 1.5rem;
+}
+
+.layout-card__footer {
+  background: #f5f7fa;
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid #e0e0e0;
+}

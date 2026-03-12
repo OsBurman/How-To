@@ -1,0 +1,121 @@
+<!--
+  task-list.component.html — LEGACY version
+  LEGACY PATTERNS: *ngIf, *ngFor with trackBy, [ngClass], *ngIf="expr as name" workaround
+
+  Compare with the MODERN version in SampleCode/src/app/task-list/task-list.component.html
+-->
+
+<div class="task-list-wrapper">
+
+  <!--
+    LEGACY: No @let. Instead, use a class getter (completedCount) defined in the TypeScript.
+    The modern @let lets you define template-local variables inline without class boilerplate.
+
+    MODERN REPLACEMENT:
+      @let completedCount = tasks.filter(t => t.status === 'done').length;
+  -->
+
+  <!-- Header: uses the getter for the completed count -->
+  <div class="task-list__header">
+    <h3>Project Tasks</h3>
+
+    <!--
+      LEGACY: *ngIf for conditional rendering.
+      The #elseBlock syntax is required — you must name the <ng-template> and reference it.
+      MODERN REPLACEMENT: @if (completedCount > 0) { ... } @else { ... }
+    -->
+    <span
+      *ngIf="completedCount > 0; else noProgress"
+      class="progress-note"
+    >
+      ✅ {{ completedCount }} of {{ tasks.length }} tasks completed
+    </span>
+
+    <!-- The #noProgress template renders when *ngIf is false -->
+    <ng-template #noProgress>
+      <span class="progress-note progress-note--pending">
+        🕓 No tasks completed yet
+      </span>
+    </ng-template>
+  </div>
+
+  <!--
+    ng-template — still valid in legacy code.
+    Referenced by name via *ngTemplateOutlet.
+    MODERN: still uses ng-template + [ngTemplateOutlet]; no change to this pattern.
+  -->
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <p>🗂️ No tasks to display.</p>
+      <p>Click "Show Tasks" to bring them back.</p>
+    </div>
+  </ng-template>
+
+  <button (click)="toggleEmptyDemo()" class="btn-toggle">
+    {{ showEmptyDemo ? 'Show Tasks' : 'Show Empty State Demo' }}
+  </button>
+
+  <!--
+    LEGACY: *ngIf on a <div> wrapper.
+    The wrapper <div> appears in the DOM when the condition is true.
+    MODERN REPLACEMENT: @if (!showEmptyDemo) { ... }
+    Advantage: @if does not require a wrapper element — the block IS the conditional.
+  -->
+  <div *ngIf="!showEmptyDemo">
+
+    <!--
+      LEGACY: *ngFor with trackBy.
+      trackBy is OPTIONAL — many developers forgot it, causing full list re-renders on change.
+      The trackBy function must be defined on the component class.
+
+      MODERN REPLACEMENT:
+        @for (task of tasks; track task.id)
+        track is REQUIRED — the compiler will not accept @for without it.
+    -->
+    <div
+      *ngFor="let task of tasks; trackBy: trackByTaskId"
+      class="task-card"
+      [ngClass]="{
+        'task-card--done':        task.status === 'done',
+        'task-card--in-progress': task.status === 'in-progress',
+        'task-card--high':        task.priority === 'high'
+      }"
+    >
+      <!--
+        [ngClass] object syntax — unchanged between legacy and modern.
+        The syntax is identical; what changed is where NgClass comes from:
+        LEGACY:  CommonModule in AppModule provides NgClass globally.
+        MODERN:  Import NgClass directly in the component's imports array.
+      -->
+
+      <div class="task-card__header">
+        <span class="task-card__title">{{ task.title }}</span>
+
+        <!--
+          LEGACY: *ngIf on a <span> wrapper — adds an extra DOM element.
+          MODERN REPLACEMENT: ng-container + @if
+          ng-container avoids the extra DOM node; @if replaces the directive syntax.
+        -->
+        <span *ngIf="task.priority === 'high'" class="badge badge--high">
+          🔴 High Priority
+        </span>
+      </div>
+
+      <p class="task-card__description">{{ task.description }}</p>
+
+      <span [ngClass]="'status-badge status-badge--' + task.status">
+        {{ task.status }}
+      </span>
+    </div>
+
+  </div>
+
+  <!--
+    LEGACY: *ngIf + *ngTemplateOutlet to render the #emptyState template.
+    MODERN REPLACEMENT: @else { <ng-container [ngTemplateOutlet]="emptyState"> }
+  -->
+  <ng-container *ngIf="showEmptyDemo">
+    <ng-container *ngTemplateOutlet="emptyState"></ng-container>
+  </ng-container>
+
+</div>

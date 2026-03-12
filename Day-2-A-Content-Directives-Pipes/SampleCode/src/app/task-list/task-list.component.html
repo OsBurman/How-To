@@ -1,0 +1,154 @@
+<!--
+  task-list.component.html
+  CONCEPTS: @let, @if/@else, ng-template, ng-container, @for with track, [ngClass]
+-->
+
+<div class="task-list-wrapper">
+
+  <!--
+    @let — defines a LOCAL TEMPLATE VARIABLE.
+    Introduced in Angular 18. Available in Angular 18+ (this project uses Angular 19).
+
+    IMPORTANT: @let is NOT a signal — it re-evaluates on every change detection cycle,
+    not reactively. Defining it here avoids writing the same filter expression twice below.
+
+    @let completedCount = tasks.filter(t => t.status === 'done').length;
+    ↑ this runs every time change detection runs, not on demand.
+  -->
+  @let completedCount = tasks.filter(t => t.status === 'done').length;
+
+  <!-- Header row: uses @let value in both interpolation AND @if -->
+  <div class="task-list__header">
+    <h3>Project Tasks</h3>
+
+    <!--
+      @if / @else — conditional rendering.
+      @if uses the @let variable — avoids computing the count a second time.
+      The @else block here uses simple inline content (no ng-template required).
+    -->
+    @if (completedCount > 0) {
+      <span class="progress-note">
+        ✅ {{ completedCount }} of {{ tasks.length }} tasks completed
+      </span>
+    } @else {
+      <span class="progress-note progress-note--pending">
+        🕓 No tasks completed yet
+      </span>
+    }
+  </div>
+
+  <!--
+    ng-template — defines a REUSABLE template block.
+    This block renders NOTHING on its own.
+    Angular only renders it when told to via [ngTemplateOutlet].
+
+    The #emptyState template reference makes this block addressable.
+    Use case: the same empty-state UI needs to appear in multiple places
+    without duplicating the markup.
+  -->
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <p>🗂️ No tasks to display.</p>
+      <p>Click "Show Tasks" to bring them back.</p>
+    </div>
+  </ng-template>
+
+  <!-- Toggle button for the ng-template / empty-state demo -->
+  <button (click)="toggleEmptyDemo()" class="btn-toggle">
+    {{ showEmptyDemo ? 'Show Tasks' : 'Show Empty State Demo' }}
+  </button>
+
+  <!--
+    @if / @else with ng-template rendered via [ngTemplateOutlet].
+
+    When showEmptyDemo is false: render the @for task list below.
+    When showEmptyDemo is true:  render the #emptyState ng-template via NgTemplateOutlet.
+
+    NgTemplateOutlet is the MODERN way to render a template reference.
+    The legacy equivalent was: <ng-container *ngTemplateOutlet="emptyState">
+  -->
+  @if (!showEmptyDemo) {
+
+    <!--
+      @for — iterates over the tasks array and renders one block per item.
+
+      track task.id is REQUIRED in Angular 17+.
+      'track' tells Angular which property uniquely identifies each item.
+      Without track: Angular destroys and recreates all DOM nodes on every update.
+      With track:    Angular reuses existing DOM nodes, only updating what changed.
+      Use a stable, unique identifier (like a database id) — never track by index
+      unless the list is static and never reordered.
+    -->
+    @for (task of tasks; track task.id) {
+
+      <!--
+        ng-container — a GROUPING ELEMENT that adds NO DOM node.
+        Inspect the page in DevTools: you will see .task-card directly in the DOM.
+        There is no wrapper element from ng-container — it leaves zero footprint.
+
+        Use ng-container when you need to group elements or apply directives
+        without adding an extra <div> or <span> to the rendered HTML.
+      -->
+      <ng-container>
+        <div
+          class="task-card"
+          [ngClass]="{
+            'task-card--done':        task.status === 'done',
+            'task-card--in-progress': task.status === 'in-progress',
+            'task-card--high':        task.priority === 'high'
+          }"
+        >
+          <!--
+            [ngClass] OBJECT syntax — the most common form.
+            Each key is a CSS class name. Each value is a boolean expression.
+            Angular adds the class when the expression is truthy.
+            Multiple classes can be active at the same time.
+          -->
+
+          <div class="task-card__header">
+            <span class="task-card__title">{{ task.title }}</span>
+
+            <!--
+              ng-container: apply @if without adding any DOM wrapper element.
+              The high-priority badge only appears for high-priority tasks.
+              Inspect the DOM: no extra element wraps the badge.
+            -->
+            <ng-container>
+              @if (task.priority === 'high') {
+                <span class="badge badge--high">🔴 High Priority</span>
+              }
+            </ng-container>
+          </div>
+
+          <p class="task-card__description">{{ task.description }}</p>
+
+          <!--
+            [ngClass] STRING EXPRESSION syntax.
+            Evaluates to a string of space-separated class names.
+            Useful when the class name itself is dynamic (includes a variable).
+          -->
+          <span [ngClass]="'status-badge status-badge--' + task.status">
+            {{ task.status }}
+          </span>
+
+        </div>
+      </ng-container>
+
+    } @empty {
+      <!--
+        @empty — optional block inside @for.
+        Renders when the iterable has zero items.
+        This covers the case where tasks[] is empty from the start.
+      -->
+      <p class="no-items">No tasks in the list.</p>
+    }
+
+  } @else {
+    <!--
+      Render the #emptyState ng-template via [ngTemplateOutlet].
+      NgTemplateOutlet must be imported in this component's imports array.
+    -->
+    <ng-container [ngTemplateOutlet]="emptyState"></ng-container>
+  }
+
+</div>

@@ -1,0 +1,44 @@
+/* styles.css — Global styles for Day 2 Part A sample project
+ *
+ * These styles apply to the whole app.
+ * Component-specific styles go in each component's own .css file.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1a1a2e;
+  background: #f0f2f5;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 0.5rem 0;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0 0 0.75rem 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+small {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
