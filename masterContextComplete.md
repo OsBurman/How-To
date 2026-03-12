@@ -400,8 +400,7 @@ OUTPUT FOLDER: Save all generated files in `Day-1-A-Angular-Foundation/Exercises
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
-src/ structure but includes ONLY the files students need to create or modify — not config
-files, not unchanged files. Pure code files so students can compare their work file-by-file.
+src/ structure but with the exercises now completed. Pure code files so students can compare their work file-by-file.
 
 File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
 
@@ -1036,8 +1035,7 @@ OUTPUT FOLDER: Save all generated files in `Day-1-B-Templates-and-Communication/
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
-src/ structure but includes ONLY the files students need to create or modify — not config
-files, not unchanged files. Pure code files so students can compare their work file-by-file.
+src/ structure but with the exercises now completed. Pure code files so students can compare their work file-by-file.
 
 File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
 
@@ -1640,8 +1638,7 @@ OUTPUT FOLDER: Save all generated files in `Day-2-A-Content-Directives-Pipes/Exe
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
-src/ structure but includes ONLY the files students need to create or modify — not config
-files, not unchanged files. Pure code files so students can compare their work file-by-file.
+src/ structure but with the exercises now completed. Pure code files so students can compare their work file-by-file.
 
 File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
 
@@ -2196,8 +2193,7 @@ OUTPUT FOLDER: Save all generated files in `Day-2-B-Signals/Exercises-Solutions/
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
-src/ structure but includes ONLY the files students need to create or modify — not config
-files, not unchanged files. Pure code files so students can compare their work file-by-file.
+src/ structure but with the exercises now completed. Pure code files so students can compare their work file-by-file.
 
 File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
 
@@ -2797,8 +2793,7 @@ OUTPUT FOLDER: Save all generated files in `Day-3-A-Services-DI-RxJS/Exercises-S
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
-src/ structure but includes ONLY the files students need to create or modify — not config
-files, not unchanged files. Pure code files so students can compare their work file-by-file.
+src/ structure but with the exercises now completed. Pure code files so students can compare their work file-by-file.
 
 File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
 
@@ -3366,8 +3361,7 @@ OUTPUT FOLDER: Save all generated files in `Day-3-B-HTTP-Async-Data/Exercises-So
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
-src/ structure but includes ONLY the files students need to create or modify — not config
-files, not unchanged files. Pure code files so students can compare their work file-by-file.
+src/ structure but with the exercises now completed. Pure code files so students can compare their work file-by-file.
 
 File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
 
@@ -3973,8 +3967,7 @@ OUTPUT FOLDER: Save all generated files in `Day-4-A-Routing/Exercises-Solutions/
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
-src/ structure but includes ONLY the files students need to create or modify — not config
-files, not unchanged files. Pure code files so students can compare their work file-by-file.
+src/ structure but with the exercises now completed. Pure code files so students can compare their work file-by-file.
 
 File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
 
@@ -4552,8 +4545,7 @@ OUTPUT FOLDER: Save all generated files in `Day-4-B-Forms/Exercises-Solutions/`.
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
-src/ structure but includes ONLY the files students need to create or modify — not config
-files, not unchanged files. Pure code files so students can compare their work file-by-file.
+src/ structure but with the exercises now completed. Pure code files so students can compare their work file-by-file.
 
 File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
 
@@ -5161,8 +5153,7 @@ OUTPUT FOLDER: Save all generated files in `Day-5-A-Testing/Exercises-Solutions/
 
 For each exercise, create an `Exercise-N-Solution/` folder (e.g.,
 `Exercise-1-Solution/`, `Exercise-2-Solution/`). Each solution folder mirrors the exercise's
-src/ structure but includes ONLY the files students need to create or modify — not config
-files, not unchanged files. Pure code files so students can compare their work file-by-file.
+src/ structure but with the exercises now completed. Pure code files so students can compare their work file-by-file.
 
 File label format: ### Exercise-1-Solution/src/app/component/component.component.ts
 
