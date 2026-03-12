@@ -1,0 +1,61 @@
+<!-- product-list.component.html — Exercise 6: Product Catalogue -->
+
+<!--
+  TASKS — all your work is in this file.
+
+  The pipe classes are already imported in product-list.component.ts.
+  You only need to apply them in the bindings below.
+
+  STEP 1 — date pipe
+  Find every {{ product.launchDate }} binding and apply the date pipe:
+    {{ product.launchDate | date:'mediumDate' }}
+
+  STEP 2 — currency pipe
+  Find every {{ product.price }} binding and apply the currency pipe:
+    {{ product.price | currency }}
+
+  STEP 3 — uppercase pipe
+  Find every {{ product.category }} binding and apply the uppercase pipe:
+    {{ product.category | uppercase }}
+
+  STEP 4 — Pipe arguments  (once Steps 1-3 are working)
+  Try different format arguments:
+    date:'longDate'       vs   date:'mediumDate'   vs   date:'shortDate'
+    currency:'EUR'        vs   currency:'GBP':'symbol'
+
+  STEP 5 — Pipe chaining  (once Steps 1-3 are working)
+  In one category cell, chain uppercase and slice together:
+    {{ product.category | uppercase | slice:0:6 }}
+  Verify it transforms left to right — uppercase runs first, then slice truncates.
+-->
+
+<div class="product-list">
+  <h2>Product Catalogue</h2>
+
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Launch Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track product.id) {
+        <tr class="product-row">
+          <td class="product-name">{{ product.name }}</td>
+
+          <!-- TODO Step 3: apply | uppercase to the category -->
+          <td>{{ product.category }}</td>
+
+          <!-- TODO Step 2: apply | currency to the price -->
+          <td>{{ product.price }}</td>
+
+          <!-- TODO Step 1: apply | date:'mediumDate' to the launch date -->
+          <td>{{ product.launchDate }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

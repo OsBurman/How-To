@@ -1,0 +1,94 @@
+<!-- app.component.html — Exercise 8: Event Dashboard (CHALLENGE) -->
+
+<!--
+  This is a CHALLENGE exercise. All concepts from Day 2 Part A are combined here.
+  Work through the steps in order — each builds on the last.
+
+  WHAT'S PROVIDED:
+  - Event interface, sample data, getCategoryLabel() method in app.component.ts
+  - EventCardComponent shell with TODO slots (event-card.component.ts/.html)
+  - FilterPipe and ExcerptPipe (provided, complete — do not modify)
+  - All imports already in AppComponent.imports[]
+
+  WHAT YOU BUILD: Everything in this file and app.component.css (plus EventCardComponent).
+
+  ─────────────────────────────────────────────────────────────────────────────
+  STEP 1 — @let: define upcomingCount
+  At the top of this template, add:
+    @let upcomingCount = events | filter:'isPast':false;
+
+  STEP 2 — Header
+  Replace "Events Dashboard" below with:
+    <h1>Events Dashboard <span>({{ upcomingCount.length }} upcoming)</span></h1>
+
+  STEP 3 — @if / @else with ng-template
+  Wrap the raw list in an @if block:
+    @if (events.length > 0) {
+      ... your list goes here ...
+    } @else {
+      <ng-template [ngTemplateOutlet]="noEvents"></ng-template>
+    }
+  And define the fallback:
+    <ng-template #noEvents>
+      <p class="empty-state">No events scheduled. Check back soon!</p>
+    </ng-template>
+
+  STEP 4 — @for with track
+  Replace the raw <div> list below with:
+    @for (event of events; track event.id) { ... }
+
+  STEP 5 — ng-container inside the loop
+  Wrap the @switch block and <app-event-card> inside <ng-container> so they
+  are logically grouped without adding a DOM element.
+
+  STEP 6 — <app-event-card> with named slots and [ngStyle]
+  Inside the loop, replace the raw data lines with an <app-event-card>:
+    <app-event-card [borderColor]="event.accentColor">
+      <div event-image> ... emoji or placeholder image ... </div>
+      <div event-meta>
+        <strong>{{ event.title }}</strong>
+        <span>{{ event.date | date:'fullDate' }}</span>
+        <span>{{ event.price | currency }}</span>
+        <span [ngClass]="'badge-' + event.category">
+          {{ getCategoryLabel(event.category) }}
+        </span>
+        <p>{{ event.description | excerpt:100 }}</p>
+      </div>
+      <div event-actions>
+        <button>Book Now</button>
+      </div>
+    </app-event-card>
+
+  STEP 7 — [ngClass] badge classes
+  The [ngClass]="'badge-' + event.category" pattern is already shown above.
+  Define .badge-music, .badge-sport, .badge-tech, .badge-food in app.component.css.
+
+  STEP 8 — Summary footer
+  After the @if block, add a summary paragraph:
+    <p class="summary">{{ upcomingCount.length }} upcoming events</p>
+  This shows @let is available throughout the full template scope.
+
+  STEP 9 — Empty state test
+  Temporarily set events = [] in the class. Verify the ng-template fallback shows.
+  Restore the array.
+  ─────────────────────────────────────────────────────────────────────────────
+-->
+
+<div class="dashboard">
+
+  <!-- TODO Step 2: replace this header with the @let-driven version -->
+  <h1>Events Dashboard</h1>
+
+  <!-- TODO Steps 3–8: build the event list here -->
+  <!-- Starter: raw data so you can see what the app currently renders -->
+  <div class="raw-list">
+    @for (event of events; track event.id) {
+      <div class="raw-event">
+        <strong>{{ event.title }}</strong>
+        — {{ event.category }} | {{ event.date }} | ${{ event.price }}
+        | isPast: {{ event.isPast }}
+      </div>
+    }
+  </div>
+
+</div>

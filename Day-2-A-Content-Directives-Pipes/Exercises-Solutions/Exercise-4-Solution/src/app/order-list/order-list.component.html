@@ -1,0 +1,56 @@
+<!-- order-list.component.html — Exercise 4 SOLUTION -->
+<!-- CONCEPTS: @switch / @case, [ngClass] -->
+
+<div class="order-list">
+  <h2>Order Tracker</h2>
+
+  <table class="order-table">
+    <thead>
+      <tr>
+        <th>Reference</th>
+        <th>Customer</th>
+        <th>Total</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (order of orders; track order.id) {
+        <tr class="order-row">
+          <td>{{ order.reference }}</td>
+          <td>{{ order.customer }}</td>
+          <td>£{{ order.total }}</td>
+          <td>
+            <!--
+              SOLUTION: @switch replaces the raw {{ order.status }} text.
+              Each @case renders a <span> with a human-readable label.
+              [ngClass] uses the shorthand string expression to build the
+              class name dynamically from the data: 'badge-' + order.status
+              → 'badge-pending', 'badge-shipped', etc.
+              The matching CSS class is defined in order-list.component.css.
+            -->
+            @switch (order.status) {
+              @case ('pending') {
+                <span class="badge" [ngClass]="'badge-pending'">Pending</span>
+              }
+              @case ('processing') {
+                <span class="badge" [ngClass]="'badge-processing'">Processing</span>
+              }
+              @case ('shipped') {
+                <span class="badge" [ngClass]="'badge-shipped'">Shipped</span>
+              }
+              @case ('delivered') {
+                <span class="badge" [ngClass]="'badge-delivered'">Delivered</span>
+              }
+              @case ('cancelled') {
+                <span class="badge" [ngClass]="'badge-cancelled'">Cancelled</span>
+              }
+              @default {
+                <span class="badge">Unknown</span>
+              }
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,37 @@
+<!-- event-card.component.html — Exercise 8: Event Dashboard -->
+
+<!--
+  TASKS (Step 2c):
+  Replace each <!-- TODO --> comment below with the correct named <ng-content> slot.
+
+  The three slot attribute names to use are:
+    [event-image]    — the event poster / image area
+    [event-meta]     — the title, date, price, and category badge
+    [event-actions]  — buttons or links
+
+  Syntax: <ng-content select="[event-image]"></ng-content>
+
+  ALSO (Step 2a — done in the .ts file):
+  Once borderColor is added as an @Input(), uncomment the [ngStyle] binding
+  on .card-wrapper below so the accent colour works.
+-->
+
+<!-- [ngStyle] binding commented out until borderColor @Input is added (Step 2a) -->
+<!-- <div class="card-wrapper" [ngStyle]="{ 'border-left-color': borderColor }"> -->
+<div class="card-wrapper">
+
+  <div class="card-image">
+    <!-- TODO Step 2c: add <ng-content select="[event-image]"></ng-content> here -->
+  </div>
+
+  <div class="card-body">
+    <div class="card-meta">
+      <!-- TODO Step 2c: add <ng-content select="[event-meta]"></ng-content> here -->
+    </div>
+
+    <div class="card-actions">
+      <!-- TODO Step 2c: add <ng-content select="[event-actions]"></ng-content> here -->
+    </div>
+  </div>
+
+</div>

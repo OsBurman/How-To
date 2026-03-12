@@ -1,0 +1,80 @@
+<!-- app.component.html — Exercise 5 SOLUTION -->
+<!-- CONCEPTS: [ngStyle], [ngClass] -->
+
+<div class="playground">
+  <h1>Style Playground</h1>
+
+  <!-- ===== PREVIEW AREA ===== -->
+  <!--
+    STEP 1 SOLUTION — [ngStyle]
+    [ngStyle] takes an object where keys are CSS property names (quoted, hyphenated)
+    and values are expressions from the component.
+    'font-size.px': fontSize sets font-size to the value of fontSize in pixels.
+    Angular accepts the .px shorthand — it appends 'px' automatically.
+    'color' and 'background-color' take the hex string from the colour pickers.
+
+    STEP 2 SOLUTION — [ngClass]
+    [ngClass] takes an object where keys are CSS class names and values are boolean
+    expressions. When isBold is true, Angular adds the 'text-bold' class.
+    When highContrast is true, Angular adds the 'high-contrast' class.
+    Both classes are defined in app.component.css.
+  -->
+  <div
+    class="preview-box"
+    [ngStyle]="{ 'font-size.px': fontSize, 'color': textColor, 'background-color': bgColor }"
+    [ngClass]="{ 'text-bold': isBold, 'high-contrast': highContrast }"
+  >
+    <p>
+      The quick brown fox jumps over the lazy dog.
+      Pack my box with five dozen liquor jugs.
+    </p>
+  </div>
+
+  <!-- ===== CONTROLS ===== -->
+  <div class="controls">
+
+    <div class="control-group">
+      <label for="fontSize">Font size: {{ fontSize }}px</label>
+      <input
+        id="fontSize"
+        type="range"
+        min="10"
+        max="36"
+        [(ngModel)]="fontSize"
+      />
+    </div>
+
+    <div class="control-group">
+      <label for="textColor">Text colour</label>
+      <input
+        id="textColor"
+        type="color"
+        [(ngModel)]="textColor"
+      />
+    </div>
+
+    <div class="control-group">
+      <label for="bgColor">Background colour</label>
+      <input
+        id="bgColor"
+        type="color"
+        [(ngModel)]="bgColor"
+      />
+    </div>
+
+    <div class="control-group control-group--checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="isBold" />
+        Bold text
+      </label>
+    </div>
+
+    <div class="control-group control-group--checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="highContrast" />
+        High contrast mode
+      </label>
+    </div>
+
+  </div>
+</div>

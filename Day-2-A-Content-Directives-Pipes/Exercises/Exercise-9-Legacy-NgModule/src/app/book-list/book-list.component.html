@@ -1,0 +1,61 @@
+<!-- book-list.component.html — Exercise 9: LEGACY template -->
+<!-- This file uses structural directives from the pre-Angular-17 era. -->
+<!-- Read each directive carefully — your job is to convert them to modern @if/@for/@switch. -->
+
+<div class="book-list">
+  <h2>Book Catalogue</h2>
+
+  <!--
+    LEGACY: *ngIf for conditional rendering
+    Modern equivalent: @if (books.length > 0) { ... } @else { <ng-template [ngTemplateOutlet]="emptyState" /> }
+  -->
+  <ng-container *ngIf="books.length > 0; else emptyState">
+
+    <!--
+      LEGACY: *ngFor with trackBy
+      Modern equivalent: @for (book of books; track book.id)
+      Note: trackBy was OPTIONAL in *ngFor — forgetting it caused performance bugs.
+      In @for, track is REQUIRED — Angular enforces what was previously just a recommendation.
+    -->
+    <div class="book-cards">
+      <div class="book-card" *ngFor="let book of books; trackBy: trackById">
+
+        <div class="book-header">
+          <h3>{{ book.title }}</h3>
+          <p class="book-author">{{ book.author }}</p>
+        </div>
+
+        <div class="book-meta">
+          <!-- genre and date use built-in pipes from CommonModule (via BrowserModule) -->
+          <span class="genre-tag">{{ book.genre | titlecase }}</span>
+          <span class="publish-date">{{ book.publishedDate | date:'mediumDate' }}</span>
+          <span class="price">{{ book.price | currency }}</span>
+        </div>
+
+        <p class="book-description">
+          <!-- TruncatePipe is declared in AppModule — no import needed in this component -->
+          {{ book.description | truncate:120 }}
+        </p>
+
+        <!--
+          LEGACY: [ngSwitch] + *ngSwitchCase for conditional rendering based on a value.
+          Modern equivalent: @switch (book.status) { @case ('available') { ... } }
+          The status badge component is used here but we pass a plain @Input instead.
+        -->
+        <app-status-badge [status]="book.status"></app-status-badge>
+
+      </div>
+    </div>
+
+  </ng-container>
+
+  <!--
+    LEGACY: <ng-template> referenced by *ngIf's else clause above.
+    Modern equivalent: @else { <ng-template [ngTemplateOutlet]="emptyState" /> }
+    or just: @else { <p>No books found.</p> }
+  -->
+  <ng-template #emptyState>
+    <p class="empty-state">No books in the catalogue yet.</p>
+  </ng-template>
+
+</div>

@@ -1,0 +1,79 @@
+<!-- task-list.component.html — Exercise 3 SOLUTION -->
+<!-- CONCEPTS: @let, @if / @else, ng-template, @for with track, ng-container -->
+
+<div class="task-list-container">
+
+  <!--
+    STEP 1 SOLUTION — @let
+    @let defines a template-local, read-only variable.
+    FilterPipe is pure: it re-evaluates when the tasks reference changes.
+    The result is available anywhere in this template.
+    NOTE: @let is NOT a signal — it re-evaluates on change detection, not reactively.
+  -->
+  @let incompleteTasks = tasks | filter:'completed':false;
+
+  <div class="task-list-header">
+    <h2>
+      My Tasks
+      <!--
+        STEP 2 SOLUTION — using incompleteTasks.length from @let above
+        This is the first of two places @let is used in this template.
+      -->
+      <span class="incomplete-badge">{{ incompleteTasks.length }} incomplete</span>
+    </h2>
+  </div>
+
+  <!--
+    STEP 3 SOLUTION — @if / @else with ng-template reference
+    @if checks tasks.length > 0.
+    @else references the #emptyState ng-template defined below (Step 4).
+    ngTemplateOutlet is imported in the component to support this pattern.
+  -->
+  @if (tasks.length > 0) {
+    <ul class="task-list">
+      <!--
+        STEP 5 SOLUTION — @for with required track
+        track task.id lets Angular identify which DOM nodes to reuse when
+        the array changes. Without track, @for will not compile.
+      -->
+      @for (task of tasks; track task.id) {
+        <li class="task-item" [class.completed]="task.completed">
+          <!--
+            STEP 6 SOLUTION — ng-container inside the loop
+            <ng-container> groups the title and due date spans as siblings
+            without adding any extra DOM element.
+          -->
+          <span class="task-check">{{ task.completed ? '✓' : '○' }}</span>
+          <ng-container>
+            <span class="task-title">{{ task.title }}</span>
+            <span class="task-due">Due: {{ task.dueDate }}</span>
+          </ng-container>
+        </li>
+      }
+    </ul>
+  } @else {
+    <!--
+      @else renders the ng-template referenced by #emptyState.
+      NgTemplateOutlet is imported in the component class.
+    -->
+    <ng-template [ngTemplateOutlet]="emptyState"></ng-template>
+  }
+
+  <!--
+    STEP 4 SOLUTION — ng-template for the empty state
+    This block is NOT rendered by default.
+    It only renders when referenced by the @else block above.
+    Remove all tasks (set tasks = []) to see this appear.
+  -->
+  <ng-template #emptyState>
+    <p class="empty-state">No tasks yet. Add one above.</p>
+  </ng-template>
+
+  <!--
+    STEP 7 SOLUTION — second use of incompleteTasks.length
+    @let is scoped to the full template, so the same variable works here.
+    This demonstrates that you define the count once and use it everywhere.
+  -->
+  <p class="task-summary">Showing {{ incompleteTasks.length }} incomplete tasks.</p>
+
+</div>

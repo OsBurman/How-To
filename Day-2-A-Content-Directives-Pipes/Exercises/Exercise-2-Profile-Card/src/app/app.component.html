@@ -1,0 +1,54 @@
+<!-- app.component.html — Exercise 2: Profile Card with Named Slots -->
+<!--
+  This template is COMPLETE. Do not edit it until Step 6 (add a second card).
+
+  Each child element carries an attribute that matches a named slot in
+  ProfileCardComponent. Once you add the <ng-content select="..."> slots,
+  Angular routes each element to the correct position inside the card.
+
+  Right now the slots are empty — open profile-card.component.html to add them.
+  Then open profile-card.component.ts to implement ngAfterContentInit.
+-->
+
+<h1>Profile Cards</h1>
+
+<!-- Card 1 -->
+<app-profile-card>
+  <div card-header>
+    <img src="https://i.pravatar.cc/64?img=12" alt="Avatar" style="border-radius:50%;width:64px;height:64px;">
+    <span style="font-size:1.1rem;font-weight:600;margin-left:0.75rem;">Priya Sharma</span>
+  </div>
+
+  <div card-body>
+    <p>Full-stack developer with a passion for Angular and accessible UIs.
+       Currently building open-source design systems.</p>
+  </div>
+
+  <div card-footer>
+    <button>Follow</button>
+    <button style="margin-left:0.5rem;">Message</button>
+  </div>
+</app-profile-card>
+
+<!--
+  Step 6: Uncomment the second card below, save, and confirm that
+  ngAfterContentInit fires twice (once per instance).
+-->
+
+<!--
+<app-profile-card>
+  <div card-header>
+    <img src="https://i.pravatar.cc/64?img=33" alt="Avatar" style="border-radius:50%;width:64px;height:64px;">
+    <span style="font-size:1.1rem;font-weight:600;margin-left:0.75rem;">Marcus Webb</span>
+  </div>
+
+  <div card-body>
+    <p>DevOps engineer who automates everything that moves. Speaker at CloudConf 2025.</p>
+  </div>
+
+  <div card-footer>
+    <button>Follow</button>
+    <button style="margin-left:0.5rem;">Message</button>
+  </div>
+</app-profile-card>
+-->

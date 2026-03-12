@@ -1,0 +1,6 @@
+/* book-card.component.css — Exercise 9: LEGACY */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

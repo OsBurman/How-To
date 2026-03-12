@@ -1,0 +1,40 @@
+<!-- event-card.component.html — Exercise 8 SOLUTION -->
+<!-- CONCEPTS: Named ng-content slots with select, [ngStyle] -->
+
+<!--
+  STEP 2a + 2c SOLUTION:
+  - [ngStyle] is now active on .card-wrapper using the borderColor @Input value
+  - Three named <ng-content> slots replace the TODO comments
+  
+  The parent fills the slots like this:
+    <app-event-card [borderColor]="event.accentColor">
+      <div event-image> ... </div>
+      <div event-meta> ... </div>
+      <div event-actions> ... </div>
+    </app-event-card>
+
+  The select attribute uses CSS attribute selectors:
+    select="[event-image]" matches any element with the event-image attribute.
+-->
+
+<!-- [ngStyle] applies borderColor as the card's left border colour -->
+<div class="card-wrapper" [ngStyle]="{ 'border-left-color': borderColor }">
+
+  <div class="card-image">
+    <!-- Slot 1: the event poster / image area -->
+    <ng-content select="[event-image]"></ng-content>
+  </div>
+
+  <div class="card-body">
+    <div class="card-meta">
+      <!-- Slot 2: the event title, date, price, and category badge -->
+      <ng-content select="[event-meta]"></ng-content>
+    </div>
+
+    <div class="card-actions">
+      <!-- Slot 3: buttons or links -->
+      <ng-content select="[event-actions]"></ng-content>
+    </div>
+  </div>
+
+</div>

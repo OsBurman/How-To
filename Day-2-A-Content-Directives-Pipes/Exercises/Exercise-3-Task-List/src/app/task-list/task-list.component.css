@@ -1,0 +1,81 @@
+/* task-list.component.css — Exercise 3: Task List */
+
+.task-list-container {
+  max-width: 560px;
+}
+
+.task-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.task-list-header h2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.incomplete-badge {
+  font-size: 0.8rem;
+  background: #e3f2fd;
+  color: #1565c0;
+  border-radius: 12px;
+  padding: 0.2rem 0.6rem;
+  font-weight: 500;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.task-item.placeholder {
+  color: #adb5bd;
+  font-style: italic;
+}
+
+.task-check {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  color: #28a745;
+}
+
+.task-title {
+  flex: 1;
+  font-weight: 500;
+}
+
+.task-due {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.task-summary {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.empty-state {
+  padding: 2rem;
+  text-align: center;
+  background: #ffffff;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  color: #6c757d;
+}

@@ -1,0 +1,29 @@
+<!-- profile-card.component.html — Exercise 2 SOLUTION -->
+<!-- CONCEPTS: Named ng-content slots with select -->
+
+<!--
+  SOLUTION: Three named slots replace the TODO comments.
+  Each slot's select attribute is a CSS attribute selector.
+  select="[card-header]" matches any element the parent marks with card-header —
+    e.g. <div card-header>, <header card-header>, <span card-header>
+  Content that does not match any select is silently discarded.
+-->
+
+<div class="profile-card">
+
+  <div class="card-header-region">
+    <!-- Slot 1: matches elements with the card-header attribute -->
+    <ng-content select="[card-header]"></ng-content>
+  </div>
+
+  <div class="card-body-region">
+    <!-- Slot 2: matches elements with the card-body attribute -->
+    <ng-content select="[card-body]"></ng-content>
+  </div>
+
+  <div class="card-footer-region">
+    <!-- Slot 3: matches elements with the card-footer attribute -->
+    <ng-content select="[card-footer]"></ng-content>
+  </div>
+
+</div>

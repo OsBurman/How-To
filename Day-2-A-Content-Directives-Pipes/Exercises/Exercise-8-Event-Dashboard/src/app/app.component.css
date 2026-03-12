@@ -1,0 +1,107 @@
+/* app.component.css — Exercise 8: Event Dashboard */
+
+.dashboard {
+  max-width: 740px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: sans-serif;
+}
+
+h1 {
+  color: #1e293b;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+h1 span {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #64748b;
+}
+
+/* Starter raw list — remove this section once you build the real list */
+.raw-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.raw-event {
+  padding: 0.6rem 0.75rem;
+  background: #fff;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #475569;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Event list layout */
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+/* Summary footer */
+.summary {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+  color: #64748b;
+  text-align: right;
+}
+
+/* Category badge base */
+[class^='badge-'] {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* TODO Step 7: define colours for each badge class */
+.badge-music {
+  background-color: #fdf4ff; /* TODO: customise */
+  color: #86198f;
+}
+
+.badge-sport {
+  background-color: #f0fdf4; /* TODO: customise */
+  color: #166534;
+}
+
+.badge-tech {
+  background-color: #eff6ff; /* TODO: customise */
+  color: #1d4ed8;
+}
+
+.badge-food {
+  background-color: #fff7ed; /* TODO: customise */
+  color: #c2410c;
+}
+
+/* Book Now button */
+button {
+  padding: 0.4rem 0.9rem;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #2563eb;
+}

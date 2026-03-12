@@ -1,0 +1,51 @@
+/* product-list.component.css — Exercise 6: Product Catalogue */
+
+.product-list {
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+  font-size: 1.4rem;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background: #f1f5f9;
+}
+
+th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e2e8f0;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.product-row:hover td {
+  background: #f8fafc;
+}
+
+.product-name {
+  font-weight: 500;
+  color: #0f172a;
+}

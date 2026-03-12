@@ -1,0 +1,17 @@
+/* alert-box.component.css — Exercise 1 SOLUTION */
+/* CONCEPT: ng-content single-slot projection */
+
+/*
+  SOLUTION: The border-left and background styles are applied to .alert-box.
+  These are what make the projected content visually obvious.
+  The projected content itself is unstyled by this component — that is correct.
+  ViewEncapsulation means styles defined here apply only inside this component.
+*/
+
+.alert-box {
+  border-left: 4px solid #e67e22;   /* accent border — makes projection visible */
+  background: #fef9f4;              /* light warm background */
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}

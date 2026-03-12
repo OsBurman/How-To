@@ -1,0 +1,17 @@
+/* alert-box.component.css — Exercise 1: Alert Box */
+
+/*
+  TASK (Step 5): Add a left border and a background colour to .alert-box
+  to make the content projection visually obvious.
+
+  Starter styles are provided below. Uncomment and adjust them, or write your own.
+*/
+
+.alert-box {
+  /* TODO: uncomment and customise these styles */
+  /* border-left: 4px solid #e67e22; */
+  /* background: #fef9f4; */
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}

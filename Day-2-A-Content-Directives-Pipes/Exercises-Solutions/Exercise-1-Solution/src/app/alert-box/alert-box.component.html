@@ -1,0 +1,13 @@
+<!-- alert-box.component.html — Exercise 1 SOLUTION -->
+<!-- CONCEPT: ng-content single-slot projection -->
+
+<!--
+  SOLUTION: <ng-content> replaces the TODO comment.
+  Angular inserts whatever HTML the parent placed between
+  <app-alert-box> ... </app-alert-box> right here.
+  The component provides the visual frame; the parent provides the content.
+-->
+
+<div class="alert-box">
+  <ng-content></ng-content>
+</div>

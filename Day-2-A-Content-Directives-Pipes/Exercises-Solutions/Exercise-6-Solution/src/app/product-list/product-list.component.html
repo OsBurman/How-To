@@ -1,0 +1,58 @@
+<!-- product-list.component.html — Exercise 6 SOLUTION -->
+<!-- CONCEPTS: date pipe, currency pipe, uppercase pipe, pipe arguments, pipe chaining -->
+
+<!--
+  SOLUTION summary:
+  - STEP 1: | date:'mediumDate' formats the ISO date string as "Mar 15, 2024"
+  - STEP 2: | currency formats the number as a USD string: "$249.99"
+  - STEP 3: | uppercase transforms the category to all caps: "AUDIO"
+  - STEP 4: | date:'longDate' shows the full date: "March 15, 2024"
+            | currency:'EUR' formats as a Euro amount: "€249.99"
+  - STEP 5: | uppercase | slice:0:6 chains two pipes left to right:
+            uppercase runs first ("ACCESSORIES"), then slice takes first 6 chars ("ACCESS")
+
+  Pipe syntax quick reference:
+    {{ value | pipeName }}                basic use
+    {{ value | pipeName:arg }}            one argument
+    {{ value | pipeName:arg1:arg2 }}      multiple arguments
+    {{ value | pipe1 | pipe2 }}           chaining
+-->
+
+<div class="product-list">
+  <h2>Product Catalogue</h2>
+
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Launch Date</th>
+        <th>Alt Date</th>
+        <th>Chained</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track product.id) {
+        <tr class="product-row">
+          <td class="product-name">{{ product.name }}</td>
+
+          <!-- STEP 3 SOLUTION: uppercase pipe -->
+          <td>{{ product.category | uppercase }}</td>
+
+          <!-- STEP 2 SOLUTION: currency pipe — defaults to USD symbol -->
+          <td>{{ product.price | currency }}</td>
+
+          <!-- STEP 1 SOLUTION: date pipe with mediumDate format -->
+          <td>{{ product.launchDate | date:'mediumDate' }}</td>
+
+          <!-- STEP 4 SOLUTION: date pipe with longDate format argument -->
+          <td>{{ product.launchDate | date:'longDate' }}</td>
+
+          <!-- STEP 5 SOLUTION: chaining uppercase | slice:0:6 left to right -->
+          <td>{{ product.category | uppercase | slice:0:6 }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

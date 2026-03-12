@@ -1,0 +1,77 @@
+<!-- modern/book-list/book-list.component.html — Exercise 9 SOLUTION -->
+<!-- CONCEPTS: @if/@else, ng-template, @for with track — replacing *ngIf, *ngFor -->
+
+<!--
+  CONVERSION SUMMARY:
+  
+  BEFORE (legacy):
+    <ng-container *ngIf="books.length > 0; else emptyState">
+      <div *ngFor="let book of books; trackBy: trackById">
+    </ng-container>
+    <ng-template #emptyState>...</ng-template>
+
+  AFTER (modern):
+    @if (books.length > 0) { ... } @else { ... }
+    @for (book of books; track book.id) { ... }
+
+  Key differences:
+  - @if/@else replaces *ngIf + ng-container wrapper — no wrapper needed
+  - @for replaces *ngFor — track is REQUIRED (was optional with trackBy)
+  - The #emptyState ng-template is absorbed directly into the @else block
+  - No NgTemplateOutlet needed for the @else block in the modern pattern
+  - No trackById method needed — track expression is inline
+-->
+
+<div class="book-list">
+  <h2>Book Catalogue</h2>
+
+  <!--
+    SOLUTION: @if / @else replaces:
+      <ng-container *ngIf="books.length > 0; else emptyState">
+    The ng-container wrapper is no longer needed — @if is a block, not a directive.
+  -->
+  @if (books.length > 0) {
+
+    <div class="book-cards">
+      <!--
+        SOLUTION: @for replaces:
+          <div *ngFor="let book of books; trackBy: trackById">
+        track book.id is required — Angular enforces what *ngFor's trackBy made optional.
+        No trackById method needed — the track expression is inline.
+      -->
+      @for (book of books; track book.id) {
+        <div class="book-card">
+
+          <div class="book-header">
+            <h3>{{ book.title }}</h3>
+            <p class="book-author">{{ book.author }}</p>
+          </div>
+
+          <div class="book-meta">
+            <!-- TitleCasePipe, DatePipe, CurrencyPipe: imported directly in imports[] -->
+            <span class="genre-tag">{{ book.genre | titlecase }}</span>
+            <span class="publish-date">{{ book.publishedDate | date:'mediumDate' }}</span>
+            <span class="price">{{ book.price | currency }}</span>
+          </div>
+
+          <p class="book-description">
+            <!-- TruncatePipe: standalone: true — imported directly in imports[] -->
+            {{ book.description | truncate:120 }}
+          </p>
+
+          <!-- StatusBadgeComponent: standalone — imported directly -->
+          <app-status-badge [status]="book.status"></app-status-badge>
+
+        </div>
+      }
+    </div>
+
+  } @else {
+    <!--
+      SOLUTION: @else block absorbs the legacy <ng-template #emptyState>.
+      No NgTemplateOutlet reference needed — the content is inline in the @else.
+    -->
+    <p class="empty-state">No books in the catalogue yet.</p>
+  }
+
+</div>

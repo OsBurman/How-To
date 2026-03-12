@@ -1,0 +1,33 @@
+<!-- app.component.html — Exercise 1: Alert Box -->
+<!--
+  This template is COMPLETE. Do not edit it.
+
+  Three <app-alert-box> elements each contain different projected content.
+  Right now that content is silently discarded — AlertBoxComponent has no
+  <ng-content> placeholder yet. Your task is to add one.
+
+  Open src/app/alert-box/alert-box.component.html and follow the TODO.
+-->
+
+<h1>Alert Boxes</h1>
+
+<!-- Alert 1: a heading + paragraph -->
+<app-alert-box>
+  <h3>System Update</h3>
+  <p>A new version is available. Please refresh the page to apply the update.</p>
+</app-alert-box>
+
+<!-- Alert 2: a plain message -->
+<app-alert-box>
+  Your session will expire in 5 minutes. Save your work now.
+</app-alert-box>
+
+<!-- Alert 3: a list of items -->
+<app-alert-box>
+  <strong>Action required:</strong>
+  <ul>
+    <li>Confirm your email address</li>
+    <li>Accept the updated terms of service</li>
+    <li>Set a recovery phone number</li>
+  </ul>
+</app-alert-box>

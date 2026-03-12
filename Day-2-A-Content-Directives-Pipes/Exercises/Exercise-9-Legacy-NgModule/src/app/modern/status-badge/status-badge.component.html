@@ -1,0 +1,37 @@
+<!-- modern/status-badge/status-badge.component.html — Exercise 9: MODERN SKELETON -->
+
+<!--
+  LEGACY REFERENCE — what this template currently does in src/app/status-badge/
+  ─────────────────────────────────────────────────────────────────────────────
+  <span [ngSwitch]="status">
+    <span *ngSwitchCase="'available'"   class="badge badge-available">Available</span>
+    <span *ngSwitchCase="'checked-out'" class="badge badge-checked-out">Checked Out</span>
+    <span *ngSwitchCase="'reserved'"    class="badge badge-reserved">Reserved</span>
+    <span *ngSwitchDefault              class="badge">Unknown</span>
+  </span>
+
+  [ngSwitch] + *ngSwitchCase is the legacy structural directive pattern.
+  Modern Angular replaces it with @switch / @case / @default blocks.
+-->
+
+<!-- TODO Step 5 — Replace this placeholder with a modern @switch block.
+     The structure is:
+
+     @switch (status) {
+       @case ('available') {
+         <span class="badge badge-available">Available</span>
+       }
+       @case ('checked-out') {
+         <span class="badge badge-checked-out">Checked Out</span>
+       }
+       @case ('reserved') {
+         <span class="badge badge-reserved">Reserved</span>
+       }
+       @default {
+         <span class="badge">Unknown</span>
+       }
+     }
+
+     Note: @switch does not support [ngClass] binding. Use separate classes per @case instead.
+-->
+<span class="badge">{{ status }}</span>

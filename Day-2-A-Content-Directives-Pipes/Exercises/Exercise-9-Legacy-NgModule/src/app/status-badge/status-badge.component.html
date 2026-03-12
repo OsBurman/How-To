@@ -1,0 +1,22 @@
+<!-- status-badge.component.html — Exercise 9: LEGACY -->
+<!--
+  LEGACY: [ngSwitch] + *ngSwitchCase + *ngSwitchDefault
+
+  The host element carries [ngSwitch]="status".
+  Each child uses *ngSwitchCase="'value'" to conditionally render.
+  The default case uses *ngSwitchDefault.
+
+  Modern equivalent:
+    @switch (status) {
+      @case ('available')   { <span class="badge available">Available</span>   }
+      @case ('checked-out') { <span class="badge checked-out">Checked Out</span> }
+      @case ('reserved')    { <span class="badge reserved">Reserved</span>   }
+      @default              { <span class="badge">Unknown</span>               }
+    }
+-->
+<span [ngSwitch]="status">
+  <span *ngSwitchCase="'available'"   class="badge available">Available</span>
+  <span *ngSwitchCase="'checked-out'" class="badge checked-out">Checked Out</span>
+  <span *ngSwitchCase="'reserved'"    class="badge reserved">Reserved</span>
+  <span *ngSwitchDefault              class="badge">Unknown</span>
+</span>

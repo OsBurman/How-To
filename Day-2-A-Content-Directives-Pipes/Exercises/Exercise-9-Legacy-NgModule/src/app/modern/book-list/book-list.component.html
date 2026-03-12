@@ -1,0 +1,59 @@
+<!-- modern/book-list/book-list.component.html — Exercise 9: MODERN skeleton -->
+<!--
+  TODO Step 7: Convert every legacy structural directive in this template.
+
+  REFERENCE: Open src/app/book-list/book-list.component.html to see the legacy version.
+
+  CONVERSION MAP:
+  ┌─────────────────────────────────────────────────────────────────────────────┐
+  │ LEGACY                                  │ MODERN                           │
+  ├─────────────────────────────────────────┼──────────────────────────────────┤
+  │ *ngIf="expr; else #tmpl"               │ @if (expr) { } @else { }         │
+  │ *ngFor="let x of arr; trackBy: fn"     │ @for (x of arr; track x.id)      │
+  │ [ngSwitch]="val" + *ngSwitchCase="'a'" │ @switch (val) { @case ('a') { } }│
+  └─────────────────────────────────────────┴──────────────────────────────────┘
+
+  Keep the same visual output as the legacy version.
+-->
+
+<div class="book-list">
+  <h2>Book Catalogue</h2>
+
+  <!--
+    TODO: Replace this *ngIf / *ngFor / [ngSwitch] structure with modern @if/@for/@switch.
+
+    STEP A — @if / @else
+    Convert: <ng-container *ngIf="books.length > 0; else emptyState">
+    To:      @if (books.length > 0) { ... } @else { ... }
+
+    STEP B — @for with track
+    Convert: *ngFor="let book of books; trackBy: trackById"
+    To:      @for (book of books; track book.id) { ... }
+    Note: no trackById method needed — @for uses track directly.
+
+    STEP C — ng-template for empty state
+    The @else branch can reference an ng-template or inline the content directly:
+      @else {
+        <p class="empty-state">No books in the catalogue yet.</p>
+      }
+  -->
+
+  <!-- Legacy HTML left as a comment for reference while you work -->
+  <!--
+  <ng-container *ngIf="books.length > 0; else emptyState">
+    <div class="book-cards">
+      <div class="book-card" *ngFor="let book of books; trackBy: trackById">
+        ... book card content ...
+        <app-status-badge [status]="book.status"></app-status-badge>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #emptyState>
+    <p class="empty-state">No books in the catalogue yet.</p>
+  </ng-template>
+  -->
+
+  <!-- TODO: write the modern version below this line -->
+  <p class="placeholder">TODO: convert the legacy template above to @if/@for and update the component class.</p>
+
+</div>

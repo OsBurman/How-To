@@ -1,0 +1,104 @@
+<!-- task-list.component.html — Exercise 3: Task List with Control Flow -->
+
+<!--
+  TASKS: Complete each TODO below. Read the comments carefully before writing code.
+
+  CONCEPT SUMMARY:
+  - @let    — defines a template-local variable; re-evaluates on change detection (NOT a signal)
+  - @if     — conditionally renders a block; @else references an <ng-template>
+  - @for    — iterates over an array; track is REQUIRED
+  - ng-container — invisible grouping element; adds no DOM node
+  - ng-template  — deferred block; renders only when referenced (e.g., by @else)
+-->
+
+<div class="task-list-container">
+
+  <!--
+    STEP 1 — @let
+    Define a local variable that holds all incomplete tasks.
+    FilterPipe is already imported in the component.
+
+    Syntax:  @let variableName = expression;
+
+    TODO: uncomment and complete the line below
+  -->
+  <!-- @let incompleteTasks = tasks | filter:'completed':false; -->
+
+  <div class="task-list-header">
+    <h2>
+      My Tasks
+      <!--
+        STEP 2 — use incompleteTasks.length here
+        TODO: replace the 0 with {{ incompleteTasks.length }} once you've defined @let above
+      -->
+      <span class="incomplete-badge">0 incomplete</span>
+    </h2>
+  </div>
+
+  <!--
+    STEP 3 — @if / @else with ng-template
+    Show the task list when tasks exist; show the empty state when the array is empty.
+
+    Syntax:
+      @if (condition) {
+        ... content when true ...
+      } @else {
+        <ng-template [ngTemplateOutlet]="emptyState"></ng-template>
+      }
+
+    TODO: wrap the <ul> below in an @if / @else block.
+    Reference #emptyState as the else template (defined in Step 4).
+  -->
+
+  <ul class="task-list">
+    <!--
+      STEP 5 — @for with track
+      Iterate over tasks and render one <li> per task.
+
+      Syntax:
+        @for (item of array; track item.id) {
+          <li>{{ item.title }}</li>
+        }
+
+      TODO: replace this placeholder <li> with a @for loop that iterates over tasks,
+      using track task.id.
+    -->
+    <li class="task-item placeholder">Your tasks will appear here...</li>
+
+    <!--
+      STEP 6 — ng-container inside the loop
+      Inside each <li>, group the task title and due date using <ng-container>
+      so they are siblings without an extra wrapping <div>.
+
+      TODO: after adding @for, replace the placeholder <li> content with:
+        <ng-container>
+          <span class="task-title">{{ task.title }}</span>
+          <span class="task-due">Due: {{ task.dueDate }}</span>
+        </ng-container>
+        Also add a checkmark span: <span class="task-check">{{ task.completed ? '✓' : '○' }}</span>
+    -->
+  </ul>
+
+  <!--
+    STEP 4 — ng-template for the empty state
+    This block renders nothing by default. It only renders when referenced by @else.
+
+    Syntax:
+      <ng-template #referenceName>
+        content shown when the condition is false
+      </ng-template>
+
+    TODO: add an <ng-template #emptyState> block below with a paragraph:
+      "No tasks yet. Add one above."
+  -->
+
+
+  <!--
+    STEP 7 — use incompleteTasks.length a second time
+    This shows that @let is scoped to the whole template and can be used anywhere.
+
+    TODO: replace the 0 below with {{ incompleteTasks.length }} once @let is defined.
+  -->
+  <p class="task-summary">Showing 0 incomplete tasks.</p>
+
+</div>

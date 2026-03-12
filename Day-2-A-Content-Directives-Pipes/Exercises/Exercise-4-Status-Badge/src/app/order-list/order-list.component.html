@@ -1,0 +1,57 @@
+<!-- order-list.component.html — Exercise 4: Order Status Badge -->
+
+<!--
+  TASKS:
+
+  STEP 1 — @switch / @case
+  Find the <!-- TODO: @switch --> comment inside each order row.
+  Replace the raw {{ order.status }} text with a @switch block:
+
+    @switch (order.status) {
+      @case ('pending')    { <span>Pending</span>    }
+      @case ('processing') { <span>Processing</span> }
+      @case ('shipped')    { <span>Shipped</span>    }
+      @case ('delivered')  { <span>Delivered</span>  }
+      @case ('cancelled')  { <span>Cancelled</span>  }
+      @default             { <span>Unknown</span>    }
+    }
+
+  STEP 2 — [ngClass]
+  Add [ngClass] to each <span> in the switch cases to apply a colour class.
+  Use the shorthand: [ngClass]="'badge-' + order.status"
+  This builds the class name from the data (e.g., 'badge-pending', 'badge-shipped').
+
+  STEP 3 — CSS classes
+  Open order-list.component.css and define:
+    .badge-pending, .badge-processing, .badge-shipped, .badge-delivered, .badge-cancelled
+  Each with a distinct background colour.
+-->
+
+<div class="order-list">
+  <h2>Orders</h2>
+
+  <table class="order-table">
+    <thead>
+      <tr>
+        <th>Reference</th>
+        <th>Customer</th>
+        <th>Total</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (order of orders; track order.id) {
+        <tr class="order-row">
+          <td class="order-ref">{{ order.reference }}</td>
+          <td>{{ order.customer }}</td>
+          <td>${{ order.total.toFixed(2) }}</td>
+          <td>
+            <!-- TODO: replace the raw status text below with a @switch block (Step 1)
+                 and add [ngClass] to each <span> (Step 2) -->
+            <span>{{ order.status }}</span>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

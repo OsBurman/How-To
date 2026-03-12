@@ -1,0 +1,84 @@
+/* order-list.component.css — Exercise 4: Order Status Badge */
+
+.order-list {
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background: #f1f5f9;
+}
+
+th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.order-row:hover td {
+  background: #f8fafc;
+}
+
+.order-ref {
+  font-family: monospace;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* --- Badge base class --- */
+/* Every status <span> will also need a colour class from Step 2 */
+span {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* --- TODO (Step 3): Replace each background-color with your chosen colour --- */
+/* Suggestions: pending=amber, processing=blue, shipped=indigo, delivered=green, cancelled=red */
+
+.badge-pending {
+  background-color: transparent; /* TODO: replace with e.g. #fef3c7; color: #92400e; */
+}
+
+.badge-processing {
+  background-color: transparent; /* TODO: replace with e.g. #dbeafe; color: #1d4ed8; */
+}
+
+.badge-shipped {
+  background-color: transparent; /* TODO: replace with e.g. #ede9fe; color: #6d28d9; */
+}
+
+.badge-delivered {
+  background-color: transparent; /* TODO: replace with e.g. #dcfce7; color: #166534; */
+}
+
+.badge-cancelled {
+  background-color: transparent; /* TODO: replace with e.g. #fee2e2; color: #991b1b; */
+}

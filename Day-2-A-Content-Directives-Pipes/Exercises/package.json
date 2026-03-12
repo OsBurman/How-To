@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "workspaces": [
+    "Exercise-1-Alert-Box",
+    "Exercise-2-Profile-Card",
+    "Exercise-3-Task-List",
+    "Exercise-4-Status-Badge",
+    "Exercise-5-Style-Playground",
+    "Exercise-6-Product-Catalogue",
+    "Exercise-7-Word-Count-Pipe",
+    "Exercise-8-Event-Dashboard",
+    "Exercise-9-Legacy-NgModule"
+  ]
+}

@@ -1,0 +1,122 @@
+<!-- app.component.html — Exercise 8 SOLUTION -->
+<!-- CONCEPTS: @let, @if/@else, ng-template, @for, ng-container, named ng-content,
+              [ngClass], date pipe, currency pipe, uppercase pipe, ExcerptPipe -->
+
+<div class="dashboard">
+
+  <!--
+    STEP 1 SOLUTION — @let: define upcomingCount at the template root.
+    FilterPipe is pure and already imported in the component.
+    upcomingCount is available anywhere in this template.
+    @let is NOT a signal — it re-evaluates on change detection.
+  -->
+  @let upcomingCount = events | filter:'isPast':false;
+
+  <!--
+    STEP 2 SOLUTION — use upcomingCount.length in the header.
+    First of two uses of the @let variable.
+  -->
+  <h1>Events Dashboard <span>({{ upcomingCount.length }} upcoming)</span></h1>
+
+  <!--
+    STEP 3 SOLUTION — @if / @else with ng-template fallback.
+    When events.length > 0, the list renders.
+    When events is empty, Angular renders the #noEvents ng-template.
+  -->
+  @if (events.length > 0) {
+
+    <div class="event-list">
+      <!--
+        STEP 4 SOLUTION — @for with required track.
+        track event.id uniquely identifies each DOM node for efficient updates.
+      -->
+      @for (event of events; track event.id) {
+
+        <!--
+          STEP 5 SOLUTION — ng-container groups the contents without adding a DOM node.
+          The @switch block and <app-event-card> are logically grouped here.
+        -->
+        <ng-container>
+
+          <!--
+            STEP 6 SOLUTION — <app-event-card> with named slots and [borderColor].
+            Each slot attribute (event-image, event-meta, event-actions) matches
+            the corresponding <ng-content select="..."> in event-card.component.html.
+            The parent controls the layout content; the child controls the card frame.
+          -->
+          <app-event-card [borderColor]="event.accentColor">
+
+            <!-- Slot 1: emoji placeholder for the event image -->
+            <div event-image class="event-emoji">
+              @switch (event.category) {
+                @case ('music') { 🎵 }
+                @case ('sport') { 🏃 }
+                @case ('tech')  { 💻 }
+                @case ('food')  { 🍜 }
+                @default        { 📅 }
+              }
+            </div>
+
+            <!-- Slot 2: title, date, price, category badge, and description -->
+            <div event-meta class="event-meta-content">
+              <strong class="event-title">{{ event.title }}</strong>
+
+              <div class="event-details">
+                <!-- date pipe with fullDate format: "Tuesday, August 12, 2026" -->
+                <span class="event-date">{{ event.date | date:'fullDate' }}</span>
+
+                <!-- currency pipe defaults to USD -->
+                <span class="event-price">{{ event.price | currency }}</span>
+
+                <!--
+                  STEP 7 SOLUTION — [ngClass] badge.
+                  String shorthand builds the class name from the data:
+                  'badge-' + 'music' = 'badge-music', etc.
+                  getCategoryLabel() provides the human-readable label
+                  because @let cannot be conditionally assigned inside @switch.
+                -->
+                <span [ngClass]="'badge-' + event.category">
+                  {{ getCategoryLabel(event.category) }}
+                </span>
+              </div>
+
+              <!-- ExcerptPipe truncates at the nearest word boundary before 100 chars -->
+              <p class="event-description">{{ event.description | excerpt:100 }}</p>
+
+              <!-- Show "Past event" label for events that already happened -->
+              @if (event.isPast) {
+                <span class="past-label">Past event</span>
+              }
+            </div>
+
+            <!-- Slot 3: action button -->
+            <div event-actions>
+              <button [disabled]="event.isPast">
+                {{ event.isPast ? 'View Details' : 'Book Now' }}
+              </button>
+            </div>
+
+          </app-event-card>
+
+        </ng-container>
+
+      }
+    </div>
+
+  } @else {
+    <!-- @else renders the #noEvents ng-template when the events array is empty -->
+    <ng-template [ngTemplateOutlet]="noEvents"></ng-template>
+  }
+
+  <!-- ng-template for the empty state — invisible until @else references it -->
+  <ng-template #noEvents>
+    <p class="empty-state">No events scheduled. Check back soon!</p>
+  </ng-template>
+
+  <!--
+    STEP 8 SOLUTION — second use of upcomingCount.length.
+    @let is scoped to the full template — the same variable is available here.
+  -->
+  <p class="summary">{{ upcomingCount.length }} upcoming events</p>
+
+</div>

@@ -1,0 +1,78 @@
+<!-- app.component.html — Exercise 7: Word Count Pipe -->
+
+<div class="workspace">
+  <h1>Word Count & Excerpt Pipe</h1>
+
+  <!-- ===== PART A: WordCountPipe ===== -->
+  <section class="card">
+    <h2>Part A — Word Count</h2>
+    <p class="instruction">
+      Implement <code>WordCountPipe</code> in <code>src/app/pipes/word-count.pipe.ts</code>.
+      The pipe is already wired up below — it will show <strong>? words</strong> until
+      your implementation is in place.
+    </p>
+
+    <label for="messageInput">Type something:</label>
+    <textarea
+      id="messageInput"
+      [(ngModel)]="message"
+      rows="4"
+    ></textarea>
+
+    <div class="stat-bar">
+      <!-- WordCountPipe is applied here — implement it in word-count.pipe.ts -->
+      <span class="stat">{{ message | wordCount }}</span>
+    </div>
+  </section>
+
+  <!-- ===== PART B: ExcerptPipe ===== -->
+  <section class="card">
+    <h2>Part B — Excerpt</h2>
+    <p class="instruction">
+      Implement <code>ExcerptPipe</code> in <code>src/app/pipes/excerpt.pipe.ts</code>.
+      Until implemented, the full article body will appear below.
+    </p>
+
+    <h3>{{ article.title }}</h3>
+
+    <!-- ExcerptPipe is applied with a limit of 120 characters -->
+    <!-- Implement it so the text is truncated at the nearest word boundary -->
+    <p class="article-body">{{ article.body | excerpt:120 }}</p>
+
+    <p class="hint">
+      Try different limits: <code>excerpt:50</code>, <code>excerpt:200</code>
+    </p>
+  </section>
+
+  <!-- ===== PART C: Pure Pipe Mutation ===== -->
+  <section class="card">
+    <h2>Part C — Pure Pipe Mutation</h2>
+    <p class="instruction">
+      The notes list below is passed through the <code>nonEmpty</code> pipe.
+      Click <strong>Add Note</strong> and observe that the list does NOT update.
+      Then open <code>app.component.ts</code> and fix the <code>addNote()</code> method.
+    </p>
+
+    <div class="note-input">
+      <input
+        type="text"
+        [(ngModel)]="newNote"
+        placeholder="Type a note..."
+      />
+      <button (click)="addNote()">Add Note</button>
+    </div>
+
+    <ul class="note-list">
+      <!-- nonEmpty is a PROVIDED pure pipe — filters out empty strings -->
+      <!-- Because it is pure, it only re-runs when the array REFERENCE changes -->
+      @for (note of notes | nonEmpty; track note) {
+        <li>{{ note }}</li>
+      }
+    </ul>
+
+    <p class="hint">
+      After the fix: adding a note creates a new array reference.
+      The pipe sees a different reference and re-runs. The list updates.
+    </p>
+  </section>
+</div>
