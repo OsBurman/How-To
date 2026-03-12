@@ -1,0 +1,100 @@
+/* Global styles for Exercise 7 — Signals Preview */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  color: #1a202c;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+/* Temperature display area */
+.temp-display {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.temp-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2b6cb0;
+}
+
+.temp-secondary {
+  font-size: 1.5rem;
+  color: #4a5568;
+  margin-top: 0.25rem;
+}
+
+.temp-description {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* Button group */
+.button-group {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.button-group button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+}
+
+.button-group button:hover {
+  transform: translateY(-1px);
+}
+
+.button-group button:active {
+  transform: translateY(0);
+}
+
+.btn-increase {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.btn-increase:hover {
+  background-color: #c53030;
+}
+
+.btn-decrease {
+  background-color: #3182ce;
+  color: white;
+}
+
+.btn-decrease:hover {
+  background-color: #2b6cb0;
+}
+
+.btn-reset {
+  background-color: #718096;
+  color: white;
+}
+
+.btn-reset:hover {
+  background-color: #4a5568;
+}

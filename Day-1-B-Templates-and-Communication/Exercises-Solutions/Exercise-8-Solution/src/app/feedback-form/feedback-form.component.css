@@ -1,0 +1,25 @@
+/* Scoped styles for FeedbackFormComponent */
+
+:host {
+  display: block;
+}
+
+.form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.char-count {
+  font-size: 0.8rem;
+  color: #718096;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}

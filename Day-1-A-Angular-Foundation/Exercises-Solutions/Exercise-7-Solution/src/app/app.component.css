@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+h1 { color: #1a1a2e; margin-bottom: 0.5rem; }
+p { color: #555; margin-bottom: 1.5rem; }

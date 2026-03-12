@@ -1,0 +1,22 @@
+<!-- Message Card — displays a single message with like functionality -->
+<div class="message-card">
+  <!-- Author name — built in ngOnInit from @Input() -->
+  <div class="message-author">{{ displayAuthor }}</div>
+
+  <!-- Message text — safe navigation in case message is null -->
+  <div class="message-text">{{ message?.text ?? 'No message' }}</div>
+
+  <!-- Footer: like button + timestamp -->
+  <div class="message-footer">
+    <!-- Like button — event binding + conditional CSS class via property binding -->
+    <button
+      class="like-btn"
+      [class.liked]="message?.liked"
+      (click)="onLike()">
+      {{ message?.liked ? '❤️' : '🤍' }} {{ message?.likes ?? 0 }}
+    </button>
+
+    <!-- Posted time — safe navigation -->
+    <span class="message-time">{{ message?.postedAt ?? '' }}</span>
+  </div>
+</div>

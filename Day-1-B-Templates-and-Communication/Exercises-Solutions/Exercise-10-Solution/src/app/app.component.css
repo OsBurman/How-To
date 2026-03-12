@@ -1,0 +1,21 @@
+/* Scoped styles for AppComponent — Message Board parent */
+
+:host {
+  display: block;
+}
+
+.board-container {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.board-subtitle {
+  text-align: center;
+  color: #718096;
+  margin-bottom: 1.5rem;
+}

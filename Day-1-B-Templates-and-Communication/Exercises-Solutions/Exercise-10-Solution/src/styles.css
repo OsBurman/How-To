@@ -1,0 +1,120 @@
+/* Global styles for Exercise 10 — Message Board */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7fafc;
+  color: #1a202c;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+/* Message card styles */
+.message-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #48bb78;
+}
+
+.message-author {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #2f855a;
+  margin-bottom: 0.25rem;
+}
+
+.message-text {
+  color: #2d3748;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.message-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.like-btn {
+  background: none;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.like-btn:hover {
+  border-color: #e53e3e;
+  color: #e53e3e;
+}
+
+.like-btn.liked {
+  border-color: #e53e3e;
+  background: #fff5f5;
+  color: #e53e3e;
+}
+
+.message-time {
+  font-size: 0.8rem;
+  color: #a0aec0;
+}
+
+/* New message form */
+.new-message-form {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.new-message-form input,
+.new-message-form textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  transition: border-color 0.2s;
+}
+
+.new-message-form input:focus,
+.new-message-form textarea:focus {
+  outline: none;
+  border-color: #48bb78;
+}
+
+.post-btn {
+  background-color: #48bb78;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.post-btn:hover:not(:disabled) {
+  background-color: #38a169;
+}
+
+.post-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

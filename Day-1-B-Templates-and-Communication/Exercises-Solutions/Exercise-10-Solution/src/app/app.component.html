@@ -1,0 +1,40 @@
+<!-- Exercise 10 — Message Board: Legacy NgModule App -->
+<!-- This is a FULLY WORKING legacy app. Run it first, then convert to modern standalone. -->
+<div class="board-container">
+  <h1>💬 Message Board</h1>
+  <p class="board-subtitle">{{ messages.length }} messages</p>
+
+  <!-- New message form — uses two-way binding with [(ngModel)] -->
+  <div class="new-message-form">
+    <input
+      type="text"
+      placeholder="Your name (optional)"
+      [(ngModel)]="newAuthor">
+    <textarea
+      rows="2"
+      placeholder="Write a message..."
+      [(ngModel)]="newText"></textarea>
+    <button
+      class="post-btn"
+      [disabled]="newText.trim().length === 0"
+      (click)="addMessage()">
+      Post Message
+    </button>
+  </div>
+
+  <!-- Message cards — rendered manually (no @for yet) -->
+  <app-message-card
+    [message]="messages[0]"
+    (toggleLike)="onToggleLike($event)">
+  </app-message-card>
+
+  <app-message-card
+    [message]="messages[1]"
+    (toggleLike)="onToggleLike($event)">
+  </app-message-card>
+
+  <app-message-card
+    [message]="messages[2]"
+    (toggleLike)="onToggleLike($event)">
+  </app-message-card>
+</div>

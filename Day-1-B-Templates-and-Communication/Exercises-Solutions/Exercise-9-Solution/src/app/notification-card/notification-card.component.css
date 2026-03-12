@@ -1,0 +1,5 @@
+/* Scoped styles for NotificationCardComponent */
+
+:host {
+  display: block;
+}

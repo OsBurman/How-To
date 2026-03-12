@@ -1,0 +1,57 @@
+/* Global styles for Exercise 6 — Lifecycle Hooks */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 24px;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+h1 {
+  color: #1976d2;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+  margin: 8px 4px;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+.toggle-area {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.timer-container {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+.timer-value {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #1976d2;
+  line-height: 1;
+}
+
+.timer-status {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 8px;
+}

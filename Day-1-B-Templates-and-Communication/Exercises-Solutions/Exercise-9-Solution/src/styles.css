@@ -1,0 +1,88 @@
+/* Global styles for Exercise 9 — Notification Center */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7fafc;
+  color: #1a202c;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+/* Notification card styles */
+.notification-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #4299e1;
+  position: relative;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+.notification-card:hover {
+  transform: translateX(2px);
+}
+
+.notification-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.notification-message {
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+
+.notification-sender {
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.notification-time {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  margin-top: 0.25rem;
+}
+
+.dismiss-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #a0aec0;
+  transition: color 0.2s;
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+.dismiss-btn:hover {
+  color: #e53e3e;
+}
+
+/* Count badge */
+.notification-count {
+  text-align: center;
+  padding: 0.5rem;
+  background: #ebf8ff;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #2b6cb0;
+}

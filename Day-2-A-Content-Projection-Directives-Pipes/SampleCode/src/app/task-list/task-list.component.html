@@ -1,0 +1,76 @@
+<!--
+  task-list.component.html — Control Flow & Template Features Demo
+
+  CONCEPTS SHOWN:
+  1. @let — defines a local variable (filtered count) used in both @if and interpolation
+  2. @if / @else — conditional rendering with ng-template for the else block
+  3. ng-container — applies @if without adding a real DOM element
+  4. ng-template — serves as the @else block
+  5. @for — iterates the task list with required track
+  6. [ngClass] — conditionally applies CSS classes based on task status
+-->
+
+<!-- ───────────────────────────────────────────────────────────────── -->
+<!-- @let: Define a local variable for the active (not done) task count.        -->
+<!-- IMPORTANT: @let is NOT a signal — it re-evaluates on every change          -->
+<!-- detection cycle, not reactively. Don't confuse it with computed().         -->
+<!-- ───────────────────────────────────────────────────────────────── -->
+@let activeCount = tasks.filter(t => t.status !== 'done').length;
+
+<h2>Task List</h2>
+
+<!-- ───────────────────────────────────────────────────────────────── -->
+<!-- ng-container: Wraps @if without adding a real DOM element.                 -->
+<!-- If we used a <div> here instead, it would add an extra wrapper             -->
+<!-- to the DOM that might break CSS layout or accessibility.                   -->
+<!-- ───────────────────────────────────────────────────────────────── -->
+<ng-container>
+  <!-- ─────────────────────────────────────────────────────────────── -->
+  <!-- @if / @else: Show the task list if there are active tasks,               -->
+  <!-- otherwise show the "all done" message from the ng-template.              -->
+  <!-- The @let activeCount variable is used here AND in the <p> below.         -->
+  <!-- ─────────────────────────────────────────────────────────────── -->
+  @if (activeCount > 0) {
+    <p>{{ activeCount }} active task(s) remaining</p>
+  } @else {
+    <!-- The @else block renders the ng-template defined below -->
+    <ng-container *ngTemplateOutlet="allDoneTemplate"></ng-container>
+  }
+</ng-container>
+
+<!-- ───────────────────────────────────────────────────────────────── -->
+<!-- @for: Iterates the task array. The track keyword is REQUIRED.              -->
+<!-- track item.id tells Angular how to identify each DOM element               -->
+<!-- so it can efficiently add, remove, or move items instead of                -->
+<!-- re-rendering the entire list.                                              -->
+<!-- ───────────────────────────────────────────────────────────────── -->
+<ul class="task-list">
+  @for (task of tasks; track task.id) {
+    <li
+      class="task-item"
+      [ngClass]="{
+        'task-todo': task.status === 'todo',
+        'task-in-progress': task.status === 'in-progress',
+        'task-done': task.status === 'done'
+      }"
+    >
+      <!-- [ngClass]: Applies CSS classes conditionally based on task.status.    -->
+      <!-- Only the matching class is added to the DOM element.                  -->
+      <span class="task-title">{{ task.title }}</span>
+      <span class="task-status">{{ task.status }}</span>
+      <button (click)="removeTask(task.id)">Remove</button>
+    </li>
+  } @empty {
+    <!-- @empty: Shown when the tasks array is empty.                           -->
+    <!-- This is a built-in companion to @for — no separate @if needed.         -->
+    <li class="task-item task-empty">No tasks yet. Add one above!</li>
+  }
+</ul>
+
+<!-- ───────────────────────────────────────────────────────────────── -->
+<!-- ng-template: Renders NOTHING by itself. It only renders when               -->
+<!-- referenced — here it's used as a reusable "all done" message.              -->
+<!-- ───────────────────────────────────────────────────────────────── -->
+<ng-template #allDoneTemplate>
+  <p class="all-done">🎉 All tasks are done! Nice work.</p>
+</ng-template>

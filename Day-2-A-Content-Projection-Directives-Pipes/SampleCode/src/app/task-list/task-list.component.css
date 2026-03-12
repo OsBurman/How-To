@@ -1,0 +1,75 @@
+/*
+ * task-list.component.css — Styles for TaskListComponent
+ *
+ * Demonstrates how [ngClass] maps to these class names.
+ * Each task status has a distinct left-border color so students
+ * can visually confirm that [ngClass] is working.
+ */
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  max-width: 500px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border-left: 4px solid transparent; /* Overridden by status classes */
+  background-color: #f8fafc;
+}
+
+/* [ngClass] applies one of these based on task.status */
+.task-todo {
+  border-left-color: #94a3b8; /* Gray — not started */
+}
+
+.task-in-progress {
+  border-left-color: #f59e0b; /* Amber — work in progress */
+}
+
+.task-done {
+  border-left-color: #22c55e; /* Green — completed */
+  opacity: 0.6; /* Faded to show it's finished */
+  text-decoration: line-through;
+}
+
+.task-title {
+  flex: 1;
+  font-weight: 500;
+}
+
+.task-status {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.task-item button {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.task-item button:hover {
+  background-color: #fee2e2; /* Light red on hover */
+  border-color: #fca5a5;
+}
+
+.task-empty {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.all-done {
+  font-size: 1.2rem;
+  color: #22c55e;
+  font-weight: bold;
+}

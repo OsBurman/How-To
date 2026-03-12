@@ -1,0 +1,67 @@
+<!--
+  app.component.html — Root Template
+
+  Demonstrates how a PARENT uses the components built in this lesson.
+  This is where content projection happens — the parent decides what
+  goes inside <app-card> and <app-layout-card>.
+-->
+
+<h1>{{ title }}</h1>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 1: Single-Slot Content Projection (CardComponent)                   -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>1. Single-Slot Projection</h2>
+
+  <!-- Everything between <app-card> tags is projected into CardComponent's
+       single <ng-content> slot. The card is the frame; this is the picture. -->
+  <app-card>
+    <h3>Welcome to Angular</h3>
+    <p>This paragraph is projected into the card's single slot.</p>
+  </app-card>
+
+  <app-card>
+    <h3>A Second Card</h3>
+    <p>Each card wraps different content with the same styled frame.</p>
+    <small>You can project any HTML elements — headings, paragraphs, even other components.</small>
+  </app-card>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 2: Named-Slot Content Projection (LayoutCardComponent)              -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>2. Named Slots</h2>
+
+  <!-- The parent targets each slot using the attribute selector:
+       header → <ng-content select="[header]">
+       body   → <ng-content select="[body]">
+       footer → <ng-content select="[footer]">
+       Open the console to see the ngAfterContentInit log message. -->
+  <app-layout-card>
+    <div header>🎬 Featured Movie</div>
+    <div body>
+      <p>This content goes into the body slot. The layout-card component
+         controls the visual structure — header at top, body in middle,
+         footer at bottom.</p>
+    </div>
+    <div footer>Last updated: today</div>
+  </app-layout-card>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 3: Control Flow (TaskListComponent)                                 -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>3. Control Flow — @for, @if/@else, @let, [ngClass]</h2>
+  <app-task-list></app-task-list>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SECTION 4: @switch, [ngStyle], Pipes (MovieListComponent)                   -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>4. @switch, [ngStyle] & Pipes</h2>
+  <app-movie-list></app-movie-list>
+</section>
