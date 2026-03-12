@@ -388,7 +388,7 @@ export class SearchComponent {
 
 **What's happening:** The `#searchBox` ref gives us a handle to the input element. When the button is clicked, we read `searchBox.value` and pass that string to `onSearch()`. We never needed `[(ngModel)]` — we just grabbed the value at the moment we needed it.
 
-**Important:** The paragraph showing `{{ searchBox.value }}` updates when Angular runs change detection — typically after a click or other event. It does NOT update on every keystroke like `[(ngModel)]` would.
+**Important:** The paragraph showing `{{ searchBox.value }}` updates when Angular runs change detection — typically after a click or other event. It does NOT update on every keystroke like `[(ngModel)]` would. This is a deliberate tradeoff, not a bug — refs give you the value on demand rather than continuously.
 
 ---
 
@@ -780,7 +780,28 @@ Here's the full picture — `@Input()` sends data **down**, `@Output()` sends ev
 
 ---
 
-## Slide 27: What Is ngOnInit?
+## Slide 27: Angular Component Lifecycle — Overview
+
+Every Angular component goes through a **lifecycle**: it is created, rendered, updated, and eventually destroyed. Angular calls specific methods — called **lifecycle hooks** — automatically at each stage. You never call these methods yourself; Angular calls them for you.
+
+**The lifecycle sequence:**
+
+| Hook | When Angular calls it |
+|---|---|
+| `ngOnChanges` | When an `@Input()` value changes (before ngOnInit and on every change after) |
+| `ngOnInit` | Once, after the first `ngOnChanges` — inputs are set and ready |
+| `ngDoCheck` | On every change detection cycle |
+| `ngAfterContentInit` | Once, after projected content is initialized |
+| `ngAfterContentChecked` | After every check of projected content |
+| `ngAfterViewInit` | Once, after the component's view is fully rendered |
+| `ngAfterViewChecked` | After every check of the component's view |
+| `ngOnDestroy` | Once, just before the component is removed from the DOM |
+
+**For most components, you'll only use two:** `ngOnInit` to run setup logic when the component is ready, and `ngOnDestroy` to clean up when it's removed. The others exist for advanced use cases you'll encounter later.
+
+---
+
+## Slide 28: What Is ngOnInit?
 
 `ngOnInit` is a **lifecycle hook** — a method that Angular calls automatically at a specific moment in a component's life. Specifically, Angular calls `ngOnInit()` **once, right after it sets the component's @Input() values for the first time**.
 
@@ -818,7 +839,7 @@ export class ProductCardComponent implements OnInit {
 
 ---
 
-## Slide 28: Why Not the Constructor?
+## Slide 29: Why Not the Constructor?
 
 The constructor runs **before** Angular sets `@Input()` values. If you put initialization logic in the constructor, your inputs will still be at their default values.
 
@@ -841,7 +862,7 @@ Use the constructor only for simple variable declarations or dependency injectio
 
 ---
 
-## Slide 29: ⚠️ WARNING — Constructor Initialization Mistake
+## Slide 30: ⚠️ WARNING — Constructor Initialization Mistake
 
 This is the **#1 beginner mistake** with Angular lifecycle hooks. It's so common that it's worth its own warning.
 
@@ -881,7 +902,7 @@ export class ProductCardComponent implements OnInit {
 
 ---
 
-## Slide 30: ngOnInit Example — Building a Display Label
+## Slide 31: ngOnInit Example — Building a Display Label
 
 ```typescript
 // product-card.component.ts
@@ -922,7 +943,7 @@ export class ProductCardComponent implements OnInit {
 
 ---
 
-## Slide 31: What Is ngOnDestroy?
+## Slide 32: What Is ngOnDestroy?
 
 `ngOnDestroy` is a lifecycle hook that Angular calls **once, right before it removes a component from the DOM**. This is your chance to clean up anything the component started.
 
@@ -943,7 +964,7 @@ If you don't clean up, these things keep running in memory even after the compon
 
 ---
 
-## Slide 32: Why Cleanup Matters — Memory Leaks
+## Slide 33: Why Cleanup Matters — Memory Leaks
 
 A memory leak happens when your code holds onto resources it no longer needs. In Angular, the most common cause is forgetting to cancel timers or unsubscribe from data streams when a component is destroyed.
 
@@ -972,7 +993,7 @@ export class DashboardComponent implements OnInit {
 
 ---
 
-## Slide 33: ngOnDestroy Example — Clearing an Interval
+## Slide 34: ngOnDestroy Example — Clearing an Interval
 
 ```typescript
 // dashboard.component.ts
@@ -1012,7 +1033,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 ---
 
-## Slide 34: Signals First Look — signal()
+## Slide 35: Signals First Look — signal()
 
 🟠 **Day 2 Preview** — This is a first look at signals. Exercises do not require signals yet. Full coverage comes on Day 2.
 
@@ -1045,7 +1066,7 @@ console.log(count());  // 6
 
 ---
 
-## Slide 35: Signals First Look — computed()
+## Slide 36: Signals First Look — computed()
 
 🟠 **Day 2 Preview** — Exercises do not require signals yet.
 
@@ -1079,7 +1100,7 @@ console.log(doubled());  // 20 ← recalculated again!
 
 ---
 
-## Slide 36: Signals in a Component (Preview)
+## Slide 37: Signals in a Component (Preview)
 
 🟠 **Day 2 Preview** — Exercises do not require signals yet. This slide shows the complete pattern for reference only.
 
@@ -1123,7 +1144,7 @@ export class SignalDemoComponent {
 
 ---
 
-## Slide 37: Coming Up — Modern vs Classic (Legacy) Angular
+## Slide 38: Coming Up — Modern vs Classic (Legacy) Angular
 
 You've just learned the modern Angular way to build templates and wire up component communication — standalone components with direct imports, FormsModule imported in the component that uses it, and clean parent-child data flow.
 
@@ -1133,7 +1154,7 @@ Now let's see how the same things were done **before Angular 17** using the clas
 
 ---
 
-## Slide 38: Modern ngModel Setup
+## Slide 39: Modern ngModel Setup
 
 **Modern approach — FormsModule imported directly in the component:**
 
@@ -1162,7 +1183,7 @@ export class CharacterCounterComponent {
 
 ---
 
-## Slide 39: Legacy ngModel Setup
+## Slide 40: Legacy ngModel Setup
 
 **Classic (legacy) approach — FormsModule imported in an NgModule:**
 
@@ -1198,7 +1219,7 @@ export class AppModule {}
 
 ---
 
-## Slide 40: Modern @Input() — Standalone Approach
+## Slide 41: Modern @Input() — Standalone Approach
 
 **Modern approach — the child component is standalone and imported directly:**
 
@@ -1239,7 +1260,7 @@ export class AppComponent {
 
 ---
 
-## Slide 41: Legacy @Input() — NgModule Approach
+## Slide 42: Legacy @Input() — NgModule Approach
 
 **Classic (legacy) approach — @Input() itself works identically, but the registration context is different:**
 
@@ -1278,7 +1299,7 @@ export class AppModule {}
 
 ---
 
-## Slide 42: Modern @Output() — Standalone Approach
+## Slide 43: Modern @Output() — Standalone Approach
 
 **Modern approach — the parent imports the child and binds to its @Output():**
 
@@ -1313,7 +1334,7 @@ export class CounterComponent {
 
 ---
 
-## Slide 43: Legacy @Output() — NgModule Approach
+## Slide 44: Legacy @Output() — NgModule Approach
 
 **Classic (legacy) approach — same @Output() code, but registered in an NgModule:**
 
@@ -1352,7 +1373,7 @@ export class AppModule {}
 
 ---
 
-## Slide 44: Modern Lifecycle Hooks — Standalone
+## Slide 45: Modern Lifecycle Hooks — Standalone
 
 **Modern approach — ngOnInit and ngOnDestroy in a standalone component:**
 
@@ -1389,7 +1410,7 @@ export class TimerDisplayComponent implements OnInit, OnDestroy {
 
 ---
 
-## Slide 45: Legacy Lifecycle Hooks — NgModule
+## Slide 46: Legacy Lifecycle Hooks — NgModule
 
 **Classic (legacy) approach — same lifecycle hooks, but the component lives in an NgModule:**
 
@@ -1431,7 +1452,28 @@ Lifecycle hooks are a **core Angular concept** — they haven't changed. What ch
 
 ---
 
-## Slide 46: Key Takeaways
+## Slide 47: Binding Syntax Cheat Sheet
+
+A quick reference for all four Angular binding types. Keep this handy during exercises.
+
+| Type | Syntax | Direction | Example |
+|---|---|---|---|
+| **Interpolation** | `{{ expression }}` | Component → Template | `{{ userName }}` |
+| **Property Binding** | `[property]="expression"` | Component → Template | `[disabled]="!isValid"` |
+| **Event Binding** | `(event)="handler()"` | Template → Component | `(click)="onSave()"` |
+| **Two-Way Binding** | `[(ngModel)]="property"` | Both directions | `[(ngModel)]="searchTerm"` |
+
+**Quick rules:**
+- Displaying a value between tags? → `{{ }}`
+- Setting an element property dynamically? → `[prop]`
+- Reacting to a user action? → `(event)`
+- Keeping an input in sync with a property in real time? → `[(ngModel)]` (remember to import `FormsModule`)
+
+**Memory trick for two-way binding:** The banana `()` goes inside the box `[]` → `[()]`
+
+---
+
+## Slide 48: Key Takeaways
 
 1. **Angular has four binding types, each with a clear direction:** Interpolation `{{ }}` and property binding `[prop]` send data from the component to the template. Event binding `(event)` sends actions from the template back to the component. Two-way binding `[(ngModel)]` does both simultaneously — but requires importing `FormsModule`.
 

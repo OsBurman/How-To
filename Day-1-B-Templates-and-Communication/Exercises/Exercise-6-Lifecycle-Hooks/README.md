@@ -34,8 +34,11 @@ When the component is removed, `ngOnDestroy` clears the interval to prevent a me
 6. Open `countdown.component.html`. Display:
    - `{{ currentValue }}` as a large number
    - `{{ status }}` as the status text
-7. Open `app.component.html`. Add `<app-countdown [startValue]="15"></app-countdown>`
-   inside the conditional area. Add `CountdownComponent` to `AppComponent`'s `imports` array.
+7. Open `app.component.html`. The template already contains an `@if (showTimer)` block —
+   this is a **micro-preview** of `@if` (covered fully on Day 2). For now, just know it
+   adds/removes elements from the DOM based on a condition. Place
+   `<app-countdown [startValue]="15"></app-countdown>` inside the `@if` block.
+   Then add `CountdownComponent` to `AppComponent`'s `imports` array.
 8. Save and run. The timer counts down from 15. Click the toggle button to hide the component
    (it gets destroyed), then show it again (it recreates and starts over from 15).
 9. Open the browser console. Verify no interval keeps running after the component is hidden —
@@ -63,6 +66,8 @@ returns a number ID. Store it so you can call `window.clearInterval(this.timerId
 **Hint 3 — Cleanup habit:** Every time you start something in `ngOnInit`, immediately write
 the cleanup code in `ngOnDestroy`. Don't wait until later — do it right away.
 
-**Hint 4 — Conditional rendering:** The starter code uses a simple pattern to show/hide the
-component. When Angular removes the component from the DOM, it calls `ngOnDestroy`. When it
-adds it back, it creates a new instance and calls `ngOnInit`.
+**Hint 4 — Conditional rendering:** The starter code provides an `@if (showTimer)` block.
+`@if` is covered fully on Day 2 — for now, just know that when the condition is `false`,
+Angular removes the element from the DOM (calling `ngOnDestroy`). When it becomes `true`
+again, Angular creates a fresh instance (calling `ngOnInit`). Just place your component
+inside the block.
