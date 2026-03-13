@@ -1,0 +1,19 @@
+# Node / Angular build artifacts
+node_modules/
+dist/
+.angular/
+
+# OS files
+.DS_Store
+
+# Editor directories
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment files (keep .example, ignore actuals)
+.env
+.env.local

@@ -1,0 +1,57 @@
+<!-- ExpenseInputComponent template -->
+<!--
+  model() in action:
+  - [value]="draftAmount()"         reads the current value from the model signal
+  - (input)="draftAmount.set(...)"  writes back to the model signal on every keystroke
+  - The parent passes [(draftAmount)]="draftAmount" — two-way binding.
+  - When the parent calls draftAmount.set(0) after submission,
+    the [value] binding here updates automatically, clearing the field.
+-->
+
+<form class="expense-form" (submit)="$event.preventDefault(); onSubmit()">
+  <div class="form-row">
+
+    <!-- Description input — bound to local description signal -->
+    <div class="field field-description">
+      <label for="desc">Description</label>
+      <input
+        id="desc"
+        type="text"
+        placeholder="e.g. Coffee, Groceries, Transport"
+        [value]="description()"
+        (input)="description.set($any($event.target).value)"
+      />
+    </div>
+
+    <!-- Amount input — bound to the model() signal (two-way with parent) -->
+    <div class="field field-amount">
+      <label for="amount">Amount ($)</label>
+      <!--
+        This is the model() demo:
+        - [value]="draftAmount()"  reads from model signal
+        - (input)="draftAmount.set(...)"  writes to model signal
+        The + prefix coerces the string value to a number before setting.
+        When the parent resets draftAmount to 0, [value] updates here instantly.
+      -->
+      <input
+        id="amount"
+        type="number"
+        min="0.01"
+        step="0.01"
+        placeholder="0.00"
+        [value]="draftAmount()"
+        (input)="draftAmount.set(+$any($event.target).value)"
+      />
+    </div>
+
+    <!-- Submit button — disabled when either field is empty/zero -->
+    <button
+      type="submit"
+      class="btn-add"
+      [disabled]="!description().trim() || draftAmount() <= 0"
+    >
+      + Add Expense
+    </button>
+
+  </div>
+</form>

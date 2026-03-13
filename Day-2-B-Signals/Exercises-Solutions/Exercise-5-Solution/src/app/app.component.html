@@ -1,0 +1,39 @@
+<div class="rating-demo">
+  <h1>Rating Display</h1>
+
+  <div class="slider-row">
+    <label for="scoreSlider">
+      Score: <strong>{{ score() }}</strong>
+    </label>
+    <input
+      id="scoreSlider"
+      type="range"
+      min="0"
+      max="5"
+      step="1"
+      [value]="score()"
+      (input)="onScoreChange($event)"
+    />
+  </div>
+
+  <div class="ratings-list">
+    <!--
+      [rating] and [maxStars] pass values via input() signals.
+      label is a required input — passed as a plain string attribute (no brackets needed).
+      Two instances share the same score() but have different maxStars — each
+      RatingDisplayComponent instance has its own stars() computed() that recalculates
+      independently when score changes.
+    -->
+    <app-rating-display
+      [rating]="score()"
+      [maxStars]="5"
+      label="Your Score"
+    />
+
+    <app-rating-display
+      [rating]="score()"
+      [maxStars]="10"
+      label="Out of 10"
+    />
+  </div>
+</div>

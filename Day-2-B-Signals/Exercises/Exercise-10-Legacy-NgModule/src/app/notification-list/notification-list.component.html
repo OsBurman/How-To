@@ -1,0 +1,27 @@
+<div class="list-wrapper">
+  <p class="unread-count">
+    <strong>{{ unreadCount }}</strong> unread
+  </p>
+
+  <!--
+    LEGACY: *ngFor directive — replaced by @for in modern Angular.
+    After conversion, the template can stay as *ngFor (it still works in standalone components
+    when NgFor is imported), OR you can convert it to @for. Your choice.
+  -->
+  <ul class="notification-list">
+    <li
+      *ngFor="let notification of notifications"
+      [class.read]="notification.read"
+      class="notification-item"
+    >
+      <span class="message">{{ notification.message }}</span>
+      <button class="dismiss-btn" (click)="onDismiss(notification.id)">
+        Dismiss
+      </button>
+    </li>
+  </ul>
+
+  <p *ngIf="notifications.length === 0" class="empty-state">
+    All caught up! No notifications.
+  </p>
+</div>

@@ -1,0 +1,63 @@
+<div class="container">
+  <h1>Live Price Calculator</h1>
+  <p class="subtitle">
+    All three inputs feed into a single <code>combineLatest</code> stream.
+    Change any value and the totals update instantly.
+  </p>
+
+  <div class="controls">
+    <!-- Base price input — pushes to basePrice$ on every change -->
+    <div class="control-group">
+      <label for="basePrice">Base Price ($)</label>
+      <input
+        id="basePrice"
+        type="number"
+        min="0"
+        step="5"
+        [value]="basePrice$.value"
+        (input)="onBasePriceChange(+$any($event.target).value)"
+      />
+    </div>
+
+    <!-- Discount slider — pushes to discount$ on every change -->
+    <div class="control-group">
+      <label for="discount">
+        Discount: <strong>{{ discount$.value }}%</strong>
+      </label>
+      <input
+        id="discount"
+        type="range"
+        min="0"
+        max="100"
+        step="5"
+        [value]="discount$.value"
+        (input)="onDiscountChange(+$any($event.target).value)"
+      />
+    </div>
+
+    <!-- Quantity input — pushes to quantity$ on every change -->
+    <div class="control-group">
+      <label for="quantity">Quantity</label>
+      <input
+        id="quantity"
+        type="number"
+        min="1"
+        step="1"
+        [value]="quantity$.value"
+        (input)="onQuantityChange(+$any($event.target).value)"
+      />
+    </div>
+  </div>
+
+  <!-- Result display — reads from the result signal (or signal stub initially) -->
+  <div class="result-card">
+    <div class="result-row">
+      <span class="result-label">Price after discount</span>
+      <span class="result-value">{{ result().discountedPrice | currency }}</span>
+    </div>
+    <div class="result-row total">
+      <span class="result-label">Total (× quantity)</span>
+      <span class="result-value">{{ result().total | currency }}</span>
+    </div>
+  </div>
+</div>

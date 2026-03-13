@@ -1,0 +1,14 @@
+<!-- MODERN TEMPLATE — @if and @for replace *ngIf and *ngFor.
+     No null guard needed because toSignal() with initialValue always provides an array.
+     No trackByIndex method needed — @for handles tracking natively with "track $index". -->
+
+@if (messages().length > 0) {
+  <ul class="feed-list">
+    @for (message of messages(); track $index) {
+      <li class="feed-item">{{ message }}</li>
+    }
+  </ul>
+  <p class="count">{{ messages().length }} message(s)</p>
+} @else {
+  <p class="loading">No messages yet.</p>
+}

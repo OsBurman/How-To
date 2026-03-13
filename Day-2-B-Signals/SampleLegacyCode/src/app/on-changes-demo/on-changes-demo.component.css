@@ -1,0 +1,91 @@
+/* on-changes-demo.component.css — Legacy OnChanges Demo */
+
+.demo-box {
+  background: white;
+  border-radius: 6px;
+  padding: 1.25rem;
+  border: 1px solid #eee;
+}
+
+.demo-box h3 { font-size: 1rem; margin-bottom: 1rem; color: #1a237e; }
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.value-card {
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: 1px solid #e0e0e0;
+}
+
+/* Visual hint that doubled/squared map to computed() in modern code */
+.value-card.computed-look {
+  border-color: #1b5e20;
+  background: #f1f8e9;
+}
+
+.label { font-size: 0.75rem; color: #666; }
+.val { font-size: 1.5rem; font-weight: 700; color: #1a237e; }
+
+.history-panel {
+  border: 1px dashed #b71c1c;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.history-header .note { color: #666; font-style: italic; flex: 1; }
+
+.clear-btn {
+  background: none;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.history-panel ul { list-style: none; padding: 0; margin: 0; }
+.history-panel li {
+  font-size: 0.85rem;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  color: #444;
+}
+
+.empty { font-size: 0.85rem; color: #999; font-style: italic; }
+
+/* Comparison box at bottom */
+.comparison {
+  font-size: 0.8rem;
+  background: #fff8e1;
+  border-left: 3px solid #ef6c00;
+  padding: 0.6rem 0.75rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.comparison code {
+  font-family: 'Courier New', monospace;
+  background: #ffe082;
+  padding: 0 3px;
+  border-radius: 2px;
+}

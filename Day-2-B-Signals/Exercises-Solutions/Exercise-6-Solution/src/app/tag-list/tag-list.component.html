@@ -1,0 +1,4 @@
+<!-- availableTags() reads the input signal — () is required because input() returns a signal -->
+@for (tag of availableTags(); track tag) {
+  <button class="tag-btn" (click)="onTagClick(tag)">{{ tag }}</button>
+}

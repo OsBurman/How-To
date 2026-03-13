@@ -1,0 +1,30 @@
+.app {
+  width: 600px;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+code {
+  background: #e0e7ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: #4f46e5;
+}
+
+.panels {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.placeholder {
+  color: #9ca3af;
+  font-style: italic;
+  padding: 40px;
+}

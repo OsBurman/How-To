@@ -1,0 +1,70 @@
+/* shopping-cart.component.css — Legacy */
+
+.cart {
+  background: white;
+  border-radius: 6px;
+  padding: 1.25rem;
+  border: 1px solid #eee;
+}
+
+.cart h3 { font-size: 1rem; margin-bottom: 0.75rem; color: #1a237e; }
+.count { font-size: 0.85rem; color: #666; font-weight: normal; }
+
+.item-list { list-style: none; margin: 0; padding: 0; }
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.item-name { flex: 1; }
+.item-price { color: #555; width: 4.5rem; text-align: right; }
+.item-subtotal { color: #1a237e; font-weight: 600; width: 4.5rem; text-align: right; }
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.qty-controls button {
+  background: #e8eaf6;
+  border: none;
+  border-radius: 3px;
+  width: 1.6rem;
+  height: 1.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.remove {
+  background: none;
+  border: none;
+  color: #b71c1c;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.empty { color: #999; font-style: italic; padding: 0.75rem 0; }
+
+.cart-total {
+  padding: 0.75rem 0 0;
+  text-align: right;
+  font-size: 1rem;
+}
+
+/* Legacy annotation — red warning box */
+.annotation {
+  font-size: 0.8rem;
+  color: #c62828;
+  background: #ffebee;
+  border-left: 3px solid #c62828;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  margin-top: 0.75rem;
+}

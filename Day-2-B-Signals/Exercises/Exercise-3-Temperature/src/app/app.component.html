@@ -1,0 +1,30 @@
+<div class="converter-card">
+  <h1>Temperature Converter</h1>
+
+  <div class="slider-row">
+    <!-- Slider is pre-wired — reads celsius() and writes back via onCelsiusChange() -->
+    <label for="tempSlider">
+      Celsius: <strong>{{ celsius() }}°C</strong>
+    </label>
+    <input
+      id="tempSlider"
+      type="range"
+      min="-30"
+      max="50"
+      step="1"
+      [value]="celsius()"
+      (input)="onCelsiusChange($event)"
+    />
+  </div>
+
+  <div class="results">
+    <!-- TODO: Replace ??? with fahrenheit() once you declare that computed signal -->
+    <p>Fahrenheit: <strong>??? °F</strong></p>
+
+    <!-- TODO: Replace ??? with kelvin() once you declare that computed signal -->
+    <p>Kelvin: <strong>??? K</strong></p>
+
+    <!-- TODO: Replace ??? with description() once you declare that computed signal -->
+    <p>Condition: <strong>???</strong></p>
+  </div>
+</div>

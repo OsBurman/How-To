@@ -1,0 +1,34 @@
+{
+  "name": "exercise-8-change-detection-lab",
+  "version": "0.0.0",
+  "projects": {
+    "exercise-8-change-detection-lab": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/exercise-8-change-detection-lab",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [],
+            "styles": ["src/styles.css"],
+            "scripts": []
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": { "buildTarget": "exercise-8-change-detection-lab:build:production" },
+            "development": { "buildTarget": "exercise-8-change-detection-lab:build:development" }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  }
+}

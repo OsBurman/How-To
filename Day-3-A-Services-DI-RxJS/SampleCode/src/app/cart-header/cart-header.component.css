@@ -1,0 +1,43 @@
+/* CartHeaderComponent styles */
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e1b4b;
+  color: #fff;
+  padding: 0.875rem 1.5rem;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-icon { font-size: 1.5rem; }
+
+.brand-name {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.header-cart-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cart-count-badge {
+  background: #4f46e5;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.cart-total {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #a5b4fc;
+}

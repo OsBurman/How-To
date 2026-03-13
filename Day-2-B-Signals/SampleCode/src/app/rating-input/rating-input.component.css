@@ -1,0 +1,59 @@
+/**
+ * rating-input.component.css — Rating Input Styles
+ */
+
+.rating-widget {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rating-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.stars {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.star {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.1s, transform 0.1s;
+}
+
+.star.filled {
+  color: #f59e0b;
+}
+
+.star:hover {
+  transform: scale(1.15);
+}
+
+.rating-text {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.confirm-btn {
+  padding: 0.4rem 1rem;
+  background: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.confirm-btn:hover {
+  background: #303f9f;
+}

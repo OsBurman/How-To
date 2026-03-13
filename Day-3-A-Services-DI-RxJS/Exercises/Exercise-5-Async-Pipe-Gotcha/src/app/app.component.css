@@ -1,0 +1,61 @@
+.demo-app {
+  width: 560px;
+}
+
+.card {
+  background: white;
+  padding: 28px 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.user-display {
+  font-size: 1.3rem;
+  margin-top: 8px;
+}
+
+.user-display strong {
+  color: #4f46e5;
+}
+
+.explainer {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px 24px;
+}
+
+.explainer h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 10px;
+  margin-top: 16px;
+}
+
+.explainer h3:first-child {
+  margin-top: 0;
+}
+
+.explainer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.explainer li {
+  font-size: 0.88rem;
+  color: #4b5563;
+  line-height: 1.5;
+  padding-left: 12px;
+  position: relative;
+}
+
+.explainer li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #9ca3af;
+}

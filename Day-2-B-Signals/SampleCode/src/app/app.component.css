@@ -1,0 +1,74 @@
+/**
+ * app.component.css — Root Component Styles
+ * Scoped to AppComponent via ViewEncapsulation.Emulated (default).
+ */
+
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.app-header {
+  background-color: #1a237e;
+  color: #ffffff;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.demo-section {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.demo-section h2 {
+  font-size: 1.1rem;
+  color: #1a237e;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e8eaf6;
+}
+
+/* Colour-code the before/after sections */
+.demo-section.problem {
+  border-left: 4px solid #ef9a9a;
+}
+
+.demo-section.solution {
+  border-left: 4px solid #a5d6a7;
+}
+
+.section-note {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* Parent readout beneath the rating input */
+.parent-readout {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: #e8eaf6;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.parent-readout p {
+  margin-bottom: 0.25rem;
+}

@@ -1,0 +1,11 @@
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  color: #1a1a2e;
+}

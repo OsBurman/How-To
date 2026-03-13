@@ -1,0 +1,15 @@
+<div class="counter-card">
+  <h1>Signal Counter</h1>
+
+  <!-- count is a signal — read it by calling it as a function: count() -->
+  <p class="count-display">Count: <strong>{{ count() }}</strong></p>
+
+  <!-- doubled is a computed signal — same read pattern as signal() -->
+  <p class="doubled-display">Doubled: <strong>{{ doubled() }}</strong></p>
+
+  <div class="controls">
+    <button class="btn btn-secondary" (click)="decrement()">−</button>
+    <button class="btn btn-outline"   (click)="reset()">Reset</button>
+    <button class="btn btn-primary"   (click)="increment()">+</button>
+  </div>
+</div>

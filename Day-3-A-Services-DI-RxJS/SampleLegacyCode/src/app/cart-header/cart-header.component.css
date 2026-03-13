@@ -1,0 +1,36 @@
+/* LEGACY CartHeaderComponent styles */
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #7c3aed;
+  color: #fff;
+  padding: 0.875rem 1.5rem;
+  border-radius: 10px;
+}
+
+.header-brand { display: flex; align-items: center; gap: 0.5rem; }
+.brand-icon   { font-size: 1.5rem; }
+.brand-name   { font-size: 1.125rem; font-weight: 700; }
+
+.legacy-tag {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: #facc15;
+  color: #78350f;
+  border-radius: 4px;
+  padding: 0.125rem 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.header-cart-info { display: flex; align-items: center; gap: 1rem; }
+
+.cart-count-badge {
+  background: rgba(255,255,255,0.2);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.cart-total { font-size: 1rem; font-weight: 700; color: #e9d5ff; }

@@ -1,0 +1,14 @@
+<header class="site-header">
+  <div class="header-inner">
+    <span class="logo">🛒 Angular Shop</span>
+
+    <div class="cart-info">
+      <!-- count() reads the Signal — Angular re-renders this section
+           whenever CartService pushes a new value to count$ -->
+      <span class="cart-label">Cart</span>
+      @if (count() > 0) {
+        <span class="cart-badge">{{ count() }}</span>
+      }
+    </div>
+  </div>
+</header>

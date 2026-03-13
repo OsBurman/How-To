@@ -1,0 +1,38 @@
+.converter-card {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  width: 400px;
+}
+
+.slider-row {
+  margin: 20px 0;
+}
+
+.slider-row label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.slider-row input[type='range'] {
+  width: 100%;
+  accent-color: #4f46e5;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.results p {
+  background: #f3f4f6;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 0;
+  color: #374151;
+}

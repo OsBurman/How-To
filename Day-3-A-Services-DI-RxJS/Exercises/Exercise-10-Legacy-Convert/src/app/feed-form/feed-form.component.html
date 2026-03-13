@@ -1,0 +1,19 @@
+<!-- LEGACY TEMPLATE — uses [(ngModel)] from FormsModule.
+     [(ngModel)] is two-way binding: it reads newMessage to set the input value,
+     and writes back to newMessage whenever the user types.
+
+     TODO Step 9 (optional): Replace [(ngModel)] with a signal input.
+       Change the class field to:  newMessage = signal('');
+       Change the binding to:      [value]="newMessage()"
+                                   (input)="newMessage.set($any($event.target).value)"
+-->
+<form class="feed-form" (ngSubmit)="addMessage()">
+  <input
+    class="message-input"
+    type="text"
+    placeholder="Share a message..."
+    [(ngModel)]="newMessage"
+    name="message"
+  />
+  <button type="submit" class="btn">Post</button>
+</form>

@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "workspaces": [
+    "Exercise-1-Counter",
+    "Exercise-2-Cart-Total",
+    "Exercise-3-Temperature",
+    "Exercise-4-Search-Effect",
+    "Exercise-5-Rating-Input",
+    "Exercise-6-Tag-Selector",
+    "Exercise-7-Volume-Slider",
+    "Exercise-8-Change-Detection-Lab",
+    "Exercise-9-Convert-NgOnChanges",
+    "Exercise-10-Legacy-NgModule"
+  ]
+}

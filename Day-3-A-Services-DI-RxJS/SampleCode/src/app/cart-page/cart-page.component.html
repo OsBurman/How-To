@@ -1,0 +1,70 @@
+<!-- CartPageComponent template -->
+<!-- All values come from toSignal() signals — no async pipe, no manual subscriptions -->
+
+<div class="cart-page">
+
+  <!-- Error banner — error() is null when there's no error; non-null shows the message -->
+  @if (error() !== null) {
+    <div class="error-banner">
+      ⚠️ {{ error() }}
+    </div>
+  }
+
+  <div class="page-layout">
+
+    <!-- Left column: catalog to add items -->
+    <section class="catalog-panel">
+      <h2>Add to Cart</h2>
+      <ul class="catalog-list">
+        @for (item of catalog; track item.name) {
+          <li class="catalog-item">
+            <div class="catalog-item-info">
+              <span class="catalog-item-name">{{ item.name }}</span>
+              <span class="catalog-item-price">{{ item.price | currency }}</span>
+            </div>
+            <button class="btn-add" (click)="addItem(item)">+ Add</button>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <!-- Right column: current cart contents -->
+    <section class="cart-panel">
+      <div class="cart-panel-header">
+        <h2>Your Cart</h2>
+        @if (items().length > 0) {
+          <button class="btn-clear" (click)="clearCart()">Clear all</button>
+        }
+      </div>
+
+      <!-- items() is a signal — call it with () to read the current value -->
+      @if (items().length === 0) {
+        <p class="empty-cart">Your cart is empty. Add something from the catalog.</p>
+      } @else {
+        <ul class="cart-list">
+          @for (item of items(); track item.id) {
+            <li class="cart-item">
+              <div class="cart-item-info">
+                <span class="cart-item-name">{{ item.name }}</span>
+                <span class="cart-item-meta">
+                  {{ item.quantity }} × {{ item.price | currency }}
+                </span>
+              </div>
+              <div class="cart-item-right">
+                <span class="cart-item-subtotal">{{ item.price * item.quantity | currency }}</span>
+                <button class="btn-remove" (click)="removeItem(item.id, item.name)">✕</button>
+              </div>
+            </li>
+          }
+        </ul>
+
+        <!-- Cart total — total() is a toSignal() signal -->
+        <div class="cart-total-row">
+          <span>Total</span>
+          <strong>{{ total() | currency }}</strong>
+        </div>
+      }
+    </section>
+
+  </div>
+</div>

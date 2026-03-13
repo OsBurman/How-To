@@ -1,0 +1,6 @@
+<div class="clock-card">
+  <h2>🕐 Live Clock</h2>
+  <p class="time-display">{{ time() | date:'HH:mm:ss' }}</p>
+  <!-- Step 6: hourMessage() reads time() — re-evaluates every second -->
+  <p class="hour-msg">{{ hourMessage() }}</p>
+</div>

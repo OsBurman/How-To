@@ -1,0 +1,70 @@
+<!--
+  app.component.html — Legacy Root Template
+
+  LEGACY: *ngIf and *ngFor structural directives
+  MODERN: @if and @for control flow blocks
+
+  LEGACY: (countChange) event from child via @Output() EventEmitter
+  MODERN: output() function-based — same binding syntax but no new EventEmitter() needed
+-->
+
+<header class="app-header">
+  <h1>{{ title }}</h1>
+  <p class="badge legacy">Legacy NgModule Pattern</p>
+</header>
+
+<main>
+
+  <!-- SECTION 1: Shopping Cart — @Input() with plain properties -->
+  <section class="demo-section">
+    <h2>Shopping Cart — @Input() with Plain Properties</h2>
+    <p class="note">
+      <strong>Legacy:</strong> Parent passes the array via @Input().
+      The child recalculates totals with a plain getter on every change-detection cycle.
+      Zone.js triggers the full tree check whenever any event fires.
+      <br>
+      <strong>Modern replacement:</strong> signal() + computed() — recalculates only when
+      the signal changes, not on every cycle.
+    </p>
+
+    <!--
+      LEGACY: [items]="cartItems" — passing a plain array via @Input()
+      MODERN: [(items)]="cartItemsSignal" — model() two-way binding, or just signal passed as input()
+    -->
+    <app-shopping-cart
+      [items]="cartItems"
+      (countChange)="onChildChanges($event)">
+    </app-shopping-cart>
+
+    <div class="controls">
+      <button (click)="addItem()">Add Item (mutates array)</button>
+      <button (click)="clearCart()">Clear (replaces reference)</button>
+    </div>
+
+    <p class="note">
+      ngOnChanges ran in child: <strong>{{ onChangesCount }}</strong> time(s).
+      Notice "mutate array" does NOT increment the count — reference unchanged.
+    </p>
+  </section>
+
+  <!-- SECTION 2: ngOnChanges Demo — what computed() replaced -->
+  <section class="demo-section">
+    <h2>ngOnChanges — What computed() Replaced</h2>
+    <p class="note">
+      <strong>Legacy:</strong> ngOnChanges(changes: SimpleChanges) fires when @Input() reference changes.
+      Developers used it to manually recalculate derived values.<br>
+      <strong>Modern replacement:</strong> computed() — no lifecycle hook needed.
+      Derived values update automatically when their signal dependencies change.
+    </p>
+
+    <app-on-changes-demo
+      [value]="demoValue"
+      (changesReported)="onChildChanges($event)">
+    </app-on-changes-demo>
+
+    <div class="controls">
+      <button (click)="incrementDemo()">Increment Value (triggers ngOnChanges)</button>
+    </div>
+  </section>
+
+</main>

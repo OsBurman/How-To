@@ -1,0 +1,92 @@
+<div class="dashboard">
+
+  <!-- ── SUMMARY CARDS ────────────────────────────────── -->
+  <!-- All three values are computed() signals — update automatically
+       when expenses() or budgetCap() changes. No manual refresh needed. -->
+  <div class="summary-grid">
+
+    <div class="summary-card">
+      <span class="card-label">Budget Cap</span>
+      <!-- budgetCap() is an input() signal — reads the value the parent wrote -->
+      <span class="card-value">{{ budgetCap() | currency }}</span>
+    </div>
+
+    <div class="summary-card spent">
+      <span class="card-label">Total Spent</span>
+      <!-- total() is a computed() signal — recalculates when expenses() changes -->
+      <span class="card-value">{{ total() | currency }}</span>
+    </div>
+
+    <!-- [class.over] binds the "over" CSS class when remaining() is negative -->
+    <div class="summary-card remaining" [class.over]="remaining() < 0">
+      <span class="card-label">Remaining</span>
+      <!-- remaining() reads both total() and budgetCap() — updates when either changes -->
+      <span class="card-value">{{ remaining() | currency }}</span>
+    </div>
+
+  </div>
+
+  <!-- ── PROGRESS BAR ──────────────────────────────────── -->
+  <!-- percentSpent() and warningLevel() are both computed() signals.
+       [style.width] and [class] bindings are live — no manual update needed. -->
+  <div class="progress-section">
+    <div class="progress-track">
+      <div
+        class="progress-fill"
+        [class]="'progress-fill level-' + warningLevel()"
+        [style.width.%]="percentSpent()"
+      ></div>
+    </div>
+    <span class="progress-label">{{ percentSpent().toFixed(0) }}% of budget used</span>
+  </div>
+
+  <!-- ── WARNING BANNER ────────────────────────────────── -->
+  <!-- @if reads warningLevel() — re-evaluates when the computed signal changes.
+       The warningMessage computed() provides the text without a method call. -->
+  @if (warningLevel() !== 'ok') {
+    <div class="warning-banner" [class]="'warning-banner level-' + warningLevel()">
+      @if (warningLevel() === 'danger') { ⛔ } @else { ⚠️ }
+      {{ warningMessage() }}
+    </div>
+  }
+
+  <!-- ── ADD EXPENSE FORM ──────────────────────────────── -->
+  <!-- [(draftAmount)]="draftAmount" — model() two-way binding.
+       ExpenseInputComponent can write to draftAmount via the model() signal.
+       After submission, onExpenseAdded() calls draftAmount.set(0) here,
+       which flows BACK DOWN into the child and resets the amount field. -->
+  <app-expense-input
+    [(draftAmount)]="draftAmount"
+    (expenseAdded)="onExpenseAdded($event)"
+  />
+
+  <!-- ── EXPENSE LIST ───────────────────────────────────── -->
+  <section class="expense-list-section">
+    <div class="list-header">
+      <h2>Expenses</h2>
+      @if (expenses().length > 0) {
+        <!-- (click) calls clearAll() which calls this.expenses.set([]) -->
+        <button class="btn-clear" (click)="clearAll()">Clear All</button>
+      }
+    </div>
+
+    <!-- @for tracks by id — stable identity for efficient DOM reconciliation -->
+    @for (expense of expenses(); track expense.id) {
+      <div class="expense-row">
+        <div class="expense-info">
+          <span class="expense-desc">{{ expense.description }}</span>
+          <span class="expense-date">{{ expense.date | date:'MMM d, y' }}</span>
+        </div>
+        <div class="expense-right">
+          <!-- expense.amount is a plain number — no () needed; only signals need () -->
+          <span class="expense-amount">{{ expense.amount | currency }}</span>
+          <!-- removeExpense() calls expenses.update(list => list.filter(...)) -->
+          <button class="btn-remove" (click)="removeExpense(expense.id)">Remove</button>
+        </div>
+      </div>
+    } @empty {
+      <p class="empty-state">No expenses yet. Add one above.</p>
+    }
+  </section>
+
+</div>

@@ -1,0 +1,12 @@
+<div class="controls-card">
+  <h2>Counter Controls</h2>
+  <div class="buttons">
+    <!-- TODO: Disable the decrement button when the counter is at zero.
+         You'll need a toSignal() for isAtZero$ in CounterDisplayComponent first,
+         but CounterControlsComponent can also get its own copy from the service.
+         [disabled]="isAtZero()" — this requires a signal or getter in this component. -->
+    <button class="btn btn-secondary" (click)="decrement()">− Decrement</button>
+    <button class="btn btn-outline"   (click)="reset()">Reset</button>
+    <button class="btn btn-primary"   (click)="increment()">+ Increment</button>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="summary-card">
+  <h2>Pricing Summary</h2>
+
+  <div class="price-row">
+    <span>Original price</span>
+    <!-- After conversion, change price to price() -->
+    <strong>{{ price | currency }}</strong>
+  </div>
+
+  <div class="price-row discount">
+    <span>Discount</span>
+    <!-- After conversion, change discount to discount() -->
+    <strong>−{{ discount }}%</strong>
+  </div>
+
+  <div class="price-row total">
+    <span>You pay</span>
+    <!-- After conversion, change discountedPrice to discountedPrice() -->
+    <strong>{{ discountedPrice | currency }}</strong>
+  </div>
+
+  <div class="savings-row">
+    <!-- After conversion, change savings to savings() -->
+    You save <strong>{{ savings | currency }}</strong>
+  </div>
+
+  <div class="history">
+    <p class="history-label">Price history (this session):</p>
+    @for (p of priceHistory; track $index) {
+      <span class="history-chip">{{ p | currency }}</span>
+    }
+  </div>
+</div>

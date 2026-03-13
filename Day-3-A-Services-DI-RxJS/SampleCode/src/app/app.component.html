@@ -1,0 +1,43 @@
+<!-- AppComponent template -->
+<!-- Notification banner — reads from toSignal() converting NotificationService.notifications$ -->
+@if (notifications().length > 0) {
+  <div class="notification-tray">
+    @for (n of notifications(); track n.id) {
+      <div class="notification" [class]="'notification type-' + n.type">
+        <span>{{ n.message }}</span>
+        <button class="notification-close" (click)="dismiss(n.id)">✕</button>
+      </div>
+    }
+  </div>
+}
+
+<!-- Cart header — always visible at the top; inject()s CartService internally -->
+<app-cart-header />
+
+<!-- Tab navigation -->
+<nav class="tab-nav">
+  <button
+    [class.active]="activeTab() === 'cart'"
+    (click)="setTab('cart')"
+  >
+    🛒 Shopping Cart
+  </button>
+  <button
+    [class.active]="activeTab() === 'rxjs-demo'"
+    (click)="setTab('rxjs-demo')"
+  >
+    🔬 RxJS Operators Demo
+  </button>
+</nav>
+
+<!-- Main content area — switches between the two views -->
+<main class="main-content">
+  @if (activeTab() === 'cart') {
+    <!-- CartPageComponent inject()s CartService and NotificationService internally -->
+    <app-cart-page />
+  }
+  @if (activeTab() === 'rxjs-demo') {
+    <!-- RxJSOperatorsComponent is a self-contained interactive playground -->
+    <app-rxjs-operators />
+  }
+</main>

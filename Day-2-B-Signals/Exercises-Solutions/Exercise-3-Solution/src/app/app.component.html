@@ -1,0 +1,25 @@
+<div class="converter-card">
+  <h1>Temperature Converter</h1>
+
+  <div class="slider-row">
+    <label for="tempSlider">
+      Celsius: <strong>{{ celsius() }}°C</strong>
+    </label>
+    <input
+      id="tempSlider"
+      type="range"
+      min="-30"
+      max="50"
+      step="1"
+      [value]="celsius()"
+      (input)="onCelsiusChange($event)"
+    />
+  </div>
+
+  <div class="results">
+    <!-- All three computed signals re-evaluate whenever the slider moves -->
+    <p>Fahrenheit: <strong>{{ fahrenheit() }} °F</strong></p>
+    <p>Kelvin: <strong>{{ kelvin() }} K</strong></p>
+    <p>Condition: <strong>{{ description() }}</strong></p>
+  </div>
+</div>

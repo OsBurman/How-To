@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Language Search</h1>
+
+  <!-- The (input) event fires on every keystroke. $any() casts the event target
+       so TypeScript knows it has a .value property. -->
+  <input
+    class="search-input"
+    type="text"
+    placeholder="Type a language name..."
+    (input)="search$.next($any($event.target).value)"
+  />
+
+  <!-- Results panel — only shown when there are matches -->
+  <section class="results-panel">
+    <h2>Results</h2>
+    @if (results().length === 0) {
+      <p class="empty-state">No results yet. Start typing above.</p>
+    } @else {
+      <ul class="results-list">
+        @for (lang of results(); track lang) {
+          <li class="result-item">{{ lang }}</li>
+        }
+      </ul>
+    }
+  </section>
+
+  <!-- Log panel — shows every event in the pipeline so you can see the timing difference -->
+  <section class="log-panel">
+    <h2>Pipeline Log</h2>
+    <p class="log-hint">
+      Watch this panel as you type — notice that "Searching for" only appears
+      after you pause for 400ms, even though "Keystroke" appears immediately.
+      That's <code>debounceTime</code> in action.
+    </p>
+    @if (log().length === 0) {
+      <p class="empty-state">Log is empty. Start typing to see events.</p>
+    } @else {
+      <ul class="log-list">
+        @for (line of log(); track $index) {
+          <li class="log-item">{{ line }}</li>
+        }
+      </ul>
+    }
+  </section>
+</div>

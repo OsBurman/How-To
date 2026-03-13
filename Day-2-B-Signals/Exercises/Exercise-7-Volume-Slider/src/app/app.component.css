@@ -1,0 +1,41 @@
+.volume-demo {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  width: 400px;
+}
+
+.parent-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 14px 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.btn-mute {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #374151;
+  color: white;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-mute:hover { opacity: 0.85; }
+
+.placeholder {
+  color: #9ca3af;
+  font-style: italic;
+  font-size: 0.875rem;
+  border: 2px dashed #e5e7eb;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}

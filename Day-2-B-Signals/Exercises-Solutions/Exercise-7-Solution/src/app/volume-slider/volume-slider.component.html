@@ -1,0 +1,17 @@
+<div class="slider-wrapper">
+  <label>
+    Volume: <strong>{{ volume() }}</strong>
+  </label>
+  <!--
+    [value]="volume()" reads the current value — will update if the parent calls mute().
+    volume.set(+...) writes the new slider value back — this propagates to the parent.
+    That's the "two-way" part of model().
+  -->
+  <input
+    type="range"
+    min="0"
+    max="100"
+    [value]="volume()"
+    (input)="volume.set(+$any($event.target).value)"
+  />
+</div>

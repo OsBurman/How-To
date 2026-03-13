@@ -1,0 +1,28 @@
+<div class="app-shell">
+  <header class="app-header">
+    <h1>💰 Budget Tracker</h1>
+
+    <!-- Changing this input updates budgetCap() in the parent signal.
+         That change flows DOWN into BudgetDashboardComponent via input(),
+         causing all computed() signals that depend on budgetCap() to recalculate. -->
+    <div class="cap-control">
+      <label for="budgetCap">Monthly Budget:</label>
+      <div class="cap-input-row">
+        <span class="dollar-sign">$</span>
+        <input
+          id="budgetCap"
+          type="number"
+          min="1"
+          step="50"
+          [value]="budgetCap()"
+          (input)="onBudgetCapChange($event)"
+        />
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <!-- [budgetCap]="budgetCap()" passes the current signal VALUE to the child input() -->
+    <app-budget-dashboard [budgetCap]="budgetCap()" />
+  </main>
+</div>

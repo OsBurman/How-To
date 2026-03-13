@@ -1,0 +1,29 @@
+.clock-card {
+  padding: 16px 20px;
+  background: #1e293b;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.time-display {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: monospace;
+  letter-spacing: 0.05em;
+}
+
+.hour-msg {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-top: 6px;
+}

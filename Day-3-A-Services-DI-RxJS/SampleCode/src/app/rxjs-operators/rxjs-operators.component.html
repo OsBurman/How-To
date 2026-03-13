@@ -1,0 +1,82 @@
+<!-- RxJSOperatorsComponent template -->
+<div class="operators-page">
+
+  <h1>RxJS Operators Playground</h1>
+  <p class="subtitle">Click each button to run that demo. Watch the log panel for output.</p>
+
+  <div class="playground-layout">
+
+    <!-- Left: operator buttons + search demo -->
+    <div class="controls-panel">
+
+      <section class="demo-group">
+        <h2>Core Operators</h2>
+        <div class="btn-grid">
+          <button class="btn-demo" (click)="runMapDemo()">map()</button>
+          <button class="btn-demo" (click)="runFilterDemo()">filter()</button>
+          <button class="btn-demo" (click)="runTapDemo()">tap()</button>
+          <button class="btn-demo" (click)="runFromDemo()">from()</button>
+        </div>
+      </section>
+
+      <section class="demo-group">
+        <h2>Combination & Timing</h2>
+        <div class="btn-grid">
+          <button class="btn-demo" (click)="runCombineLatestDemo()">combineLatest()</button>
+          <button class="btn-demo" (click)="runTimerDemo()">timer()</button>
+        </div>
+      </section>
+
+      <section class="demo-group">
+        <h2>Hot vs Cold Observables</h2>
+        <p class="demo-note">
+          <strong>Cold</strong> — each subscriber gets its own execution.<br>
+          <strong>Hot</strong> — all subscribers share the same stream.
+        </p>
+        <div class="btn-grid">
+          <button class="btn-demo btn-cold" (click)="runColdDemo()">Cold: of()</button>
+          <button class="btn-demo btn-hot"  (click)="runHotDemo()">Hot: BehaviorSubject</button>
+        </div>
+      </section>
+
+      <section class="demo-group">
+        <h2>debounceTime + switchMap</h2>
+        <p class="demo-note">
+          Type in the box. Notice the log only fires 400ms after you stop typing
+          (debounceTime), and previous searches are cancelled (switchMap).
+        </p>
+        <!-- search$ Subject receives each keystroke via (input) -->
+        <input
+          class="search-input"
+          type="text"
+          placeholder="Type to search..."
+          (input)="onSearch($event)"
+        />
+        @if (searchResults().length > 0) {
+          <ul class="search-results">
+            @for (result of searchResults(); track result) {
+              <li>{{ result }}</li>
+            }
+          </ul>
+        }
+      </section>
+
+      <button class="btn-clear-log" (click)="clearLog()">Clear Log</button>
+    </div>
+
+    <!-- Right: log output panel -->
+    <div class="log-panel">
+      <h2>Output Log</h2>
+      @if (log().length === 0) {
+        <p class="log-empty">Click a button to see output here.</p>
+      } @else {
+        <ul class="log-list">
+          @for (entry of log(); track $index) {
+            <li [class.log-separator]="entry.startsWith('---')">{{ entry }}</li>
+          }
+        </ul>
+      }
+    </div>
+
+  </div>
+</div>

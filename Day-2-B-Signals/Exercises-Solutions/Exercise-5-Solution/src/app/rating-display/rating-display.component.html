@@ -1,0 +1,18 @@
+<div class="rating-wrapper">
+  <!-- label() reads the required input signal — must be provided by the parent -->
+  <p class="rating-label">{{ label() }}</p>
+
+  <div class="stars">
+    @for (star of stars(); track $index) {
+      <!--
+        [class.star-filled] and [class.star-empty] apply CSS classes conditionally.
+        star.filled is true when the star's index is less than rating().
+      -->
+      <span
+        [class.star-filled]="star.filled"
+        [class.star-empty]="!star.filled">
+        {{ star.filled ? '★' : '☆' }}
+      </span>
+    }
+  </div>
+</div>

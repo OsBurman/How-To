@@ -1,0 +1,111 @@
+<!--
+  budget-tracker.component.html — Budget Tracker Template
+
+  All values shown here are computed() signals — they auto-update
+  when the underlying expenses() or totalBudget() signal changes.
+  The instructor should highlight that no "recalculate" method is called anywhere.
+-->
+
+<div class="budget-tracker">
+
+  <h3>Budget Tracker</h3>
+
+  <!-- Budget configuration -->
+  <div class="budget-config">
+    <label>Monthly Budget: $</label>
+    <input
+      type="number"
+      [value]="totalBudget()"
+      (change)="updateBudget($any($event.target).valueAsNumber)"
+      class="budget-input"
+      min="1"
+    >
+  </div>
+
+  <!-- Progress bar — barClass() is a computed() that returns CSS classes -->
+  <div class="progress-container">
+    <div [class]="barClass()" [style.width.%]="percentUsed()"></div>
+  </div>
+
+  <!-- Summary row — all computed() signals read with () -->
+  <div class="summary-row">
+    <div class="summary-item">
+      <span class="label">Budget</span>
+      <!--
+        totalBudget() — reading a writable signal
+        Note the () — required to read any signal value in a template
+      -->
+      <span class="amount">${{ totalBudget() }}</span>
+    </div>
+    <div class="summary-item spent">
+      <span class="label">Spent</span>
+      <!--
+        totalSpent() — reading a computed() signal
+        Recalculates automatically when expenses() changes
+      -->
+      <span class="amount">${{ totalSpent() }}</span>
+    </div>
+    <div class="summary-item" [class.over-budget]="remaining() < 0">
+      <span class="label">Remaining</span>
+      <!--
+        remaining() — computed from totalBudget() - totalSpent()
+        Updates when either dependency changes
+      -->
+      <span class="amount">${{ remaining() }}</span>
+    </div>
+    <div class="summary-item">
+      <span class="label">Used</span>
+      <span class="amount">{{ percentUsed() }}%</span>
+    </div>
+  </div>
+
+  <!-- Expense list -->
+  <div class="expense-list">
+    <h4>Expenses ({{ expenses().length }})</h4>
+
+    @for (expense of expenses(); track expense.id) {
+      <div class="expense-row">
+        <span class="exp-category category-{{ expense.category }}">{{ expense.category }}</span>
+        <span class="exp-desc">{{ expense.description }}</span>
+        <span class="exp-amount">${{ expense.amount }}</span>
+        <button (click)="removeExpense(expense.id)" class="remove-btn">✕</button>
+      </div>
+    } @empty {
+      <p class="empty-state">No expenses yet.</p>
+    }
+  </div>
+
+  <!-- Add expense form -->
+  <div class="add-form">
+    <h4>Add Expense</h4>
+    <div class="form-row">
+      <input
+        type="text"
+        [value]="newDescription()"
+        (input)="newDescription.set($any($event.target).value)"
+        placeholder="Description"
+        class="form-input"
+      >
+      <input
+        type="number"
+        [value]="newAmount()"
+        (input)="newAmount.set($any($event.target).valueAsNumber)"
+        placeholder="Amount"
+        class="form-input amount-input"
+        min="0"
+      >
+      <select
+        [value]="newCategory()"
+        (change)="newCategory.set($any($event.target).value)"
+        class="form-select"
+      >
+        <option value="food">Food</option>
+        <option value="tech">Tech</option>
+        <option value="travel">Travel</option>
+        <option value="other">Other</option>
+      </select>
+      <button (click)="addExpense()" class="add-btn">Add</button>
+    </div>
+  </div>
+
+</div>

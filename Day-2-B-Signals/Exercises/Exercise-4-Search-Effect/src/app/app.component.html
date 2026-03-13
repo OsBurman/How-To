@@ -1,0 +1,25 @@
+<div class="search-box">
+  <h1>Country Search</h1>
+
+  <!--
+    TODO (step 5): Wire this input to the query signal
+    Add: [value]="query()" and (input)="query.set($any($event.target).value)"
+  -->
+  <input type="text" placeholder="Search countries..." />
+
+  <!--
+    TODO (step 6): Replace this placeholder section once you have results
+    and resultCount declared as computed signals:
+
+    <p class="result-count">{{ resultCount() }} result(s)</p>
+    <ul>
+      @for (country of results(); track country) {
+        <li>{{ country }}</li>
+      }
+    </ul>
+  -->
+  <p class="result-count">Wire up the signals to see results here</p>
+  <ul>
+    <li>— results will appear here —</li>
+  </ul>
+</div>

@@ -1,0 +1,25 @@
+.rating-wrapper {
+  background: #f9fafb;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.rating-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.star-filled { color: #f59e0b; }
+.star-empty  { color: #d1d5db; }

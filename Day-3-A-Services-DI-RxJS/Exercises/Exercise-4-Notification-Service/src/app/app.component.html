@@ -1,0 +1,33 @@
+<div class="notification-app">
+  <h1>Notification Center</h1>
+  <p class="subtitle">
+    Implement <code>NotificationService</code> and wire up the component.
+    Notifications should auto-dismiss after 3 seconds.
+  </p>
+
+  <div class="trigger-buttons">
+    <button class="btn btn-info"    (click)="showInfo()">ℹ️ Info</button>
+    <button class="btn btn-success" (click)="showSuccess()">✅ Success</button>
+    <button class="btn btn-warning" (click)="showWarning()">⚠️ Warning</button>
+  </div>
+
+  <!--
+    TODO: Replace the placeholder below with a real notification list.
+
+    Use @for to loop over notifications() and render each one.
+    Add a dismiss button that calls dismiss($index).
+
+    Target structure:
+    @for (note of notifications(); track $index) {
+      <div class="notification">
+        <span class="message">{{ note }}</span>
+        <button class="dismiss-btn" (click)="dismiss($index)">✕</button>
+      </div>
+    } @empty {
+      <p class="empty">No notifications. Click a button above to trigger one.</p>
+    }
+  -->
+  <div class="notification-list">
+    <p class="empty">Implement the service, then wire up the list here.</p>
+  </div>
+</div>

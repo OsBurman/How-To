@@ -1,0 +1,63 @@
+<!--
+  on-changes-demo.component.html — ngOnChanges Template
+
+  LEGACY: *ngIf structural directive
+  MODERN: @if block
+
+  LEGACY: *ngFor structural directive
+  MODERN: @for block with track expression
+-->
+
+<div class="demo-box">
+  <h3>ngOnChanges Demo</h3>
+
+  <!-- Current input value and manually recalculated derived values -->
+  <div class="values-grid">
+    <div class="value-card">
+      <span class="label">@Input() value</span>
+      <span class="val">{{ value }}</span>
+      <!-- MODERN: readonly value = input<number>(0) — value() in template -->
+    </div>
+    <div class="value-card computed-look">
+      <span class="label">doubled (manual)</span>
+      <span class="val">{{ doubled }}</span>
+      <!-- MODERN: readonly doubled = computed(() => this.value() * 2) — {{ doubled() }} -->
+    </div>
+    <div class="value-card computed-look">
+      <span class="label">squared (manual)</span>
+      <span class="val">{{ squared }}</span>
+      <!-- MODERN: readonly squared = computed(() => this.value() ** 2) — {{ squared() }} -->
+    </div>
+    <div class="value-card">
+      <span class="label">ngOnChanges calls</span>
+      <span class="val">{{ changesCount }}</span>
+    </div>
+  </div>
+
+  <!-- Change history — populated as a side effect in ngOnChanges -->
+  <!-- MODERN EQUIVALENT: effect() populates history automatically when value() changes -->
+  <div class="history-panel">
+    <div class="history-header">
+      <strong>Change History</strong>
+      <span class="note">(side-effect logic — effect() in modern Angular)</span>
+      <button (click)="clearHistory()" class="clear-btn">Clear</button>
+    </div>
+
+    <!-- LEGACY: *ngIf + *ngFor -->
+    <!-- MODERN: @if / @else and @for with @empty -->
+    <ul *ngIf="history.length > 0; else noHistory">
+      <li *ngFor="let entry of history; let i = index">
+        #{{ i + 1 }}: {{ entry }}
+      </li>
+    </ul>
+
+    <ng-template #noHistory>
+      <p class="empty">No changes yet — increment the value above.</p>
+    </ng-template>
+  </div>
+
+  <div class="comparison">
+    <p><strong>LEGACY:</strong> ngOnChanges + manual assignment for derived values</p>
+    <p><strong>MODERN:</strong> <code>computed()</code> for derived values, <code>effect()</code> for side effects</p>
+  </div>
+</div>

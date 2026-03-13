@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Task Board</h1>
+
+  <!-- Error banner — only visible when error() is not null -->
+  @if (error() !== null) {
+    <div class="error-banner" role="alert">
+      <strong>⚠ Error:</strong> {{ error() }}
+    </div>
+  }
+
+  <!-- Add task form — uses a plain input event instead of ngModel -->
+  <div class="add-form">
+    <input
+      class="task-input"
+      type="text"
+      placeholder="New task title..."
+      [value]="newTaskTitle"
+      (input)="newTaskTitle = $any($event.target).value"
+      (keydown.enter)="addTask()"
+    />
+    <button type="button" class="btn btn-primary" (click)="addTask()">Add Task</button>
+  </div>
+
+  <!-- Task list -->
+  <ul class="task-list">
+    @for (task of tasks(); track task.id) {
+      <li class="task-item" [class.completed]="task.completed">
+        <span class="task-title">{{ task.title }}</span>
+        <div class="task-actions">
+          @if (!task.completed) {
+            <button
+              class="btn btn-complete"
+              (click)="completeTask(task.id)"
+              title="Mark complete"
+            >
+              ✓
+            </button>
+          }
+          <button
+            class="btn btn-delete"
+            (click)="deleteTask(task.id)"
+            title="Delete task"
+          >
+            ✕
+          </button>
+        </div>
+      </li>
+    } @empty {
+      <li class="empty-state">No tasks yet. Add one above.</li>
+    }
+  </ul>
+
+  <!-- Deliberately triggers an error to test the error$ stream -->
+  <button class="btn btn-danger" (click)="triggerCorruptTask()">
+    ⚡ Trigger Corrupt Task (Demo)
+  </button>
+</div>

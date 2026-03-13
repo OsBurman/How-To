@@ -1,0 +1,12 @@
+<div class="notification-center">
+  <h1>Notification Center</h1>
+
+  <!--
+    notifications() — () required after converting from plain property to signal.
+    (dismissed) binding is unchanged — it works for both @Output() and output().
+  -->
+  <app-notification-list
+    [notifications]="notifications()"
+    (dismissed)="onDismissed($event)"
+  />
+</div>

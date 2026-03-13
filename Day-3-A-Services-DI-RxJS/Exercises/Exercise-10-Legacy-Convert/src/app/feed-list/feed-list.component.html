@@ -1,0 +1,35 @@
+<!-- LEGACY TEMPLATE — uses *ngIf, *ngFor, and the async pipe from CommonModule.
+     These come from AppModule's CommonModule import.
+
+     TODO Step 8a: Replace the outer *ngIf with @if (the messages() signal is always an array,
+                   so you can drop the null-guard entirely).
+     TODO Step 8b: Replace *ngFor with @for.
+     TODO Step 8c: Once you use toSignal(), change  messages$ | async as messages
+                   to just  messages()  — signals are read by calling them.
+-->
+
+<!-- LEGACY: *ngIf used as a null guard.
+     "messages$ | async as messages" does two things:
+       1. Subscribes to the Observable and unwraps the emitted value.
+       2. Guards against null — the block is hidden until the Observable emits.
+     The "as messages" alias gives you the unwrapped value to use in the template.
+     You need this in legacy code because async pipe can return null before the first emit. -->
+<div *ngIf="messages$ | async as messages; else loading">
+  <ul class="feed-list">
+    <!-- LEGACY: *ngFor iterates the array. trackBy improves performance by
+         telling Angular how to identify each item — without it, Angular
+         re-renders the entire list on every change. -->
+    <li
+      *ngFor="let message of messages; trackBy: trackByIndex"
+      class="feed-item"
+    >
+      {{ message }}
+    </li>
+  </ul>
+  <p class="count">{{ messages.length }} message(s)</p>
+</div>
+
+<!-- LEGACY: ng-template provides the fallback content for the *ngIf else clause. -->
+<ng-template #loading>
+  <p class="loading">Loading messages...</p>
+</ng-template>

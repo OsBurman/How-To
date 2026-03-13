@@ -1,0 +1,18 @@
+<div class="volume-demo">
+  <h1>Volume Slider</h1>
+
+  <!--
+    [(volume)]="volume" — banana-in-a-box syntax for two-way model() binding.
+    IMPORTANT: pass "volume" (the signal reference), NOT "volume()" (the current value).
+    Angular needs the signal itself so it can wire up the write-back channel.
+  -->
+  <app-volume-slider [(volume)]="volume" />
+
+  <div class="parent-display">
+    <!-- volume() here proves the parent sees the same value the child writes -->
+    <p>Parent sees: <strong>{{ volume() }}</strong></p>
+
+    <!-- mute() sets volume to 0 on the parent — the slider in the child moves too -->
+    <button class="btn-mute" (click)="mute()">🔇 Mute</button>
+  </div>
+</div>

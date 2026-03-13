@@ -1,0 +1,51 @@
+<!--
+  rating-input.component.html — Rating Input Template
+
+  Demonstrates:
+  - input() values read with label() and maxStars() — parentheses required
+  - model() read and write: rating() to read, setRating() calls rating.set()
+  - output() triggered by confirmRating() which calls rated.emit()
+  - computed() — stars array from maxStars(), displayRating() from hoverRating + rating
+-->
+
+<div class="rating-widget">
+
+  <!--
+    label() — reading a signal-based input().
+    Identical syntax to reading any signal: use parentheses.
+    The parent controls this value — you cannot set it from here.
+  -->
+  <p class="rating-label">{{ label() }}</p>
+
+  <!-- Star buttons — stars() is a computed() array from maxStars() -->
+  <div class="stars" (mouseleave)="clearHover()">
+    @for (star of stars(); track star) {
+      <button
+        class="star"
+        [class.filled]="star <= displayRating()"
+        (mouseenter)="setHover(star)"
+        (click)="setRating(star)"
+        [attr.aria-label]="'Rate ' + star + ' out of ' + maxStars()"
+      >★</button>
+    }
+  </div>
+
+  <!--
+    rating() — reading the model() signal.
+    This value is shared with the parent — both see the same value.
+    When setRating() is called, the parent's signal updates too.
+  -->
+  <p class="rating-text">
+    {{ rating() }} / {{ maxStars() }} stars
+  </p>
+
+  <!--
+    (click)="confirmRating()" — triggers rated.emit(rating())
+    This fires the output() event. The parent handles it with (rated)="onRated($event)".
+    output() is for intentional one-way notifications, distinct from model() sync.
+  -->
+  <button (click)="confirmRating()" class="confirm-btn">
+    Confirm Rating
+  </button>
+
+</div>

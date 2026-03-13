@@ -1,0 +1,89 @@
+<!--
+  app.component.html — Root Template
+
+  Hosts all signal-demo components. Each section is labeled to show
+  which signal concept it demonstrates.
+-->
+
+<div class="app-container">
+
+  <header class="app-header">
+    <h1>{{ pageTitle }}</h1>
+    <p class="subtitle">Angular Signals — signal(), computed(), effect(), input(), output(), model()</p>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 1: Plain properties — THE PROBLEM
+         Shows what life was like before signals:
+         manual tracking, potential stale state.
+         ═══════════════════════════════════════════════ -->
+    <section class="demo-section problem">
+      <h2>❌ Before Signals — Plain Properties</h2>
+      <p class="section-note">
+        Angular can't see which properties changed — it checks the whole component tree on every event.
+      </p>
+      <app-shopping-cart></app-shopping-cart>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 2: Signal version — THE SOLUTION
+         Same cart but rebuilt with signal() and computed().
+         Angular now knows exactly which DOM nodes to update.
+         ═══════════════════════════════════════════════ -->
+    <section class="demo-section solution">
+      <h2>✅ With Signals — Reactive State</h2>
+      <p class="section-note">
+        Signals tell Angular exactly what changed — only the affected DOM nodes re-render.
+      </p>
+      <app-shopping-cart-signals></app-shopping-cart-signals>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 3: effect() with cleanup
+         signal() query + computed() results + effect() logs changes.
+         ═══════════════════════════════════════════════ -->
+    <section class="demo-section">
+      <h2>effect() with Cleanup — Search Box</h2>
+      <app-search-box></app-search-box>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 4: computed() for derived state
+         A budget tracker where total/spent/remaining
+         recalculate automatically from a signal list.
+         ═══════════════════════════════════════════════ -->
+    <section class="demo-section">
+      <h2>computed() — Budget Tracker</h2>
+      <app-budget-tracker></app-budget-tracker>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION 5: model() two-way + input() + output()
+         Parent owns productRating signal.
+         Child uses model() to read/write it.
+         Child uses output() to emit a "confirmed" event.
+         ═══════════════════════════════════════════════ -->
+    <section class="demo-section">
+      <h2>model() + input() + output() — Rating Input</h2>
+
+      <!-- [(rating)]="productRating" is model() two-way binding -->
+      <!-- (rated)="onRated($event)" is output() event binding -->
+      <app-rating-input
+        [(rating)]="productRating"
+        [maxStars]="5"
+        [label]="'Product Quality'"
+        (rated)="onRated($event)"
+      ></app-rating-input>
+
+      <!-- Parent reads the same signal — updates when child updates -->
+      <div class="parent-readout">
+        <p><strong>Parent sees productRating signal:</strong> {{ productRating() }} ⭐</p>
+        <p><strong>Last output() event:</strong> {{ lastRatingEvent }}</p>
+      </div>
+    </section>
+
+  </main>
+
+</div>

@@ -1,0 +1,88 @@
+<!-- LEGACY CartPageComponent template -->
+<!--
+  LEGACY async pipe pattern with *ngIf null guards.
+  
+  KEY PROBLEM ILLUSTRATED HERE:
+  The async pipe emits null BEFORE the BehaviorSubject emits its first value.
+  Every use of an async pipe must be wrapped in a null guard to avoid template errors.
+  
+  *ngIf="items$ | async as items" — items is null until the first emission
+    Without this guard: *ngFor would try to iterate over null and throw an error.
+  
+  *ngIf="error$ | async as errorMsg" — errorMsg would be null initially
+    Using errorMsg below: this would display "null" on screen without the guard.
+  
+  MODERN equivalent:
+    readonly items = toSignal(this.cartService.items, { initialValue: [] as CartItem[] });
+    readonly error = toSignal(this.cartService.error, { initialValue: null });
+    No *ngIf guards needed — initialValue handles the "before first emission" case.
+-->
+
+<div class="cart-page">
+
+  <!-- error$ async pipe with null guard -->
+  <ng-container *ngIf="error$ | async as errorMsg">
+    <div class="error-banner">⚠️ {{ errorMsg }}</div>
+  </ng-container>
+
+  <div class="page-layout">
+
+    <!-- Catalog panel -->
+    <section class="catalog-panel">
+      <h2>Add to Cart</h2>
+      <ul class="catalog-list">
+        <li class="catalog-item" *ngFor="let item of catalog">
+          <div class="catalog-item-info">
+            <span class="catalog-item-name">{{ item.name }}</span>
+            <span class="catalog-item-price">{{ item.price | currency }}</span>
+          </div>
+          <button class="btn-add" (click)="addItem(item)">+ Add</button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Cart panel — items$ async pipe with *ngIf null guard -->
+    <!--
+      *ngIf="items$ | async as items":
+        1. Subscribes to items$ via the async pipe
+        2. Guards against null (first emission before BehaviorSubject emits)
+        3. Assigns the emitted value to local variable "items"
+        4. This section only renders when items is non-null
+      
+      MODERN: items = toSignal(this.cartService.items, { initialValue: [] })
+              @for (item of items(); track item.id) — no null guard needed
+    -->
+    <section class="cart-panel" *ngIf="items$ | async as items">
+      <div class="cart-panel-header">
+        <h2>Your Cart</h2>
+        <button class="btn-clear" *ngIf="items.length > 0" (click)="clearCart()">Clear all</button>
+      </div>
+
+      <p class="empty-cart" *ngIf="items.length === 0">Your cart is empty.</p>
+
+      <ul class="cart-list" *ngIf="items.length > 0">
+        <li class="cart-item" *ngFor="let item of items; trackBy: trackById">
+          <div class="cart-item-info">
+            <span class="cart-item-name">{{ item.name }}</span>
+            <span class="cart-item-meta">{{ item.quantity }} × {{ item.price | currency }}</span>
+          </div>
+          <div class="cart-item-right">
+            <span class="cart-item-subtotal">{{ item.price * item.quantity | currency }}</span>
+            <button class="btn-remove" (click)="removeItem(item.id)">✕</button>
+          </div>
+        </li>
+      </ul>
+
+      <!--
+        Another async pipe null guard for the total.
+        Note: we're subscribing to total$ AGAIN here — that's a SECOND subscription.
+        In modern code, toSignal() holds one subscription and many components read it.
+      -->
+      <div class="cart-total-row" *ngIf="(total$ | async) !== null">
+        <span>Total</span>
+        <strong>{{ (total$ | async) ?? 0 | currency }}</strong>
+      </div>
+    </section>
+
+  </div>
+</div>

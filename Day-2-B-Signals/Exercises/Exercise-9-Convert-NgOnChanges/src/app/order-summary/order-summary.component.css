@@ -1,0 +1,61 @@
+.summary-card {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+h2 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.price-row.discount strong { color: #16a34a; }
+
+.price-row.total {
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-bottom: none;
+  padding-top: 12px;
+}
+
+.savings-row {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 4px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.savings-row strong { color: #16a34a; }
+
+.history {
+  margin-top: 12px;
+}
+
+.history-label {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.history-chip {
+  display: inline-block;
+  background: #e5e7eb;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  margin: 2px;
+}

@@ -1,0 +1,42 @@
+<!--
+  shopping-cart.component.html — Plain Properties Version
+
+  Notice: no signal syntax here. Values are read as plain properties.
+  Angular re-checks this whole template on every change-detection cycle
+  triggered by Zone.js — even when nothing in this cart changed.
+-->
+
+<div class="cart">
+  <h3>🛒 Cart ({{ itemCount }} items)</h3>
+
+  <div class="cart-items">
+    @for (item of items; track item.id) {
+      <div class="cart-item">
+        <span class="item-name">{{ item.name }}</span>
+        <span class="item-price">${{ item.price.toFixed(2) }}</span>
+
+        <div class="quantity-controls">
+          <button (click)="decrement(item.id)" class="qty-btn">−</button>
+          <span class="qty">{{ item.quantity }}</span>
+          <button (click)="increment(item.id)" class="qty-btn">+</button>
+        </div>
+
+        <span class="item-subtotal">${{ (item.price * item.quantity).toFixed(2) }}</span>
+        <button (click)="removeItem(item.id)" class="remove-btn">✕</button>
+      </div>
+    }
+  </div>
+
+  <div class="cart-total">
+    <!--
+      total is a GETTER — Angular doesn't know when to skip calling it.
+      Compare this with the signal version where computed() is cached.
+    -->
+    <strong>Total: ${{ total.toFixed(2) }}</strong>
+  </div>
+
+  <p class="annotation">
+    ⚠️ Plain properties: Angular checks this entire component on every event,
+    even unrelated ones. Zone.js patches every browser event globally.
+  </p>
+</div>

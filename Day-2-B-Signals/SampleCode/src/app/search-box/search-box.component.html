@@ -1,0 +1,69 @@
+<!--
+  search-box.component.html — Search Box Template
+
+  Demonstrates:
+  - [(ngModel)]="..." bound to query signal via onSearch()
+  - Reading computed() results with results() — parentheses required
+  - Reading computed() resultCount with resultCount()
+  - effect() output visible in the effectLog array
+-->
+
+<div class="search-box">
+
+  <h3>Signal Search Box</h3>
+
+  <div class="search-row">
+    <!--
+      TWO-WAY via event binding + signal .set()
+      We use (input) + [value] instead of [(ngModel)]="query" directly
+      because query is a signal, not a plain property.
+      Alternatively you can use ngModel on a separate local property and sync it.
+    -->
+    <input
+      type="text"
+      [value]="query()"
+      (input)="onSearch($any($event.target).value)"
+      placeholder="Search Angular concepts..."
+      class="search-input"
+    >
+    <button (click)="clearSearch()" class="clear-btn">Clear</button>
+  </div>
+
+  <!--
+    resultCount() — reading a computed signal.
+    Only this node re-renders when resultCount() changes.
+  -->
+  <p class="result-count">
+    {{ resultCount() }} result{{ resultCount() === 1 ? '' : 's' }}
+    @if (query()) {
+      for "{{ query() }}"
+    }
+  </p>
+
+  <ul class="results-list">
+    <!--
+      results() — reading the computed signal in @for.
+      Angular tracks this dependency. When query() changes →
+      results() recalculates → only this list re-renders.
+    -->
+    @for (item of results(); track item) {
+      <li class="result-item">{{ item }}</li>
+    } @empty {
+      <li class="result-empty">No results for "{{ query() }}"</li>
+    }
+  </ul>
+
+  <!--
+    effect() log — shows that effect() ran as a side effect of signal changes.
+    The latest 5 entries are kept; older ones are trimmed.
+  -->
+  @if (effectLog.length > 0) {
+    <div class="effect-log">
+      <h4>effect() log (300ms debounced):</h4>
+      @for (entry of effectLog; track entry) {
+        <p class="log-entry">{{ entry }}</p>
+      }
+    </div>
+  }
+
+</div>

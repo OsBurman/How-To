@@ -1,0 +1,15 @@
+<div class="palette-app">
+  <h1>Color Palette</h1>
+  <p class="subtitle">Colors loaded from <code>PaletteService</code> via <code>inject()</code> and <code>toSignal()</code>.</p>
+
+  <!-- @for loops over the colors() signal.
+       track color tells Angular how to identify each item — no trackBy function needed. -->
+  <ul class="color-list">
+    @for (color of colors(); track color) {
+      <li class="color-item">
+        <span class="swatch" [style.background]="color"></span>
+        <span class="color-name">{{ color }}</span>
+      </li>
+    }
+  </ul>
+</div>

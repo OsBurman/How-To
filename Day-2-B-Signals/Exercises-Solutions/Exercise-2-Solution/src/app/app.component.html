@@ -1,0 +1,25 @@
+<div class="cart">
+  <h1>Shopping Cart</h1>
+
+  <ul class="item-list">
+    @for (item of items; track item.name) {
+      <li class="item-row">
+        <span class="item-name">{{ item.name }}</span>
+        <span class="item-price">${{ item.price.toFixed(2) }}</span>
+        <span class="item-qty">
+          <!-- quantity is a WritableSignal on each item — call .update() directly on it -->
+          <button (click)="item.quantity.update(q => q - 1)">−</button>
+          {{ item.quantity() }}
+          <button (click)="item.quantity.update(q => q + 1)">+</button>
+        </span>
+      </li>
+    }
+  </ul>
+
+  <div class="totals">
+    <!-- All three are computed signals — read with () — auto-update when quantities change -->
+    <p>Subtotal: <strong>${{ subtotal().toFixed(2) }}</strong></p>
+    <p>Tax (10%): <strong>${{ tax().toFixed(2) }}</strong></p>
+    <p class="grand-total">Total: <strong>${{ grandTotal().toFixed(2) }}</strong></p>
+  </div>
+</div>

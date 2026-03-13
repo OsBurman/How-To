@@ -1,0 +1,33 @@
+<!-- LEGACY AppComponent template -->
+<!--
+  LEGACY async pipe pattern:
+    *ngIf="cartCount$ | async as cartCount"
+  
+  Problems with this approach:
+  1. async pipe emits NULL before the first value arrives from the Observable.
+     Without *ngIf, the template would try to display "null" briefly.
+  2. The *ngIf wraps the content — requires an extra DOM element or <ng-container>.
+  3. Nested async pipes multiply the null-check boilerplate.
+  
+  MODERN alternative:
+    readonly cartCount = toSignal(this.cartService.count$, { initialValue: 0 });
+    Then in template: {{ cartCount() }}  — no null, no async pipe, no *ngIf needed.
+-->
+
+<header class="legacy-header">
+  <span class="brand">🛒 Angular Dev Store (Legacy)</span>
+  <!--
+    async pipe + null guard (*ngIf as):
+    The Observable is subscribed to by the async pipe.
+    *ngIf guards against the null emission before the first value arrives.
+    Without it: "null items in cart" would briefly flash on screen.
+  -->
+  <ng-container *ngIf="cartCount$ | async as cartCount">
+    <span class="cart-badge">{{ cartCount }} item{{ cartCount === 1 ? '' : 's' }}</span>
+  </ng-container>
+</header>
+
+<main class="main-content">
+  <app-cart-header></app-cart-header>
+  <app-cart-page></app-cart-page>
+</main>

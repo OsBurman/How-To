@@ -1,0 +1,78 @@
+/* ======================================================
+   AppComponent styles
+   ====================================================== */
+
+/* Notification tray — fixed overlay at top right */
+.notification-tray {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 300px;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: slideIn 0.2s ease;
+}
+
+.notification.type-success { background: #d1fae5; color: #065f46; border-left: 4px solid #10b981; }
+.notification.type-info    { background: #dbeafe; color: #1e40af; border-left: 4px solid #3b82f6; }
+.notification.type-error   { background: #fee2e2; color: #991b1b; border-left: 4px solid #ef4444; }
+
+.notification-close {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 0 0.25rem;
+}
+
+.notification-close:hover { opacity: 1; }
+
+@keyframes slideIn {
+  from { transform: translateX(30px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+/* Tab navigation */
+.tab-nav {
+  display: flex;
+  gap: 0;
+  background: #fff;
+  border-bottom: 2px solid #e5e7eb;
+  padding: 0 1.5rem;
+}
+
+.tab-nav button {
+  padding: 0.875rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #6b7280;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab-nav button:hover { color: #374151; }
+.tab-nav button.active { color: #4f46e5; border-bottom-color: #4f46e5; }
+
+/* Main content */
+.main-content {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}

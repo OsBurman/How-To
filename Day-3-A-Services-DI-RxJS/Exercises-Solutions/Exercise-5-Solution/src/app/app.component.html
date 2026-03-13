@@ -1,0 +1,26 @@
+<div class="demo-app">
+  <h1>The async Pipe Null Gotcha — Fixed</h1>
+
+  <div class="card">
+    <h2>Logged-in User</h2>
+
+    <!-- PART B SOLUTION:
+         user() reads the signal directly — no async pipe, no null guard needed.
+         On load: "Welcome, Loading...!"
+         After 1.5s: "Welcome, Ada Lovelace!"
+         The signal initialValue ensures there is always a string, never null. -->
+    <p class="user-display">
+      Welcome, <strong>{{ user() }}</strong>!
+    </p>
+  </div>
+
+  <div class="explainer">
+    <h3>What changed (Part B)</h3>
+    <ul>
+      <li>Replaced <code>{{ '{{' }} user$ | async {{ '}}' }}</code> with <code>{{ '{{' }} user() {{ '}}' }}</code></li>
+      <li>Added <code>toSignal(user$, &#123; initialValue: 'Loading...' &#125;)</code> in the component class</li>
+      <li>Removed <code>AsyncPipe</code> from the component's <code>imports</code> array</li>
+      <li>Result: no null flash, simpler template, same reactive update</li>
+    </ul>
+  </div>
+</div>

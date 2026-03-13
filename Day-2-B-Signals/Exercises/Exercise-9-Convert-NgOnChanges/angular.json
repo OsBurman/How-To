@@ -1,0 +1,34 @@
+{
+  "name": "exercise-9-convert-ngonchanges",
+  "version": "0.0.0",
+  "projects": {
+    "exercise-9-convert-ngonchanges": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/exercise-9-convert-ngonchanges",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [],
+            "styles": ["src/styles.css"],
+            "scripts": []
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": { "buildTarget": "exercise-9-convert-ngonchanges:build:production" },
+            "development": { "buildTarget": "exercise-9-convert-ngonchanges:build:development" }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  }
+}

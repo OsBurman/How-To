@@ -1,0 +1,56 @@
+<!--
+  shopping-cart-signals.component.html — Signal Version
+
+  KEY DIFFERENCES FROM THE PLAIN VERSION:
+  - items() has parentheses — reading a signal value is a function call
+  - total() has parentheses — reading a computed() value is also a function call
+  - Every signal read is TRACKED by Angular's template engine —
+    only these DOM nodes update when the signal changes
+-->
+
+<div class="cart">
+  <!--
+    itemCount() — reading a computed() signal in the template.
+    Parentheses are required. Angular tracks this dependency.
+    When items() changes → itemCount() recalculates → this text node updates.
+    Nothing else in the app is touched.
+  -->
+  <h3>🛒 Cart ({{ itemCount() }} items)</h3>
+
+  <div class="cart-items">
+    <!--
+      items() — reading the writable signal in @for.
+      track item.id — required in modern @for; Angular uses it for DOM reconciliation.
+    -->
+    @for (item of items(); track item.id) {
+      <div class="cart-item">
+        <span class="item-name">{{ item.name }}</span>
+        <span class="item-price">${{ item.price.toFixed(2) }}</span>
+
+        <div class="quantity-controls">
+          <button (click)="decrement(item.id)" class="qty-btn">−</button>
+          <span class="qty">{{ item.quantity }}</span>
+          <button (click)="increment(item.id)" class="qty-btn">+</button>
+        </div>
+
+        <span class="item-subtotal">${{ (item.price * item.quantity).toFixed(2) }}</span>
+        <button (click)="removeItem(item.id)" class="remove-btn">✕</button>
+      </div>
+    }
+  </div>
+
+  <div class="cart-total">
+    <!--
+      total() — reading a computed() signal.
+      Angular knows this DOM node depends on total().
+      total() depends on items().
+      When items() changes → total() recalculates → ONLY this node updates.
+    -->
+    <strong>Total: ${{ total().toFixed(2) }}</strong>
+  </div>
+
+  <p class="annotation">
+    ✅ Signal version: Angular updates only the DOM nodes that read changed signals —
+    no full tree traversal needed. This is fine-grained change detection.
+  </p>
+</div>

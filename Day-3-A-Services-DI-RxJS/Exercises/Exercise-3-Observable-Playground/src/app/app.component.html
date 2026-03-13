@@ -1,0 +1,52 @@
+<div class="playground">
+  <h1>RxJS Observable Playground</h1>
+  <p class="subtitle">Click each button, implement the method, then read the log panel to verify.</p>
+
+  <div class="panels">
+
+    <!-- ── Button panel ─────────────────────────────────────────── -->
+    <div class="button-panel">
+
+      <div class="demo-group">
+        <h3>Creation operators</h3>
+        <button class="btn btn-primary"   (click)="runOf()">of()</button>
+        <button class="btn btn-primary"   (click)="runFrom()">from()</button>
+        <button class="btn btn-secondary" (click)="runTimer()">timer(2000)</button>
+      </div>
+
+      <div class="demo-group">
+        <h3>Pipeable operators</h3>
+        <button class="btn btn-accent" (click)="runFilter()">filter()</button>
+        <button class="btn btn-accent" (click)="runTap()">tap() + map()</button>
+      </div>
+
+      <div class="demo-group">
+        <h3>Hot vs Cold</h3>
+        <button class="btn btn-warning" (click)="runSubjectVsBehaviorSubject()">
+          Subject vs BehaviorSubject
+        </button>
+      </div>
+
+      <button class="btn btn-outline" (click)="clearLog()">Clear Log</button>
+    </div>
+
+    <!-- ── Log panel ─────────────────────────────────────────────── -->
+    <div class="log-panel">
+      <h2>Output Log</h2>
+
+      @if (waiting()) {
+        <p class="waiting">⏳ Waiting for timer(2000)...</p>
+      }
+
+      @if (log().length === 0) {
+        <p class="empty">Click a button to see output here.</p>
+      }
+
+      @for (line of log(); track $index) {
+        <p class="log-line"
+           [class.separator]="line.startsWith('---')">{{ line }}</p>
+      }
+    </div>
+
+  </div>
+</div>

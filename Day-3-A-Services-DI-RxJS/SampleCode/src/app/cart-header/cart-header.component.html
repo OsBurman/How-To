@@ -1,0 +1,14 @@
+<!-- CartHeaderComponent template -->
+<!-- cartCount() and cartTotal() are signals from toSignal() — call them like any other signal -->
+<header class="cart-header">
+  <div class="header-brand">
+    <span class="brand-icon">🛒</span>
+    <span class="brand-name">Angular Dev Store</span>
+  </div>
+
+  <div class="header-cart-info">
+    <!-- toSignal() signals are called with () in the template — same as any Angular signal -->
+    <span class="cart-count-badge">{{ cartCount() }} item{{ cartCount() === 1 ? '' : 's' }}</span>
+    <span class="cart-total">{{ cartTotal() | currency }}</span>
+  </div>
+</header>

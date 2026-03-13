@@ -1,0 +1,49 @@
+<!--
+  shopping-cart.component.html — Legacy Shopping Cart Template
+
+  LEGACY: *ngFor structural directive with microsyntax
+  MODERN: @for (item of items(); track item.id) { } control flow block
+
+  LEGACY: {{ total }} — plain getter, called every change-detection cycle
+  MODERN: {{ total() }} — computed() signal, called only when items() changes
+-->
+
+<div class="cart">
+  <h3>Shopping Cart <span class="count">({{ itemCount }} items)</span></h3>
+
+  <!-- LEGACY: *ngFor — structural directive with microsyntax -->
+  <!-- MODERN: @for (item of items(); track item.id) -->
+  <ul class="item-list" *ngIf="items.length > 0; else emptyCart">
+    <li *ngFor="let item of items" class="cart-item">
+      <span class="item-name">{{ item.name }}</span>
+      <span class="item-price">${{ item.price.toFixed(2) }}</span>
+      <div class="qty-controls">
+        <button (click)="decrement(item.id)">−</button>
+        <span>{{ item.quantity }}</span>
+        <button (click)="increment(item.id)">+</button>
+      </div>
+      <span class="item-subtotal">${{ (item.price * item.quantity).toFixed(2) }}</span>
+      <button class="remove" (click)="removeItem(item.id)">✕</button>
+    </li>
+  </ul>
+
+  <!-- LEGACY: *ngIf with else template reference -->
+  <!-- MODERN: @if / @else blocks — no ng-template needed -->
+  <ng-template #emptyCart>
+    <p class="empty">Cart is empty.</p>
+  </ng-template>
+
+  <!--
+    LEGACY: {{ total }} — plain getter.
+    Zone.js calls this on every cycle regardless of whether items changed.
+    MODERN EQUIVALENT: {{ total() }} — computed() only recalculates when items() changes.
+  -->
+  <div class="cart-total">
+    Total: <strong>${{ total.toFixed(2) }}</strong>
+  </div>
+
+  <p class="annotation">
+    ⚠️ Legacy: total getter runs on every change-detection cycle (Zone.js).
+    ngOnChanges fired {{ ngOnChangesCount }} time(s) — only on reference replacement, not mutation.
+  </p>
+</div>

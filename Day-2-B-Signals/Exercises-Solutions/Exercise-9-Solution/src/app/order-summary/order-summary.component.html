@@ -1,0 +1,33 @@
+<div class="summary-card">
+  <h2>Pricing Summary</h2>
+
+  <div class="price-row">
+    <span>Original price</span>
+    <!-- price() — () required after conversion from @Input() to input() -->
+    <strong>{{ price() | currency }}</strong>
+  </div>
+
+  <div class="price-row discount">
+    <span>Discount</span>
+    <!-- discount() — () required -->
+    <strong>−{{ discount() }}%</strong>
+  </div>
+
+  <div class="price-row total">
+    <span>You pay</span>
+    <!-- discountedPrice() — () required; this is a computed signal -->
+    <strong>{{ discountedPrice() | currency }}</strong>
+  </div>
+
+  <div class="savings-row">
+    <!-- savings() — () required; computed signal reading discountedPrice() -->
+    You save <strong>{{ savings() | currency }}</strong>
+  </div>
+
+  <div class="history">
+    <p class="history-label">Price history (this session):</p>
+    @for (p of priceHistory; track $index) {
+      <span class="history-chip">{{ p | currency }}</span>
+    }
+  </div>
+</div>

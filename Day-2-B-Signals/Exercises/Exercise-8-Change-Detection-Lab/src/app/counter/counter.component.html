@@ -1,0 +1,10 @@
+<div class="counter-card">
+  <h2>🔢 Counter</h2>
+  <p class="count-value">Count: <strong>{{ count() }}</strong></p>
+  <p class="doubled-value">Doubled: <strong>{{ doubled() }}</strong></p>
+  <div class="controls">
+    <button (click)="decrement()">−</button>
+    <button (click)="reset()">Reset</button>
+    <button (click)="increment()">+</button>
+  </div>
+</div>

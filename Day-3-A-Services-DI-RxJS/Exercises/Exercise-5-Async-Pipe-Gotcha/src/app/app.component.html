@@ -1,0 +1,56 @@
+<div class="demo-app">
+  <h1>The async Pipe Null Gotcha</h1>
+
+  <div class="card">
+    <h2>Logged-in User</h2>
+
+    <!--
+      PART A — The Gotcha (already wired up — run the app and watch carefully):
+
+      Load the page. For ~1.5 seconds you will see:
+        "Welcome, null!"
+      Then it updates to:
+        "Welcome, Ada Lovelace!"
+
+      That "null" IS the bug. BehaviorSubject emits its initial null value
+      immediately on subscribe. The async pipe has no special null handling —
+      it renders whatever the Observable emits, including null.
+    -->
+    <p class="user-display">
+      Welcome, <strong>{{ user$ | async }}</strong>!
+    </p>
+
+    <!--
+      TODO B5: Once you implement toSignal() in the component class,
+      replace the <p> above with this version:
+
+      <p class="user-display">
+        Welcome, <strong>{{ user() }}</strong>!
+      </p>
+
+      The signal starts with 'Loading...' so you'll see:
+        "Welcome, Loading...!"
+      Then after 1.5 seconds:
+        "Welcome, Ada Lovelace!"
+      No null. No crash. Simpler template.
+    -->
+  </div>
+
+  <div class="explainer">
+    <h3>What's happening (Part A)</h3>
+    <ul>
+      <li>The service's <code>BehaviorSubject</code> starts with <code>null</code></li>
+      <li>The <code>async</code> pipe subscribes and immediately receives that <code>null</code></li>
+      <li>The template renders <code>null</code> — literally the word "null"</li>
+      <li>After 1.5 seconds the real value arrives</li>
+    </ul>
+
+    <h3>The fix (Part B)</h3>
+    <ul>
+      <li>Replace <code>async</code> pipe with <code>toSignal(obs$, &#123; initialValue: 'Loading...' &#125;)</code></li>
+      <li><code>initialValue</code> sets what the signal returns before the Observable emits</li>
+      <li>The signal never holds <code>null</code> unless you explicitly pass it as the initial value</li>
+      <li>No <code>@if</code> null guard needed — the template gets simpler</li>
+    </ul>
+  </div>
+</div>

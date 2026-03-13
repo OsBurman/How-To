@@ -1,0 +1,24 @@
+<div class="search-box">
+  <h1>Country Search</h1>
+
+  <!--
+    [value]="query()" sets the input value from the signal.
+    query.set(...) writes the typed value back into the signal,
+    which triggers results() and resultCount() to recompute.
+  -->
+  <input
+    type="text"
+    placeholder="Search countries..."
+    [value]="query()"
+    (input)="query.set($any($event.target).value)"
+  />
+
+  <!-- resultCount() re-evaluates only when the results array length changes -->
+  <p class="result-count">{{ resultCount() }} result(s)</p>
+
+  <ul>
+    @for (country of results(); track country) {
+      <li>{{ country }}</li>
+    }
+  </ul>
+</div>

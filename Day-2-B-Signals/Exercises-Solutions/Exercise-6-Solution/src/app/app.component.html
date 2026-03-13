@@ -1,0 +1,31 @@
+<div class="tag-demo">
+  <h1>Tag Selector</h1>
+
+  <section class="available-section">
+    <h2>Available Tags</h2>
+    <!--
+      [availableTags] passes the plain array down via input().
+      (tagSelected) listens for the output() event and calls onTagSelected with the tag name.
+    -->
+    <app-tag-list
+      [availableTags]="availableTags"
+      (tagSelected)="onTagSelected($event)"
+    />
+  </section>
+
+  <section class="selected-section">
+    <h2>Selected Tags</h2>
+    <!--
+      selectedTags() reads the signal — () is required.
+      @empty handles the case where the signal array is empty.
+    -->
+    @for (tag of selectedTags(); track tag) {
+      <span class="tag-pill">
+        {{ tag }}
+        <button class="remove-btn" (click)="removeTag(tag)">×</button>
+      </span>
+    } @empty {
+      <p class="empty-state">No tags selected yet.</p>
+    }
+  </section>
+</div>

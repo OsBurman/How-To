@@ -1,0 +1,23 @@
+<div class="app-shell">
+  <h1>Order Summary</h1>
+
+  <div class="price-controls">
+    <p class="label">Select pricing tier:</p>
+    <div class="btn-group">
+      <button (click)="setPriceStandard()">Standard ($99.99 / 10% off)</button>
+      <button (click)="setPricePremium()">Premium ($249.00 / 20% off)</button>
+      <button (click)="setPriceSale()">Sale ($49.99 / 30% off)</button>
+    </div>
+  </div>
+
+  <!--
+    The parent passes price() and discount() as values to the child.
+    The binding syntax [price]="price()" and [discount]="discount()" works for BOTH
+    legacy @Input() AND modern input() — so the parent template stays unchanged
+    after you convert the child.
+  -->
+  <app-order-summary
+    [price]="price()"
+    [discount]="discount()"
+  />
+</div>

@@ -1,0 +1,28 @@
+/* LEGACY AppComponent styles */
+.legacy-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #7c3aed;
+  color: #fff;
+  padding: 0.875rem 1.5rem;
+}
+
+.brand { font-size: 1.125rem; font-weight: 700; }
+
+.cart-badge {
+  background: rgba(255,255,255,0.2);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.main-content {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

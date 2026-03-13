@@ -1,0 +1,37 @@
+<div class="tag-demo">
+  <h1>Tag Selector</h1>
+
+  <section class="available-section">
+    <h2>Available Tags</h2>
+
+    <!--
+      TODO (step 4): Wire TagListComponent with its input and output
+      Replace the static placeholder below with:
+
+      <app-tag-list
+        [availableTags]="availableTags"
+        (tagSelected)="onTagSelected($event)"
+      />
+    -->
+    <p class="placeholder">⬅ Add TagListComponent here (see TODO in app.component.ts)</p>
+  </section>
+
+  <section class="selected-section">
+    <h2>Selected Tags</h2>
+
+    <!--
+      TODO (step 5): Display selectedTags() with a Remove button per tag
+      Replace this placeholder with:
+
+      @for (tag of selectedTags(); track tag) {
+        <span class="tag-pill">
+          {{ tag }}
+          <button class="remove-btn" (click)="removeTag(tag)">×</button>
+        </span>
+      } @empty {
+        <p class="empty-state">No tags selected yet.</p>
+      }
+    -->
+    <p class="empty-state">No tags selected yet.</p>
+  </section>
+</div>

@@ -1,0 +1,13 @@
+<div class="notification-center">
+  <h1>Notification Center</h1>
+
+  <!--
+    After conversion in step 4, update this line to pass the signal value:
+    [notifications]="notifications()"
+    The (dismissed) binding stays the same — it works for both @Output() and output().
+  -->
+  <app-notification-list
+    [notifications]="notifications"
+    (dismissed)="onDismissed($event)"
+  />
+</div>

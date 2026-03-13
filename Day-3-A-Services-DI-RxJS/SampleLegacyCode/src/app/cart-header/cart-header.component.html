@@ -1,0 +1,45 @@
+<!-- LEGACY CartHeaderComponent template -->
+<!--
+  LEGACY async pipe usage:
+    {{ cartCount$ | async }}
+    {{ cartTotal$ | async | currency }}
+
+  The async pipe subscribes to the Observable and returns the latest value.
+  PROBLEM: It emits NULL before the first value from the Observable.
+  
+  Two ways to handle the null:
+  
+  1. *ngIf null guard (shown below):
+       *ngIf="cartCount$ | async as count" — skips rendering until non-null
+  
+  2. Nullish fallback operator (shown for total):
+       {{ (cartTotal$ | async) ?? 0 | currency }}
+  
+  MODERN alternative (no null problem):
+    readonly cartCount = toSignal(this.cartService.count$, { initialValue: 0 });
+    Template: {{ cartCount() }}  — always a number, never null or undefined.
+-->
+<header class="cart-header">
+  <div class="header-brand">
+    <span class="brand-icon">🛒</span>
+    <span class="brand-name">Angular Dev Store</span>
+    <span class="legacy-tag">LEGACY</span>
+  </div>
+
+  <div class="header-cart-info">
+    <!--
+      *ngIf null guard: without this, the template would render "null items"
+      briefly before the BehaviorSubject emits its initial value.
+      Modern code with toSignal(initialValue) never has this problem.
+    -->
+    <ng-container *ngIf="cartCount$ | async as count">
+      <span class="cart-count-badge">{{ count }} item{{ count === 1 ? '' : 's' }}</span>
+    </ng-container>
+
+    <!--
+      Nullish coalescing as an alternative null guard.
+      Still requires knowing that async pipe can emit null.
+    -->
+    <span class="cart-total">{{ (cartTotal$ | async) ?? 0 | currency }}</span>
+  </div>
+</header>

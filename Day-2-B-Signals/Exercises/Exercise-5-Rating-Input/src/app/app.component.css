@@ -1,0 +1,29 @@
+.rating-demo {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  width: 400px;
+}
+
+.slider-row {
+  margin: 20px 0;
+}
+
+.slider-row label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.slider-row input[type='range'] {
+  width: 100%;
+  accent-color: #f59e0b;
+}
+
+.ratings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}

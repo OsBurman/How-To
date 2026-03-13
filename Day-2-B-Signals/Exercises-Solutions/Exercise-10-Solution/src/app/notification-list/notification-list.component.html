@@ -1,0 +1,29 @@
+<div class="list-wrapper">
+  <!-- unreadCount() reads the computed signal — () required -->
+  <p class="unread-count">
+    <strong>{{ unreadCount() }}</strong> unread
+  </p>
+
+  <!--
+    @for replaces *ngFor — no NgFor import needed in standalone components.
+    track notification.id uses the id as the stable identity for DOM reconciliation.
+  -->
+  <ul class="notification-list">
+    @for (notification of notifications(); track notification.id) {
+      <li
+        [class.read]="notification.read"
+        class="notification-item"
+      >
+        <span class="message">{{ notification.message }}</span>
+        <button class="dismiss-btn" (click)="onDismiss(notification.id)">
+          Dismiss
+        </button>
+      </li>
+    }
+  </ul>
+
+  <!-- @if replaces *ngIf — no NgIf import needed in standalone components -->
+  @if (notifications().length === 0) {
+    <p class="empty-state">All caught up! No notifications.</p>
+  }
+</div>

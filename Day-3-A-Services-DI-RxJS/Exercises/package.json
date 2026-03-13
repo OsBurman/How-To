@@ -1,0 +1,28 @@
+{
+  "name": "d3a-exercises",
+  "private": true,
+  "workspaces": [
+    "Exercise-1-Your-First-Service",
+    "Exercise-2-Shared-Counter",
+    "Exercise-3-Observable-Playground",
+    "Exercise-4-Notification-Service",
+    "Exercise-5-Async-Pipe-Gotcha",
+    "Exercise-6-Search-Operators",
+    "Exercise-7-CombineLatest-Calculator",
+    "Exercise-8-Error-Handling-Service",
+    "Exercise-9-Functional-Guard",
+    "Exercise-10-Legacy-Convert"
+  ],
+  "scripts": {
+    "start:1": "npm start --workspace=Exercise-1-Your-First-Service",
+    "start:2": "npm start --workspace=Exercise-2-Shared-Counter",
+    "start:3": "npm start --workspace=Exercise-3-Observable-Playground",
+    "start:4": "npm start --workspace=Exercise-4-Notification-Service",
+    "start:5": "npm start --workspace=Exercise-5-Async-Pipe-Gotcha",
+    "start:6": "npm start --workspace=Exercise-6-Search-Operators",
+    "start:7": "npm start --workspace=Exercise-7-CombineLatest-Calculator",
+    "start:8": "npm start --workspace=Exercise-8-Error-Handling-Service",
+    "start:9": "npm start --workspace=Exercise-9-Functional-Guard",
+    "start:10": "npm start --workspace=Exercise-10-Legacy-Convert"
+  }
+}

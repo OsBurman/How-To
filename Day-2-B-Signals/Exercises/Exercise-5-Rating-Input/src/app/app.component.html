@@ -1,0 +1,39 @@
+<div class="rating-demo">
+  <h1>Rating Display</h1>
+
+  <div class="slider-row">
+    <label for="scoreSlider">
+      Score: <strong>{{ score() }}</strong>
+    </label>
+    <!-- Slider is pre-wired — reads score() and writes back via onScoreChange() -->
+    <input
+      id="scoreSlider"
+      type="range"
+      min="0"
+      max="5"
+      step="1"
+      [value]="score()"
+      (input)="onScoreChange($event)"
+    />
+  </div>
+
+  <div class="ratings-list">
+    <!--
+      TODO (after completing RatingDisplayComponent):
+      Add input bindings to pass data into the child component:
+
+      <app-rating-display
+        [rating]="score()"
+        [maxStars]="5"
+        label="Your Score"
+      />
+
+      <app-rating-display
+        [rating]="score()"
+        [maxStars]="10"
+        label="Out of 10"
+      />
+    -->
+    <app-rating-display />
+  </div>
+</div>

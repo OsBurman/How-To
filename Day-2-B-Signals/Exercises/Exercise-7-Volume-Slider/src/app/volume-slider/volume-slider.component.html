@@ -1,0 +1,20 @@
+<!--
+  TODO (after declaring the model signal):
+  Replace this placeholder with the slider and label:
+
+  <div class="slider-wrapper">
+    <label>
+      Volume: <strong>{{ volume() }}</strong>
+    </label>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      [value]="volume()"
+      (input)="volume.set(+$any($event.target).value)"
+    />
+  </div>
+
+  NOTE: volume.set() writes back to the parent — that's the two-way part of model().
+-->
+<p class="placeholder">Implement the volume model() signal first</p>

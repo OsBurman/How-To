@@ -1,0 +1,25 @@
+<div class="volume-demo">
+  <h1>Volume Slider</h1>
+
+  <!--
+    TODO (step 3): Replace the placeholder below with the VolumeSliderComponent
+    using two-way model binding:
+
+    <app-volume-slider [(volume)]="volume" />
+
+    IMPORTANT: Pass "volume" (the signal reference), NOT "volume()" (the value).
+    Angular needs the signal reference to wire up the two-way write-back.
+  -->
+  <p class="placeholder">⬅ Add VolumeSliderComponent here with [(volume)]="volume"</p>
+
+  <div class="parent-display">
+    <!-- This label proves the parent sees the same value as the child -->
+    <p>Parent sees: <strong>{{ volume() }}</strong></p>
+
+    <!--
+      This button calls mute() on the parent — it sets the signal to 0.
+      Once model() is wired correctly, the slider in the child will move to 0 too.
+    -->
+    <button class="btn-mute" (click)="mute()">🔇 Mute</button>
+  </div>
+</div>

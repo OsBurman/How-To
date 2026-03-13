@@ -1,0 +1,31 @@
+<div class="cart">
+  <h1>Shopping Cart</h1>
+
+  <ul class="item-list">
+    @for (item of items; track item.name) {
+      <li class="item-row">
+        <span class="item-name">{{ item.name }}</span>
+        <span class="item-price">${{ item.price.toFixed(2) }}</span>
+        <span class="item-qty">
+          <!--
+            TODO (step 5): Add − and + buttons to change quantity
+            − button: (click)="item.quantity.update(q => q - 1)"
+            + button: (click)="item.quantity.update(q => q + 1)"
+          -->
+          Qty: {{ item.quantity() }}
+        </span>
+      </li>
+    }
+  </ul>
+
+  <div class="totals">
+    <!-- TODO: Replace ??? with subtotal() once you declare that computed signal -->
+    <p>Subtotal: <strong>$???</strong></p>
+
+    <!-- TODO: Replace ??? with tax() once you declare that computed signal -->
+    <p>Tax (10%): <strong>$???</strong></p>
+
+    <!-- TODO: Replace ??? with grandTotal() once you declare that computed signal -->
+    <p class="grand-total">Total: <strong>$???</strong></p>
+  </div>
+</div>
