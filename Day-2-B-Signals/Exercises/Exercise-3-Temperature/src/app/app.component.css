@@ -17,7 +17,7 @@
   font-size: 1rem;
 }
 
-.slider-row input[type='range'] {
+.slider-row input[type="range"] {
   width: 100%;
   accent-color: #4f46e5;
 }

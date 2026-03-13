@@ -28,7 +28,9 @@
   transition: opacity 0.15s;
 }
 
-.btn-mute:hover { opacity: 0.85; }
+.btn-mute:hover {
+  opacity: 0.85;
+}
 
 .placeholder {
   color: #9ca3af;

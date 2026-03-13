@@ -20,14 +20,33 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-.item-name  { flex: 1; font-weight: 500; }
-.item-price { color: #4f46e5; font-weight: 600; width: 80px; text-align: right; }
-.item-qty   { width: 120px; text-align: center; color: #555; }
+.item-name {
+  flex: 1;
+  font-weight: 500;
+}
+.item-price {
+  color: #4f46e5;
+  font-weight: 600;
+  width: 80px;
+  text-align: right;
+}
+.item-qty {
+  width: 120px;
+  text-align: center;
+  color: #555;
+}
 
 .totals {
   padding-top: 16px;
   text-align: right;
 }
 
-.totals p       { margin-bottom: 6px; color: #6b7280; }
-.grand-total    { font-size: 1.15rem; font-weight: 700; color: #111; }
+.totals p {
+  margin-bottom: 6px;
+  color: #6b7280;
+}
+.grand-total {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111;
+}

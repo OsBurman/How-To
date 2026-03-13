@@ -8,10 +8,13 @@
   padding: 0.875rem 1.5rem;
 }
 
-.brand { font-size: 1.125rem; font-weight: 700; }
+.brand {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
 
 .cart-badge {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 999px;
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;

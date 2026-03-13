@@ -1,5 +1,7 @@
 /* RxJSOperatorsComponent styles */
-.operators-page { padding: 0; }
+.operators-page {
+  padding: 0;
+}
 
 h1 {
   font-size: 1.375rem;
@@ -8,7 +10,10 @@ h1 {
   margin-bottom: 0.25rem;
 }
 
-.subtitle { color: #6b7280; margin-bottom: 1.5rem; }
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
 
 .playground-layout {
   display: grid;
@@ -17,7 +22,9 @@ h1 {
 }
 
 @media (max-width: 700px) {
-  .playground-layout { grid-template-columns: 1fr; }
+  .playground-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Shared panel card */
@@ -63,15 +70,32 @@ h1 {
   font-size: 0.875rem;
   font-weight: 600;
   color: #374151;
-  font-family: 'Menlo', 'Consolas', monospace;
-  transition: background 0.15s, border-color 0.15s;
+  font-family: "Menlo", "Consolas", monospace;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
 }
 
-.btn-demo:hover { background: #e5e7eb; border-color: #9ca3af; }
-.btn-cold { border-color: #93c5fd; color: #1d4ed8; background: #eff6ff; }
-.btn-cold:hover { background: #dbeafe; }
-.btn-hot { border-color: #fca5a5; color: #b91c1c; background: #fef2f2; }
-.btn-hot:hover { background: #fee2e2; }
+.btn-demo:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+.btn-cold {
+  border-color: #93c5fd;
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+.btn-cold:hover {
+  background: #dbeafe;
+}
+.btn-hot {
+  border-color: #fca5a5;
+  color: #b91c1c;
+  background: #fef2f2;
+}
+.btn-hot:hover {
+  background: #fee2e2;
+}
 
 /* Search */
 .search-input {
@@ -83,7 +107,10 @@ h1 {
   font-size: 0.9375rem;
   margin-bottom: 0.5rem;
 }
-.search-input:focus { outline: none; border-color: #6366f1; }
+.search-input:focus {
+  outline: none;
+  border-color: #6366f1;
+}
 
 .search-results {
   list-style: none;
@@ -97,7 +124,9 @@ h1 {
   font-size: 0.875rem;
   border-bottom: 1px solid #f3f4f6;
 }
-.search-results li:last-child { border-bottom: none; }
+.search-results li:last-child {
+  border-bottom: none;
+}
 
 .btn-clear-log {
   margin-top: 0.5rem;
@@ -108,7 +137,9 @@ h1 {
   font-size: 0.8125rem;
   color: #6b7280;
 }
-.btn-clear-log:hover { background: #f3f4f6; }
+.btn-clear-log:hover {
+  background: #f3f4f6;
+}
 
 /* Log panel */
 .log-panel h2 {
@@ -120,7 +151,11 @@ h1 {
   color: #374151;
 }
 
-.log-empty { color: #9ca3af; font-style: italic; font-size: 0.9rem; }
+.log-empty {
+  color: #9ca3af;
+  font-style: italic;
+  font-size: 0.9rem;
+}
 
 .log-list {
   list-style: none;
@@ -129,9 +164,16 @@ h1 {
   gap: 0.125rem;
   max-height: 480px;
   overflow-y: auto;
-  font-family: 'Menlo', 'Consolas', monospace;
+  font-family: "Menlo", "Consolas", monospace;
   font-size: 0.8125rem;
 }
 
-.log-list li { color: #374151; line-height: 1.5; }
-.log-list li.log-separator { color: #6366f1; font-weight: 700; margin-top: 0.5rem; }
+.log-list li {
+  color: #374151;
+  line-height: 1.5;
+}
+.log-list li.log-separator {
+  color: #6366f1;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}

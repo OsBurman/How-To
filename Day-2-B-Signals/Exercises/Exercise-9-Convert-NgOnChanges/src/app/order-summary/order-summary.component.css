@@ -22,7 +22,9 @@ h2 {
   font-size: 0.95rem;
 }
 
-.price-row.discount strong { color: #16a34a; }
+.price-row.discount strong {
+  color: #16a34a;
+}
 
 .price-row.total {
   font-size: 1.1rem;
@@ -39,7 +41,9 @@ h2 {
   border-bottom: 1px solid #e5e7eb;
 }
 
-.savings-row strong { color: #16a34a; }
+.savings-row strong {
+  color: #16a34a;
+}
 
 .history {
   margin-top: 12px;

@@ -14,8 +14,15 @@ h2 {
   margin-bottom: 10px;
 }
 
-.count-value  { font-size: 1.2rem; margin-bottom: 4px; }
-.doubled-value { font-size: 0.9rem; color: #6b7280; margin-bottom: 14px; }
+.count-value {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+.doubled-value {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
 
 .controls {
   display: flex;
@@ -33,5 +40,9 @@ button {
   transition: opacity 0.15s;
 }
 
-button:hover { opacity: 0.85; }
-button:nth-child(2) { background: #6b7280; }
+button:hover {
+  opacity: 0.85;
+}
+button:nth-child(2) {
+  background: #6b7280;
+}

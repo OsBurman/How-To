@@ -67,12 +67,20 @@
 .progress-fill {
   height: 100%;
   border-radius: 6px;
-  transition: width 0.3s ease, background 0.3s ease;
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
 }
 
-.progress-fill.level-ok      { background: #38a169; }
-.progress-fill.level-warning  { background: #d69e2e; }
-.progress-fill.level-danger   { background: #c53030; }
+.progress-fill.level-ok {
+  background: #38a169;
+}
+.progress-fill.level-warning {
+  background: #d69e2e;
+}
+.progress-fill.level-danger {
+  background: #c53030;
+}
 
 .progress-label {
   font-size: 0.85rem;

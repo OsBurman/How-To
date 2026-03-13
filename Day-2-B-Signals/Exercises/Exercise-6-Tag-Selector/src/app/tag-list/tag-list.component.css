@@ -8,7 +8,9 @@
   color: #374151;
   cursor: pointer;
   margin: 4px;
-  transition: background 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
 }
 
 .tag-btn:hover {

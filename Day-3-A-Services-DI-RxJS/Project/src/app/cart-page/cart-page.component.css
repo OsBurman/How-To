@@ -31,15 +31,32 @@
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(20px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.toast--success { background: #d1fae5; color: #065f46; }
-.toast--info    { background: #dbeafe; color: #1e40af; }
-.toast--error   { background: #fee2e2; color: #991b1b; }
+.toast--success {
+  background: #d1fae5;
+  color: #065f46;
+}
+.toast--info {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.toast--error {
+  background: #fee2e2;
+  color: #991b1b;
+}
 
-.toast-message  { flex: 1; }
+.toast-message {
+  flex: 1;
+}
 
 .toast-dismiss {
   background: none;
@@ -50,7 +67,9 @@
   padding: 0;
   color: inherit;
 }
-.toast-dismiss:hover { opacity: 1; }
+.toast-dismiss:hover {
+  opacity: 1;
+}
 
 /* ── Error banner ─────────────────────────────────────────────────────────── */
 
@@ -117,8 +136,13 @@
   gap: 0.2rem;
 }
 
-.product-name  { font-weight: 600; }
-.product-price { font-size: 0.9rem; color: #475569; }
+.product-name {
+  font-weight: 600;
+}
+.product-price {
+  font-size: 0.9rem;
+  color: #475569;
+}
 
 /* ── Cart list ────────────────────────────────────────────────────────────── */
 
@@ -144,8 +168,13 @@
   gap: 0.5rem;
 }
 
-.item-name  { font-weight: 600; }
-.item-qty   { color: #64748b; font-size: 0.9rem; }
+.item-name {
+  font-weight: 600;
+}
+.item-qty {
+  color: #64748b;
+  font-size: 0.9rem;
+}
 
 .item-right {
   display: flex;
@@ -153,7 +182,10 @@
   gap: 0.75rem;
 }
 
-.item-total { font-weight: 600; color: #1a56db; }
+.item-total {
+  font-weight: 600;
+  color: #1a56db;
+}
 
 .cart-footer {
   display: flex;
@@ -163,10 +195,19 @@
   border-top: 1px solid #e2e8f0;
 }
 
-.cart-total { font-size: 1rem; color: #1a202c; }
-.cart-total strong { font-size: 1.1rem; color: #1a56db; }
+.cart-total {
+  font-size: 1rem;
+  color: #1a202c;
+}
+.cart-total strong {
+  font-size: 1.1rem;
+  color: #1a56db;
+}
 
-.empty-message { color: #64748b; font-style: italic; }
+.empty-message {
+  color: #64748b;
+  font-style: italic;
+}
 
 /* ── Buttons ──────────────────────────────────────────────────────────────── */
 
@@ -178,8 +219,20 @@
   padding: 0.45rem 0.9rem;
   transition: opacity 0.15s;
 }
-.btn:hover { opacity: 0.85; }
+.btn:hover {
+  opacity: 0.85;
+}
 
-.btn--add    { background: #1a56db; color: #fff; }
-.btn--remove { background: #fee2e2; color: #991b1b; padding: 0.3rem 0.55rem; }
-.btn--clear  { background: #f1f5f9; color: #475569; }
+.btn--add {
+  background: #1a56db;
+  color: #fff;
+}
+.btn--remove {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 0.3rem 0.55rem;
+}
+.btn--clear {
+  background: #f1f5f9;
+  color: #475569;
+}

@@ -21,5 +21,9 @@
   line-height: 1;
 }
 
-.star-filled { color: #f59e0b; }
-.star-empty  { color: #d1d5db; }
+.star-filled {
+  color: #f59e0b;
+}
+.star-empty {
+  color: #d1d5db;
+}

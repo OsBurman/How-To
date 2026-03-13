@@ -38,12 +38,20 @@
 .bar {
   height: 100%;
   border-radius: 5px;
-  transition: width 0.3s ease, background-color 0.3s ease;
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease;
 }
 
-.bar.ok      { background: #66bb6a; }
-.bar.warning { background: #ffa726; }
-.bar.danger  { background: #ef5350; }
+.bar.ok {
+  background: #66bb6a;
+}
+.bar.warning {
+  background: #ffa726;
+}
+.bar.danger {
+  background: #ef5350;
+}
 
 /* Summary row */
 .summary-row {
@@ -60,8 +68,12 @@
   text-align: center;
 }
 
-.summary-item.spent { background: #e3f2fd; }
-.summary-item.over-budget .amount { color: #c62828; }
+.summary-item.spent {
+  background: #e3f2fd;
+}
+.summary-item.over-budget .amount {
+  color: #c62828;
+}
 
 .summary-item .label {
   display: block;
@@ -82,7 +94,11 @@
   margin-bottom: 1rem;
 }
 
-.expense-list h4 { font-size: 0.85rem; margin-bottom: 0.5rem; color: #555; }
+.expense-list h4 {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
 
 .expense-row {
   display: flex;
@@ -103,12 +119,26 @@
   text-align: center;
 }
 
-.category-food   { background: #e8f5e9; color: #2e7d32; }
-.category-tech   { background: #e8eaf6; color: #283593; }
-.category-travel { background: #fff3e0; color: #e65100; }
-.category-other  { background: #f5f5f5; color: #555; }
+.category-food {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.category-tech {
+  background: #e8eaf6;
+  color: #283593;
+}
+.category-travel {
+  background: #fff3e0;
+  color: #e65100;
+}
+.category-other {
+  background: #f5f5f5;
+  color: #555;
+}
 
-.exp-desc { flex: 1; }
+.exp-desc {
+  flex: 1;
+}
 
 .exp-amount {
   font-weight: 600;
@@ -123,10 +153,18 @@
   font-size: 0.9rem;
 }
 
-.empty-state { font-size: 0.85rem; color: #999; font-style: italic; }
+.empty-state {
+  font-size: 0.85rem;
+  color: #999;
+  font-style: italic;
+}
 
 /* Add form */
-.add-form h4 { font-size: 0.85rem; margin-bottom: 0.5rem; color: #555; }
+.add-form h4 {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
 
 .form-row {
   display: flex;
@@ -141,8 +179,13 @@
   font-size: 0.88rem;
 }
 
-.form-input:not(.amount-input) { flex: 1; min-width: 120px; }
-.amount-input { width: 80px; }
+.form-input:not(.amount-input) {
+  flex: 1;
+  min-width: 120px;
+}
+.amount-input {
+  width: 80px;
+}
 
 .form-select {
   padding: 0.4rem 0.6rem;

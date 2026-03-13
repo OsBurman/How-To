@@ -54,7 +54,7 @@
 }
 
 .explainer li::before {
-  content: '→';
+  content: "→";
   position: absolute;
   left: 0;
   color: #9ca3af;

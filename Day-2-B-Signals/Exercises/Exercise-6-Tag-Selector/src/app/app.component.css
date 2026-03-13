@@ -46,7 +46,9 @@ h2 {
   padding: 0;
 }
 
-.remove-btn:hover { color: #dc2626; }
+.remove-btn:hover {
+  color: #dc2626;
+}
 
 .empty-state {
   color: #9ca3af;
