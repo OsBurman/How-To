@@ -19,7 +19,23 @@ By the end of this session, you'll turn your Angular app into a multi-view exper
 
 ---
 
-## Slide 3: Why Routing Matters
+## Slide 3: What Is Routing?
+
+Routing is the mechanism that maps URLs to views. When a user navigates to `/recipes`, Angular looks up that path in your route configuration and renders the matching component — without ever reloading the page.
+
+Think of it as a switchboard: a URL comes in, Angular matches it to a rule, and the right component appears. The URL in the browser bar changes, the browser history updates, but the server is never asked for a new page.
+
+There are three pieces to that switchboard:
+
+- **The route config** — a list of URL-to-component mappings you define
+- **The router outlet** — a placeholder in your template where the matched component renders
+- **Navigation tools** — links and code calls that tell the router to change the active URL
+
+The next several slides cover each piece in detail.
+
+---
+
+## Slide 4: Why Routing Matters
 
 Without routing, your Angular app is a single view — no bookmarkable URLs, no browser back button, no deep links.
 
@@ -35,7 +51,7 @@ Routing gives you:
 
 ---
 
-## Slide 4: Enable Routing — provideRouter()
+## Slide 5: Enable Routing — provideRouter()
 
 Routing is opt-in. You wire it up once in `app.config.ts`.
 
@@ -58,7 +74,7 @@ export const appConfig: ApplicationConfig = {
 
 ---
 
-## Slide 5: The Route Configuration Array
+## Slide 6: The Route Configuration Array
 
 Each object in the `routes` array maps a URL path to a component. Angular matches routes **top-to-bottom and stops at the first match** — order matters.
 
@@ -82,9 +98,9 @@ export const routes: Routes = [
 
 ---
 
-## Slide 6: router-outlet — Where Views Render
+## Slide 7: router-outlet — Where Views Render
 
-`<router-outlet>` is the placeholder in your template where Angular injects the matched component.
+`<router-outlet>` is the placeholder in your template where Angular injects the matched component. The `AppComponent` class itself needs no logic — rendering is handled entirely by the outlet. You just need to import `RouterOutlet` and place the tag in the template.
 
 ```typescript
 // app.component.ts
@@ -98,7 +114,7 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl:    './app.component.css',
 })
-export class AppComponent {}
+export class AppComponent {} // no logic needed — the outlet handles rendering
 ```
 
 ```html
@@ -112,12 +128,12 @@ export class AppComponent {}
 
 ---
 
-## Slide 7: ⚠️ WARNING — Routing Directives Not in Imports
+## Slide 8: ⚠️ WARNING — Routing Directives Not in Imports
 
 The most common Day 4 mistake. You get a blank page or broken links with no error message.
 
 ```typescript
-// ❌ Breaks silently — no error, just missing behavior
+// WRONG — Breaks silently — no error, just missing behavior
 @Component({
   standalone: true,
   imports: [],  // all three routing pieces are missing
@@ -130,7 +146,7 @@ export class AppComponent {}
 ```
 
 ```typescript
-// ✅ Import exactly what you use
+// CORRECT — Import exactly what you use
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -145,9 +161,11 @@ export class AppComponent {}
 
 ---
 
-## Slide 8: routerLink — Navigate in Templates
+## Slide 9: routerLink — Navigate in Templates
 
-Use `routerLink` instead of `href` for in-app navigation. `href` forces a full page reload. `routerLink` keeps you in the SPA.
+`routerLink` is an Angular directive that turns any element into a client-side navigation trigger. When a user clicks it, Angular's router updates the URL and swaps in the new component — without asking the server for a new page. This keeps your app state intact and avoids a full page reload.
+
+Use `routerLink` in place of `href` whenever you're navigating within your app. `href` tells the *browser* to fetch a new page. `routerLink` tells *Angular's router* to change the view.
 
 ```html
 <!-- Static link — plain string, no brackets needed -->
@@ -169,7 +187,7 @@ Use `routerLink` instead of `href` for in-app navigation. `href` forces a full p
 
 ---
 
-## Slide 9: routerLinkActive — Highlight Active Links
+## Slide 10: routerLinkActive — Highlight Active Links
 
 `routerLinkActive` adds a CSS class to a link when its route matches the current URL.
 
@@ -204,7 +222,7 @@ Without `exact: true`, `/about/team` would also activate the `/about` link.
 
 ---
 
-## Slide 10: Router.navigate() — Navigate from Code
+## Slide 11: Router.navigate() — Navigate from Code
 
 Use `Router.navigate()` when you need to navigate from TypeScript — after a form submit, button click, or any business logic.
 
@@ -237,9 +255,9 @@ export class RecipeListComponent {
 
 ---
 
-## Slide 11: navigate() vs navigateByUrl()
+## Slide 12: navigate() vs navigateByUrl()
 
-`navigateByUrl()` takes a complete URL string. `navigate()` assembles one from an array of segments. Use whichever matches what you already have.
+Angular's `Router` service gives you two methods for navigating programmatically. Both trigger the same routing pipeline — they differ only in how you specify the destination. `navigate()` assembles a URL from an array of segments; `navigateByUrl()` takes a complete URL string. Use whichever matches what you already have.
 
 ```typescript
 // Both produce the same result:
@@ -257,46 +275,16 @@ this.router.navigateByUrl(`/search?q=${query}`);
 |---|---|---|
 | Input | Array of segments | Full URL string |
 | Query params | `{ queryParams: {...} }` option | Part of the URL string |
-| Relative nav | ✅ Supports `relativeTo` option | ❌ Always absolute |
+| Relative nav | Supports `relativeTo` option | Always absolute |
 | Best for | Dynamic routes, post-submit nav | Redirects, absolute jumps |
-
----
-
-## Slide 12: Example — Navigate After Row Click
-
-A common pattern: click a table row, navigate to the detail page.
-
-```html
-<!-- recipe-list.component.html -->
-@for (recipe of recipes(); track recipe.id) {
-  <div class="row" (click)="onRowClick(recipe.id)">
-    {{ recipe.name }}
-  </div>
-}
-```
-
-```typescript
-// recipe-list.component.ts
-@Component({
-  standalone: true,
-  templateUrl: './recipe-list.component.html',
-  styleUrl:    './recipe-list.component.css',
-})
-export class RecipeListComponent {
-  private readonly router = inject(Router);
-  readonly recipes = signal<Recipe[]>([]);
-
-  onRowClick(id: number): void {
-    this.router.navigate(['/recipes', id]); // → /recipes/42
-  }
-}
-```
 
 ---
 
 ## Slide 13: What Route Parameters Are
 
-Route parameters identify a **specific resource** in your URL. They're defined in the route config with a colon prefix and extracted by Angular when the route matches.
+Route parameters identify a **specific resource** in your URL. Use them when a value is required to load the right data — a product detail page, a user profile, a specific article. The answer to "which one?" is a route parameter.
+
+They're defined in the route config with a colon prefix and extracted by Angular when the route matches.
 
 ```
 Route config:  path: 'recipes/:id'
@@ -323,7 +311,7 @@ Extracted:     id → "chicken-tikka"
 
 ## Slide 14: What Query Parameters Are
 
-Query parameters are optional key-value pairs appended after `?`.
+Query parameters modify *how* a view is displayed. They answer questions like "which page?", "sorted by what?", or "filtered to what category?" Use them for filters, sorting, pagination, and search terms — any value that's optional and doesn't change *which* resource you're looking at.
 
 ```
 /recipes?category=italian&sort=rating
@@ -333,7 +321,6 @@ Query parameters are optional key-value pairs appended after `?`.
 
 - They don't affect which route is matched
   - `/recipes?category=italian` still matches `path: 'recipes'`
-- Use them for: filters, sorting, pagination, search terms
 - Can be added or removed without changing the active route
 
 ---
@@ -355,9 +342,11 @@ This is a design decision you'll make on every project.
 
 ---
 
-## Slide 16: Reading Query Params
+## Slide 16: Reading Query Params — ActivatedRoute
 
-`queryParamMap` is an **Observable** — not a one-time value. Angular keeps the same component instance alive when only query params change (e.g. the user switches a filter), so `queryParamMap` emits a new value each time the URL changes without destroying the component. That's why it's reactive.
+This is the manual approach to reading query params — using Angular's `ActivatedRoute` service directly. It works, but requires Observable handling. The next few slides introduce a cleaner way; this slide shows what that new approach is replacing.
+
+`ActivatedRoute` exposes query params through `queryParamMap`, which is an **Observable** — not a one-time value. Angular keeps the same component instance alive when only query params change (e.g. the user switches a filter), so `queryParamMap` emits a new value each time the URL changes without destroying the component. That's why it's reactive.
 
 ```typescript
 // recipe-list.component.ts
@@ -387,7 +376,7 @@ export class RecipeListComponent {
 
 ## Slide 17: withComponentInputBinding() — What It Does
 
-Before this feature, reading route params meant manually subscribing to `ActivatedRoute`.
+`withComponentInputBinding()` is a router feature that automatically wires route parameters and query parameters directly into your component's `input()` signals. Rather than injecting `ActivatedRoute` and manually subscribing to its Observables, you declare an input with a matching name and Angular populates it for you.
 
 With `withComponentInputBinding()` enabled, Angular **automatically passes both route params and query params as signal inputs**.
 
@@ -407,7 +396,7 @@ Params arrive as signal inputs — the same way a parent component passes a valu
 
 ## Slide 18: Enable withComponentInputBinding()
 
-Add it as a second argument to `provideRouter()` in `app.config.ts`.
+This is a one-time configuration change in `app.config.ts`. You add `withComponentInputBinding()` as a second argument to `provideRouter()`, and it activates the feature for every route in your app.
 
 ```typescript
 // app.config.ts
@@ -427,13 +416,15 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-One-time configuration. Once enabled, it works for every route in your app.
+Once enabled, it works for every route in your app — no per-component configuration required.
 
 ---
 
 ## Slide 19: Route Params as Signal Inputs
 
-With `withComponentInputBinding()` enabled, declare a signal input whose name matches the route param.
+With `withComponentInputBinding()` enabled, route parameters flow into your component as signal inputs. Signal inputs in this context are `input()` declarations that Angular automatically fills from the current URL. When you navigate to `/recipes/42`, Angular reads the `:id` parameter from the URL and sets the value of `id()` in your component. You declare the input, Angular handles the wiring — no `ActivatedRoute`, no subscription.
+
+For route params, you can use `input.required<string>()` instead of `input<string>()`. A route param is guaranteed to be present when the route matches — `input.required` makes that explicit and removes `undefined` from the type, so you don't need to null-check it downstream.
 
 ```typescript
 // recipe-detail.component.ts
@@ -446,9 +437,9 @@ import { RecipeService } from '../recipe.service';
   styleUrl:    './recipe-detail.component.css',
 })
 export class RecipeDetailComponent {
-  // readonly is required — input() signals are owned by Angular/the parent,
-  // not the component itself. You read them; you never call .set() on them.
-  readonly id = input<string>(); // name matches :id in the route config
+  // input.required — the route guarantees :id is always present
+  // readonly is required — input() signals are owned by Angular, not the component
+  readonly id = input.required<string>(); // name matches :id in the route config
 
   private readonly recipeService = inject(RecipeService);
 
@@ -465,7 +456,7 @@ URL `/recipes/42` → `id()` returns `'42'`
 
 ## Slide 20: Query Params as Signal Inputs
 
-`withComponentInputBinding()` binds query params to inputs too — not just route params. Declare an input whose name matches the query param key.
+`withComponentInputBinding()` binds query params to inputs too — not just route params. Query params are optional, so use plain `input<string>()` here — unlike route params, a query param may not be present in the URL, so `undefined` is a valid state.
 
 ```typescript
 // recipe-list.component.ts
@@ -475,7 +466,7 @@ URL `/recipes/42` → `id()` returns `'42'`
   styleUrl:    './recipe-list.component.css',
 })
 export class RecipeListComponent {
-  // Bound from the query string — no ActivatedRoute needed
+  // Optional — query params may or may not be in the URL
   readonly category = input<string>(); // receives ?category=italian
 
   private readonly recipeService = inject(RecipeService);
@@ -503,11 +494,11 @@ The `input()` property name must exactly match the route parameter or query para
 { path: 'recipes/:id', component: RecipeDetailComponent }
 //               ^^^  param is named 'id'
 
-// ❌ Wrong — name doesn't match
+// WRONG — name doesn't match
 readonly recipeId = input<string>(); // stays undefined — no error, no binding
 
-// ✅ Correct — name matches exactly
-readonly id = input<string>(); // Angular binds /recipes/42 → '42'
+// CORRECT — name matches exactly
+readonly id = input.required<string>(); // Angular binds /recipes/42 → '42'
 ```
 
 Two things must both be true for binding to work:
@@ -535,7 +526,7 @@ constructor() {
 
 **With withComponentInputBinding():**
 ```typescript
-readonly id = input<string>(); // Angular handles everything
+readonly id = input.required<string>(); // Angular handles everything
 ```
 
 Same result. No subscription. No lifecycle management. No `ActivatedRoute`. This is why the feature exists.
@@ -561,6 +552,8 @@ Use child routes when:
 
 ## Slide 24: Child Routes in app.routes.ts
 
+Here's how that structure translates into the route config. The parent route gets a `children` array — an array of route objects with the same shape as top-level routes, but scoped under the parent's URL. The parent component renders on every URL in the group; the child component renders inside it.
+
 ```typescript
 // app.routes.ts
 export const routes: Routes = [
@@ -584,7 +577,7 @@ export const routes: Routes = [
 
 ## Slide 25: Nested router-outlet
 
-The parent component needs its own `<router-outlet>` for children to render into.
+The parent component needs its own `<router-outlet>` for children to render into. Without it, child routes have nowhere to go. The parent also needs to declare relative links — links without a leading `/` — so they resolve relative to the parent's current URL.
 
 ```typescript
 // recipe-detail.component.ts
@@ -597,7 +590,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   styleUrl:    './recipe-detail.component.css',
 })
 export class RecipeDetailComponent {
-  readonly id = input<string>(); // bound from the :id param
+  readonly id = input.required<string>(); // bound from the :id param
 }
 ```
 
@@ -621,7 +614,7 @@ Child routes silently render nothing if either of these two things is missing fr
 
 **Problem 1 — No `<router-outlet>` in the template:**
 ```html
-<!-- ❌ Parent template has no outlet — children never appear -->
+<!-- WRONG — Parent template has no outlet — children never appear -->
 <h2>Recipe Detail</h2>
 <p>Some recipe info...</p>
 <!-- /recipes/42/reviews navigates here but renders nothing -->
@@ -629,7 +622,7 @@ Child routes silently render nothing if either of these two things is missing fr
 
 **Problem 2 — `RouterOutlet` missing from the `imports` array:**
 ```typescript
-// ❌ Outlet tag in template is silently ignored
+// WRONG — Outlet tag in template is silently ignored
 @Component({
   standalone: true,
   imports: [RouterLink], // RouterOutlet is missing — the outlet won't work
@@ -638,7 +631,7 @@ Child routes silently render nothing if either of these two things is missing fr
 ```
 
 ```typescript
-// ✅ Both required
+// CORRECT — Both required
 imports: [RouterOutlet, RouterLink]
 ```
 
@@ -667,7 +660,7 @@ Result: faster initial load, especially on mobile and slow connections.
 
 ## Slide 28: loadComponent() — Modern Lazy Loading
 
-Replace `component:` with `loadComponent:` in your route config.
+`loadComponent` is a route property that defers loading a component until the user actually navigates to that route. Instead of bundling the component into your main JavaScript file at startup, Angular creates a separate chunk that only downloads on demand. To use it, replace `component:` with `loadComponent:` in your route config.
 
 ```typescript
 // app.routes.ts
@@ -738,9 +731,28 @@ A real-world Angular app can have 50+ components. The impact of lazy loading is 
 
 ---
 
-## Slide 31: withHashLocation()
+## Slide 31: Additional Router Features
 
-`withHashLocation()` makes Angular use `#` in URLs instead of clean paths.
+The next two slides cover opt-in features you configure as extra arguments to `provideRouter()`. They're not required to get routing working, but they solve specific real-world problems you'll encounter.
+
+```typescript
+provideRouter(
+  routes,
+  withComponentInputBinding(), // already covered
+  withHashLocation(),          // coming up
+  withPreloading(PreloadAllModules), // coming up
+)
+```
+
+Each feature is independent — add only the ones that apply to your deployment and performance needs.
+
+---
+
+## Slide 32: withHashLocation()
+
+By default, Angular uses clean URLs like `/recipes/42`. Some hosting environments can't handle this — if a user refreshes the page or shares a link, the server receives `/recipes/42` as a request and returns a 404 because it has no file at that path. It doesn't know Angular is supposed to handle that URL.
+
+`withHashLocation()` solves this by putting everything after a `#` in the URL. The `#` portion is never sent to the server, so the server always serves `index.html` and Angular takes over from there.
 
 ```
 Without:  https://myapp.com/recipes/42
@@ -754,7 +766,6 @@ provideRouter(routes, withHashLocation())
 
 **When to use it:**
 - Deploying to environments that can't do server-side URL rewriting (GitHub Pages, some shared hosting)
-- Without it, the server returns 404 for `/recipes/42` because the server doesn't know about Angular's routes
 
 **When NOT to use it:**
 - Any modern deployment (Netlify, Vercel, Firebase, Nginx with config) — configure the server instead
@@ -762,9 +773,11 @@ provideRouter(routes, withHashLocation())
 
 ---
 
-## Slide 32: withPreloading() — Background Preloading
+## Slide 33: withPreloading() — Background Preloading
 
-`withPreloading()` downloads lazy-loaded route chunks in the background **after** the initial page loads — so they're ready before the user clicks.
+Pure lazy loading means a user waits briefly the first time they visit a route while the chunk downloads. `withPreloading()` eliminates that wait by downloading lazy-loaded chunks in the background **after** the initial page is ready — so the code is likely already cached by the time the user clicks.
+
+It gives you the best of both worlds: a small initial bundle (fast startup) and near-instant navigation (chunks ready in the background).
 
 ```typescript
 // app.config.ts
@@ -788,7 +801,25 @@ Good default for most production apps.
 
 ---
 
-## Slide 33: canActivate — Protecting Routes
+## Slide 34: What Are Guards?
+
+Guards are functions that run before Angular completes a navigation. They act as checkpoints in the routing pipeline — a place to ask "should this navigation actually happen?" before any component is loaded or destroyed.
+
+A guard can:
+- **Allow** the navigation to proceed — return `true`
+- **Block** it entirely — return `false`
+- **Redirect** the user to a different route — return a `UrlTree`
+
+Angular supports two main types:
+
+- **`canActivate`** — runs *before* a route loads. Use it to enforce authentication or permissions: is the user logged in? Do they have the right role?
+- **`canDeactivate`** — runs *before* a route unloads. Use it to protect unsaved work: warn the user before they navigate away from an unsaved form.
+
+Guards in modern Angular are plain functions — no class, no `@Injectable`. They use `inject()` to access services just like a component would.
+
+---
+
+## Slide 35: canActivate — Protecting Routes
 
 A `canActivate` guard is a **plain function** that runs before Angular renders a route.
 
@@ -819,7 +850,9 @@ export const authGuard: CanActivateFn = (route, state) => {
 
 ---
 
-## Slide 34: Wiring canActivate to a Route
+## Slide 36: Wiring canActivate to a Route
+
+Once your guard function is written, you attach it to a route via the `canActivate` property. The guard runs before the component loads. Placing a guard on a parent route automatically protects all of its children — you don't need to repeat it on each child.
 
 ```typescript
 // app.routes.ts
@@ -853,12 +886,12 @@ export const routes: Routes = [
 
 ---
 
-## Slide 35: ⚠️ WARNING — Don't Call navigate() Inside a Guard
+## Slide 37: ⚠️ WARNING — Don't Call navigate() Inside a Guard
 
 A very common mistake: calling `router.navigate()` instead of returning a `UrlTree`.
 
 ```typescript
-// ❌ Wrong — navigate() as a side effect causes a navigation race condition
+// WRONG — navigate() as a side effect causes a navigation race condition
 export const authGuard: CanActivateFn = () => {
   const auth   = inject(AuthService);
   const router = inject(Router);
@@ -872,7 +905,7 @@ export const authGuard: CanActivateFn = () => {
 ```
 
 ```typescript
-// ✅ Correct — return a UrlTree and let the router handle the redirect cleanly
+// CORRECT — return a UrlTree and let the router handle the redirect cleanly
 export const authGuard: CanActivateFn = () => {
   const auth   = inject(AuthService);
   const router = inject(Router);
@@ -885,7 +918,7 @@ export const authGuard: CanActivateFn = () => {
 
 ---
 
-## Slide 36: canDeactivate — Leaving a Route
+## Slide 38: canDeactivate — Leaving a Route
 
 `canDeactivate` runs when the user tries to **leave** a route. Use it to prevent accidental data loss.
 
@@ -916,7 +949,9 @@ export class EditRecipeComponent {
 
 ---
 
-## Slide 37: Wiring canDeactivate to a Route
+## Slide 39: Wiring canDeactivate to a Route
+
+Just like `canActivate`, you attach `canDeactivate` to a route via an array property. Angular calls the guard whenever navigation away from this route is attempted — whether from a link click, a programmatic `navigate()` call, or the browser back button.
 
 ```typescript
 // app.routes.ts
@@ -940,7 +975,20 @@ export const routes: Routes = [
 
 ---
 
-## Slide 38: AppRoutingModule — Legacy Pattern
+## Slide 40: Coming Up — Modern vs Classic Angular
+
+You've just learned routing the modern way.
+
+Before we finish, you'll see how the same concepts looked in **classic (pre-Angular 17) Angular** — the patterns you'll encounter in most existing projects today.
+
+**Modern Angular** is what you write for new projects.
+**Classic Angular** is what you'll read and maintain on the job.
+
+Both accomplish the same things — the modern approach is significantly less code.
+
+---
+
+## Slide 41: AppRoutingModule — Legacy Pattern
 
 On the job, you'll encounter projects that use a routing module instead of `provideRouter()`.
 
@@ -964,20 +1012,7 @@ Then `AppRoutingModule` is imported into `AppModule`. You won't write this for n
 
 ---
 
-## Slide 39: Coming Up — Modern vs Classic Angular
-
-You've just learned routing the modern way.
-
-Before we finish, you'll see how the same concepts looked in **classic (pre-Angular 17) Angular** — the patterns you'll encounter in most existing projects today.
-
-**Modern Angular** is what you write for new projects.
-**Classic Angular** is what you'll read and maintain on the job.
-
-Both accomplish the same things — the modern approach is significantly less code.
-
----
-
-## Slide 40: Legacy — Router Setup
+## Slide 42: Legacy — Router Setup
 
 **Modern (what you write):**
 ```typescript
@@ -1009,7 +1044,7 @@ Two extra files, two extra classes, rigid import order. `provideRouter()` replac
 
 ---
 
-## Slide 41: Legacy — Feature Routes
+## Slide 43: Legacy — Feature Routes
 
 **Modern:**
 ```typescript
@@ -1038,7 +1073,7 @@ export class RecipesModule {}
 
 ---
 
-## Slide 42: Legacy — Lazy Loading
+## Slide 44: Legacy — Lazy Loading
 
 **Modern:**
 ```typescript
@@ -1070,12 +1105,12 @@ Classic lazy loading required an entire NgModule per lazy route. `loadComponent`
 
 ---
 
-## Slide 43: Legacy — Route Params as Inputs
+## Slide 45: Legacy — Route Params as Inputs
 
 **Modern (with withComponentInputBinding):**
 ```typescript
 // One line — Angular handles the wiring
-readonly id = input<string>();
+readonly id = input.required<string>();
 ```
 
 **Classic:**
@@ -1103,21 +1138,31 @@ Classic required constructor injection, `OnInit`, `OnDestroy`, and a manually ma
 
 ---
 
-## Slide 44: Legacy — Programmatic Nav & canActivate
+## Slide 46: Legacy — Programmatic Navigation
 
-**Programmatic navigation — Modern:**
+The functionality of `Router.navigate()` is identical between modern and classic Angular. The only difference is how you get hold of the `Router` instance.
+
+**Modern:**
 ```typescript
-private readonly router = inject(Router); // inject() anywhere in the class body
+// inject() works anywhere in the class body — no constructor required
+private readonly router = inject(Router);
 ```
+
 **Classic:**
 ```typescript
-constructor(private router: Router) {} // constructor parameter — all deps declared here
+// All dependencies declared as constructor parameters
+constructor(private router: Router) {}
 ```
-The functionality is identical. `inject()` is more flexible and works in functions outside classes.
+
+`inject()` is more flexible — it also works in standalone functions and guards outside of classes, which is how modern functional guards are written.
 
 ---
 
-**canActivate — Modern (plain function):**
+## Slide 47: Legacy — canActivate Guard
+
+The logic inside `canActivate` is identical between modern and classic. The difference is entirely in how the guard is declared and registered — a plain function vs. a decorated class.
+
+**Modern (plain function):**
 ```typescript
 export const authGuard: CanActivateFn = () => {
   return inject(AuthService).isLoggedIn()
@@ -1125,6 +1170,7 @@ export const authGuard: CanActivateFn = () => {
     : inject(Router).createUrlTree(['/login']);
 };
 ```
+
 **Classic (class-based):**
 ```typescript
 @Injectable({ providedIn: 'root' })
@@ -1139,11 +1185,11 @@ export class AuthGuard implements CanActivate {
 }
 ```
 
-Same logic. Classic adds `@Injectable`, a class declaration, `implements CanActivate`, and a constructor.
+Same logic. Classic adds `@Injectable`, a class declaration, `implements CanActivate`, and a constructor. Modern is a single function.
 
 ---
 
-## Slide 45: Legacy — canDeactivate Guard
+## Slide 48: Legacy — canDeactivate Guard
 
 **Modern:**
 ```typescript
@@ -1170,9 +1216,9 @@ Classic `CanDeactivate<T>` is a typed interface you implement on a class. Modern
 
 ---
 
-## Slide 46: Key Takeaways
+## Slide 49: Key Takeaways
 
 - **`provideRouter(routes)`** wires up routing in `app.config.ts` — one function call, no modules, no extra files; route order matters because Angular matches top-to-bottom and stops at the first match
-- **`withComponentInputBinding()`** lets both route params and query params flow directly into `input()` signals — no manual `ActivatedRoute` subscriptions needed; the input name must match the param key exactly
+- **`withComponentInputBinding()`** lets both route params and query params flow directly into `input()` signals — no manual `ActivatedRoute` subscriptions needed; use `input.required<string>()` for route params (always present) and plain `input<string>()` for query params (optional)
 - **`loadComponent()`** lazy-loads a standalone component with a dynamic import — one line of code change that can dramatically reduce your initial bundle size, visible as a separate file in the browser's Network tab
 - **Functional guards** (`CanActivateFn`, `CanDeactivateFn`) are plain functions — `inject()` your services, return `true`, `false`, or a `UrlTree` to redirect; placing a guard on a parent route protects all its children automatically
